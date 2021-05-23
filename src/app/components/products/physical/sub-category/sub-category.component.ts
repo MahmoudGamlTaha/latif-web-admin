@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { categoryDB } from 'src/app/shared/tables/category';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { BlogsService } from 'src/app/shared/service/dashboard-services/Blogs.service';
 
 @Component({
   selector: 'app-sub-category',
@@ -9,10 +10,10 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SubCategoryComponent implements OnInit {
   public closeResult: string;
-  public sub_categories = []
+  public blog_Category  = []
 
-  constructor(private modalService: NgbModal) {
-    this.sub_categories = categoryDB.category;
+  constructor(private modalService: NgbModal,private BlogsSer:BlogsService) {
+    // this.sub_categories = categoryDB.category;
   }
 
   open(content) {
@@ -22,6 +23,7 @@ export class SubCategoryComponent implements OnInit {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -37,28 +39,68 @@ export class SubCategoryComponent implements OnInit {
     actions: {
       position: 'right'
     },
+    delete: {
+      confirmDelete: true,
+
+      deleteButtonContent: 'Delete data',
+      saveButtonContent: 'save',
+      cancelButtonContent: 'cancel'
+    },
+    add: {
+      confirmCreate: true,
+    },
+    edit: {
+      confirmSave: true,
+    },
     columns: {
-      img: {
-        title: 'Image',
+      name: {
+        title: 'name',
         type: 'html',
       },
-      product_name: {
-        title: 'Name'
+      description: {
+        title: 'description'
       },
-      price: {
-        title: 'Price'
-      },
-      status: {
-        title: 'Status',
+      icon: {
+        title: 'icon',
         type: 'html',
       },
-      category: {
-        title: 'Sub Category',
-      }
+      nameAr: {
+        title: 'nameAr'
+      },
+      
     },
   };
 
   ngOnInit() {
+
+    this.BlogsSer.getblogCategory().subscribe(
+      (data: any) => {
+        this.blog_Category = data.response.data;
+      },
+      (error) => {
+        console.log('error', error);
+      }
+    );
+
+  }
+
+  onDeleteConfirm(event){ 
+
+    alert(event.data.id)
+
+    
+    if (window.confirm('Are you sure you want to save?')) {
+    
+      this.BlogsSer.deleteblogCategory(parseInt(event.data.id))
+      event.confirm.resolve(event.newData);
+    } else {
+      event.confirm.reject();
+    }
+
+  }
+
+  onEditConfirm(event){
+
   }
 
 }

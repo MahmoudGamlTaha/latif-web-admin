@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { DashboardStatisticsService, Idashboard } from 'src/app/shared/service/dashboard-services/dashboard-statistics.service';
 import * as chartData from '../../shared/data/chart';
 import { doughnutData, pieData } from '../../shared/data/chart';
 
@@ -8,10 +10,22 @@ import { doughnutData, pieData } from '../../shared/data/chart';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
+  DashboardStatistics;
+  userSubscriptionsCount=0;
+  ServiceAdsCount=0;
+  AccessoriesAdsCount=0;
+  PetCareAdsCount=0;
+  AllAdsCount=0;
+  PetAdsCount=0;
+
   public doughnutData = doughnutData;
   public pieData = pieData;
-  constructor() {
+  constructor(private dashServ:DashboardStatisticsService) {
+
+    
     Object.assign(this, { doughnutData, pieData })
+
   }
 
   // doughnut 2
@@ -75,6 +89,29 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    
+    this.dashServ.getbDashboardStatistics().subscribe(
+      (data:any) => {
+        this.DashboardStatistics = data.response.data;
+        this.userSubscriptionsCount =  parseInt(data.response.data.userSubscriptionsCount);
+      this.ServiceAdsCount =  parseInt(data.response.data.ServiceAdsCount);
+      this.AccessoriesAdsCount =  parseInt(data.response.data.AccessoriesAdsCount);
+      this.PetCareAdsCount =  parseInt(data.response.data.PetCareAdsCount);
+      this.AllAdsCount =  parseInt(data.response.data.AllAdsCount);
+      this.PetAdsCount =  parseInt(data.response.data.PetAdsCount);
+      },
+      (error) => {
+        console.log('error', error);
+      }
+    );
+    
+  console.log( this.AllAdsCount);
+        // console.log( this.DashboardStatistics.userSubscriptionsCount);
+        // console.log( this.DashboardStatistics.AllAdsCount);
+        // console.log( this.DashboardStatistics.PetAdsCount);
+        // console.log( this.DashboardStatistics.PetCareAdsCount);
+        // console.log( this.DashboardStatistics.ServiceAdsCount);
+        // console.log( this.DashboardStatistics.userSubscriptionsCount);
   }
 
 }

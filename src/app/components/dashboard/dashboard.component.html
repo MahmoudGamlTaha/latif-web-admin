@@ -1,7 +1,9 @@
 <!-- Container-fluid starts-->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xl-3 col-md-6 xl-50">
+
+        
+        <div class="col-xl-4 col-md-4 ">
             <div class="card o-hidden widget-cards">
                 <div class="bg-warning card-body">
                     <div class="media static-top-widget row">
@@ -10,15 +12,15 @@
                                 <app-feather-icons [icon]="'navigation'" class="font-warning"></app-feather-icons>
                             </div>
                         </div>
-                        <div class="media-body col-8"><span class="m-0">Earnings</span>
-                            <h3 class="mb-0">$ <span class="counter" [CountTo]="6659" [from]="0"
-                                    [duration]="2">6659</span><small> This Month</small></h3>
+                        <div class="media-body col-8"><span class="m-0">user Subscriptions</span>
+                            <h3 class="mb-0">$ <span class="counter" [CountTo]="userSubscriptionsCount" [from]="0"
+                                    [duration]="2">{{userSubscriptionsCount}}</span><small> This Month</small></h3>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-6 xl-50">
+        <div class="col-xl-4 col-md-4 ">
             <div class="card o-hidden  widget-cards">
                 <div class="bg-secondary card-body">
                     <div class="media static-top-widget row">
@@ -27,32 +29,15 @@
                                 <app-feather-icons [icon]="'box'" class="font-secondary"></app-feather-icons>
                             </div>
                         </div>
-                        <div class="media-body col-8"><span class="m-0">Products</span>
-                            <h3 class="mb-0">$ <span class="counter" [CountTo]="9856" [from]="0"
-                                    [duration]="2">9856</span><small> This Month</small></h3>
+                        <div class="media-body col-8"><span class="m-0">Service Ads</span>
+                            <h3 class="mb-0">$ <span class="counter" [CountTo]="ServiceAdsCount" [from]="0"
+                                    [duration]="2">{{ServiceAdsCount}}</span><small> This Month</small></h3>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-6 xl-50">
-            <div class="card o-hidden widget-cards">
-                <div class="bg-primary card-body">
-                    <div class="media static-top-widget row">
-                        <div class="icons-widgets col-4">
-                            <div class="align-self-center text-center">
-                                <app-feather-icons [icon]="'message-square'" class="font-primary"></app-feather-icons>
-                            </div>
-                        </div>
-                        <div class="media-body col-8"><span class="m-0">Messages</span>
-                            <h3 class="mb-0">$ <span class="counter" [CountTo]="893" [from]="0"
-                                    [duration]="2">893</span><small> This Month</small></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6 xl-50">
+        <div class="col-xl-4 col-md-4 ">
             <div class="card o-hidden widget-cards">
                 <div class="bg-danger card-body">
                     <div class="media static-top-widget row">
@@ -61,14 +46,68 @@
                                 <app-feather-icons [icon]="'users'" class="font-danger"></app-feather-icons>
                             </div>
                         </div>
-                        <div class="media-body col-8"><span class="m-0">New Vendors</span>
-                            <h3 class="mb-0">$ <span class="counter" [CountTo]="45631" [from]="0"
-                                    [duration]="2">45631</span><small> This Month</small></h3>
+                        <div class="media-body col-8"><span class="m-0">Accessories Ads</span>
+                            <h3 class="mb-0">$ <span class="counter" [CountTo]="AccessoriesAdsCount" [from]="0"
+                                    [duration]="2">{{AccessoriesAdsCount}}</span><small> This Month</small></h3>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-xl-4 col-md-4 ">
+            <div class="card o-hidden widget-cards">
+                <div class="bg-primary card-body">
+                    <div class="media static-top-widget row">
+                        <div class="icons-widgets col-4">
+                            <div class="align-self-center text-center">
+                                <app-feather-icons [icon]="'message-square'" class="font-primary"></app-feather-icons>
+                            </div>
+                        </div>
+                        <div class="media-body col-8"><span class="m-0">Pet Care Ads</span>
+                            <h3 class="mb-0">$ <span class="counter" [CountTo]="PetCareAdsCount" [from]="0"
+                                    [duration]="2">{{PetCareAdsCount}}</span><small> This Month</small></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-4 ">
+            <div class="card o-hidden  widget-cards">
+                <div class="bg-secondary card-body">
+                    <div class="media static-top-widget row">
+                        <div class="icons-widgets col-4">
+                            <div class="align-self-center text-center">
+                                <app-feather-icons [icon]="'box'" class="font-secondary"></app-feather-icons>
+                            </div>
+                        </div>
+                        <div class="media-body col-8"><span class="m-0">All Ads</span>
+                            <h3 class="mb-0">$ <span class="counter" [CountTo]="AllAdsCount" [from]="0"
+                                    [duration]="2">{{AllAdsCount}}</span><small> This Month</small></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-4 ">
+            <div class="card o-hidden widget-cards">
+                <div class="bg-primary card-body">
+                    <div class="media static-top-widget row">
+                        <div class="icons-widgets col-4">
+                            <div class="align-self-center text-center">
+                                <app-feather-icons [icon]="'message-square'" class="font-primary"></app-feather-icons>
+                            </div>
+                        </div>
+                        <div class="media-body col-8"><span class="m-0">Pet Ads</span>
+                            <h3 class="mb-0">$ <span class="counter" [CountTo]="PetAdsCount" [from]="0"
+                                    [duration]="2">{{PetAdsCount}}</span><small> This Month</small></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
         <div class="col-xl-6 xl-100">
             <div class="card">
                 <div class="card-header">
@@ -622,6 +661,7 @@
             </div>
         </div>
 
+        
     </div>
 </div>
 <!-- Container-fluid Ends-->

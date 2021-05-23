@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { categoryDB } from '../../../../shared/tables/category';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { BlogsService } from 'src/app/shared/service/dashboard-services/Blogs.service';
 
 @Component({
   selector: 'app-category',
@@ -11,8 +12,9 @@ export class CategoryComponent implements OnInit {
   public closeResult: string;
   public categories = []
 
-  constructor(private modalService: NgbModal) {
-    this.categories = categoryDB.category;
+  constructor(private modalService: NgbModal,private BlogsSer: BlogsService) {
+    // this.categories = categoryDB.category;
+    
   }
 
   open(content) {
@@ -34,31 +36,83 @@ export class CategoryComponent implements OnInit {
 
 
   public settings = {
+
     actions: {
-      position: 'right'
+      position: 'right',
+    },
+    delete: {
+      confirmDelete: true,
+
+      deleteButtonContent: 'Delete data',
+      saveButtonContent: 'save',
+      cancelButtonContent: 'cancel'
+    },
+    add: {
+      confirmCreate: true,
+    },
+    edit: {
+      confirmSave: true,
     },
     columns: {
-      img: {
-        title: 'Image',
-        type: 'html',
-      },
-      product_name: {
-        title: 'Name'
-      },
-      price: {
-        title: 'Price'
-      },
-      status: {
-        title: 'Status',
-        type: 'html',
-      },
+      // 'user.firstName': {
+      //   title: 'Name',
+      //   valuePrepareFunction: (cell, row) => { return row.user.firstName }
+      // },
       category: {
         title: 'Category',
+      } ,
+      title: {
+        title: 'title',
+      },
+      description: {
+        title: 'description',
+        valuePrepareFunction: (cell, row) => { return row.description.slice(0, 30); }
+        
+      },
+      createdDate: {
+        title: 'createdDate'
+      },
+      img: {
+        title: 'Image',
+        type: 'html'
       }
-    },
+
+    }
   };
 
   ngOnInit() {
+
+  this.BlogsSer.getblogList().subscribe(
+      (data: any) => {
+        this.categories = data.response.data;
+      },
+      (error) => {
+        console.log('error', error);
+      }
+    );
+    
   }
+
+
+  onDeleteConfirm(event){ 
+
+    alert(event.data.id)
+
+    
+    if (window.confirm('Are you sure you want to save?')) {
+    
+      this.BlogsSer.deleteblogList(parseInt(event.data.id))
+      event.confirm.resolve(event.newData);
+    } else {
+      event.confirm.reject();
+    }
+
+  }
+
+  onEditConfirm(event){
+
+  }
+      
+      
 
 }

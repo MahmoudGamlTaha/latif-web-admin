@@ -4,7 +4,7 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Products Category</h5>
+                    <h5>Blog Category</h5>
                 </div>
                 <div class="card-body">
                     <div class="btn-popup pull-right">
@@ -12,7 +12,7 @@
                             data-target="#exampleModal" (click)="open(content)">Add Category</button>
                         <ng-template #content let-modal>
                             <div class="modal-header">
-                                <h5 class="modal-title f-w-600" id="exampleModalLabel">Add Physical Product</h5>
+                                <h5 class="modal-title f-w-600" id="exampleModalLabel">Add Blog </h5>
                                 <button type="button" class="close" aria-label="Close"
                                     (click)="modal.dismiss('Cross click')">
                                     <span aria-hidden="true">&times;</span>
@@ -41,7 +41,10 @@
                     </div>
                     <div id="batchDelete" class="category-table custom-datatable">
                         <div class="table-responsive">
-                            <ng2-smart-table [settings]="settings" [source]="categories"></ng2-smart-table>
+                            <ng2-smart-table [settings]="settings" [source]="categories" 
+                            (deleteConfirm)="onDeleteConfirm($event)"
+                             (editConfirm)="onEditConfirm($event)"
+                            ></ng2-smart-table>
                         </div>
                     </div>
                 </div>
