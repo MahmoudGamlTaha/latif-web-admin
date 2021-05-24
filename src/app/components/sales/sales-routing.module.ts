@@ -8,19 +8,19 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'orders',
+        path: 'categorylist',
         component: OrdersComponent,
         data: {
-          title: "Orders",
-          breadcrumb: "Orders"
+          title: "Category List",
+          breadcrumb: "Category List"
         }
       },
       {
-        path: 'transactions/:id',
+        path: 'categorytype/:id',
         component: TransactionsComponent,
         data: {
-          title: "Transactions",
-          breadcrumb: "Transactions"
+          title: "Category Type",
+          breadcrumb: "Category Type"
         }
       }
     ]

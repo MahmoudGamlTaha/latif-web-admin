@@ -15,19 +15,19 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'physical/category',
+        path: 'physical/bloglist',
         component: CategoryComponent,
         data: {
-          title: "Category",
-          breadcrumb: "Category"
+          title: "blog List",
+          breadcrumb: "blog List"
         }
       },
       {
-        path: 'physical/sub-category',
+        path: 'physical/blogcategory',
         component: SubCategoryComponent,
         data: {
-          title: "Sub Category",
-          breadcrumb: "Sub Category"
+          title: "blog Category",
+          breadcrumb: "blog Category"
         }
       },
       {

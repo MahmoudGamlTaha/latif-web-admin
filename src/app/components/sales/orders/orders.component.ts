@@ -37,7 +37,7 @@ export class OrdersComponent implements OnInit {
 
 if(event.type == 'click') {
   this.categoryId=event.row.id;
-  this.router.navigate(['http://localhost:4200/sales/transactions/',this.categoryId])
+  this.router.navigate(['sales/categorytype/',this.categoryId])
 }
   }
   ngOnInit() {
