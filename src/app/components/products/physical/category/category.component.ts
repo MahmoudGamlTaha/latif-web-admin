@@ -58,15 +58,21 @@ export class CategoryComponent implements OnInit {
       //   title: 'Name',
       //   valuePrepareFunction: (cell, row) => { return row.user.firstName }
       // },
+      id: {
+        title: 'id',
+        type: 'integer'
+      } ,
       category: {
         title: 'Category',
+        type: 'integer'
       } ,
       title: {
         title: 'title',
       },
       description: {
         title: 'description',
-        valuePrepareFunction: (cell, row) => { return row.description.slice(0, 30); }
+        valuePrepareFunction: (cell, row) => { return row.description.slice(0, 30); },
+        type: 'string'
         
       },
       createdDate: {
@@ -110,9 +116,20 @@ export class CategoryComponent implements OnInit {
   }
 
   onEditConfirm(event){
-
+    console.log(event.data)
+    this.BlogsSer.updateblogList(event.data).subscribe(res => {
+      console.log('Success : ', res)
+    }, err => {
+      console.log('EError : ', err)
+    })
+    event.confirm.resolve(event.newData);
   }
       
-      
+  onCreateConfirm(event) {
+    console.log(event)
+    this.BlogsSer.createBlogList(event.data)
+    event.confirm.resolve(event.newData);
+
+  }
 
 }

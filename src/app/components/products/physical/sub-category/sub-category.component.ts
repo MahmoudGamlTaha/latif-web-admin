@@ -100,7 +100,14 @@ export class SubCategoryComponent implements OnInit {
   }
 
   onEditConfirm(event){
-
+    this.BlogsSer.updateblogCategory(event.data)
+    event.confirm.resolve(event.newData);
   }
 
+
+  onCreateConfirm(event) {
+    console.log("Create Event In Console")
+    console.log(event);
+
+  }
 }

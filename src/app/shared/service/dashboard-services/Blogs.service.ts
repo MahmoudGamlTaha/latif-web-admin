@@ -10,12 +10,15 @@ import { IblogCategory, IblogList } from './IcategoryList';
 })
 export class BlogsService {
   _blogList = 'https://latifapp.herokuapp.com/api/public/blogs';
-  _blogListupdate="https://latifapp.herokuapp.com/api/public/blogs/update?"
-    _deleteblog = "https://latifapp.herokuapp.com/api/public/blogs/delete/id=";
-  
+  _updateblogList="https://latifapp.herokuapp.com/api/public/blogs/update"
+  _deleteblog = "https://latifapp.herokuapp.com/api/public/blogs/delete?id=";
+  _createblog = "https://latifapp.herokuapp.com/api/public/blogs/create";
+
     _blogCategory = 'https://latifapp.herokuapp.com/api/public/blogCategory';
     _blogCategoryupdate = "https://latifapp.herokuapp.com/api/public/blogCategory/update";
     _deleteblogCategory="https://latifapp.herokuapp.com/api/public/blogCategory/id="
+    _createblogCategory=""
+
 
   _categoryTypeList = 'https://latifapp.herokuapp.com/api/public/ads-type/list';
   constructor(public _http: HttpClient) { }
@@ -31,16 +34,27 @@ export class BlogsService {
       );
   }
 
-  updateblogList(blogCategory: Object) {
-      let endPoints = blogCategory;
-      return this._http.put(this._blogListupdate + endPoints, blogCategory).subscribe(data => {
+  updateblogList(blogList: any) {
+    const blogId = blogList.id;
+    const headers = {params:{id:blogId} };
+
+    console.log('blogList : ', blogList.title)
+    console.log(`${this._updateblogList}?id=${blogId}`);
+    
+      return this._http.post(this._updateblogList+'?id='+blogList.id+'&title='+blogList.title+'&category='+blogList.category+'&category_id='+blogList.category_id+'&path='+blogList.path+'&'+
+      'description='+blogList.description+'&'+'image='+blogList.image+'&'+'images='+blogList.images+'&external='+blogList.externalLink,blogList);
+    }
+
+    createBlogList(blogCategory: IblogList) {
+      console.log(blogCategory);
+      return this._http.post<IblogList>(this._createblog , blogCategory).subscribe(data => {
         console.log(data);
       });
     }
 
   deleteblogList(blogId) {
 alert(blogId)
-  return  this._http.delete(this._deleteblog+blogId).subscribe(
+  return  this._http.post(this._deleteblog+blogId,'').subscribe(
         res => {
           console.log(res);
       })
@@ -56,21 +70,17 @@ alert(blogId)
       );
   }
 
-  deleteblogCategory(blogCategoryId) {
+    updateblogCategory(blogCategory: IblogList) {
 
-    return  this._http.delete(this._deleteblogCategory+blogCategoryId).subscribe(
-          res => {
-            console.log(res);
-        })
-  
-    }
-
-    updateblogCategory(blogCategory: Object) {
-      let endPoints = blogCategory;
-      return this._http.put(this._blogCategoryupdate + endPoints, blogCategory).subscribe(data => {
+      return this._http.post(this._blogCategoryupdate + blogCategory.id, blogCategory).subscribe(data => {
         console.log(data);
       });
     }
 
 
+    deleteblogCategory(blogCategoryId) {
+
+      return  this._http.post(this._deleteblogCategory+blogCategoryId,'').subscribe(
+              res => {console.log(res);})
+    }
 }

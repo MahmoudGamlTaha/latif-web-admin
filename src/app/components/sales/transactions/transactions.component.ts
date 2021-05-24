@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { CategoryService } from 'src/app/shared/service/dashboard-services/category.service';
 import { transactionsDB } from 'src/app/shared/tables/transactions';
 
 @Component({
@@ -8,39 +11,92 @@ import { transactionsDB } from 'src/app/shared/tables/transactions';
 })
 export class TransactionsComponent implements OnInit {
 
-  public transactions = []
-
-  constructor() {
-    this.transactions = transactionsDB.data;
+  transactions ;
+  heroId;
+  constructor(private route:ActivatedRoute,private router:Router,private categorySer:CategoryService) {
+  
   }
 
   public settings = {
-    actions: false,
-    hideSubHeader: true,
+    actions: {
+      position: 'right',
+    },
+    delete: {
+      confirmDelete: true,
+
+      deleteButtonContent: 'Delete data',
+      saveButtonContent: 'save',
+      cancelButtonContent: 'cancel'
+    },
+    add: {
+      confirmCreate: true,
+    },
+    edit: {
+      confirmSave: true,
+    },
     columns: {
-      order_id: {
-        title: 'Order Id', filter: false
+      'category.id': {
+        title: 'id', 
+        valuePrepareFunction:(cell,row)=>{
+          return row.category.id
+        },
       },
-      transaction_id: {
-        title: 'Transaction Id', filter: false
+      'category.name': {
+        title: 'name', 
+        valuePrepareFunction:(cell,row)=>{
+          return row.category.name
+        }
       },
-      date: {
-        title: 'Date', filter: false
+      'category.nameAr': {
+        title: 'nameAr',
+        valuePrepareFunction:(cell,row)=>{return row.category.nameAr}
       },
-      pay_method: {
-        title: 'Payment Method', filter: false,
+      'category.icon': {
+        title: 'icon',
         type: 'html',
+        valuePrepareFunction:(cell,row)=>{return row.category.icon.slice(0, 30);}
       },
-      delivery_status: {
-        title: 'Delivery Status', filter: false
+      // 'category.iconSelect': {
+      //   title: 'iconSelect',
+      //   type: 'html',
+      //   valuePrepareFunction:(cell,row)=>{return row.category.iconSelect.slice(0, 30);}
+
+      // },
+      'category.type': {
+        title: 'type', 
+        valuePrepareFunction:(cell,row)=>{return row.category.type}
+
       },
-      amount: {
-        title: 'Amount', filter: false
+      'category.isExternalLink': {
+        title: 'isExternalLink',
+        valuePrepareFunction:(cell,row)=>{return row.category.isExternalLink}
+
+      },
+      'category.parent.category': {
+        title: 'parent', 
+        valuePrepareFunction:(cell,row)=>{return row.category.parent.category}
+
       }
     },
   };
-
+  
   ngOnInit() {
+
+    this.heroId = this.route.snapshot.paramMap.get('id');
+    this.categorySer.getCategoryType(this.heroId).subscribe((data:any)=>{
+    this.transactions = data.response.data;
+    },
+  (error) => {
+    console.log('error', error);
+  }) 
+    
+    
   }
+
+  // ngAfterViewInit() {
+  //   }
+  onDeleteConfirm(event){}
+  onEditConfirm(event){}
+  onCreateConfirm(event){}
 
 }

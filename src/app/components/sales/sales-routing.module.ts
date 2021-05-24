@@ -16,7 +16,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'transactions',
+        path: 'transactions/:id',
         component: TransactionsComponent,
         data: {
           title: "Transactions",

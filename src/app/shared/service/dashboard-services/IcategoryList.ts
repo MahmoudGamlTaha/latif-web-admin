@@ -1,8 +1,8 @@
 export interface IblogList {
-    id: string;
+    id: any;
     title: string;
-    category: string;
-    category_id: number,
+    category: any;
+    category_id: any,
     description: string,
     image: any,
     images:Array<any>,
