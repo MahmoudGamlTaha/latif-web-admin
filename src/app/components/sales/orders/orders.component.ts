@@ -14,6 +14,7 @@ export class OrdersComponent implements OnInit {
   public order;
   public temp = [];
   categoryId;
+  typeName;
   @ViewChild(DatatableComponent, { static: false }) table: DatatableComponent;
   constructor( private categorySer:CategoryService,private router:Router) {
     // this.order = orderDB.list_order;
@@ -38,7 +39,8 @@ export class OrdersComponent implements OnInit {
 
 if(event.type == 'click') {
   this.categoryId=event.row.id;
-  this.router.navigate(['sales/categorytype/',this.categoryId])
+  this.typeName=event.row.name;
+  this.router.navigate(['sales/categorytype/',this.categoryId,this.typeName])
 }
   }
   ngOnInit() {

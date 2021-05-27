@@ -39,7 +39,7 @@
                                 <label for="validationCustom01" >city</label>
                             <select class="custom-select"  placeholder="city"[value]="city">
                                 <option  *ngFor="let option of cites;let index=index;" [value]="option" data-list="option"> 
-                                {{ cites[index].category.name}}
+                                {{ option.category.name}}
                                 </option>
                             </select>
                             </div>

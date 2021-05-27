@@ -13,6 +13,7 @@ export class TransactionsComponent implements OnInit {
 
   transactions ;
   categoryId;
+  typeName;
   constructor(private route:ActivatedRoute,private router:Router,private categorySer:CategoryService) {
   
   }
@@ -83,6 +84,8 @@ export class TransactionsComponent implements OnInit {
   ngOnInit() {
 
     this.categoryId = this.route.snapshot.paramMap.get('id');
+    this.typeName = this.route.snapshot.paramMap.get('typeName');
+
     this.categorySer.getCategoryType(this.categoryId).subscribe((data:any)=>{
     this.transactions = data.response.data;
     },
