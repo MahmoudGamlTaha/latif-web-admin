@@ -30,12 +30,13 @@ export class ListCouponComponent implements OnInit {
   //     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
   //   });
   // }
- 
+
   public settings = {
+    hideSubHeader: true,
     actions: {
       position: 'right',
     },
-   delete: {
+  delete: {
         confirmDelete: true,
         deleteButtonContent: 'Delete data',
         saveButtonContent: 'save',
@@ -75,10 +76,10 @@ export class ListCouponComponent implements OnInit {
       //   title: 'adsCount',
       //   valuePrepareFunction: (cell, row) => { return row.createdBy.adsCount }
       // }
-      city: {
-        title: 'city',
-        // valuePrepareFunction: (cell, row) => { return row.user.firstName }
-      },
+      // city: {
+      //   title: 'city',
+      //   // valuePrepareFunction: (cell, row) => { return row.user.firstName }
+      // },
       name: {
         title: 'categoryName',
       

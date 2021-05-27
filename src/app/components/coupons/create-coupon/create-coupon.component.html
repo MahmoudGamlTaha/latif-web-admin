@@ -6,41 +6,46 @@
                 <div class="card-header">
                     <h5>update Ads</h5>
                 </div>
-                <div class="card-body">
 
-                
-<form [formGroup]="generalForm" class="needs-validation" novalidate="">
-                            <h4>update Ads</h4>
-    
+                <div class="card-body">
+                    <form [formGroup]="generalForm" class="needs-validation" novalidate="">
+                        <div class="row">
+
+                            <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="validationCustom01">id</label>
-                                <input type="text" class="form-control" placeholder="id" disabled />
+                                <input type="text" class="form-control" placeholder="id" disabled  [value]="categoryId"/>
                                 <!-- <div>
                                     <small  class="text-danger">
                                         id field is required
                                     </small>    
                                 </div> -->
                             </div>
+                        </div>
+                            <div class="col-sm-4">
                             <div class="form-group">
                                 <!-- dropdown -->
                                 <label for="validationCustom01">categoryName</label>
-                                <input type="text" class="form-control" placeholder="categoryName"  />
+                                <input type="text" class="form-control" placeholder="categoryName" disabled value=""/>
                                 <!-- <div>
                                     <small  class="text-danger">
                                         id field is required
                                     </small>    
                                 </div> -->
                             </div>
-    
-                            
-    
-                            <select   placeholder="city" >
-                                
-                                <option class="dropdown-item" *ngFor="let option of cites;let index=index;" [value]="option" data-list="option"> 
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="validationCustom01" >city</label>
+                            <select class="custom-select"  placeholder="city"[value]="city">
+                                <option  *ngFor="let option of cites;let index=index;" [value]="option" data-list="option"> 
                                 {{ cites[index].category.name}}
                                 </option>
                             </select>
-    
+                            </div>
+                            
+                        </div>
+                        <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="validationCustom01">active</label>
                                 <input type="text" class="form-control" placeholder="active" />
@@ -51,10 +56,8 @@
                                     </small>    
                                 </div> -->
                             </div>
-                            
-    
-                            
-                            
+                        </div>
+                        <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="validationCustom01">type</label>
                                 <input type="text" class="form-control" placeholder="type" />
@@ -64,7 +67,8 @@
                                     </small>    
                                 </div> -->
                             </div>
-    
+                        </div>
+                        <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="validationCustom01">type name</label>
                                 <input type="text" class="form-control" placeholder="type name" />
@@ -74,7 +78,8 @@
                                     </small>    
                                 </div> -->
                             </div>
-    
+                        </div>
+                        <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="validationCustom01">phone</label>
                                 <input type="text" class="form-control" placeholder="phone" />
@@ -84,94 +89,105 @@
                                     </small>    
                                 </div> -->
                             </div>
-                                <div class="form-group">
-                                    <label for="validationCustom01">First name</label>
-                                    <input [class.is-invalid]="firstName?.invalid && firstName?.touched" formControlName="firstName" type="text" class="form-control" placeholder="firstName" />
-                                    <div *ngIf="firstName?.invalid && firstName?.touched">
-                                        <!-- <small *ngIf="firstName?.errors?.required" [class.is-invalid]="firstName?.invalid || firstName?.touched" class="text-danger">
-                                            firstName field is required
-                                        </small>
-                                        <small *ngIf="firstName?.errors?.minlength" class="text-danger">
-                                            firstName field must be at least 3 characters
-                                        </small>
-                                        <small class="text-danger" *ngIf="firstName?.errors?.forbiddenName">
-                                            firstName is not allowed
-                                        </small> -->
-                                    </div>
-                                </div>
-    
-                                <div class="form-group">
-                                    <label for="validationCustom02">Last name</label>
-                                    <input [class.is-invalid]="lastName?.invalid && lastName?.touched"
-                                        formControlName="lastName" type="text" class="form-control"
-                                        id="validationCustom02" placeholder="Last name" />
-    
-                                    <!-- <small *ngIf="lastName?.errors?.required"
-                                        [class.d-none]="lastName?.valid || lastName?.untouched" class="text-danger">
-                                        > Last Name is required
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="validationCustom01">First name</label>
+                                <input [class.is-invalid]="firstName?.invalid && firstName?.touched" formControlName="firstName" type="text" class="form-control" placeholder="firstName" />
+                                <div *ngIf="firstName?.invalid && firstName?.touched">
+                                    <!-- <small *ngIf="firstName?.errors?.required" [class.is-invalid]="firstName?.invalid || firstName?.touched" class="text-danger">
+                                        firstName field is required
+                                    </small>
+                                    <small *ngIf="firstName?.errors?.minlength" class="text-danger">
+                                        firstName field must be at least 3 characters
+                                    </small>
+                                    <small class="text-danger" *ngIf="firstName?.errors?.forbiddenName">
+                                        firstName is not allowed
                                     </small> -->
                                 </div>
-    
-                                <div class="form-group">
-                                    <label for="validationCustom01">description</label>
-                                    <input type="text" class="form-control" placeholder="description" />
-                                    <!-- <div>
-                                        <small  class="text-danger">
-                                            id field is required
-                                        </small>    
-                                    </div> -->
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="validationCustom02">Last name</label>
+                                <input [class.is-invalid]="lastName?.invalid && lastName?.touched"
+                                    formControlName="lastName" type="text" class="form-control"
+                                    id="validationCustom02" placeholder="Last name" />
+
+                                <!-- <small *ngIf="lastName?.errors?.required"
+                                    [class.d-none]="lastName?.valid || lastName?.untouched" class="text-danger">
+                                    > Last Name is required
+                                </small> -->
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="validationCustom01">description</label>
+                                <input type="text" class="form-control" placeholder="description" />
+                                <!-- <div>
+                                    <small  class="text-danger">
+                                        id field is required
+                                    </small>    
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="validationCustom01">price</label>
+                                <input type="text" class="form-control" placeholder="price" />
+                                <!-- <div>
+                                    <small  class="text-danger">
+                                        id field is required
+                                    </small>    
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="validationCustom01">categoryName</label>
+                                <input type="text" class="form-control" placeholder="categoryName" />
+                                <!-- <div>
+                                    <small  class="text-danger">
+                                        id field is required
+                                    </small>    
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="validationCustom01">categoryName</label>
+                                <input type="text" class="form-control" placeholder="categoryName" />
+                                <!-- <div>
+                                    <small  class="text-danger">
+                                        id field is required
+                                    </small>    
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="validationCustomUsername">email</label>
+                                <input [class.is-invalid]="email?.invalid && email?.touched" formControlName="email"
+                                    type="email" [pattern]="emailRegx" class="form-control" id="validationCustom03"
+                                    placeholder="email" />
+                                <div *ngIf="email?.invalid && email?.touched">
+                                    <small *ngIf="email?.errors?.required"
+                                        [class.is-invalid]="email?.invalid || email?.touched" class="text-danger">
+                                        > email is required
+                                    </small>
+
+                                    <small class="text-danger" *ngIf="email?.errors?.pattern"
+                                        [class.is-invalid]="email?.invalid || email?.touched">
+                                        > email must be a valid
+                                    </small>
                                 </div>
-                                <div class="form-group">
-                                    <label for="validationCustom01">price</label>
-                                    <input type="text" class="form-control" placeholder="price" />
-                                    <!-- <div>
-                                        <small  class="text-danger">
-                                            id field is required
-                                        </small>    
-                                    </div> -->
-                                </div>
-                                <div class="form-group">
-                                    <label for="validationCustom01">categoryName</label>
-                                    <input type="text" class="form-control" placeholder="categoryName" />
-                                    <!-- <div>
-                                        <small  class="text-danger">
-                                            id field is required
-                                        </small>    
-                                    </div> -->
-                                </div>
-                                <div class="form-group">
-                                    <label for="validationCustom01">categoryName</label>
-                                    <input type="text" class="form-control" placeholder="categoryName" />
-                                    <!-- <div>
-                                        <small  class="text-danger">
-                                            id field is required
-                                        </small>    
-                                    </div> -->
-                                </div>
-                                <div class="form-group">
-                                    <label for="validationCustomUsername">email</label>
-                                    <input [class.is-invalid]="email?.invalid && email?.touched" formControlName="email"
-                                        type="email" [pattern]="emailRegx" class="form-control" id="validationCustom03"
-                                        placeholder="email" />
-                                    <div *ngIf="email?.invalid && email?.touched">
-                                        <small *ngIf="email?.errors?.required"
-                                            [class.is-invalid]="email?.invalid || email?.touched" class="text-danger">
-                                            > email is required
-                                        </small>
-    
-                                        <small class="text-danger" *ngIf="email?.errors?.pattern"
-                                            [class.is-invalid]="email?.invalid || email?.touched">
-                                            > email must be a valid
-                                        </small>
-                                    </div>
-                                </div>
-    
-                                
-                        </form>
-                
-                    
-                    
+                            </div>
+                        </div>
                         
+
+                        </div>
+
+                        </form>
                     
                     <div class="pull-right">
                         <button type="button" class="btn btn-primary">Save</button>

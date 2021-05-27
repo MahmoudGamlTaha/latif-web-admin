@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { NgbDateStruct, NgbDate, NgbCalendar, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute } from '@angular/router';
+import { NgbDateStruct, NgbDate, NgbCalendar, NgbDatepickerConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AdsService } from 'src/app/shared/service/dashboard-services/ads.service';
 import { CategoryService } from 'src/app/shared/service/dashboard-services/category.service';
 import { CitesService } from 'src/app/shared/service/dashboard-services/cites.service';
@@ -18,20 +18,31 @@ export class CreateCouponComponent implements OnInit {
   public model: NgbDateStruct;
   public date: { year: number, month: number };
   public modelFooter: NgbDateStruct;
+
   emailRegx = /^(([^<>+()\[\]\\.,;:\s@"-#$%&=]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
   cites;
-rowSelected=JSON.parse(localStorage.getItem('RowSelect'))
+  categoryId;
+  city;
+rowSelectedData=JSON.parse(localStorage.getItem('RowSelect'))
   constructor(private adsSer:AdsService,private categorySer:CategoryService,private citesSer:CitesService,
-              private formBuilder: FormBuilder, private calendar: NgbCalendar) {
+              private formBuilder: FormBuilder,private router:ActivatedRoute,private calendar: NgbCalendar) {
     this.createGeneralForm();
-  
   }
 
   // selectToday() {
   //   this.model = this.calendar.getToday();
   // }
 
+  setDataToFormUbdate(){
+    
+    this.categoryId =this.router.snapshot.paramMap.get('id')
+    this.city=this.rowSelectedData.city;
+    console.log(this.rowSelectedData)
+    
+  }
   createGeneralForm() {
+
+
     this.generalForm = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.minLength(3)]],
       lastName: ['', [Validators.required]],
@@ -42,12 +53,15 @@ rowSelected=JSON.parse(localStorage.getItem('RowSelect'))
 
   
   ngOnInit() {
-this.citesSer.getcitesList().subscribe((data:any)=>{
+    this.citesSer.getcitesList().subscribe((data:any)=>{
       this.cites=data.response.data
     console.log(this.cites[0].category.name);
     })
 
-    console.log('hit,',this.rowSelected)
+    this.setDataToFormUbdate();
+
+
+    console.log('hi,',this.rowSelectedData)
 
 
   }

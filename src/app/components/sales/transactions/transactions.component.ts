@@ -12,7 +12,7 @@ import { transactionsDB } from 'src/app/shared/tables/transactions';
 export class TransactionsComponent implements OnInit {
 
   transactions ;
-  heroId;
+  categoryId;
   constructor(private route:ActivatedRoute,private router:Router,private categorySer:CategoryService) {
   
   }
@@ -56,12 +56,12 @@ export class TransactionsComponent implements OnInit {
         type: 'html',
         valuePrepareFunction:(cell,row)=>{return "<img src='"+row.category.icon+"' width='50' height='50' />";}
       },
-      // 'category.iconSelect': {
-      //   title: 'iconSelect',
-      //   type: 'html',
-      //   valuePrepareFunction:(cell,row)=>{return row.category.iconSelect.slice(0, 30);}
+      'category.iconSelect': {
+        title: 'iconSelect',
+        type: 'html',
+        valuePrepareFunction:(cell,row)=>{return "<img src='"+ row.category.iconSelect+"' width='50' height='50' />";}
 
-      // },
+      },
       'category.type': {
         title: 'type', 
         valuePrepareFunction:(cell,row)=>{return row.category.type}
@@ -82,8 +82,8 @@ export class TransactionsComponent implements OnInit {
   
   ngOnInit() {
 
-    this.heroId = this.route.snapshot.paramMap.get('id');
-    this.categorySer.getCategoryType(this.heroId).subscribe((data:any)=>{
+    this.categoryId = this.route.snapshot.paramMap.get('id');
+    this.categorySer.getCategoryType(this.categoryId).subscribe((data:any)=>{
     this.transactions = data.response.data;
     },
   (error) => {
