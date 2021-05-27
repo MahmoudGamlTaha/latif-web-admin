@@ -7,7 +7,10 @@
                     <h5>blog Category</h5>
                 </div>
                 <div class="card-body">
+
+<!-- 
                     <div class="btn-popup pull-right">
+                        
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-original-title="test"
                             data-target="#exampleModal" (click)="open(content)">Add blog Category </button>
                         <ng-template #content let-modal>
@@ -38,7 +41,8 @@
                                     (click)="modal.dismiss('Cross click')">Close</button>
                             </div>
                         </ng-template>
-                    </div>
+                    </div> -->
+
                     <div id="batchDelete" class="category-table custom-datatable">
                         <div class="table-responsive">
                             <ng2-smart-table [settings]="settings" [source]="blog_Category"

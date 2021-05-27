@@ -15,7 +15,7 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'physical/bloglist',
+        path: 'blogs/bloglist',
         component: CategoryComponent,
         data: {
           title: "blog List",
@@ -23,69 +23,69 @@ const routes: Routes = [
         }
       },
       {
-        path: 'physical/blogcategory',
+        path: 'blogs/blogcategory',
         component: SubCategoryComponent,
         data: {
           title: "blog Category",
           breadcrumb: "blog Category"
         }
       },
-      {
-        path: 'physical/product-list',
-        component: ProductListComponent,
-        data: {
-          title: "Product List",
-          breadcrumb: "Product List"
-        }
-      },
-      {
-        path: 'physical/product-detail',
-        component: ProductDetailComponent,
-        data: {
-          title: "Product Detail",
-          breadcrumb: "Product Detail"
-        }
-      },
-      {
-        path: 'physical/add-product',
-        component: AddProductComponent,
-        data: {
-          title: "Add Products",
-          breadcrumb: "Add Product"
-        }
-      },
-      {
-        path: 'digital/digital-category',
-        component: DigitalCategoryComponent,
-        data: {
-          title: "Category",
-          breadcrumb: "Category"
-        }
-      },
-      {
-        path: 'digital/digital-sub-category',
-        component: DigitalSubCategoryComponent,
-        data: {
-          title: "Sub Category",
-          breadcrumb: "Sub Category"
-        }
-      },
-      {
-        path: 'digital/digital-product-list',
-        component: DigitalListComponent,
-        data: {
-          title: "Product List",
-          breadcrumb: "Product List"
-        }
-      },
-      {
-        path: 'digital/digital-add-product',
-        component: DigitalAddComponent,
-        data: {
-          title: "Add Products",
-          breadcrumb: "Add Product"
-        }
-      }
+      // {
+      //   path: 'physical/product-list',
+      //   component: ProductListComponent,
+      //   data: {
+      //     title: "Product List",
+      //     breadcrumb: "Product List"
+      //   }
+      // },
+      // {
+      //   path: 'physical/product-detail',
+      //   component: ProductDetailComponent,
+      //   data: {
+      //     title: "Product Detail",
+      //     breadcrumb: "Product Detail"
+      //   }
+      // },
+      // {
+      //   path: 'physical/add-product',
+      //   component: AddProductComponent,
+      //   data: {
+      //     title: "Add Products",
+      //     breadcrumb: "Add Product"
+      //   }
+      // },
+      // {
+      //   path: 'digital/digital-category',
+      //   component: DigitalCategoryComponent,
+      //   data: {
+      //     title: "Category",
+      //     breadcrumb: "Category"
+      //   }
+      // },
+      // {
+      //   path: 'digital/digital-sub-category',
+      //   component: DigitalSubCategoryComponent,
+      //   data: {
+      //     title: "Sub Category",
+      //     breadcrumb: "Sub Category"
+      //   }
+      // },
+      // {
+      //   path: 'digital/digital-product-list',
+      //   component: DigitalListComponent,
+      //   data: {
+      //     title: "Product List",
+      //     breadcrumb: "Product List"
+      //   }
+      // },
+      // {
+      //   path: 'digital/digital-add-product',
+      //   component: DigitalAddComponent,
+      //   data: {
+      //     title: "Add Products",
+      //     breadcrumb: "Add Product"
+      //   }
+      // }
     ]
   }
 ];

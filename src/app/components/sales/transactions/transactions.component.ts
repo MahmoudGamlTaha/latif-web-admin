@@ -47,14 +47,14 @@ export class TransactionsComponent implements OnInit {
           return row.category.name
         }
       },
-      'category.nameAr': {
-        title: 'nameAr',
-        valuePrepareFunction:(cell,row)=>{return row.category.nameAr}
-      },
+      // 'category.nameAr': {
+      //   title: 'nameAr',
+      //   valuePrepareFunction:(cell,row)=>{return row.category.nameAr}
+      // },
       'category.icon': {
         title: 'icon',
         type: 'html',
-        valuePrepareFunction:(cell,row)=>{return row.category.icon.slice(0, 30);}
+        valuePrepareFunction:(cell,row)=>{return "<img src='"+row.category.icon+"' width='50' height='50' />";}
       },
       // 'category.iconSelect': {
       //   title: 'iconSelect',
@@ -67,16 +67,16 @@ export class TransactionsComponent implements OnInit {
         valuePrepareFunction:(cell,row)=>{return row.category.type}
 
       },
-      'category.isExternalLink': {
-        title: 'isExternalLink',
-        valuePrepareFunction:(cell,row)=>{return row.category.isExternalLink}
+      // 'category.isExternalLink': {
+      //   title: 'isExternalLink',
+      //   valuePrepareFunction:(cell,row)=>{return row.category.isExternalLink}
 
-      },
-      'category.parent.category': {
-        title: 'parent', 
-        valuePrepareFunction:(cell,row)=>{return row.category.parent.category}
+      // },
+      // 'category.parent.category': {
+      //   title: 'parent', 
+      //   valuePrepareFunction:(cell,row)=>{return row.category.parent.category}
 
-      }
+      // }
     },
   };
   

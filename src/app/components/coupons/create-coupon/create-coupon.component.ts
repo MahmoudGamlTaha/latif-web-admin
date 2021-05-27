@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgbDateStruct, NgbDate, NgbCalendar, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
+import { AdsService } from 'src/app/shared/service/dashboard-services/ads.service';
+import { CategoryService } from 'src/app/shared/service/dashboard-services/category.service';
+import { CitesService } from 'src/app/shared/service/dashboard-services/cites.service';
 
 @Component({
   selector: 'app-create-coupon',
@@ -14,47 +18,49 @@ export class CreateCouponComponent implements OnInit {
   public model: NgbDateStruct;
   public date: { year: number, month: number };
   public modelFooter: NgbDateStruct;
-
-  constructor(private formBuilder: FormBuilder, private calendar: NgbCalendar) {
+  emailRegx = /^(([^<>+()\[\]\\.,;:\s@"-#$%&=]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
+  cites;
+rowSelected=JSON.parse(localStorage.getItem('RowSelect'))
+  constructor(private adsSer:AdsService,private categorySer:CategoryService,private citesSer:CitesService,
+              private formBuilder: FormBuilder, private calendar: NgbCalendar) {
     this.createGeneralForm();
-    this.createRestrictionForm();
-    this.createUsageForm();
+  
   }
 
-  selectToday() {
-    this.model = this.calendar.getToday();
-  }
+  // selectToday() {
+  //   this.model = this.calendar.getToday();
+  // }
 
   createGeneralForm() {
     this.generalForm = this.formBuilder.group({
-      name: [''],
-      code: [''],
-      start_date: [''],
-      end_date: [''],
-      free_shipping: [''],
-      quantity: [''],
-      discount_type: [''],
-      status: [''],
+      firstName: ['', [Validators.required, Validators.minLength(3)]],
+      lastName: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.pattern(this.emailRegx)]], //
     });
+
   }
 
-  createRestrictionForm() {
-    this.restrictionForm = this.formBuilder.group({
-      products: [''],
-      category: [''],
-      min: [''],
-      max: ['']
-    })
-  }
-
-  createUsageForm() {
-    this.usageForm = this.formBuilder.group({
-      limit: [''],
-      customer: ['']
-    })
-  }
+  
   ngOnInit() {
+this.citesSer.getcitesList().subscribe((data:any)=>{
+      this.cites=data.response.data
+    console.log(this.cites[0].category.name);
+    })
 
+    console.log('hit,',this.rowSelected)
+
+
+  }
+
+
+  get firstName() {
+    return this.generalForm.get('firstName');
+  }
+  get lastName() {
+    return this.generalForm.get('lastName');
+  }
+  get email() {
+    return this.generalForm.get('email');
   }
 
 }

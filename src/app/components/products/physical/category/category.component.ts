@@ -80,23 +80,22 @@ export class CategoryComponent implements OnInit {
       },
       img: {
         title: 'Image',
-        type: 'html'
+        type: 'html',
+        valuePrepareFunction:(cell,row)=>{return "<img src='"+row.img+"' width='50' height='50' />";}
       }
 
     }
   };
 
   ngOnInit() {
-
-  this.BlogsSer.getblogList().subscribe(
+  
+    this.BlogsSer.getblogList().subscribe(
       (data: any) => {
-        this.categories = data.response.data;
+        this.categories = data.response.data
       },
       (error) => {
         console.log('error', error);
-      }
-    );
-    
+      } );
   }
 
 

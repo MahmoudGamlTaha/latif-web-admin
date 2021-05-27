@@ -8,19 +8,19 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'list-coupons',
+        path: 'adslist',
         component: ListCouponComponent,
         data: {
-          title: "List Coupons",
-          breadcrumb: "List Coupons"
+          title: "Ads List",
+          breadcrumb: "Ads List"
         }
       },
       {
-        path: 'create-coupons',
+        path: 'updateads/:id',
         component: CreateCouponComponent,
         data: {
-          title: "Create Coupon",
-          breadcrumb: "Create Coupons"
+          title: "update Ads",
+          breadcrumb: "update Ads"
         }
       }
     ]

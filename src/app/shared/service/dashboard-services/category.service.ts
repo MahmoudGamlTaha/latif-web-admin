@@ -28,8 +28,6 @@ console.log(this._getCategoryType+idType)
         return throwError(err.message || 'server issue ');
       })
     );
- 
-
   }
 
 

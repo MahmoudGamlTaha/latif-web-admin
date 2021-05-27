@@ -19,19 +19,20 @@ export class OrdersComponent implements OnInit {
     // this.order = orderDB.list_order;
   }
 
-  updateFilter(event) {
-    const val = event.target.value.toLowerCase();
+  // updateFilter(event) {
+  //   const val = event.target.value.toLowerCase();
 
-    // filter our data
-    const temp = this.temp.filter(function (d) {
-      return d.name.toLowerCase().indexOf(val) !== -1 || !val;
-    });
+  //   // filter our data
+  //   const temp = this.order.filter(function (d) {
+  //     return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+  //   });
 
-    // update the rows
-    this.order = temp;
-    // Whenever the filter changes, always go back to the first page
-    this.table.offset = 0;
-  }
+  //   // update the rows
+  //   this.order = temp;
+  //   // Whenever the filter changes, always go back to the first page
+  //   this.table.offset = 0;
+  // }
+
   onSelect(event){
 // alert(event)
 

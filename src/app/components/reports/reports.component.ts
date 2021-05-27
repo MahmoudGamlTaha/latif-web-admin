@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as chartData from '../../shared/data/chart';
 import { reportDB } from 'src/app/shared/tables/report';
+import { RoleService } from 'src/app/shared/service/dashboard-services/role.service';
 
 @Component({
   selector: 'app-reports',
@@ -8,48 +9,41 @@ import { reportDB } from 'src/app/shared/tables/report';
   styleUrls: ['./reports.component.scss']
 })
 export class ReportsComponent implements OnInit {
-  public report = [];
+  public roleList = [];
 
-  constructor() {
-    this.report = reportDB.report;
+  constructor(private RoleSer:RoleService) {
+    // this.report = reportDB.report;
   }
 
-  // lineChart
-  public salesChartData = chartData.salesChartData;
-  public salesChartLabels = chartData.salesChartLabels;
-  public salesChartOptions = chartData.salesChartOptions;
-  public salesChartColors = chartData.salesChartColors;
-  public salesChartLegend = chartData.salesChartLegend;
-  public salesChartType = chartData.salesChartType;
-
-  public areaChart1 = chartData.areaChart1;
-  public columnChart1 = chartData.columnChart1;
-  public lineChart = chartData.lineChart;
-
-  public chart5 = chartData.chart6
 
   public settings = {
     actions: {
       position: 'right'
     },
     columns: {
-      name: {
-        title: 'Name',
-      },
       id: {
-        title: 'Transfer Id',
-        type: 'html'
+        title: 'id',
       },
-      date: {
-        title: 'Date'
+      name: {
+        title: 'name',
+
       },
-      total: {
-        title: 'Total'
-      },
+      created_at: {
+        title: 'created_at'
+      }
     },
   };
 
   ngOnInit() {
+    this.RoleSer.getRoleList().subscribe(
+      (data: any) => {
+        this.roleList = data;
+        console.log(data)
+      },
+      (error) => {
+        console.log('error', error);
+      }
+    );
   }
 
 }

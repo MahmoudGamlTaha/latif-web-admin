@@ -9,21 +9,21 @@ export const content: Routes = [
     path: 'products',
     loadChildren: () => import('../../components/products/products.module').then(m => m.ProductsModule),
     data: {
-      breadcrumb: "Products"
+      breadcrumb: "BLOG"
     }
   },
   {
     path: 'sales',
     loadChildren: () => import('../../components/sales/sales.module').then(m => m.SalesModule),
     data: {
-      breadcrumb: "Sales"
+      breadcrumb: "category"
     }
   },
   {
-    path: 'coupons',
+    path: 'ads',
     loadChildren: () => import('../../components/coupons/coupons.module').then(m => m.CouponsModule),
     data: {
-      breadcrumb: "Coupons"
+      breadcrumb: "ADS"
     }
   },
   {
@@ -34,7 +34,7 @@ export const content: Routes = [
     }
   },
   {
-    path: 'media',
+    path: 'subscription',
     loadChildren: () => import('../../components/media/media.module').then(m => m.MediaModule),
   },
   {
@@ -66,8 +66,9 @@ export const content: Routes = [
     }
   },
   {
-    path: 'reports',
+    path: 'role',
     loadChildren: () => import('../../components/reports/reports.module').then(m => m.ReportsModule),
+  
   },
   {
     path: 'settings',

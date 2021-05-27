@@ -63,10 +63,11 @@ export class SubCategoryComponent implements OnInit {
       icon: {
         title: 'icon',
         type: 'html',
+        valuePrepareFunction:(cell,row)=>{return "<img src='"+row.icon+"' width='50' height='50' />";}
       },
-      nameAr: {
-        title: 'nameAr'
-      },
+      // nameAr: {
+      //   title: 'nameAr'
+      // },
       
     },
   };
