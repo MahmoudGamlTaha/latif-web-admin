@@ -45,7 +45,7 @@ if(event.type == 'click') {
   }
   ngOnInit() {
 
-    this.categorySer.getCategoryList().subscribe((data)=>{
+    this.categorySer.getCategoryList().subscribe((data:any)=>{
       console.log(data)
       this.order=data.response.data;
 

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { server } from 'src/environments/environment';
 import { Icategory } from './Icategory';
 
 @Injectable({
@@ -9,14 +10,14 @@ import { Icategory } from './Icategory';
 })
 export class CategoryService {
 
-  _getcategoryList='https://latifapp.herokuapp.com/api/public/ads-type/list'
-  _getCategoryType='https://latifapp.herokuapp.com/api/public/cat-by-adType/type='
+  _getcategoryList = server.url + 'api/public/ads-type/list'
+  _getCategoryType = server.url + 'api/public/cat-by-adType/type='
 
   constructor(private _http:HttpClient) {  }
 
-  getCategoryList(){
+  getCategoryList():Observable<Icategory[]>{
 
-    return this._http.get<any>(this._getcategoryList);
+    return this._http.get<Icategory[]>(this._getcategoryList);
 
   }
 

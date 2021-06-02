@@ -78,10 +78,14 @@ export class CategoryComponent implements OnInit {
       createdDate: {
         title: 'createdDate'
       },
-      img: {
+      image: {
         title: 'Image',
         type: 'html',
-        valuePrepareFunction:(cell,row)=>{return "<img src='"+row.img+"' width='50' height='50' />";}
+        valuePrepareFunction:(cell,row)=>{
+          if (row.image != null && row.image != undefined && row.image != '') {
+          return "<img src='"+row.image+"' width='50' height='50' />";
+        }
+          }
       }
 
     }

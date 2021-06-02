@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { server } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CitesService {
 
-  _getcitesList='https://latifapp.herokuapp.com/api/public/cites'
+  _getcitesList = server.url + 'api/public/cites'
 
   constructor(private _http:HttpClient) { }
 

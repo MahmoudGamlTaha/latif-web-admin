@@ -1,83 +1,72 @@
+<!-- Container-fluid starts-->
 <div class="container-fluid">
-    <div class="card">
-        <div class="row product-page-main card-body">
-            <div class="col-xl-4">
-                <section>
-                    <ks-carousel [id]="100" [images]="imagesRect" [dotsConfig]="{visible: false}"
-                        [carouselConfig]="{maxHeight: '600px', keyboardEnable: true}"
-                        [previewConfig]="{maxHeight: '125px'}">
-                    </ks-carousel>
-                </section>
-            </div>
-            <div class="col-xl-8">
-                <div class="product-page-details product-right mb-0">
-                    <h2>WOMEN PINK SHIRT</h2>
-                    <ngb-rating [rate]="3" class="rating-size-product"></ngb-rating>
-                    <hr>
-                    <h6 class="product-title">product details</h6>
-                    <p class="mb-0">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium
-                        doloremque
-                        laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto
-                        beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,</p>
-                    <div class="product-price digits mt-2">
-                        <h3>$26.00 <del>$350.00</del></h3>
-                    </div>
-                    <ul class="color-variant">
-                        <li class="bg-light0"></li>
-                        <li class="bg-light1"></li>
-                        <li class="bg-light2"></li>
-                    </ul>
-                    <hr>
-                    <h6 class="product-title size-text">select size
-                        <span class="pull-right">
-                            <a data-toggle="modal" (click)="open(content)" class="font-primary">size chart</a>
-                        </span>
-                    </h6>
-                    <ng-template #content let-modal>
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Sheer Straight Kurta</h5>
-                            <button type="button" class="close" aria-label="Close"
-                                (click)="modal.dismiss('Cross click')">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="assets/images/size-chart.jpg" alt="" class="img-fluid blur-up lazyloaded">
-                        </div>
-                    </ng-template>
-                    <div class="size-box">
-                        <ul>
-                            <li class="active"><a href="javascript:void(0)">s</a></li>
-                            <li><a href="javascript:void(0)">m</a></li>
-                            <li><a href="javascript:void(0)">l</a></li>
-                            <li><a href="javascript:void(0)">xl</a></li>
-                        </ul>
-                    </div>
-                    <div class="add-product-form">
-                        <h6 class="product-title">quantity</h6>
-                        <div class="qty-box1">
-                            <div class="input-group">
-                                <i class="fa fa-minus btnGtr1" (click)=decrement()></i>
-                                <input class="touchspin1 text-center" name="counter" [value]="counter" type="text">
-                                <i class="fa fa-plus btnLess1" (click)=increment()></i>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Create blog</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="blogForm" (ngSubmit)="createBlogApi()" class="needs-validation" novalidate="">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h3>create Blog</h3>
                             </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <!-- dropdown -->
+
+                                    <label for="validationCustom01">id</label>
+                                    <input formControlName="BlogId" type="number" min="0" class="form-control" [value]="typeId" placeholder="id" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <!-- dropdown -->
+                                    <label for="validationCustom01">type</label>
+                                    <input type="text" class="custom-select" formControlName="Type"/>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <!-- dropdown -->
+                                    <label for="validationCustom01">description</label>
+                                    <textarea  class="form-control" formControlName="Description" placeholder="description">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">images</label>
+                                    <input type="text" class="custom-select" placeholder="images" formControlName="Images">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">userId</label>
+                                    <input type="number" [value]="userId" class="form-control" formControlName="UserId" placeholder="UserId"  />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">external</label>
+                                    <input type="checkbox"  class="form-control" formControlName="externalLink" placeholder="userId"  />
+                                </div>
+                            </div>
+                                
+                            
                         </div>
+                        <div class="pull-right">
+                        <button type="submit"  class="btn btn-primary">Create</button>
                     </div>
-                    <hr>
-                    <h6 class="product-title">Time Reminder</h6>
-                    <div class="timer">
-                        <p id="demo"><span>25 <span class="padding-l">:</span> <span class="timer-cal">Days</span>
-                            </span><span>22 <span class="padding-l">:</span> <span class="timer-cal">Hrs</span>
-                            </span><span>13 <span class="padding-l">:</span> <span class="timer-cal">Min</span>
-                            </span><span>57 <span class="timer-cal">Sec</span></span>
-                        </p>
-                    </div>
-                    <div class="m-t-15">
-                        <button class="btn btn-primary m-r-10" type="button">Add To Cart</button>
-                        <button class="btn btn-secondary" type="button">Buy Now</button>
-                    </div>
+                    </form>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- Container-fluid Ends-->

@@ -1,8 +1,9 @@
-export interface Icategory{
-id: any,
-active: any,
-code: any,
-name: string;
-nameAr: string,
-createdDate: any
+export interface Icategory {
+    active: boolean;
+    code: string;
+    createdDate: Date;
+    id: number;
+    name: string;
+    nameAr: string;
+
 }

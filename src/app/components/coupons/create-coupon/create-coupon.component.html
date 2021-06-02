@@ -6,196 +6,183 @@
                 <div class="card-header">
                     <h5>update Ads</h5>
                 </div>
-
                 <div class="card-body">
                     <form [formGroup]="generalForm" class="needs-validation" novalidate="">
+                        <!-- Carousel wrapper -->
+                        <div id="carouselMultiItemExample" class="carousel slide carousel-dark text-center"
+                            data-mdb-ride="carousel">
+                            <!-- Controls -->
+                            <div class="d-flex justify-content-center mb-4">
+                        <button
+                            class="carousel-control-prev position-relative"
+                            type="button"
+                            data-mdb-target="#carouselMultiItemExample"
+                            data-mdb-slide="prev"
+                        >
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button
+                            class="carousel-control-next position-relative"
+                            type="button"
+                            data-mdb-target="#carouselMultiItemExample"
+                            data-mdb-slide="next"
+                        >
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                        </div>
+                            <!-- Inner -->
+                            <div class="carousel-inner py-4">
+                                <!-- Single item -->
+                                <div class="carousel-item active">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-4" *ngFor="let img of images">
+                                                <div class="card">
+                                                    <img width="50px" height="100px" [src]="img.image"
+                                                        class="card-img-top" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Inner -->
+                        </div>
+                        <!-- Carousel wrapper -->
+
                         <div class="row">
+                            <div class="col-sm-12">
+                                <h3>Ads Details</h3>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <!-- dropdown -->
+                                    <label for="validationCustom01">id</label>
+                                    <input formControlName="Id" type="text" class="form-control" disabled
+                                        placeholder="id" [value]="id" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <!-- dropdown -->
+                                    <label for="validationCustom01">type</label>
+                                    <select class="custom-select" formControlName="TypeOfAds" (change)="onSelect($event)"
+                                        [value]="typeOfAds">
+                                        <option class="dropdown-item" *ngFor="let option of categoryList"
+                                            data-list="option">
+                                            {{ option.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <!-- dropdown -->
+                                    <label for="validationCustom01">categoryName</label>
+                                    <select class="custom-select" formControlName="CategoryName" [value]="categoryName">
+                                        <option class="dropdown-item" *ngFor="let option of categoryNameList"
+                                            data-list="option">
+                                            {{ option.category.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <!-- dropdown -->
+                                    <label for="validationCustom01">categoryId</label>
+                                    <input type="text" class="form-control" placeholder="categoryId"
+                                        [value]="categoryId" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">city</label>
+                                    <select class="custom-select" placeholder="city" formControlName="City"
+                                        [value]="city">
+                                        <option *ngFor="let option of cities; let index = index" data-list="option">
+                                            {{ option.category.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">active</label>
+                                    <input type="text" class="form-control" formControlName="Active"
+                                        placeholder="active" [value]="active" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">phone</label>
+                                    <input type="tel" class="form-control" placeholder="phone" [value]="phone" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">First name</label>
+                                    <input type="text" class="form-control" placeholder="firstName"
+                                        [value]="firstName" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom02">Last name</label>
+                                    <input type="text" class="form-control" id="validationCustom02"
+                                        placeholder="Last name" [value]="lastName" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">description</label>
+                                    <textarea height="35px" type="text" class="form-control"
+                                        formControlName="Description" placeholder="description" [value]="description">
+                  </textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">price</label>
+                                    <input type="text" class="form-control" placeholder="price" formControlName="Price"
+                                        [value]="price" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustomUsername">email</label>
+                                    <input type="email" class="form-control" id="validationCustom03" placeholder="email"
+                                        [value]="email" />
+                                </div>
+                            </div>
 
-                            <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="validationCustom01">id</label>
-                                <input type="text" class="form-control" placeholder="id" disabled  [value]="categoryId"/>
-                                <!-- <div>
-                                    <small  class="text-danger">
-                                        id field is required
-                                    </small>    
-                                </div> -->
+                            <div class="col-sm-4" *ngFor="let item of extra">
+                                <div class="form-group">
+                                    <label>{{ item.name }} </label>
+                                    <input type="text" class="form-control" value="{{ item.value }}"
+                                        name="{{ item.code }}" />
+                                </div>
                             </div>
-                        </div>
-                            <div class="col-sm-4">
-                            <div class="form-group">
-                                <!-- dropdown -->
-                                <label for="validationCustom01">categoryName</label>
-                                <input type="text" class="form-control" placeholder="categoryName" disabled value=""/>
-                                <!-- <div>
-                                    <small  class="text-danger">
-                                        id field is required
-                                    </small>    
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="validationCustom01" >city</label>
-                            <select class="custom-select"  placeholder="city"[value]="city">
-                                <option  *ngFor="let option of cites;let index=index;" [value]="option" data-list="option"> 
-                                {{ option.category.name}}
-                                </option>
-                            </select>
-                            </div>
+
+                            <!--<div formArrayName="Items" *ngFor="let item of Items.controls ;">
                             
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="validationCustom01">active</label>
-                                <input type="text" class="form-control" placeholder="active" />
-                                <input type="checkbox" checked data-toggle="toggle">
-                                <!-- <div>
-                                    <small  class="text-danger">
-                                        id field is required
-                                    </small>    
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="validationCustom01">type</label>
-                                <input type="text" class="form-control" placeholder="type" />
-                                <!-- <div>
-                                    <small  class="text-danger">
-                                        id field is required
-                                    </small>    
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="validationCustom01">type name</label>
-                                <input type="text" class="form-control" placeholder="type name" />
-                                <!-- <div>
-                                    <small  class="text-danger">
-                                        id field is required
-                                    </small>    
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="validationCustom01">phone</label>
-                                <input type="text" class="form-control" placeholder="phone" />
-                                <!-- <div>
-                                    <small  class="text-danger">
-                                        id field is required
-                                    </small>    
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="validationCustom01">First name</label>
-                                <input [class.is-invalid]="firstName?.invalid && firstName?.touched" formControlName="firstName" type="text" class="form-control" placeholder="firstName" />
-                                <div *ngIf="firstName?.invalid && firstName?.touched">
-                                    <!-- <small *ngIf="firstName?.errors?.required" [class.is-invalid]="firstName?.invalid || firstName?.touched" class="text-danger">
-                                        firstName field is required
-                                    </small>
-                                    <small *ngIf="firstName?.errors?.minlength" class="text-danger">
-                                        firstName field must be at least 3 characters
-                                    </small>
-                                    <small class="text-danger" *ngIf="firstName?.errors?.forbiddenName">
-                                        firstName is not allowed
-                                    </small> -->
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>{{item.name}} </label>
+                                        <input type="text" class="form-control"  [formControlName]="{{item.code}}"/>
+                                    </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="validationCustom02">Last name</label>
-                                <input [class.is-invalid]="lastName?.invalid && lastName?.touched"
-                                    formControlName="lastName" type="text" class="form-control"
-                                    id="validationCustom02" placeholder="Last name" />
-
-                                <!-- <small *ngIf="lastName?.errors?.required"
-                                    [class.d-none]="lastName?.valid || lastName?.untouched" class="text-danger">
-                                    > Last Name is required
-                                </small> -->
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="validationCustom01">description</label>
-                                <input type="text" class="form-control" placeholder="description" />
-                                <!-- <div>
-                                    <small  class="text-danger">
-                                        id field is required
-                                    </small>    
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="validationCustom01">price</label>
-                                <input type="text" class="form-control" placeholder="price" />
-                                <!-- <div>
-                                    <small  class="text-danger">
-                                        id field is required
-                                    </small>    
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="validationCustom01">categoryName</label>
-                                <input type="text" class="form-control" placeholder="categoryName" />
-                                <!-- <div>
-                                    <small  class="text-danger">
-                                        id field is required
-                                    </small>    
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="validationCustom01">categoryName</label>
-                                <input type="text" class="form-control" placeholder="categoryName" />
-                                <!-- <div>
-                                    <small  class="text-danger">
-                                        id field is required
-                                    </small>    
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="validationCustomUsername">email</label>
-                                <input [class.is-invalid]="email?.invalid && email?.touched" formControlName="email"
-                                    type="email" [pattern]="emailRegx" class="form-control" id="validationCustom03"
-                                    placeholder="email" />
-                                <div *ngIf="email?.invalid && email?.touched">
-                                    <small *ngIf="email?.errors?.required"
-                                        [class.is-invalid]="email?.invalid || email?.touched" class="text-danger">
-                                        > email is required
-                                    </small>
-
-                                    <small class="text-danger" *ngIf="email?.errors?.pattern"
-                                        [class.is-invalid]="email?.invalid || email?.touched">
-                                        > email must be a valid
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-                        
-
-                        </div>
-
-                        </form>
-                    
+                    </form>
                     <div class="pull-right">
                         <button type="button" class="btn btn-primary">Save</button>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     </div>
 </div>
 <!-- Container-fluid Ends-->
-

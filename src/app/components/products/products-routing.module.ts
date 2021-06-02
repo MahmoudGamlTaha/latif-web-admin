@@ -38,14 +38,14 @@ const routes: Routes = [
       //     breadcrumb: "Product List"
       //   }
       // },
-      // {
-      //   path: 'physical/product-detail',
-      //   component: ProductDetailComponent,
-      //   data: {
-      //     title: "Product Detail",
-      //     breadcrumb: "Product Detail"
-      //   }
-      // },
+      {
+        path: 'blogs/product-detail',
+        component: ProductDetailComponent,
+        data: {
+          title: "Product Detail",
+          breadcrumb: "Product Detail"
+        }
+      },
       // {
       //   path: 'physical/add-product',
       //   component: AddProductComponent,

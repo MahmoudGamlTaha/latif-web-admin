@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { server } from 'src/environments/environment';
 
 export interface Idashboard {
   userSubscriptionsCount: number;
@@ -10,7 +11,6 @@ export interface Idashboard {
   PetCareAdsCount: number,
   AllAdsCount: number,
   PetAdsCount: number,
- 
 }
 
 @Injectable({
@@ -19,7 +19,7 @@ export interface Idashboard {
 
 export class DashboardStatisticsService {
 
-  _dashboard = 'https://latifapp.herokuapp.com/api/public/dashboard/dashboard';
+  _dashboard = server.url + 'api/public/dashboard/dashboard';
 
   constructor(public _http: HttpClient) { }
 

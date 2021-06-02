@@ -1,0 +1,23 @@
+export interface IAds{
+    id:number ,
+    city:string ,
+    code:string ,
+    type:string ,
+    createdBy: any  ,
+    active:boolean ,
+    name:string,
+    longitude: any,
+    latitude: any,
+    created_at:any ,
+    updated_at: any,
+    description:string ,
+    short_description: string,
+    price:number ,
+    external_link:boolean ,
+    categoryName: string,
+    categoryNameAr:string ,
+    categoryId:number ,
+    image: any,
+    extra: any ,
+    images: []    
+}
