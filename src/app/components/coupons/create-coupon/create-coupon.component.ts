@@ -47,18 +47,7 @@ export class CreateCouponComponent implements OnInit {
   code : string ;
   cities;
   rowSelectedData = JSON.parse(localStorage.getItem('RowSelect'));
-  constructor(
-    private adsSer: AdsService,
-    private AdsSer: AdsService,
-    private categorySer: CategoryService,
-    private citiesSer: CitesService,
-    private formBuilder: FormBuilder,
-    private router: ActivatedRoute,
-  ) {
-    this.AdsId = parseInt(this.router.snapshot.paramMap.get('id'));
-    this.getDataFormApi();
-    this.getAdsByIdType();
-  }
+  
   getAdsByIdType() {
     this.AdsSer.getAdsByIdType(this.AdsId).subscribe((data: any) => {
       this.active = data.response.data.active;
@@ -107,23 +96,7 @@ export class CreateCouponComponent implements OnInit {
 
 
 
-  ngOnInit() {
-    //const itemsCtrls = this.createItemsCtrls(this.extra);
-    // generate form Builder
-    this.generalForm = this.formBuilder.group({
-      Id : [this.id],
-      TypeOfAds : [this.typeOfAds],
-      CategoryName : [this.categoryName],
-      City : [this.city],
-      Active : [this.active],
-      Description : [this.description],
-      Price : [this.price],
-      images : [this.image],
-      Firstname : ['', [Validators.required, Validators.minLength(3)]],
-      Lastname : ['', [Validators.required]],
-      Email : ['', [Validators.required]],
-    });
-  }
+
 
   onSelect(event) {
     // drop
@@ -134,6 +107,13 @@ export class CreateCouponComponent implements OnInit {
         return (this.categoryId = parseInt(item.id) );
       }
     });
+  }
+  onClick(event) {
+
+    this.adsSer.changeStateOfAds(event.target.id, event.target.checked).subscribe(res=> console.log("success"))
+
+    console.log(event.target.id)
+
   }
 
   get Id() {
@@ -166,4 +146,36 @@ export class CreateCouponComponent implements OnInit {
   get Items() {
     return this.generalForm.get('Items') as FormArray;
   }
+
+  constructor(
+    private adsSer: AdsService,
+    private AdsSer: AdsService,
+    private categorySer: CategoryService,
+    private citiesSer: CitesService,
+    private formBuilder: FormBuilder,
+    private router: ActivatedRoute,
+  ) {
+    this.AdsId = parseInt(this.router.snapshot.paramMap.get('id'));
+    this.getDataFormApi();
+    this.getAdsByIdType();
+  }
+
+  ngOnInit() {
+    //const itemsCtrls = this.createItemsCtrls(this.extra);
+    // generate form Builder
+    this.generalForm = this.formBuilder.group({
+      Id : [this.id],
+      TypeOfAds : [this.typeOfAds],
+      CategoryName : [this.categoryName],
+      City : [this.city],
+      Active : [this.active],
+      Description : [this.description],
+      Price : [this.price],
+      images : [this.image],
+      Firstname : ['', [Validators.required, Validators.minLength(3)]],
+      Lastname : ['', [Validators.required]],
+      Email : ['', [Validators.required]],
+    });
+  }
+  
 }

@@ -32,9 +32,8 @@ export class AdsService {
       'Authorization': `${token}`
 
     })
-    this._changeStateOfAds += 'activate='+status+'&'+'id='+adsId;
     console.log(token," hh",jsonBody)
-    return this._http.post(this._changeStateOfAds,{},{headers:headers})}
+    return this._http.post(this._changeStateOfAds+'activate='+status+'&'+'id='+adsId,{},{headers:headers})}
 
 
 

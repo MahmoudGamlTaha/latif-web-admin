@@ -12,7 +12,7 @@
                         <div id="carouselMultiItemExample" class="carousel slide carousel-dark text-center"
                             data-mdb-ride="carousel">
                             <!-- Controls -->
-                            <div class="d-flex justify-content-center mb-4">
+                            <!-- <div class="d-flex justify-content-center mb-4">
                         <button
                             class="carousel-control-prev position-relative"
                             type="button"
@@ -31,7 +31,7 @@
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
-                        </div>
+                        </div> -->
                             <!-- Inner -->
                             <div class="carousel-inner py-4">
                                 <!-- Single item -->
@@ -68,8 +68,8 @@
                                 <div class="form-group">
                                     <!-- dropdown -->
                                     <label for="validationCustom01">type</label>
-                                    <select class="custom-select" formControlName="TypeOfAds" (change)="onSelect($event)"
-                                        [value]="typeOfAds">
+                                    <select class="form-control" formControlName="TypeOfAds"
+                                        (change)="onSelect($event)" value={{typeOfAds}}>
                                         <option class="dropdown-item" *ngFor="let option of categoryList"
                                             data-list="option">
                                             {{ option.name }}
@@ -81,8 +81,10 @@
                                 <div class="form-group">
                                     <!-- dropdown -->
                                     <label for="validationCustom01">categoryName</label>
-                                    <select class="custom-select" formControlName="CategoryName" [value]="categoryName">
-                                        <option class="dropdown-item" *ngFor="let option of categoryNameList"
+                                    
+                                    <select [value]="categoryName" class="form-control" formControlName="CategoryName">
+                                        
+                                        <option *ngFor="let option of categoryNameList"
                                             data-list="option">
                                             {{ option.category.name }}
                                         </option>
@@ -94,7 +96,7 @@
                                     <!-- dropdown -->
                                     <label for="validationCustom01">categoryId</label>
                                     <input type="text" class="form-control" placeholder="categoryId"
-                                        [value]="categoryId" />
+                                        value={{categoryId}} />
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -108,13 +110,19 @@
                                     </select>
                                 </div>
                             </div>
+
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label for="validationCustom01">active</label>
-                                    <input type="text" class="form-control" formControlName="Active"
-                                        placeholder="active" [value]="active" />
+                                    <label for="validationCustom01">active</label><br>
+                                    <label class="switch"><input type="checkbox" [value]="active" id="{{ AdsId }}"
+                                        (change)="onClick($event)" checked /><span class="slider round"></span></label>
                                 </div>
+                                
                             </div>
+                                
+                                
+                                
+                            
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="validationCustom01">phone</label>

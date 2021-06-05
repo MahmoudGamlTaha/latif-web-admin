@@ -71,7 +71,7 @@ export class ListCouponComponent implements OnInit {
         type:"html",
 
         valuePrepareFunction:(cell,row)=>{
-          return '<a [routerLink]="asd" id={{row.id}} (click)="onUserRowSelect($event)">'+row.id+'</a>';
+          return '<a href="/ads/updateads/'+row.id+'" style="cursor: pointer" id="'+row.id+'">'+row.id+'</a>';
 
         } 
       } ,

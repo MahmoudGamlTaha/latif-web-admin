@@ -45,102 +45,61 @@ export class ListMenuComponent implements OnInit {
 
       columns: {
 
-      'id': {
-        title: 'id',
+      'user.id': {
+        title: 'reported id',
+        valuePrepareFunction: (cell, row) => {
+          return row.user.id;
+        },
       },
-      'user.firstName': {
-        title: 'firstName',
+      'user.username': {
+        title: 'reported username',
         valuePrepareFunction: (cell, row) => {
           return row.user.firstName;
         },
       },
-      'user.phone': {
-        title: 'phone',
+      'user.email': {
+        title: 'reported user email',
         valuePrepareFunction: (cell, row) => {
-          return row.user.phone;
-        }},
-        'user.username': {
-        title: 'username',
+          return row.user.firstName;
+        },
+      },
+      'user.firstName': {
+        title: 'reported Name',
         valuePrepareFunction: (cell, row) => {
           return row.user.username;
         },
       },
-      type: {
-        title: 'type',
-      },
+      // 'user.phone': {
+      //   title: 'reported phone',
+      //   valuePrepareFunction: (cell, row) => {
+      //     return row.user.phone;
+      //   }},
+        
+      // type: {
+      //   title: 'type',
+      // },
 
       "ad.id": {
-        title: 'ad.id',
-        valuePrepareFunction: (cell, row) => {
-          return row.ad.id;
-        },
-      },
-      "ad.type": {
-        title: 'ad.type',
-        valuePrepareFunction: (cell, row) => {
-          return row.ad.type;
-        },
-      },
-      "ad.active": {
-        title: 'ad.active',
+        title: 'Ads id',
+        type:"html",
+
+        valuePrepareFunction:(cell,row)=>{
+          return '<a href="/ads/updateads/'+row.ad.id+'" style="cursor: pointer" id="'+row.ad.id+'">'+row.ad.id+'</a>';
+        } 
+},
+      "ad.city": {
+        title: 'Ads city',
         valuePrepareFunction: (cell, row) => {
           return row.ad.active;
         },
       },
-      "ad.category.id": {
-        title: 'category.id',
+      "ad.type": {
+        title: 'Ads type',
         valuePrepareFunction: (cell, row) => {
-          return row.ad.category.id;
+          return row.ad.type;
         },
       },
-        "ad.category.name": {
-        title: 'category.name',
-        valuePrepareFunction: (cell, row) => {
-          return row.ad.category.name;
-        },
-      },
-      "ad.category.icon": {
-        title: 'category.icon',
-        type: 'html',
-        valuePrepareFunction: (cell, row) => {
-          if (row.image != null && row.image != undefined && row.image != '') {
-            return '<img src="' + row.ad.category.icon + '" width=50 height=50/>';
-          }
-        },
-      },
-      "ad.userReportedAds.reportType": {
-        title: 'userReportedAds.reportType',
-        type: 'html',
-        valuePrepareFunction: (cell, row) => {
-            return row.ad.userReportedAds.reportType ;
-          
-        },
-      }, 
-      "ad.userReportedAds.createdAt": {
-        title: 'userReportedAds.createdAt',
-        type: 'html',
-        valuePrepareFunction: (cell, row) => {
-            return row.ad.userReportedAds.createdAt ;
-          
-        },
-      },
-      "ad.selling_type": {
-        title: 'ad.selling_type',
-        type: 'html',
-        valuePrepareFunction: (cell, row) => {
-            return row.ad.selling_type ;
-          
-        },
-      },
-      "reason.value": {
-        title: 'reason.value',
-        type: 'html',
-        valuePrepareFunction: (cell, row) => {
-            return row.reason.value ;
-          
-        },
-      },
-
+        
     },
   }
 

@@ -108,13 +108,12 @@ export class CategoryComponent implements OnInit {
     alert(event.data.id)
 
     
-    if (window.confirm('Are you sure you want to save?')) {
     
-      this.BlogsSer.deleteblogList(parseInt(event.data.id))
+      this.BlogsSer.deleteblogList(parseInt(event.data.id)).subscribe(
+        res=> console.log(res)
+      )
       event.confirm.resolve(event.newData);
-    } else {
-      event.confirm.reject();
-    }
+    
 
   }
 
