@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 
@@ -17,15 +17,17 @@ export interface authResponseData {
 }
 
 import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { server } from 'src/environments/environment';
+import { catchError } from 'rxjs/operators';
+import { Token } from '../../data/Token';
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
   public headers: HttpHeaders;
-
+  public auth_token:any
   /**
    * test login {
       "mobile":"01020187068",
@@ -35,52 +37,44 @@ export class AuthService {
   _authLogin = server.url + "login"
   _authregister = server.url + "api/public/account/registration"
 
-  constructor(private _http: HttpClient, private router: ActivatedRoute) {
+  constructor(private _http: HttpClient, private router: ActivatedRoute,private route:Router) {
 
   }
 
 
-  LogInUser(data: any): Observable<any> {
-    // const headers = new Headers({
-    //   'Content-Type': 'application/json',
-    //    'Authorization': `Bearer ${auth_token}`
-    // })
-    this.headers = new HttpHeaders()
-      .set('Authorization', '')
-      .set('Content-Type', 'application/json');
-    const options = {
-      headers: this.headers,
-      observe: "response" as 'body', // to display the full response & as 'body' for type cast
-      responseType: "json"
-    };
-    console.log("service", data)
-    return this.remoteLogin(data);
+  LogInUser(data: any) {
     let body = { mobile: data.mobile, password: data.password };
-    return this._http.post(this._authLogin, { body }, { headers: this.headers })
-    // return this._http.post(this._authLogin+'?'+'mobile='+email+'&password='+password,'' )
-    // 
-    // { headers: headers }
-
-  }
-  public remoteLogin(data: any): Observable<any> {
-
-    let body = { mobile: data.mobile, password: data.password }
-    return this._http.post(this._authLogin, {
-      body
-    }, {
-      headers: new HttpHeaders()
-        .set('Authorization', 'ttr')
-        .set('Content-Type', 'application/json'),
-
-      observe: 'response'
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
     })
-    /*.subscribe(res => {
-        let token = res.headers.get('Authorization')
-        console.log("res",res);
-        console.log(res.headers);
-        console.log(token);
-    });*/
-  }
+    
+    const JSONbody=JSON.stringify(body);
+
+
+      
+    console.log("service", data)
+
+    return this._http.post<any>(this._authLogin, JSONbody, {
+      headers: headers,
+    }).subscribe((res) => {
+      
+
+        console.log(res)
+        this.auth_token=res.Authorization;
+        Token.myToken = this.auth_token;
+        Token.bearer =  'Bearer ';
+        console.log("this.auth_token",this.auth_token)
+
+      headers.append('Authorization',JSON.stringify(this.auth_token))
+      localStorage.setItem('currentUser', JSON.stringify(Token.bearer+Token.myToken));
+      this.route.navigate(['dashboard/default'])
+      
+      
+    }
+      
+      );
+}
   signUpUser(data: any): Observable<any> {
     // const headers = new Headers({
     //   'Content-Type': 'application/json',

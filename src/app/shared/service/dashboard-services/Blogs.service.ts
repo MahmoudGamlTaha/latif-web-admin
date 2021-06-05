@@ -73,6 +73,7 @@ export class BlogsService {
   deleteblogCategory(blogCategoryId) {
 
     return this._http.post(this._deleteblogCategory + blogCategoryId, '').subscribe(
-      res => { console.log(res); })
+      res => { console.log(res); }, 
+      )
   }
 }

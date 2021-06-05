@@ -7,56 +7,69 @@
                     <h5>Create blog</h5>
                 </div>
                 <div class="card-body">
-                    <form [formGroup]="blogForm" (ngSubmit)="createBlogApi()" class="needs-validation" novalidate="">
+                    <form [formGroup]="blogForm"  class="needs-validation" novalidate="">
 
                         <div class="row">
                             <div class="col-sm-12">
                                 <h3>create Blog</h3>
                             </div>
-                            <div class="col-sm-4">
+                            <!-- userId -->
+                            <div class="col-sm-6">
                                 <div class="form-group">
-                                    <!-- dropdown -->
-
-                                    <label for="validationCustom01">id</label>
-                                    <input formControlName="BlogId" type="number" min="0" class="form-control" [value]="typeId" placeholder="id" />
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <!-- dropdown -->
-                                    <label for="validationCustom01">type</label>
-                                    <input type="text" class="custom-select" formControlName="Type"/>
+                                    <label for="validationCustom01">userId</label>
+                                    <select class="form-control" (change)="typeDropDown($event)" value="category Name">
+                                        <option class="dropdown-item" *ngFor="let option of " data-list="option"
+                                            id={{option.id}}>
+                                            {{ option.name }}
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
 
-                            <div class="col-sm-4">
+                            <!-- category Name -->
+                            <div class="col-sm-6">
                                 <div class="form-group">
-                                    <!-- dropdown -->
+                                    <label for="validationCustom01">Category List</label>
+                                    <select class="form-control" (change)="typeDropDown($event)" value="category Name">
+                                        <option class="dropdown-item" *ngFor="let option of blogCategoryList" data-list="option"
+                                            id={{option.id}}>
+                                            {{ option.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                                    
+                            </div>
+                            <!-- Title -->
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="validationCustom01">Title</label>
+                                    <input type="text" class="form-control" formControlName="Type"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="validationCustom01">image</label>
+                                    <input type="file" height="30px" class="form-control-file" id="exampleFormControlFile1" formControlName="Images">
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="validationCustom01">external</label><br>
+                                    <label class="switch" ><input type="checkbox" formControlName="externalLink"
+                                    (change)="onClickToggle($event)" value="" >
+                                    <span class="slider round"></span></label>
+                                </div>
+                            </div>
+                                <!-- description -->
+                            <div class="col-sm-12">
+                                <div class="form-group">
                                     <label for="validationCustom01">description</label>
                                     <textarea  class="form-control" formControlName="Description" placeholder="description">
                                     </textarea>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label for="validationCustom01">images</label>
-                                    <input type="text" class="custom-select" placeholder="images" formControlName="Images">
-                                    
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label for="validationCustom01">userId</label>
-                                    <input type="number" [value]="userId" class="form-control" formControlName="UserId" placeholder="UserId"  />
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label for="validationCustom01">external</label>
-                                    <input type="checkbox"  class="form-control" formControlName="externalLink" placeholder="userId"  />
-                                </div>
-                            </div>
-                                
                             
                         </div>
                         <div class="pull-right">

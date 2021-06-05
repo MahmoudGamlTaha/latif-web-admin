@@ -4,8 +4,10 @@
             <div class="row">
                 <div class="col-md-5 p-0 card-left">
                     <div class="card bg-primary">
-                        <div class="svg-icon">
-                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                        <div class="svg-icon" style="padding: 0px;margin:0px;margin-left: 65px;">
+                            <img class=" rounded-circle lazyloaded" 
+                                src="assets/images/dashboard/logo_xwhfvi.png" height="125" width="125" alt="">
+                            <!-- <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 468.52 468.52"
                                 style="enable-background:new 0 0 468.52 468.52;" xml:space="preserve">
                                 <g>
@@ -115,7 +117,7 @@
                                     <path style="fill:#808080;" d="M393.695,417.909l8.485-20.662l25.251,25.251c1.464,1.464,3.387,2.199,5.303,2.192
             c1.923,0,3.84-0.728,5.303-2.192l-83.142-83.142L393.695,417.909z" />
                                 </g>
-                            </svg>
+                            </svg> -->
                         </div>
                         <div class="single-item">
                             <owl-carousel-o [options]="owlcarouselOptions">
@@ -180,7 +182,7 @@
                                         </div>
                                     </ng-template>
                                 </ngb-tab>
-                                <ngb-tab>
+                                <!-- <ngb-tab>
                                     <ng-template ngbTabTitle><i class="icon-unlock mr-2"></i> Register
                                         <ng-template ngbTabContent>
                                             <form [formGroup]="registerForm" (ngSubmit)="registerApi()"
@@ -238,16 +240,16 @@
                                             </form>
                                         </ng-template>
                                     </ng-template>
-                                </ngb-tab>
+                                </ngb-tab> -->
                             </ngb-tabset>
                         </div>
                     </div>
                 </div>
             </div>
-            <a [routerLink]="'/dashboard/default'" class="btn btn-primary back-btn">
+            <!-- <a [routerLink]="'/dashboard/default'" class="btn btn-primary back-btn">
                 <app-feather-icons [icon]="'arrow-left'"></app-feather-icons>
                 back
-            </a>
+            </a> -->
         </div>
     </div>
 </div>

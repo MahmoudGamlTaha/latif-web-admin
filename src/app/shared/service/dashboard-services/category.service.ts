@@ -1,4 +1,5 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Token } from '../../data/Token';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -17,8 +18,8 @@ export class CategoryService {
 
   getCategoryList():Observable<Icategory[]>{
 
+  
     return this._http.get<Icategory[]>(this._getcategoryList);
-
   }
 
   getCategoryType(idType):Observable<Icategory[]>{

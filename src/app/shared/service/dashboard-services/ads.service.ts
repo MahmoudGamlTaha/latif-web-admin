@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { server } from 'src/environments/environment';
+import { Token } from '../../data/Token';
 import { adsFilter } from '../../models/adsFilter';
 
 @Injectable({
@@ -13,8 +14,29 @@ export class AdsService {
   _getAdsList = server.url + 'api/public/ads/nearest';
   _getAdsType = server.url +'api/public/ads-type/list';
   _getAdsByIdType = server.url +'api/public/ads/ad-by-Id?id=';
+  _changeStateOfAds = server.url +'api/public/ads/adActivation?';
 
   constructor(private _http: HttpClient) { }
+
+  changeStateOfAds(adsId,status){
+    const body={
+      id : adsId,
+      activate : status,
+     
+      
+    }
+    let jsonBody=JSON.stringify(body);
+    let token= JSON.parse(localStorage.getItem('currentUser'))
+    const headers= new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`
+
+    })
+    this._changeStateOfAds += 'activate='+status+'&'+'id='+adsId;
+    console.log(token," hh",jsonBody)
+    return this._http.post(this._changeStateOfAds,{},{headers:headers})}
+
+
 
   getAdsList() {
     return this._http.get(this._getAdsList).pipe(

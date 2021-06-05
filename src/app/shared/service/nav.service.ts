@@ -89,12 +89,12 @@ export class NavService {
 		// 	]
 		// },
 		
-		// {
-		// 	title: 'Menus', icon: 'align-left', type: 'sub', active: false, children: [
-		// 		{ path: '/menus/list-menu', title: 'Menu Lists', type: 'link' },
-		// 		{ path: '/menus/create-menu', title: 'Create Menu', type: 'link' },
-		// 	]
-		// },
+		{
+			title: 'Reports Ad', icon: 'align-left', type: 'sub', active: false, children: [
+				{ path: '/menus/list-menu', title: 'All Reports', type: 'link' },
+				{ path: '/menus/create-menu', title: 'Create Menu', type: 'link' },
+			]
+		},
 		// {
 		// 	title: 'Users', icon: 'user-plus', type: 'sub', active: false, children: [
 		// 		{ path: '/users/list-user', title: 'User List', type: 'link' },

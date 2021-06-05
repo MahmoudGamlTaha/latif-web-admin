@@ -26,15 +26,16 @@
                             </option>
                         </select>
                     </div>
-
+                    <!-- (userRowSelect)="onUserRowSelect($event)" -->
                     <div id="batchDelete" class="category-table custom-datatable">
                         <div class="table-responsive">
-                            <ng2-smart-table (userRowSelect)="onUserRowSelect($event)" [settings]="settings"
-                                [source]="rolList" (deleteConfirm)="onDeleteConfirm($event)"  (custom)="onCustomAction($event)"
+                            <ng2-smart-table  (custom)="onCustom($event)" [settings]="settings"
+                                [source]="rolList" (deleteConfirm)="onDeleteConfirm($event)" 
                                 (editConfirm)="onEditConfirm($event)" (createConfirm)="onCreateConfirm($event)">
                             </ng2-smart-table>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>

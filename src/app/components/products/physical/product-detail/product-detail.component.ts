@@ -19,7 +19,7 @@ import { CitesService } from 'src/app/shared/service/dashboard-services/cites.se
 export class ProductDetailComponent implements OnInit {
  
   public blogForm: FormGroup;
-  public typeList;
+  public blogCategoryList;
 
   external: boolean;
   typeId: number=0;
@@ -27,22 +27,17 @@ export class ProductDetailComponent implements OnInit {
   description: string;
   image:[];
   userId : number =1;
-
-
   categoryId: number;
   category: string;
-
   categoryList;
-
-
   images : [];
   path : number;
 
   createdDateL : string ;
 
-  constructor(private adsSer:AdsService,private blogSer: BlogsService, private categorySer: CategoryService,private citiesSer: CitesService,
+  constructor(private blogSer: BlogsService, private categorySer: CategoryService,private citiesSer: CitesService,
     private formBuilder: FormBuilder,private router: ActivatedRoute){
-      this.getAdsType()
+      this.getblogCategory()
 
       }
 
@@ -62,36 +57,32 @@ export class ProductDetailComponent implements OnInit {
       externalLink : [Boolean],
     });
 
-    console.log(this.typeList) 
+    
 
 
   }
 
   
-  getAdsType() {
-    this.adsSer.getAdsType().subscribe(
+  getblogCategory() {
+    this.blogSer.getblogCategory().subscribe(
       (data: any) => {
-        this.typeList = data.response.data;        
-        console.log(this.typeList)
+        this.blogCategoryList = data.response.data;
       },
       (error) => {
         console.log('error', error);
       }
-    )
+    );
     
   }
+  typeDropDown(event){
 
-createBlogApi(){
+  }
 
-  if(!this.blogForm.valid){return}
-  console.log(this.blogForm.value);
-    this.blogSer.createBlogList(this.blogForm.value).subscribe((data)=>{
-      console.log(" done to added a New Blog ");
-      
-      })
-  
+
+onClickToggle(event){
+console.log(event.target.checked)
+
 }
-
   get BlogId() {
     return this.blogForm.get('BlogId');
   }

@@ -6,8 +6,9 @@ import { LoginComponent } from './components/auth/login/login.component';
 
 const routes: Routes = [
   {
+    //dashboard/default
     path: '',
-    redirectTo: 'dashboard/default',
+    redirectTo: '/auth/login',
     pathMatch: 'full'
   },
   {

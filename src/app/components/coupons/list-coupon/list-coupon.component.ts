@@ -3,7 +3,7 @@ import { AdsService } from 'src/app/shared/service/dashboard-services/ads.servic
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/shared/service/dashboard-services/category.service';
 import { adsFilter } from 'src/app/shared/models/adsFilter';
-import { DataSource } from 'ng2-smart-table/lib/lib/data-source/data-source';
+import { StatusComponent } from '../status/status.component';
 import { LocalDataSource } from 'ng2-smart-table';
 
 @Component({
@@ -24,6 +24,7 @@ export class ListCouponComponent implements OnInit {
   CatId: number;
   pageSize = 10;
   source: LocalDataSource = new LocalDataSource();
+  numOfPages: number;
   constructor(
     private categorySer: CategoryService,
     private router: Router,
@@ -33,6 +34,7 @@ export class ListCouponComponent implements OnInit {
   }
 
   public settings = {
+
     hideSubHeader: true,
     add: {
       // addButtonContent: '<button class="btn btn-primary"></button>',
@@ -47,6 +49,8 @@ export class ListCouponComponent implements OnInit {
       cancelButtonContent: 'cancel',
     },
     edit: {
+      editButtonContent:'<button class="btn btn-primary">',
+      editButtonTitle:"ddd",
       confirmSave: false,
     },
     pager: {
@@ -54,14 +58,23 @@ export class ListCouponComponent implements OnInit {
       perPage: this.pageSize,
     },
     actions: {
+      // edit:false,
+      // delete:false,
       position: 'right',
+      
     },
       // custom: [{ name: 'View', title: `<i class="fa fa-eye" ></i>` }]
       // mode:"external"
       columns: {
-      // code: {
-      //   title: 'code',
-      // } ,
+      id: {
+        title: 'id',
+        type:"html",
+
+        valuePrepareFunction:(cell,row)=>{
+          return '<a [routerLink]="asd" id={{row.id}} (click)="onUserRowSelect($event)">'+row.id+'</a>';
+
+        } 
+      } ,
       // type: {
       //   title: 'type',
       // } ,
@@ -108,7 +121,7 @@ export class ListCouponComponent implements OnInit {
       // 'extra.value': {
       //   title: 'value',
       //   valuePrepareFunction: (cell, row) => { return row.extra.value }
-      // },
+      // }, 
       short_description: {
         title: 'description',
         valuePrepareFunction: (cell, row) => {
@@ -117,6 +130,24 @@ export class ListCouponComponent implements OnInit {
       },
       price: {
         title: 'price',
+      },
+      active: {
+        title: 'Active',
+        type: 'custom',
+        filter: false,
+        renderComponent: StatusComponent,
+        onComponentInitFunction(instance) {
+          instance.save.subscribe(row => {
+            // alert(`${row.active} saved!`)
+          });},
+        // valuePrepareFunction: (cell, row) => {
+          
+        //   console.log(row.active)
+        //   if(row.active){return row.active }else{
+
+        //   }
+        //   },
+          width:"15px"
       },
       image: {
         title: 'image',
@@ -152,16 +183,19 @@ export class ListCouponComponent implements OnInit {
     );
   }
   ngOnInit() {
+    this.source.onChanged().subscribe((change) => {
+      if (change.action === 'page') {
+        this.pageChange(change.paging.page);
+      }
+    });
     this.getAdsList();
     this.getAdsType();
-    // this.source.setPage(1)
-    // this.source.setPaging(1,1)
-
-        // console.log("get",this.source.getPaging())
-      
-
   }
-
+  pageChange(pageIndex) {
+    const loadedRecordCount = this.source.count();
+    const lastRequestedRecordIndex = pageIndex * this.pageSize;
+    console.log(loadedRecordCount,lastRequestedRecordIndex)
+  }
 
   onDeleteConfirm(event) {
     // alert(event.data.id)
@@ -183,8 +217,8 @@ export class ListCouponComponent implements OnInit {
   onCreateConfirm(event) {
 
   }
-  onCustomAction(event) { }
   onUserRowSelect(event) {
+    console.log(event)
     if (
       event.selected.length != null &&
       event.selected.length != undefined &&
@@ -231,6 +265,7 @@ export class ListCouponComponent implements OnInit {
       this.categorySer.getCategoryType(catId).subscribe(
         (data: any) => {
           this.categoryNameList = data.response.data;
+          this.numOfPages=data.response.totalPages;
         },
         (error) => {
           console.log('error', error);
@@ -245,4 +280,15 @@ export class ListCouponComponent implements OnInit {
     this.customFilter(filterAds);
     console.log(this.settings.pager,this.settings.pager )
   }
+
+  onCustom(event){
+    switch ( event.action) {
+      case 'viewrecord':
+        // this.viewRecord(event.data);
+        break;
+    case 'editrecord':
+        // this.editRecord(event.data);
+    }
+  }
+
 }

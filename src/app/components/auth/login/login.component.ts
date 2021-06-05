@@ -71,23 +71,8 @@ export class LoginComponent implements OnInit {
   logInApi() {
     // console.log("login success",this.loginForm.value)
     if(!this.loginForm.valid){return;}
-
-    this.authServ.LogInUser(this.loginForm.value).subscribe((data:any)=>{
-      let token = data.headers
-
-      console.log("heder",data.headers.keys());
-      // console.log("ay 7aga");
-          console.log(token);
-      // localStorage.setItem('currentUser', JSON.stringify(data));
-      // this.route.navigate(['dashboard/default'])
-
-    }, err => {
-      console.log('err : ', err)
-    });
-    
-
-      // this.loginForm.reset()
-
+    this.authServ.LogInUser(this.loginForm.value)
+    this.loginForm.reset()
   }
 
   registerApi(){

@@ -14,29 +14,12 @@ export interface IblogList {
 
 export interface IblogCategory {
             id: number,
-            title: string,
-            category: string,
-            category_id:number,
+            name: string,
             description: string,
-            image: null,
-            images: [],
-            path: [],
-            user: {
-                id: number,
-                email: string,
-                firstName: string,
-                lastName: string,
-                address: string,
-                city: string,
-                state: string,
-                zip: string,
-                phone: string,
-                country: string,
-                emailVerified: any,
-                registrationDate: any
-            },
-            createdDate: any,
-            externalLink: boolean
+            icon: any,
+            icon_select: any,
+            external_link:boolean,
+            nameAr:string
         }
 
 export interface IcategoryType {

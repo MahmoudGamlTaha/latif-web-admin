@@ -10,28 +10,10 @@ import { BlogsService } from 'src/app/shared/service/dashboard-services/Blogs.se
 })
 export class SubCategoryComponent implements OnInit {
   public closeResult: string;
-  public blog_Category  = []
+  public blogCategoryList  = []
 
   constructor(private modalService: NgbModal,private BlogsSer:BlogsService) {
-    // this.sub_categories = categoryDB.category;
-  }
-
-  open(content) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
+  
   }
 
 
@@ -63,7 +45,11 @@ export class SubCategoryComponent implements OnInit {
       icon: {
         title: 'icon',
         type: 'html',
-        valuePrepareFunction:(cell,row)=>{return "<img src='"+row.icon+"' width='50' height='50' />";}
+        valuePrepareFunction:(cell,row)=>{
+          if (row.icon != null && row.icon != undefined && row.icon != '') {
+          return "<img src='"+row.icon+"' width='50' height='50' />";
+          }
+          }
       },
       // nameAr: {
       //   title: 'nameAr'
@@ -76,7 +62,7 @@ export class SubCategoryComponent implements OnInit {
 
     this.BlogsSer.getblogCategory().subscribe(
       (data: any) => {
-        this.blog_Category = data.response.data;
+        this.blogCategoryList = data.response.data;
       },
       (error) => {
         console.log('error', error);
@@ -88,10 +74,7 @@ export class SubCategoryComponent implements OnInit {
   onDeleteConfirm(event){ 
 
     alert(event.data.id)
-
-    
     if (window.confirm('Are you sure you want to save?')) {
-    
       this.BlogsSer.deleteblogCategory(parseInt(event.data.id))
       event.confirm.resolve(event.newData);
     } else {
