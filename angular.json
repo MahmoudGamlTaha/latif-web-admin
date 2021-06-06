@@ -27,7 +27,7 @@
               "chartist",
               "chart.js"
             ],
-            "outputPath": "dist/multikart-backend",
+            "outputPath": "dist/latif-backend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -142,7 +142,7 @@
       }
     }
   },
-  "defaultProject": "multikart-backend",
+  "defaultProject": "latif-backend",
   "cli": {
     "analytics": false
   }

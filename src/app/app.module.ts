@@ -21,8 +21,6 @@ import { SettingModule } from './components/setting/setting.module';;
 import { ReportsModule } from './components/reports/reports.module';
 import { AuthModule } from './components/auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularFireModule } from '@angular/fire'; // Firebase config
-import { AngularFirestoreModule } from '@angular/fire/firestore'; // For Cloud Firestore
 import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [
