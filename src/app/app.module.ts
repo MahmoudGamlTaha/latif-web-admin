@@ -21,6 +21,7 @@ import { SettingModule } from './components/setting/setting.module';;
 import { ReportsModule } from './components/reports/reports.module';
 import { AuthModule } from './components/auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { environment } from 'src/environments/environment';
   ],
   imports: [
     BrowserAnimationsModule,
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule.withServerTransition({ appId: 'latif-app' }),
     AppRoutingModule,
     DashboardModule,
     InvoiceModule,
@@ -48,7 +49,7 @@ import { environment } from 'src/environments/environment';
     UsersModule,
     
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
