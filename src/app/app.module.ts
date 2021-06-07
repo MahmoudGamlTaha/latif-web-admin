@@ -18,7 +18,7 @@ import { UsersModule } from './components/users/users.module';
 import { LocalizationModule } from './components/localization/localization.module';
 import { InvoiceModule } from './components/invoice/invoice.module';
 import { SettingModule } from './components/setting/setting.module';;
-import { ReportsModule } from './components/reports/reports.module';
+import { ReportsModule } from './components/roleList/reports.module';
 import { AuthModule } from './components/auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';

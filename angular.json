@@ -27,6 +27,7 @@
               "chartist",
               "chart.js"
             ],
+             
             "outputPath": "dist/latif-backend",
             "index": "src/index.html",
             "main": "src/main.ts",
