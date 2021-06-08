@@ -18,11 +18,10 @@ export class CategoryService {
   _getPetCategory = server.url + 'api/public/pet-category'//GET  
   _getAccCategory = server.url + 'api/public/acc-category'//GET  
   _getAllCategory = server.url + 'api/public/category/0'//GET  
-  _getFindCategoryById = server.url + 'api/public/category/find-by-id/id=4'//GET  
-  _deleteCategory = server.url + 'api/public/category/delete?id=11' //POST  ( params-url )
+  _getFindCategoryById = server.url + 'api/public/category/find-by-id/id='//GET  
+  _deleteCategory = server.url + 'api/public/category/delete?id=' //POST  ( params-url )
   _createCategory = server.url + 'api/public/category/create' //POST ( body )
   _updateCategory = server.url + 'api/public/category/update' //POST ( body )  
-
 
   constructor(private _http: HttpClient) { }
 
@@ -41,6 +40,40 @@ export class CategoryService {
   }
 
 
+    
+  
+  getPetCategory() {
+
+    return this._http.get(this._getPetCategory)
+  }
+  getAccCategory() {
+
+    return this._http.get(this._getAccCategory)
+  }
+
+  getAllCategory() {
+
+    return this._http.get(this._getAllCategory)
+  }
+
+  getFindCategoryById(CategoryId) {
+
+    return this._http.get(this._getFindCategoryById+CategoryId)
+  }
+
+  deleteCategory(CategoryId) {
+
+    return this._http.post(this._deleteCategory+CategoryId,{})
+  }
+  createCategory(data) {
+
+    return this._http.post(this._createCategory , {data})
+  }
+
+  updateCategory(data) {
+
+    return this._http.post(this._updateCategory , {data})
+  }
 
 
 

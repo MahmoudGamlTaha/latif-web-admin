@@ -11,6 +11,9 @@ import { adsFilter } from '../../models/adsFilter';
 })
 export class AdsService {
 
+  token;
+  headers;
+
   _getAdsList = server.url + 'api/public/ads/nearest';
   _getAdsType = server.url + 'api/public/ads-type/list';
   _getAdsByIdType = server.url + 'api/public/ads/ad-by-Id?id=';
@@ -22,27 +25,23 @@ export class AdsService {
   _getAdsFiltration = server.url + 'api/public/ads/ads-filtration'; //POST ( body )
   _createAds = server.url + 'api/public/ads/create';    //POST ( headers & body )
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient) {
+    this.token = JSON.parse(localStorage.getItem('currentUser'))
+    this.headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `${this.token}`
+    })
+  }
 
   changeStateOfAds(adsId, status) {
     const body = {
       id: adsId,
       activate: status,
-
-
     }
     let jsonBody = JSON.stringify(body);
-    let token = JSON.parse(localStorage.getItem('currentUser'))
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `${token}`
-
-    })
-    console.log(token, " hh", jsonBody)
-    return this._http.post(this._changeStateOfAds + 'activate=' + status + '&' + 'id=' + adsId, {}, { headers: headers })
+    console.log(this.token, " hh", jsonBody)
+    return this._http.post(this._changeStateOfAds + 'activate=' + status + '&' + 'id=' + adsId, {}, { headers: this.headers })
   }
-
-
 
   getAdsList() {
     return this._http.get(this._getAdsList).pipe(
@@ -80,5 +79,25 @@ export class AdsService {
     }
     console.log(adsUrl);
     return this._http.get<any[]>(adsUrl);
+  }
+
+
+  // 
+  getAllAds(data) {
+
+    return this._http.post(this._getAllAds , {data}, { headers: this.headers })
+  }
+
+  getMyAds(data) {
+
+    return this._http.post(this._getMyAds , {data}, { headers: this.headers })
+  }
+  getAdsFiltration(data) {
+
+    return this._http.post(this._getAdsFiltration , {data})
+  }
+  createAds(data) {
+
+    return this._http.post(this._createAds , {data}, { headers: this.headers })
   }
 }
