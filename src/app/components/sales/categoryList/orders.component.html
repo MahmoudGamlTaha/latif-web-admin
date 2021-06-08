@@ -10,8 +10,8 @@
                     <div class="custom-datatable">
                         <!-- <input type='text' class="filter-ngx form-control" placeholder='Search...'
                             (keyup)='updateFilter($event)'  /> -->
-                        <ngx-datatable #table class="bootstrap" [rows]="order" [columnMode]="'force'" [headerHeight]="50"
-                            [footerHeight]="50" [rowHeight]="'auto'" [limit]="5" (activate)='onSelect($event)'>
+                        <ngx-datatable #table class="bootstrap" [rows]="categoryList" [columnMode]="'force'" [headerHeight]="50"
+                            [footerHeight]="50" [rowHeight]="'auto'" [limit]="5" (activate)='onRowSelect($event)'>
                             <ngx-datatable-column prop="id"></ngx-datatable-column>
                             <ngx-datatable-column name="active"></ngx-datatable-column>
                             <ngx-datatable-column prop="code"></ngx-datatable-column>

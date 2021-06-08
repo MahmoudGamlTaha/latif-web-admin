@@ -48,7 +48,7 @@ export class SubCategoryComponent implements OnInit {
         valuePrepareFunction:(cell,row)=>{
           if (row.icon != null && row.icon != undefined && row.icon != '') {
           return "<img src='"+row.icon+"' width='50' height='50' />";
-          }
+          }else{return ;}
           }
       },
       // nameAr: {

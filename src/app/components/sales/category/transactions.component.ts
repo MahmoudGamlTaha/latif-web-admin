@@ -11,8 +11,8 @@ import { transactionsDB } from 'src/app/shared/tables/transactions';
 })
 export class TransactionsComponent implements OnInit {
 
-  transactions ;
-  categoryId;
+  categoryList ;
+  typeId;
   typeName;
   constructor(private route:ActivatedRoute,private router:Router,private categorySer:CategoryService) {
   
@@ -83,14 +83,14 @@ export class TransactionsComponent implements OnInit {
   
   ngOnInit() {
 
-    this.categoryId = this.route.snapshot.paramMap.get('id');
+    this.typeId = this.route.snapshot.paramMap.get('id');
     this.typeName = this.route.snapshot.paramMap.get('typeName');
 
-    this.categorySer.getCategoryType(this.categoryId).subscribe((data:any)=>{
-    this.transactions = data.response.data;
+    this.categorySer.getCategoryType(this.typeId).subscribe((data:any)=>{
+    this.categoryList = data.response.data;
     },
   (error) => {
-    console.log('error', error);
+    console.log('error Category Type', error);
   }) 
     
     
