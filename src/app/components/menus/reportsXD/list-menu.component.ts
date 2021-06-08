@@ -10,7 +10,7 @@ import { menuDB } from 'src/app/shared/tables/menu';
 })
 export class ListMenuComponent implements OnInit {
 
-  public menus:any ;
+  public ReportedXDList:any ;
   public selected = [];
   pageSize: any=10;
 
@@ -54,19 +54,19 @@ export class ListMenuComponent implements OnInit {
       'user.username': {
         title: 'reported username',
         valuePrepareFunction: (cell, row) => {
-          return row.user.firstName;
+          return row.user.username;
         },
       },
       'user.email': {
-        title: 'reported user email',
+        title: 'reported email',
         valuePrepareFunction: (cell, row) => {
-          return row.user.firstName;
+          return row.user.email;
         },
       },
       'user.firstName': {
         title: 'reported Name',
         valuePrepareFunction: (cell, row) => {
-          return row.user.username;
+          return row.user.firstName;
         },
       },
       // 'user.phone': {
@@ -90,7 +90,7 @@ export class ListMenuComponent implements OnInit {
       "ad.city": {
         title: 'Ads city',
         valuePrepareFunction: (cell, row) => {
-          return row.ad.active;
+          return row.ad.city;
         },
       },
       "ad.type": {
@@ -108,7 +108,7 @@ export class ListMenuComponent implements OnInit {
 
   this.ReportsAdsSer.getAllReportedAds().subscribe((res:any)=>{
 
-    this.menus=res.response.data
+    this.ReportedXDList=res.response.data
     })
   }
 

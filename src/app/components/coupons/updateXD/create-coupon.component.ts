@@ -25,7 +25,7 @@ export class CreateCouponComponent implements OnInit {
   categoryList ;
   categoryName: string;
   categoryNameList;
-  AdsId : number;
+  XDId : number;
   categoryId : number;
   city : string ;
   description : string ;
@@ -49,7 +49,7 @@ export class CreateCouponComponent implements OnInit {
   rowSelectedData = JSON.parse(localStorage.getItem('RowSelect'));
   
   getAdsByIdType() {
-    this.AdsSer.getAdsByIdType(this.AdsId).subscribe((data: any) => {
+    this.AdsSer.getAdsByIdType(this.XDId).subscribe((data: any) => {
       this.active = data.response.data.active;
       this.typeOfAds = data.response.data.type;
       this.categoryName = data.response.data.categoryName;
@@ -155,7 +155,7 @@ export class CreateCouponComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: ActivatedRoute,
   ) {
-    this.AdsId = parseInt(this.router.snapshot.paramMap.get('id'));
+    this.XDId = parseInt(this.router.snapshot.paramMap.get('id'));
     this.getDataFormApi();
     this.getAdsByIdType();
   }

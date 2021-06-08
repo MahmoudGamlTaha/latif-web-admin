@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MediaRoutingModule } from './media-routing.module';
-import { MediaComponent } from './media/media.component';
+import { MediaComponent } from './subscription/media.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
