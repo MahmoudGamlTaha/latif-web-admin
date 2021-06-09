@@ -22,8 +22,15 @@ export class CategoryService {
   _deleteCategory = server.url + 'api/public/category/delete?id=' //POST  ( params-url )
   _createCategory = server.url + 'api/public/category/create' //POST ( body )
   _updateCategory = server.url + 'api/public/category/update' //POST ( body )  
-
-  constructor(private _http: HttpClient) { }
+  token;
+  headers;
+  constructor(private _http: HttpClient) {
+    this.token = JSON.parse(localStorage.getItem('currentUser'));
+    this.headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `${this.token}`
+    })
+  }
 
   getCategoryList(): Observable<Icategory[]> {
     return this._http.get<Icategory[]>(this._getcategoryList);
@@ -40,7 +47,7 @@ export class CategoryService {
   }
 
 
-    
+    //
   
   getPetCategory() {
 
@@ -63,16 +70,30 @@ export class CategoryService {
 
   deleteCategory(CategoryId) {
 
-    return this._http.post(this._deleteCategory+CategoryId,{})
+    return this._http.post(this._deleteCategory+CategoryId,
+      {},
+      {headers:this.headers})
   }
   createCategory(data) {
+  let JsonBody=JSON.stringify({
+    name:data.CategoryName,
+      type:parseInt(data.CategoryType),
+      icon:data.Icon,
+      isExternalLink:data.External,
+      active:data.Active,
+      nameAr:data.NameAr,
+      icon_select:data.Icon_select})
 
-    return this._http.post(this._createCategory , {data})
+console.log(this.token)
+console.log(data)
+    return this._http.post(this._createCategory ,
+      JsonBody,{headers:this.headers})
   }
 
   updateCategory(data) {
-
-    return this._http.post(this._updateCategory , {data})
+    return this._http.post(this._updateCategory ,
+       {data},
+       {headers:this.headers})
   }
 
 

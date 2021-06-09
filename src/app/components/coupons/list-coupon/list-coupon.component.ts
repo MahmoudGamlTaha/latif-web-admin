@@ -36,30 +36,30 @@ export class ListCouponComponent implements OnInit {
   public settings = {
 
     hideSubHeader: true,
-    add: {
-      // addButtonContent: '<button class="btn btn-primary"></button>',
-      createButtonContent: '<button class="btn btn-primary"></button>',
-      // cancelButtonContent: '<i class="nb-close"></i>',
-      confirmCreate: true
-    },
+    // add: {
+    //   // addButtonContent: '<button class="btn btn-primary"></button>',
+    //   createButtonContent: '<button class="btn btn-primary"></button>',
+    //   // cancelButtonContent: '<i class="nb-close"></i>',
+    //   confirmCreate: true
+    // },
     delete: {
       confirmDelete: true,
       deleteButtonContent: 'Delete data',
       saveButtonContent: 'save',
       cancelButtonContent: 'cancel',
     },
-    edit: {
-      editButtonContent:'<button class="btn btn-primary">',
-      editButtonTitle:"ddd",
-      confirmSave: false,
-    },
+    // edit: {
+    //   editButtonContent:'<button class="btn btn-primary">',
+    //   editButtonTitle:"ddd",
+    //   confirmSave: false,
+    // },
     pager: {
       display: true,
       perPage: this.pageSize,
     },
     actions: {
-      // edit:false,
-      // delete:false,
+      edit:false,
+      add:false,
       position: 'right',
       
     },

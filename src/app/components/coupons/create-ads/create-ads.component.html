@@ -1,0 +1,223 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Create Ads</h5>
+                    <form class="needs-validation" [formGroup]="categoryform" (ngSubmit)="createCategory()"
+                        novalidate="">
+                        <div class="card-body">
+                            <div class="row">
+                                
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">created by</label>
+                                            <select class="form-control" formControlName='created_by'>
+                                                <option *ngFor="let option of categoryType" value={{option.id}}
+                                                    data-list="option" class="dropdown-item">
+                                                    {{option.code}}
+                                                </option>
+                                            </select>                                    
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">category_id</label><br>
+                                        <input type="text" class="form-control"
+                                        formControlName='category_id' id="">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">type</label>
+                                        <select class="form-control" formControlName='type'>
+                                            <option *ngFor="let option of categoryType" value={{option.id}}
+                                                data-list="option" class="dropdown-item">
+                                                {{option.code}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">category_type</label><br>
+                                        <select class="form-control" formControlName='category_type'>
+                                            <option *ngFor="let option of categoryType" value={{option.id}}
+                                                data-list="option" class="dropdown-item">
+                                                {{option.code}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">code</label>
+                                        <select class="form-control" formControlName='code'>
+                                            <option *ngFor="let option of categoryType" value={{option.id}}
+                                                data-list="option" class="dropdown-item">
+                                                {{option.code}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">name</label>
+                                        <input type="text" class="form-control" formControlName='name'
+                                            id="exampleFormControl">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">description</label>
+                                        <input type="text" class="form-control" formControlName='description'
+                                            id="exampleFormControl">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">short_description</label>
+                                        <input type="text" class="form-control" formControlName='short_description'
+                                            id="exampleFormControl">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">price</label>
+                                        <input type="number" class="form-control" formControlName='price'
+                                            id="exampleFormControl">
+                                    </div>
+                                </div>
+                                        <div class="col-sm-12">
+                                            <h3>extra</h3>
+                                        </div>
+                                    
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">breed</label>
+                                        <input type="text" class="form-control" formControlName='breed'
+                                            id="exampleFormControl">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">stock</label>
+                                        <input type="text" class="form-control" formControlName='stock'
+                                            id="exampleFormControl">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">weaned</label>
+                                        <input type="text" class="form-control" formControlName='weaned'
+                                            id="exampleFormControl">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">neutering</label>
+                                        <input type="text" class="form-control" formControlName='neutering'
+                                            id="exampleFormControl">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">vaccinationCertificate</label>
+                                        <input type="text" class="form-control" formControlName='vaccinationCertificate'
+                                            id="exampleFormControl">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">training</label>
+                                        <input type="text" class="form-control" formControlName='training'
+                                            id="exampleFormControl">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">food</label>
+                                        <input type="text" class="form-control" formControlName='food'
+                                            id="exampleFormControl">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">barkingProblem</label>
+                                        <input type="text" class="form-control" formControlName='barkingProblem'
+                                            id="exampleFormControl">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">passport</label>
+                                        <input type="text" class="form-control" formControlName='passport'
+                                            id="exampleFormControl">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">playWithKids</label>
+                                        <select class="form-control" formControlName='playWithKids'>
+                                            <option *ngFor="let option of categoryType" value={{option.id}}
+                                                data-list="option" class="dropdown-item">
+                                                {{option.code}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">diseasesDisabilities</label>
+                                        <input type="text" class="form-control" formControlName='diseasesDisabilities'
+                                            id="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">diseasesDisabilitiesDesc</label>
+                                        <input type="text" class="form-control"
+                                            formControlName='diseasesDisabilitiesDesc' id="">
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">active</label><br>
+                                        <label class="switch"><input type="checkbox" formControlName='active'>
+                                            <span class="slider round"></span></label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+</div>
+
+<!-- Container-fluid Ends-->

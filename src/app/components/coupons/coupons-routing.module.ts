@@ -2,11 +2,20 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListCouponComponent } from './list-coupon/list-coupon.component';
 import { CreateCouponComponent } from './create-coupon/create-coupon.component';
+import { CreateAdsComponent } from './create-ads/create-ads.component';
 
 const routes: Routes = [
   {
     path: '',
     children: [
+      {
+        path: 'createads',
+        component: CreateAdsComponent,
+        data: {
+          title: "create Ads",
+          breadcrumb: "create Ads"
+        }
+      },
       {
         path: 'adslist',
         component: ListCouponComponent,

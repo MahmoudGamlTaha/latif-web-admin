@@ -7,7 +7,7 @@
                     <h5>Create blog</h5>
                 </div>
                 <div class="card-body">
-                    <form [formGroup]="blogForm"  class="needs-validation" novalidate="">
+                    <form [formGroup]="blogForm" (ngSubmit)="createBlog()"  class="needs-validation" novalidate="">
 
                         <div class="row">
                             <div class="col-sm-12">
@@ -17,7 +17,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="validationCustom01">userId</label>
-                                    <select class="form-control" (change)="typeDropDown($event)" value="category Name">
+                                    <select class="form-control" formControlName="userId" >
                                         <option class="dropdown-item" *ngFor="let option of " data-list="option"
                                             id={{option.id}}>
                                             {{ option.name }}
@@ -30,8 +30,8 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="validationCustom01">Category List</label>
-                                    <select class="form-control" (change)="typeDropDown($event)" value="category Name">
-                                        <option class="dropdown-item" *ngFor="let option of blogCategoryList" data-list="option"
+                                    <select class="form-control" (change)="typeDropDown($event)" formControlName="category" >
+                                        <option class="dropdown-item" *ngFor="let option of blogCategoryList" value={{option.id}} data-list="option"
                                             id={{option.id}}>
                                             {{ option.name }}
                                         </option>
@@ -39,17 +39,19 @@
                                 </div>
                                     
                             </div>
+
                             <!-- Title -->
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="validationCustom01">Title</label>
-                                    <input type="text" class="form-control" formControlName="Type"/>
+                                    <input type="text" class="form-control" formControlName="title"/>
                                 </div>
                             </div>
+
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="validationCustom01">image</label>
-                                    <input type="file" height="30px" class="form-control-file" id="exampleFormControlFile1" formControlName="Images">
+                                    <input type="file" height="30px" class="form-control-file" id="exampleFormControlFile1" formControlName="extrnImage">
                                     
                                 </div>
                             </div>
@@ -57,7 +59,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="validationCustom01">external</label><br>
-                                    <label class="switch" ><input type="checkbox" formControlName="externalLink"
+                                    <label class="switch" ><input type="checkbox" formControlName="_external"
                                     (change)="onClickToggle($event)" value="" >
                                     <span class="slider round"></span></label>
                                 </div>
@@ -66,7 +68,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="validationCustom01">description</label>
-                                    <textarea  class="form-control" formControlName="Description" placeholder="description">
+                                    <textarea  class="form-control" formControlName="description" placeholder="description">
                                     </textarea>
                                 </div>
                             </div>

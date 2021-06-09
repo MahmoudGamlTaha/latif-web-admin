@@ -21,18 +21,6 @@ export class ProductDetailComponent implements OnInit {
   public blogForm: FormGroup;
   public blogCategoryList;
 
-  external: boolean;
-  typeId: number=0;
-  type: string;
-  description: string;
-  image:[];
-  userId : number =1;
-  categoryId: number;
-  category: string;
-  categoryList;
-  images : [];
-  path : number;
-
   createdDateL : string ;
 
   constructor(private blogSer: BlogsService, private categorySer: CategoryService,private citiesSer: CitesService,
@@ -46,15 +34,12 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit() {
 
     this.blogForm = this.formBuilder.group({
-      Type : [],
-      BlogId : [],
-      Description : [],
-      Image : [[]],
-      Images : [[]],
-      Path : [],
-      UserId : [Number],
-      createdDateL : [],
-      externalLink : [Boolean],
+      _external : [],
+      category : [],
+      description : [],
+      extrnImage : [],
+      title : [],
+      userId : ['1'],
     });
 
     
@@ -78,39 +63,17 @@ export class ProductDetailComponent implements OnInit {
 
   }
 
+  createBlog(){
+    console.log(this.blogForm.value)
+    if(!this.blogForm.valid){return;}
+    this.blogSer.createBlogList(this.blogForm.value).subscribe(
+      (data)=>{console.log(data)},(err)=>{console.log("err",err.message)}
+    )
+  }
 
 onClickToggle(event){
 console.log(event.target.checked)
 
 }
-  get BlogId() {
-    return this.blogForm.get('BlogId');
-  }
-  get Title() {
-    return this.blogForm.get('Title');
-  }
-  get Category() {
-    return this.blogForm.get('Category');
-  }
-  get Description() {
-    return this.blogForm.get('Description');
-  }
-  get Image() {
-    return this.blogForm.get('Image');
-  }
-  get Images() {
-    return this.blogForm.get('Images');
-  }
-  get Path() {
-    return this.blogForm.get('Path');
-  }
-  get User() {
-    return this.blogForm.get('User');
-  }
-  get CreatedDateL() {
-    return this.blogForm.get('createdDateL');
-  }
-  // get Items() {
-  //   return this.blogForm.get('Items') as FormArray;
-  // }
+
 }

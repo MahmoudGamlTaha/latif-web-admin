@@ -1,0 +1,82 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Create category</h5>
+                    <form class="needs-validation" [formGroup]="categoryform" (ngSubmit)="createCategory()"
+                        novalidate="">
+                        <div class="card-body">
+                            <div class="row">
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="validationCustom0">category id</label>
+                                        <input type="text" class="form-control" value={{categoryid}} formControlName='CategoryId' id="exampleFormControl">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">category name</label>
+                                        <input type="text" class="form-control" formControlName='CategoryName' id="exampleFormControl">
+                                    </div>
+                                </div>
+                                <!-- category Name -->
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">Category type</label>
+                                        <select class="form-control" formControlName='CategoryType' value={{categoryType}}>
+                                            <option *ngFor="let option of categorylist" value={{option.id}} data-list="option" class="dropdown-item">
+                                                {{option.code}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">Name Ar</label>
+                                        <input type="text" class="form-control" formControlName='NameAr' id="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">image</label>
+                                        <input type="text" class="form-control" formControlName='Icon' id="">
+                                    </div>
+                                </div>
+                                    <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">Icon_select</label>
+                                        <input type="text" class="form-control" formControlName='Icon_select' id="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">external</label><br>
+                                        <label class="switch"><input type="checkbox" formControlName='External'>
+                                            <span class="slider round"></span></label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">active</label><br>
+                                        <label class="switch"><input type="checkbox" formControlName='Active'>
+                                            <span class="slider round"></span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary" >Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Container-fluid Ends-->

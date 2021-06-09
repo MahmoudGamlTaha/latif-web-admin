@@ -11,11 +11,11 @@ import { transactionsDB } from 'src/app/shared/tables/transactions';
 })
 export class TransactionsComponent implements OnInit {
 
-  transactions ;
+  transactions;
   categoryId;
   typeName;
-  constructor(private route:ActivatedRoute,private router:Router,private categorySer:CategoryService) {
-  
+  constructor(private route: ActivatedRoute, private router: Router, private categorySer: CategoryService) {
+
   }
 
   public settings = {
@@ -37,14 +37,15 @@ export class TransactionsComponent implements OnInit {
     },
     columns: {
       'category.id': {
-        title: 'id', 
-        valuePrepareFunction:(cell,row)=>{
-          return row.category.id
+        title: 'id',
+        type:'html',
+        valuePrepareFunction: (cell, row) => {
+          return '<a href="sales/updatecategory/' + this.categoryId + '/' + this.typeName + '/' + row.category.id + '" style="cursor: pointer">' + row.category.id + '</a>';
         },
       },
       'category.name': {
-        title: 'name', 
-        valuePrepareFunction:(cell,row)=>{
+        title: 'name',
+        valuePrepareFunction: (cell, row) => {
           return row.category.name
         }
       },
@@ -55,18 +56,17 @@ export class TransactionsComponent implements OnInit {
       'category.icon': {
         title: 'icon',
         type: 'html',
-        valuePrepareFunction:(cell,row)=>{return "<img src='"+row.category.icon+"' width='50' height='50' />";}
+        valuePrepareFunction: (cell, row) => { return "<img src='" + row.category.icon + "' width='50' height='50' />"; }
       },
       'category.iconSelect': {
         title: 'iconSelect',
         type: 'html',
-        valuePrepareFunction:(cell,row)=>{return "<img src='"+ row.category.iconSelect+"' width='50' height='50' />";}
+        valuePrepareFunction: (cell, row) => { return "<img src='" + row.category.iconSelect + "' width='50' height='50' />"; }
 
       },
       'category.type': {
-        title: 'type', 
-        valuePrepareFunction:(cell,row)=>{return row.category.type}
-
+        title: 'type',
+        valuePrepareFunction: (cell, row) => { return row.category.type }
       },
       // 'category.isExternalLink': {
       //   title: 'isExternalLink',
@@ -80,26 +80,27 @@ export class TransactionsComponent implements OnInit {
       // }
     },
   };
-  
+
   ngOnInit() {
 
     this.categoryId = this.route.snapshot.paramMap.get('id');
     this.typeName = this.route.snapshot.paramMap.get('typeName');
 
-    this.categorySer.getCategoryType(this.categoryId).subscribe((data:any)=>{
-    this.transactions = data.response.data;
+    this.categorySer.getCategoryType(this.categoryId).subscribe((data: any) => {
+      this.transactions = data.response.data;
+      console.log(this.transactions)
     },
-  (error) => {
-    console.log('error', error);
-  }) 
-    
-    
+      (error) => {
+        console.log('error', error);
+      })
+
+
   }
 
   // ngAfterViewInit() {
   //   }
-  onDeleteConfirm(event){}
-  onEditConfirm(event){}
-  onCreateConfirm(event){}
+  onDeleteConfirm(event) { }
+  onEditConfirm(event) { }
+  onCreateConfirm(event) { }
 
 }

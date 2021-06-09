@@ -67,13 +67,16 @@ export class NavService {
 		{
 			title: 'category', icon: 'list', type: 'sub', active: false, children: [
 				{ path: '/sales/categorylist', title: 'Category list', type: 'link' },
+				{ path: '/sales/createcategory', title: 'create Category', type: 'link' },
+				{ path: '/sales/updatecategory/:categoryid/:typename/:id', title: 'update Category', type: 'link' },
 				// { path: '/sales/categorytype/:id/:typeName', title: 'Category type', type: 'link' },
 			]
 		},
 		{
 			title: 'ads', icon: 'tag', type: 'sub', active: false, children: [
 				{ path: '/ads/adslist', title: 'Ads List', type: 'link' },
-				// { path: '/ads/updateads/:id', title: 'update Ads', type: 'link' },
+				{ path: '/ads/createads', title: 'create Ads', type: 'link' },
+// { path: '/ads/updateads/:id', title: 'update Ads', type: 'link' },
 			]
 		},
 		{

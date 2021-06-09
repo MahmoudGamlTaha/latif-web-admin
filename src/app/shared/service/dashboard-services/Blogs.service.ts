@@ -53,6 +53,7 @@ export class BlogsService {
 
   createBlogList(blog) {
     console.log(blog);
+    let jsonbody=JSON.stringify(blog)
     return this._http.post<IblogList>(this._createblog,
       { blog },
       { headers: this.headers });
