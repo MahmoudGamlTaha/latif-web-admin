@@ -40,7 +40,7 @@ export class BlogsService {
 
     console.log(this.token)
 
-    return this._http.post(this._updateblogList + '?id=' + blogList.id + '&title=' + blogList.title + '&category=' + blogList.category +'&description=' + blogList.description + '&images=' + blogList.images + '&external=' + blogList.externalLink,
+    return this._http.post(this._updateblogList + '?id=' + blogList.id + '&title=' + blogList.title + '&category=' + blogList.category + '&description=' + blogList.description + '&images=' + blogList.images + '&external=' + blogList.externalLink,
       {},
       { headers: this.headers });
   }
@@ -61,7 +61,7 @@ export class BlogsService {
 
   // blog category URL
   _blogCategory = server.url + 'api/public/blogCategory';
-  _blogCategoryupdate = server.url + "api/public/blogCategory/update";
+  _updateblogCategory = server.url + "api/public/blogCategory/update";
   _deleteblogCategory = server.url + "api/public/blogCategory/delete?id="
   _createblogCategory = server.url + "api/public/blogCategory/create"
   _categoryTypeList = server.url + 'api/public/ads-type/list';
@@ -76,18 +76,18 @@ export class BlogsService {
   }
 
   updateblogCategory(blogCategory: Icategory) {
-    return this._http.post(this._blogCategoryupdate,
-      {blogCategory},
-      {headers:this.headers}).subscribe(data => {
-      console.log(data);
-    });
+    return this._http.post(this._updateblogCategory,
+      { blogCategory },
+      { headers: this.headers }).subscribe(data => {
+        console.log(data);
+      });
   }
 
   deleteblogCategory(blogCategoryId) {
     return this._http.post(this._deleteblogCategory + blogCategoryId,
       {},
-      {headers:this.headers}
-      ).subscribe(
+      { headers: this.headers }
+    ).subscribe(
       res => { console.log(res); },
     )
   }
