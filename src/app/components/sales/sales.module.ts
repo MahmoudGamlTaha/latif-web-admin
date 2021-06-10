@@ -7,14 +7,20 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SalesRoutingModule } from './sales-routing.module';
 import { TransactionsComponent } from './category/transactions.component';
 import { OrdersComponent } from './categoryList/orders.component';
+import { CreateCategoryComponent } from './create-category/create-category.component';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [OrdersComponent, TransactionsComponent],
+  declarations: [OrdersComponent, TransactionsComponent, CreateCategoryComponent],
   imports: [
     CommonModule,
     SalesRoutingModule,
     Ng2SmartTableModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    ReactiveFormsModule,
+    // FormGroup,
+    NgbModule,
   ]
 })
 export class SalesModule { }
