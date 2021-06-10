@@ -29,8 +29,8 @@ const routes: Routes = [
         path: 'create',
         component: CreateCategoryComponent,
         data: {
-          title: "create Type",
-          breadcrumb: "create Type"
+          title: "create Category",
+          breadcrumb: "create Category"
         }
       },
 

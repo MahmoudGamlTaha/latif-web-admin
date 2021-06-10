@@ -11,9 +11,9 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="validationCustom01">type</label>
-                                        <select class="form-control" (change)="getTypeList($event)"
+                                        <select class="form-control"
                                             formControlName='Type'>
-                                            <option  value="{{option.id}}" *ngFor="let option of typeList">
+                                            <option id="{{option.name}}"  value="{{option.id}}" *ngFor="let option of typeList">
                                                 {{option.name}}
                                             </option>
                                         </select>
@@ -22,13 +22,9 @@
 
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label for="validationCustom01">Category name</label>
-                                        <select class="form-control" formControlName='CategoryName'>
-                                            <option value={{option.category.name}} *ngFor="let option of categoryList"
-                                                data-list="option" class="dropdown-item">
-                                                {{option.category.name}}
-                                            </option>
-                                        </select>
+                                        <label for="validationCustom01">name</label>
+                                        <input type="text" formControlName='CategoryName' class="form-control">
+                                        
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -39,7 +35,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label for="validationCustom01">image</label>
+                                        <label for="validationCustom01">icon</label>
                                         <input type="text" class="form-control" formControlName='Icon' >
                                     </div>
                                 </div>

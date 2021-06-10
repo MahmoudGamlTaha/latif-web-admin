@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/shared/service/dashboard-services/category.service';
 
 @Component({
@@ -11,8 +12,7 @@ export class CreateCategoryComponent implements OnInit {
 
   public createForm: FormGroup;
   typeList
-  categoryList
-  constructor(private fb: FormBuilder,private categorySer:CategoryService) { 
+  constructor(private fb: FormBuilder,private categorySer:CategoryService,private route:Router) { 
 
     this.categorySer.getCategoryList().subscribe(
       (data:any)=>{
@@ -32,23 +32,26 @@ export class CreateCategoryComponent implements OnInit {
       External:[''],
       Active:[''],
     });
+  }
 
-  }
-  getTypeList(event){
-    console.log()
-    this.categorySer.getCategoryType(event.target.value).subscribe(
-      (data:any)=>{
-        this.categoryList=data.response.data
-      },(err)=>console.log("err",err)
-    )
-  }
 
   create(){
 
     if(!this.createForm.valid){return ;}
-    console.log(this.createForm.value)
+    console.log(this.createForm.value.Type)
+
     this.categorySer.createCategory(this.createForm.value).subscribe(
-      (data)=>{console.log(data)}
+      (data)=>{
+        
+        console.log(data)
+        this.typeList.filter((item)=>{
+          if(item.id==this.createForm.value.Type){
+            this.route.navigate(['sales/categorytype/',item.id,item.name])
+          }
+        })
+        
+
+      }
     )
   }
 }

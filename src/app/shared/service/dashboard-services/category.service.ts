@@ -19,7 +19,7 @@ export class CategoryService {
   headers
   constructor(private _http: HttpClient) { 
 
-     this.token = JSON.parse(localStorage.getItem('currentUser')) ;
+    this.token = JSON.parse(localStorage.getItem('currentUser')) ;
 
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -54,6 +54,7 @@ export class CategoryService {
       icon:data.Icon,
       icon_select:data.Icon_select,
       isExternalLink:data.External,
+      catParent:0,
     }
     const JSONbody=JSON.stringify(body)
     console.log(body)
