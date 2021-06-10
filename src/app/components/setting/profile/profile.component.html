@@ -5,8 +5,14 @@
             <div class="card">
                 <div class="card-body">
                     <div class="profile-details text-center">
-                        <img src="assets/images/dashboard/designer.jpg" alt=""
-                            class="img-fluid img-90 rounded-circle blur-up lazyloaded">
+                        <div *ngIf="avatar==null || avatar=='' ; else elseBlock">
+                            <img src="assets/images/dashboard/designer.jpg" alt=""
+                                class="img-fluid img-90 rounded-circle blur-up lazyloaded">
+                        </div>
+                        <ng-template #elseBlock>
+                            <img [src]="avatar" alt=""
+                                class="img-fluid img-90 rounded-circle blur-up lazyloaded">
+                        </ng-template>
                         <h5 class="f-w-600 mb-0">{{firstName}} {{lastName}}</h5>
                         <span>{{email}}</span>
                         <!-- <div class="social">
