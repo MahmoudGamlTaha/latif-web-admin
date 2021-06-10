@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ListMenuComponent } from './list-menu/list-menu.component';
+import { ListMenuComponent } from './reportsXD/list-menu.component';
 import { CreateMenuComponent } from './create-menu/create-menu.component';
 
 const routes: Routes = [

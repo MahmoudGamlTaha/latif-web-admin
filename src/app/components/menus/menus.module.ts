@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { MenusRoutingModule } from './menus-routing.module';
-import { ListMenuComponent } from './list-menu/list-menu.component';
+import { ListMenuComponent } from './reportsXD/list-menu.component';
 import { CreateMenuComponent } from './create-menu/create-menu.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 

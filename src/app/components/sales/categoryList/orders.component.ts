@@ -11,7 +11,7 @@ import { orderDB } from "../../../shared/tables/order-list";
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-  public order;
+  public categoryList;
   public temp = [];
   categoryId;
   typeName;
@@ -34,7 +34,7 @@ export class OrdersComponent implements OnInit {
   //   this.table.offset = 0;
   // }
 
-  onSelect(event){
+  onRowSelect(event){
 // alert(event)
 
 if(event.type == 'click') {
@@ -47,7 +47,7 @@ if(event.type == 'click') {
 
     this.categorySer.getCategoryList().subscribe((data:any)=>{
       console.log(data)
-      this.order=data.response.data;
+      this.categoryList=data.response.data;
 
     })
   }

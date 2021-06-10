@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ListCouponComponent } from './list-coupon/list-coupon.component';
-import { CreateCouponComponent } from './create-coupon/create-coupon.component';
+import { CreateCouponComponent } from './updateXD/create-coupon.component';
+import { ListCouponComponent } from './XDList/list-coupon.component';
 
 const routes: Routes = [
   {

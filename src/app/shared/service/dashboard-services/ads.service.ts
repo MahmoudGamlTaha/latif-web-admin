@@ -12,28 +12,31 @@ import { adsFilter } from '../../models/adsFilter';
 export class AdsService {
 
   _getAdsList = server.url + 'api/public/ads/nearest';
-  _getAdsType = server.url +'api/public/ads-type/list';
-  _getAdsByIdType = server.url +'api/public/ads/ad-by-Id?id=';
-  _changeStateOfAds = server.url +'api/public/ads/adActivation?';
+  _getAdsType = server.url + 'api/public/ads-type/list';
+  _getAdsByIdType = server.url + 'api/public/ads/ad-by-Id?id=';
+  _changeStateOfAds = server.url + 'api/public/ads/adActivation?';
+  token;
+  headers;
+  constructor(private _http: HttpClient) {
 
-  constructor(private _http: HttpClient) { }
-
-  changeStateOfAds(adsId,status){
-    const body={
-      id : adsId,
-      activate : status,
-     
-      
-    }
-    let jsonBody=JSON.stringify(body);
-    let token= JSON.parse(localStorage.getItem('currentUser'))
-    const headers= new HttpHeaders({
+    this.token = JSON.parse(localStorage.getItem('currentUser'))
+    this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `${token}`
-
+      'Authorization': `${this.token}`
     })
-    console.log(token," hh",jsonBody)
-    return this._http.post(this._changeStateOfAds+'activate='+status+'&'+'id='+adsId,{},{headers:headers})}
+  }
+
+  changeStateOfAds(adsId, status) {
+    const body = {
+      id: adsId,
+      activate: status,
+    }
+
+    console.log(this.token, " $$ ", body)
+    return this._http.post(this._changeStateOfAds + 'activate=' + status + '&' + 'id=' + adsId,
+      {},
+      { headers: this.headers })
+  }
 
 
 

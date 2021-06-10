@@ -14,22 +14,22 @@ export class CategoryService {
   _getcategoryList = server.url + 'api/public/ads-type/list'
   _getCategoryType = server.url + 'api/public/cat-by-adType/type='
 
-  constructor(private _http:HttpClient) {  }
+  constructor(private _http: HttpClient) { }
 
-  getCategoryList():Observable<Icategory[]>{
+  getCategoryList(): Observable<Icategory[]> {
 
-  
+
     return this._http.get<Icategory[]>(this._getcategoryList);
   }
 
-  getCategoryType(idType):Observable<Icategory[]>{
-console.log(this._getCategoryType+idType)
-    return this._http.get<Icategory[]>(this._getCategoryType+idType)
-    .pipe(
-      catchError((err) => {
-        return throwError(err.message || 'server issue ');
-      })
-    );
+  getCategoryType(idType): Observable<Icategory[]> {
+    console.log(this._getCategoryType + idType)
+    return this._http.get<Icategory[]>(this._getCategoryType + idType)
+      .pipe(
+        catchError((err) => {
+          return throwError(err.message || 'server issue ');
+        })
+      );
   }
 
 

@@ -48,7 +48,7 @@ export class CategoryComponent implements OnInit {
       cancelButtonContent: 'cancel'
     },
     add: {
-      confirmCreate: true,
+      confirmCreate: false,
     },
     edit: {
       confirmSave: true,

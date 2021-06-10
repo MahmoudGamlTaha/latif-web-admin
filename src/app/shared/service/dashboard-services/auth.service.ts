@@ -27,7 +27,7 @@ import { Token } from '../../data/Token';
 
 export class AuthService {
   public headers: HttpHeaders;
-  public auth_token:any
+  public auth_token: any
   /**
    * test login {
       "mobile":"01020187068",
@@ -37,7 +37,8 @@ export class AuthService {
   _authLogin = server.url + "login"
   _authregister = server.url + "api/public/account/registration"
 
-  constructor(private _http: HttpClient, private router: ActivatedRoute,private route:Router) {
+  constructor(private _http: HttpClient, private router: ActivatedRoute,
+    private route: Router) {
 
   }
 
@@ -48,33 +49,33 @@ export class AuthService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.auth_token}`
     })
-    
-    const JSONbody=JSON.stringify(body);
+
+    const JSONbody = JSON.stringify(body);
 
 
-      
+
     console.log("service", data)
 
     return this._http.post<any>(this._authLogin, JSONbody, {
       headers: headers,
     }).subscribe((res) => {
-      
 
-        console.log(res)
-        this.auth_token=res.Authorization;
-        Token.myToken = this.auth_token;
-        Token.bearer =  'Bearer ';
-        console.log("this.auth_token",this.auth_token)
 
-      headers.append('Authorization',JSON.stringify(this.auth_token))
-      localStorage.setItem('currentUser', JSON.stringify(Token.bearer+Token.myToken));
+      console.log(res)
+      this.auth_token = res.Authorization;
+      Token.myToken = this.auth_token;
+      Token.bearer = 'Bearer ';
+      console.log("this.auth_token", this.auth_token)
+
+      headers.append('Authorization', JSON.stringify(this.auth_token))
+      localStorage.setItem('currentUser', JSON.stringify(Token.bearer + Token.myToken));
       this.route.navigate(['dashboard/default'])
-      
-      
+
+
     }
-      
-      );
-}
+
+    );
+  }
   signUpUser(data: any): Observable<any> {
     // const headers = new Headers({
     //   'Content-Type': 'application/json',
