@@ -13,8 +13,20 @@ export class CategoryService {
 
   _getcategoryList = server.url + 'api/public/ads-type/list'
   _getCategoryType = server.url + 'api/public/cat-by-adType/type='
+  _createCategory = server.url + 'api/public/category/create'
 
-  constructor(private _http: HttpClient) { }
+  token
+  headers
+  constructor(private _http: HttpClient) { 
+
+     this.token = JSON.parse(localStorage.getItem('currentUser')) ;
+
+    this.headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    })
+
+  }
 
   getCategoryList(): Observable<Icategory[]> {
 
@@ -32,6 +44,25 @@ export class CategoryService {
       );
   }
 
+  createCategory(data){
 
+    const body={
+      name:data.CategoryName,
+      nameAr:data.NameAr,
+      type:data.Type,
+      active:data.Active,
+      icon:data.Icon,
+      icon_select:data.Icon_select,
+      isExternalLink:data.External,
+    }
+    const JSONbody=JSON.stringify(body)
+    console.log(body)
+    return this._http.post(this._createCategory,JSONbody,{
+      headers:this.headers
+    })
+    // .subscribe(
+    //   (data)=>{console.log(data)},(err)=>{console.log("err",err)}
+    // )
+  }
 
 }

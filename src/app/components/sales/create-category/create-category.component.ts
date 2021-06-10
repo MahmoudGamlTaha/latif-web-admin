@@ -12,9 +12,13 @@ export class CreateCategoryComponent implements OnInit {
   public createForm: FormGroup;
   typeList
   categoryList
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder,private categorySer:CategoryService) { 
 
-    
+    this.categorySer.getCategoryList().subscribe(
+      (data:any)=>{
+        this.typeList=data.response.data
+      },(err)=>console.log("err",err)
+    )
 
   }
   ngOnInit(): void {
@@ -30,5 +34,21 @@ export class CreateCategoryComponent implements OnInit {
     });
 
   }
-  getTypeList(event){}
+  getTypeList(event){
+    console.log()
+    this.categorySer.getCategoryType(event.target.value).subscribe(
+      (data:any)=>{
+        this.categoryList=data.response.data
+      },(err)=>console.log("err",err)
+    )
+  }
+
+  create(){
+
+    if(!this.createForm.valid){return ;}
+    console.log(this.createForm.value)
+    this.categorySer.createCategory(this.createForm.value).subscribe(
+      (data)=>{console.log(data)}
+    )
+  }
 }

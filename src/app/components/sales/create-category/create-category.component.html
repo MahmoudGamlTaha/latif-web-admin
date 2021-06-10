@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-header">
                     <h5>Create category</h5>
-                    <form  [formGroup]="createForm" class="needs-validation" novalidate="">
+                    <form  [formGroup]="createForm" (ngSubmit)="create()" class="needs-validation" novalidate="">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-4">
