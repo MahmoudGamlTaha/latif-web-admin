@@ -1,0 +1,77 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Create category</h5>
+                    <form  [formGroup]="createForm" class="needs-validation" novalidate="">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">type</label>
+                                        <select class="form-control" (change)="getTypeList($event)"
+                                            formControlName='Type'>
+                                            <option  value="{{option.id}}" *ngFor="let option of typeList">
+                                                {{option.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">Category name</label>
+                                        <select class="form-control" formControlName='CategoryName'>
+                                            <option value={{option.category.name}} *ngFor="let option of categoryList"
+                                                data-list="option" class="dropdown-item">
+                                                {{option.category.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">Name Ar</label>
+                                        <input type="text" class="form-control" formControlName='NameAr'>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">image</label>
+                                        <input type="text" class="form-control" formControlName='Icon' >
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">Icon_select</label>
+                                        <input type="text" class="form-control" formControlName='Icon_select' >
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">external</label><br>
+                                        <label class="switch"><input type="checkbox" formControlName='External'>
+                                            <span class="slider round"></span></label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">active</label><br>
+                                        <label class="switch"><input type="checkbox" formControlName='Active'>
+                                            <span class="slider round"></span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
