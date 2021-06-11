@@ -8,9 +8,12 @@ import { Token } from '../../data/Token';
   providedIn: 'root'
 })
 export class ReportsAdsService {
+
   token
   headers
-    _getAllReportedAds = server.url + "api/public/reportedAds/reportedAds/"
+
+  _getAllReportedAds = server.url + "api/public/reportedAds/reportedAds/"
+  _getReasonOfReportedAds = server.url + "api/public/reasons"
 
   constructor(private _http: HttpClient) {
     this.token = Token.bearer + Token.myToken;
@@ -24,4 +27,10 @@ export class ReportsAdsService {
 
     console.log("URL", this._getAllReportedAds + this.token)
   }
+
+  getReasonOfReportedAds(){
+    return this._http.get<any[]>(this._getReasonOfReportedAds, { headers: this.headers });
+
+  }
+
 }

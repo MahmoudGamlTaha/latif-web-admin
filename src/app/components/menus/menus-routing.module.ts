@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListMenuComponent } from './reportsXD/list-menu.component';
-import { CreateMenuComponent } from './create-menu/create-menu.component';
+import { CreateMenuComponent } from './reportsReasons/create-menu.component';
 
 const routes: Routes = [
   {
@@ -16,11 +16,11 @@ const routes: Routes = [
         }
       },
       {
-        path: 'create-menu',
+        path: 'reports-reasons',
         component: CreateMenuComponent,
         data: {
-          title: "Create Menu",
-          breadcrumb: "Create Menu"
+          title: "reports Reasons",
+          breadcrumb: "reports Reasons"
         }
       }
     ]
