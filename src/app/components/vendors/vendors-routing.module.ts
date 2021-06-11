@@ -1,27 +1,27 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListVendorsComponent } from './list-vendors/list-vendors.component';
-import { CreateVendorsComponent } from './create-vendors/create-vendors.component';
+import { CreateVendorsComponent } from './policy/create-vendors.component';
 
 
 const routes: Routes = [
   {
     path: '',
     children: [
+      // {
+      //   path: 'list-vendors',
+      //   component: ListVendorsComponent,
+      //   data: {
+      //     title: "Vendor List",
+      //     breadcrumb: "Vendor List"
+      //   }
+      // },
       {
-        path: 'list-vendors',
-        component: ListVendorsComponent,
-        data: {
-          title: "Vendor List",
-          breadcrumb: "Vendor List"
-        }
-      },
-      {
-        path: 'create-vendors',
+        path: 'policy',
         component: CreateVendorsComponent,
         data: {
-          title: "Create Vendor",
-          breadcrumb: "Create Vendor"
+          title: "policy",
+          breadcrumb: "policy"
         }
       }
     ]

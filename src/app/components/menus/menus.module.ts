@@ -5,7 +5,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { MenusRoutingModule } from './menus-routing.module';
 import { ListMenuComponent } from './reportsXD/list-menu.component';
-import { CreateMenuComponent } from './create-menu/create-menu.component';
+import { CreateMenuComponent } from './reportsReasons/create-menu.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 @NgModule({
@@ -13,8 +13,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
   imports: [
     CommonModule,
     MenusRoutingModule,
-    NgxDatatableModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,
+
   ]
 })
 export class MenusModule { }

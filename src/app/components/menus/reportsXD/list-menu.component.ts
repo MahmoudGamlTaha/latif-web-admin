@@ -41,6 +41,7 @@ export class ListMenuComponent implements OnInit {
     },
     actions: {
       position: 'right',
+      edit : false,
     },
 
       columns: {
