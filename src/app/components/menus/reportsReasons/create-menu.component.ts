@@ -9,6 +9,7 @@ import { ReportsAdsService } from 'src/app/shared/service/dashboard-services/rep
 export class CreateMenuComponent implements OnInit {
 
   reportsReasonsList;
+  id
   constructor(private reportsSer: ReportsAdsService) {
 
     this.reportsSer.getReasonOfReportedAds().subscribe(
@@ -24,12 +25,25 @@ export class CreateMenuComponent implements OnInit {
     add:false,
     edit:false,
   },
+  delete: {
+    confirmDelete: true,
+    deleteButtonContent: 'Delete data',
+    saveButtonContent: 'save',
+    cancelButtonContent: 'cancel',
+  },
   pager:{
     display:true,
   },
   columns: {
     id:{
     title:"id",
+    type:"html",
+    valuePrepareFunction:(cell,row)=>{
+      
+      return '<a href="#/reports/update-reasons/'+row.id+'/'+row.value+'" style="cursor: pointer" value="'+row.id+'" >'+row.id+'</a>';
+
+    } 
+
   },
   value:{
     title : "value"
@@ -39,4 +53,15 @@ export class CreateMenuComponent implements OnInit {
   ngOnInit() {
   }
 
+  onDeleteConfirm(event){
+
+    console.log("id",event.data.id)
+  
+    this.reportsSer.deleteReasonOfReportedAds(event.data.id)
+      .subscribe((data: any) => {
+        console.log(data)
+      }, (err) => {
+        console.log("err", err)
+      })
+  }
 }

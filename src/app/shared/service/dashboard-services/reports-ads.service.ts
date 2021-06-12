@@ -14,6 +14,9 @@ export class ReportsAdsService {
 
   _getAllReportedAds = server.url + "api/public/reportedAds/reportedAds/"
   _getReasonOfReportedAds = server.url + "api/public/reasons"
+  _createReasonOfReportedAds = server.url + "api/public/reasons/create?reason=" //reason 
+  _updateReasonOfReportedAds = server.url + "api/public/reasons/update?"//id  reason 
+  _deleteReasonOfReportedAds = server.url + "api/public/reasons/remove?id="//id 
 
   constructor(private _http: HttpClient) {
     this.token = Token.bearer + Token.myToken;
@@ -28,9 +31,25 @@ export class ReportsAdsService {
     console.log("URL", this._getAllReportedAds + this.token)
   }
 
-  getReasonOfReportedAds(){
+  getReasonOfReportedAds() {
     return this._http.get<any[]>(this._getReasonOfReportedAds, { headers: this.headers });
 
   }
 
+  createReasonOfReportedAds(data) {
+    console.log(data)
+    return this._http.post<any[]>(this._createReasonOfReportedAds + data.Reason, {}, { headers: this.headers });
+  }
+  updateReasonOfReportedAds(data) {
+    console.log(data)
+
+    return this._http.post<any[]>(this._updateReasonOfReportedAds + 'id=' + data.Id + '&reason=' + data.Reason, {}, { headers: this.headers });
+
+  }
+  deleteReasonOfReportedAds(reasonId) {
+    console.log(reasonId)
+
+    return this._http.post<any[]>(this._deleteReasonOfReportedAds + reasonId, {}, { headers: this.headers });
+
+  }
 }

@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>update Ads</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="createForm" (ngSubmit)="create()" class="needs-validation" novalidate="">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h3>update reason</h3>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">reason</label>
+                                    <input formControlName="Reason" type="text" class="form-control"
+                                        placeholder="reason"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary">create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
