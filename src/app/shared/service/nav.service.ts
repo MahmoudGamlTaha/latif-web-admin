@@ -95,6 +95,9 @@ export class NavService {
 			title: 'Reports Ad', icon: 'align-left', type: 'sub', active: false, children: [
 				{ path: '/reports/list-menu', title: 'All Reports', type: 'link' },
 				{ path: '/reports/reports-reasons', title: 'reports Reasons', type: 'link' },
+				{ path: '/reports/create-reasons', title: 'create Reasons', type: 'link' },
+				{ path: '/reports/update-reasons/:id/:reason', title: 'update Reasons', type: 'link' },
+
 			]
 		},
 		// {

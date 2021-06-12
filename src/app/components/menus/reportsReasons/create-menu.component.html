@@ -7,7 +7,7 @@
                     <h5>reports Reasons</h5>
                 </div>
                 <div class="card-body">
-                    <ng2-smart-table [settings]="settings"                                 [source]="reportsReasonsList" >
+                    <ng2-smart-table [settings]="settings"  (deleteConfirm)="onDeleteConfirm($event)"                               [source]="reportsReasonsList" >
 
                     </ng2-smart-table>
                 </div>
