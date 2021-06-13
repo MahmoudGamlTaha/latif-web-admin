@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ViewCell } from 'ng2-smart-table';
-import { AdsService } from 'src/app/shared/service/dashboard-services/ads.service';
+import { UsersService } from 'src/app/shared/service/dashboard-services/users.service';
+
 @Component({
   selector: 'app-status',
   templateUrl: './status.component.html',
@@ -15,15 +16,10 @@ export class StatusComponent implements ViewCell, OnInit {
 
   @Output() save: EventEmitter<any> = new EventEmitter();
 
-  constructor(private adsSer: AdsService) { }
 
-  onClick(event) {
 
-    console.log(event.target.checked)
-    this.adsSer.changeStateOfAds(event.target.id, event.target.checked).subscribe(res=> console.log("success"))
-    this.save.emit(this.rowData);
-    console.log(event.target.id)
-  }
+  constructor(private userSer:UsersService) { }
+
   ngOnInit(): void {
     this.renderValue = this.value
 
@@ -32,5 +28,13 @@ export class StatusComponent implements ViewCell, OnInit {
 
     console.log("child2", this.idValue)
   }
+  onClick(event) {
 
+    console.log(event.target.checked)
+    this.userSer.activate(event.target.id, event.target.checked).subscribe(
+      res=> console.log("success")
+      )
+    this.save.emit(this.rowData);
+    console.log(event.target.id)
+  }
 }
