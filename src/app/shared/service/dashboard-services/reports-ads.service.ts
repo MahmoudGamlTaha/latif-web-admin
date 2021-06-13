@@ -12,7 +12,7 @@ export class ReportsAdsService {
   token
   headers
 
-  _getAllReportedAds = server.url + "api/public/reportedAds/reportedAds/"
+  _getAllReportedAds = server.url + "api/public/reportedAds/reported-ads/"
   _getReasonOfReportedAds = server.url + "api/public/reasons"
   _createReasonOfReportedAds = server.url + "api/public/reasons/create?reason=" //reason 
   _updateReasonOfReportedAds = server.url + "api/public/reasons/update?"//id  reason 

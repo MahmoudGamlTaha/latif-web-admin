@@ -47,7 +47,7 @@ export class ListMenuComponent implements OnInit {
       columns: {
 
       'user.id': {
-        title: 'reported id',
+        title: 'user id',
         valuePrepareFunction: (cell, row) => {
           return row.user.id;
         },
@@ -85,7 +85,7 @@ export class ListMenuComponent implements OnInit {
         type:"html",
 
         valuePrepareFunction:(cell,row)=>{
-          return '<a href="/ads/updateads/'+row.ad.id+'" style="cursor: pointer" id="'+row.ad.id+'">'+row.ad.id+'</a>';
+          return '<a href="#/ads/updateads/'+row.ad.id+'" style="cursor: pointer" id="'+row.ad.id+'">'+row.ad.id+'</a>';
         } 
 },
       "ad.city": {
