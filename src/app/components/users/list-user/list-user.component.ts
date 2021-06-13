@@ -43,7 +43,7 @@ export class ListUserComponent implements OnInit {
       username: {
         title: 'username'
       },
-      state: {
+      active: {
         title: 'Active',
         type: 'custom',
         filter: false,
