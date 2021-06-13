@@ -21,7 +21,8 @@ export class CreateReasonComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm=this.fb.group({
-      Reason:[]
+      Reason:[],
+      ReasonAr:[],
     })
   }
 

@@ -7,11 +7,54 @@
                     <h5> POLICY</h5>
                 </div>
                 <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="validationCustom0" style="font-size: medium;">
+                                    id </label>
+                                <input class="form-control" id="validationCustom0" type="text" [value]="policyData.id" disabled>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="validationCustom0" style="font-size: medium;">
+                                    type </label>
+                                <input class="form-control" id="validationCustom0" type="text" [value]="policyData.type" disabled>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="validationCustom0" style="font-size: medium;">
+                                    description </label>
+                                <input class="form-control" id="validationCustom0" type="text" [value]="policyData.description" disabled>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="validationCustom0" style="font-size: medium;">
+                                    descriptionAr </label>
+                                <input class="form-control" id="validationCustom0" type="text" [value]="policyData.descriptionAr" disabled>
+                            </div>
+                        </div>
 
-                    <label  for="validationCustom0" class="col-xl-3 col-md-4" style="color:rgba(255, 0, 0, 0.52);font-size: medium;">
-                        POLICY </label>
-                    <input class="form-control col-xl-8 col-md-7" id="validationCustom0"
-                        type="text" [value]="policyData">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="validationCustom0" style="font-size: medium;">
+                                    updatedAt </label>
+                                <input class="form-control" id="validationCustom0" type="text" [value]="policyData.updatedAt" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="validationCustom0" style="font-size: medium;">
+                                    createdAt </label>
+                                <input class="form-control" id="validationCustom0" type="text" [value]="policyData.createdAt" disabled>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- <ngb-tabset class="tab-coupon">
                         <ngb-tab title="Account">
                             <ng-template ngbTabContent>

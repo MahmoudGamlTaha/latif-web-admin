@@ -13,11 +13,13 @@ export class UpdateReasonComponent implements OnInit {
   updateForm: FormGroup
   reasonId
   reason
-
+  reasonar
   constructor(private fb: FormBuilder, private reportSer: ReportsAdsService
     ,private router:ActivatedRoute,private route:Router) {
     this.reasonId=this.router.snapshot.paramMap.get("id")
     this.reason=this.router.snapshot.paramMap.get("reason")
+    this.reasonar=this.router.snapshot.paramMap.get("reasonAr")
+
     console.log(this.reason,this.reasonId)
 
   }
@@ -25,7 +27,8 @@ export class UpdateReasonComponent implements OnInit {
   ngOnInit(): void {
     this.updateForm = this.fb.group({
       Id: [this.reasonId],
-      Reason: [this.reason]
+      Reason: [this.reason],
+      ReasonAr: [this.reasonar],
     })
   }
 
