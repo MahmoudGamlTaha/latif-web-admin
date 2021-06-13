@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>update reason</h5>
+                </div>
+                <div class="card-body"> 
+                    <form [formGroup]="updateForm" (ngSubmit)="update()" class="needs-validation" novalidate="">
+                        <div class="row">
+                            <div class="col-sm-12">
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">id</label>
+                                    <input formControlName="Id" type="text" class="form-control" disabled
+                                        placeholder="id" [value]="reasonId" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">reason</label>
+                                    <input formControlName="Reason" type="text" class="form-control"
+                                        placeholder="reason" [value]="reason" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">reason Ar</label>
+                                    <input formControlName="ReasonAr" type="text" class="form-control"
+                                        placeholder="reason Ar" [value]="reasonar" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary">update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

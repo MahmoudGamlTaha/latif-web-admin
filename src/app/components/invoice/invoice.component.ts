@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from 'src/app/shared/service/dashboard-services/users.service';
 import { invoiceDB } from '../../shared/tables/invoice';
 
 @Component({
@@ -8,10 +9,9 @@ import { invoiceDB } from '../../shared/tables/invoice';
 })
 export class InvoiceComponent implements OnInit {
 
-  public invoice = []
+  public activateList = []
 
-  constructor() {
-    this.invoice = invoiceDB.data;
+  constructor( ) {
   }
 
   public settings = {

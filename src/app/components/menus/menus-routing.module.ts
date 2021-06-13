@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListMenuComponent } from './reportsXD/list-menu.component';
-import { CreateMenuComponent } from './create-menu/create-menu.component';
+import { CreateMenuComponent } from './reportsReasons/create-menu.component';
+import { CreateReasonComponent } from './create-reason/create-reason.component';
+import { UpdateReasonComponent } from './update-reason/update-reason.component';
 
 const routes: Routes = [
   {
@@ -16,11 +18,27 @@ const routes: Routes = [
         }
       },
       {
-        path: 'create-menu',
+        path: 'reports-reasons',
         component: CreateMenuComponent,
         data: {
-          title: "Create Menu",
-          breadcrumb: "Create Menu"
+          title: "reports Reasons",
+          breadcrumb: "reports Reasons"
+        }
+      },
+      {
+        path: 'create-reasons',
+        component: CreateReasonComponent,
+        data: {
+          title: "create Reasons",
+          breadcrumb: "create Reasons"
+        }
+      },
+      {
+        path: 'update-reasons/:id/:reason/:reasonAr',
+        component: UpdateReasonComponent,
+        data: {
+          title: "update Reasons",
+          breadcrumb: "update Reasons"
         }
       }
     ]

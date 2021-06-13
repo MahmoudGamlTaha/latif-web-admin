@@ -13,7 +13,7 @@ export const content: Routes = [
     }
   },
   {
-    path: 'sales',
+    path: 'category',
     loadChildren: () => import('../../components/sales/sales.module').then(m => m.SalesModule),
     data: {
       breadcrumb: "category"
@@ -38,10 +38,10 @@ export const content: Routes = [
     loadChildren: () => import('../../components/media/media.module').then(m => m.MediaModule),
   },
   {
-    path: 'menus',
+    path: 'reports',
     loadChildren: () => import('../../components/menus/menus.module').then(m => m.MenusModule),
     data: {
-      breadcrumb: "Menus"
+      breadcrumb: "Reports"
     }
   },
   {
@@ -52,10 +52,10 @@ export const content: Routes = [
     }
   },
   {
-    path: 'vendors',
+    path: 'configuration',
     loadChildren: () => import('../../components/vendors/vendors.module').then(m => m.VendorsModule),
     data: {
-      breadcrumb: "Vendors"
+      breadcrumb: "configuration"
     }
   },
   {

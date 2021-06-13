@@ -66,9 +66,9 @@ export class NavService {
 		},
 		{
 			title: 'category', icon: 'list', type: 'sub', active: false, children: [
-				{ path: '/sales/categorylist', title: 'Category list', type: 'link' },
-				// { path: '/sales/categorytype/:id/:typeName', title: 'Category type', type: 'link' },
-				{ path: '/sales/create', title: 'create Category', type: 'link' },
+				{ path: '/category/category-list', title: 'Category list', type: 'link' },
+				// { path: '/category/categorytype/:id/:typeName', title: 'Category type', type: 'link' },
+				{ path: '/category/create', title: 'create Category', type: 'link' },
 
 			]
 		},
@@ -93,22 +93,25 @@ export class NavService {
 		
 		{
 			title: 'Reports Ad', icon: 'align-left', type: 'sub', active: false, children: [
-				{ path: '/menus/list-menu', title: 'All Reports', type: 'link' },
-				{ path: '/menus/create-menu', title: 'Create Menu', type: 'link' },
+				{ path: '/reports/list-menu', title: 'All Reports', type: 'link' },
+				{ path: '/reports/reports-reasons', title: 'reports Reasons', type: 'link' },
+				{ path: '/reports/create-reasons', title: 'create Reasons', type: 'link' },
+				{ path: '/reports/update-reasons/:id/:reason/:reasonAr', title: 'update Reasons', type: 'link' },
+
 			]
 		},
-		// {
-		// 	title: 'Users', icon: 'user-plus', type: 'sub', active: false, children: [
-		// 		{ path: '/users/list-user', title: 'User List', type: 'link' },
-		// 		{ path: '/users/create-user', title: 'Create User', type: 'link' },
-		// 	]
-		// },
-		// {
-		// 	title: 'Vendors', icon: 'users', type: 'sub', active: false, children: [
-		// 		{ path: '/vendors/list-vendors', title: 'Vendor List', type: 'link' },
-		// 		{ path: '/vendors/create-vendors', title: 'Create Vendor', type: 'link' },
-		// 	]
-		// },
+		{
+			title: 'Users', icon: 'user-plus', type: 'sub', active: false, children: [
+				{ path: '/users/list-user', title: 'User List', type: 'link' },
+				// { path: '/users/create-user', title: 'Create User', type: 'link' },
+			]
+		},
+		{
+			title: 'configuration', icon: 'users', type: 'sub', active: false, children: [
+				// { path: '/configuration/list-vendors', title: 'Vendor List', type: 'link' },
+				{ path: '/configuration/policy', title: 'policy', type: 'link' },
+			]
+		},
 		// {
 		// 	title: 'Localization', icon: 'chrome', type: 'sub', children: [
 		// 		{ path: '/localization/translations', title: 'Translations', type: 'link' },
@@ -122,9 +125,9 @@ export class NavService {
 		// 		{ path: '/settings/profile', title: 'Profile', type: 'link' },
 		// 	]
 		// },
-		// {
-		// 	title: 'Invoice', path: '/invoice', icon: 'archive', type: 'link', active: false
-		// },
+		{
+			// title: 'activate user', path: '/invoice', icon: 'archive', type: 'link', active: false
+		},
 		{
 			title: 'Login',path: '/auth/login', icon: 'log-in', type: 'link', active: false
 		}
