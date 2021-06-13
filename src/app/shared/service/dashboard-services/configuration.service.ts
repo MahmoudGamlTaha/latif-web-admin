@@ -7,7 +7,7 @@ import { server } from 'src/environments/environment';
 })
 export class ConfigurationService {
 
-  _getPolicy=server.url + 'api/public/policy'
+  _getPolicy=server.url + 'api/public/policies'
   constructor(private _http:HttpClient) { }
 
   getPolicy(){

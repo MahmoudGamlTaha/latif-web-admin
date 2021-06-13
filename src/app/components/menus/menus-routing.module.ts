@@ -34,7 +34,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'update-reasons/:id/:reason',
+        path: 'update-reasons/:id/:reason/:reasonAr',
         component: UpdateReasonComponent,
         data: {
           title: "update Reasons",

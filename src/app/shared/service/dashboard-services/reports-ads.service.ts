@@ -38,12 +38,12 @@ export class ReportsAdsService {
 
   createReasonOfReportedAds(data) {
     console.log(data)
-    return this._http.post<any[]>(this._createReasonOfReportedAds + data.Reason, {}, { headers: this.headers });
+    return this._http.post<any[]>(this._createReasonOfReportedAds + data.Reason+'&valueAr='+data.ReasonAr, {}, { headers: this.headers });
   }
   updateReasonOfReportedAds(data) {
     console.log(data)
 
-    return this._http.post<any[]>(this._updateReasonOfReportedAds + 'id=' + data.Id + '&reason=' + data.Reason, {}, { headers: this.headers });
+    return this._http.post<any[]>(this._updateReasonOfReportedAds + 'id=' + data.Id + '&reason=' + data.Reason+ '&reasonAr=' + data.ReasonAr, {}, { headers: this.headers });
 
   }
   deleteReasonOfReportedAds(reasonId) {
