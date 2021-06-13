@@ -100,12 +100,12 @@ export class NavService {
 
 			]
 		},
-		// {
-		// 	title: 'Users', icon: 'user-plus', type: 'sub', active: false, children: [
-		// 		{ path: '/users/list-user', title: 'User List', type: 'link' },
-		// 		{ path: '/users/create-user', title: 'Create User', type: 'link' },
-		// 	]
-		// },
+		{
+			title: 'Users', icon: 'user-plus', type: 'sub', active: false, children: [
+				{ path: '/users/list-user', title: 'User List', type: 'link' },
+				// { path: '/users/create-user', title: 'Create User', type: 'link' },
+			]
+		},
 		{
 			title: 'configuration', icon: 'users', type: 'sub', active: false, children: [
 				// { path: '/configuration/list-vendors', title: 'Vendor List', type: 'link' },
@@ -125,9 +125,9 @@ export class NavService {
 		// 		{ path: '/settings/profile', title: 'Profile', type: 'link' },
 		// 	]
 		// },
-		// {
-		// 	title: 'Invoice', path: '/invoice', icon: 'archive', type: 'link', active: false
-		// },
+		{
+			// title: 'activate user', path: '/invoice', icon: 'archive', type: 'link', active: false
+		},
 		{
 			title: 'Login',path: '/auth/login', icon: 'log-in', type: 'link', active: false
 		}
