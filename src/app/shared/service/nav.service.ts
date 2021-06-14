@@ -82,8 +82,24 @@ export class NavService {
 			title: 'subscription', path: '/subscription', icon: 'camera', type: 'link', active: false
 		},
 		{
-			title: 'role', path: '/role', icon: 'user', type: 'link', active: false
+			title: 'role', icon: 'user', type: 'sub', active: false, children: [
+				{ title: 'role List', path: '/role', icon: 'user', type: 'link'},
+				{
+					title: 'assignUserPermission', icon: 'user', type: 'sub', active: false, children: [
+						// { title: 'assign User Permission List', path: '/assign-User-Permission', icon: 'user', type: 'link'},
+						{ title: 'create per', path: '/role/create-a-user', icon: 'user', type: 'link'},
+						// { title: 'role List', path: '/role', icon: 'user', type: 'link'},
+				]
+			},
+			{
+				title: 'userPermission', icon: 'user', type: 'sub', active: false, children: [
+					// { title: 'user Permission List', path: '/user-ermission', icon: 'user', type: 'link'},
+					// { title: 'role List', path: '/role', icon: 'user', type: 'link'},
+					// { title: 'role List', path: '/role', icon: 'user', type: 'link'},
+			]
 		},
+		]
+	},
 		// {
 		// 	title: 'Pages', icon: 'clipboard', type: 'sub', active: false, children: [
 		// 		{ path: '/pages/list-page', title: 'List Page', type: 'link' },
