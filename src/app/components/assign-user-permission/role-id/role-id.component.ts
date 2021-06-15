@@ -10,36 +10,45 @@ import { RoleService } from 'src/app/shared/service/dashboard-services/role.serv
 export class RoleIdComponent implements OnInit {
   public roleIdList = [];
   roleId ;
+  roleName;
   constructor(private RoleSer:RoleService,private router:ActivatedRoute) {
   this.roleId=router.snapshot.paramMap.get('id')
   }
 
 
   public settings = {
-    actions: {
-      position: 'right'
-    },
+    actions: false,
     columns: {
       id: {
         title: 'id',
       },
-      // name: {
-      //   title: 'name',
+      name: {
+        title: 'name',
 
-      // },
-      // permissions: {
-      //   title: 'permissions'
-      // },
-      // created_at: {
-      //   title: 'created_at'
-      // }
+      },
+      httpMethod: {
+        title: 'httpMethod',
+      // valuePrepareFunction: (cell, row) => {return row.permissions;}
+    },
+      httpPath: {
+      title: 'httpPath',
+  },
+
+      created_at: {
+        title: 'created_at'
+      },
+      updated_at: {
+        title: 'created_at'
+      },
+
     },
   };
 
   ngOnInit() {
     this.RoleSer.getByRoleId(this.roleId).subscribe(
       (data: any) => {
-        this.roleIdList = data.response.data;
+        this.roleName = data.response.data.name;
+        this.roleIdList = data.response.data.permissions;
         console.log("data",this.roleIdList)
         console.log(data.response.data)
 
