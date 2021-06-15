@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Role Id List</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="createform" (ngSubmit)="create()">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="formgroup">
+                                    <label >role Id</label>
+                                    <input type="text" formControlName="RoleId" class="form-control"
+                                        placeholder="role Id">
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="formgroup">
+                                    <label >permission Id</label>
+                                    <input type="text" formControlName="PermissionId" class="form-control"
+                                        placeholder="permission Id">
+                                </div>
+
+                            </div>
+                            
+                        </div>
+                        <div class="pull-right">
+                                <button type="submit" class="btn btn-primary">create</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

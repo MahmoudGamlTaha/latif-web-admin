@@ -84,6 +84,17 @@ export class NavService {
 		{
 			title: 'role', path: '/role', icon: 'user', type: 'link', active: false
 		},
+		{
+			title: 'assignpermission', icon: 'clipboard', type: 'sub', active: false, children: [
+				
+				{ path: '/assignpermission/role-id/:id', title: 'role id', type: 'link' },
+				{ path: '/assignpermission/create-role', title: 'create role', type: 'link' },
+				
+		]
+	},
+
+
+
 		// {
 		// 	title: 'Pages', icon: 'clipboard', type: 'sub', active: false, children: [
 		// 		{ path: '/pages/list-page', title: 'List Page', type: 'link' },

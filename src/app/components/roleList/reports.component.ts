@@ -26,6 +26,10 @@ export class ReportsComponent implements OnInit {
       },
       name: {
         title: 'name',
+        type : "html",
+        valuePrepareFunction:(cell,row)=>{
+          return "<a href='#/assignpermission/role-id/"+row.id+"'>"+row.name+"</a>";
+          }
 
       },
       created_at: {
