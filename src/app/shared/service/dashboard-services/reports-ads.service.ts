@@ -38,7 +38,7 @@ export class ReportsAdsService {
 
   createReasonOfReportedAds(data) {
     console.log(data)
-    return this._http.post<any[]>(this._createReasonOfReportedAds + data.Reason+'&valueAr='+data.ReasonAr, {}, { headers: this.headers });
+    return this._http.post<any[]>(this._createReasonOfReportedAds + data.Reason+'&reasonAr='+data.ReasonAr, {}, { headers: this.headers });
   }
   updateReasonOfReportedAds(data) {
     console.log(data)
