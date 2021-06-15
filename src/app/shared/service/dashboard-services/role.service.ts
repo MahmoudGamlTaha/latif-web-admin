@@ -40,8 +40,8 @@ export class RoleService {
         })
       );
   }
-  getByRoleId() {
-    return this._http.get(this._getByRoleId,{headers:this.headers})
+  getByRoleId(roleId) {
+    return this._http.get(this._getByRoleId + roleId ,{headers:this.headers})
       .pipe(
         catchError((err) => {
           return throwError(err.message || 'server issue ');
@@ -65,8 +65,10 @@ export class RoleService {
   //     );
   // }
 
-  createAssUserPermission(data) {
-    return this._http.post(this._createAssUserPermission,{},{headers:this.headers})
+  createAssignPermission(data) {
+    return this._http.post(this._createAssUserPermission,
+      {roleId:data.RoleId,permissionId:data.PermissionId},
+      {headers:this.headers})
       .pipe(
         catchError((err) => {
           return throwError(err.message || 'server issue ');

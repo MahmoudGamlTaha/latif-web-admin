@@ -86,7 +86,9 @@ export class NavService {
 		},
 		{
 			title: 'assignpermission', icon: 'clipboard', type: 'sub', active: false, children: [
-				{ path: '/assignpermission/role-id', title: 'role id', type: 'link' },
+				
+				{ path: '/assignpermission/role-id/:id', title: 'role id', type: 'link' },
+				{ path: '/assignpermission/create-role', title: 'create role', type: 'link' },
 				
 		]
 	},
