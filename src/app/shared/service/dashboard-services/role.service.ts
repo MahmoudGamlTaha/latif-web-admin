@@ -11,14 +11,18 @@ export class RoleService {
   _getRoleList = server.url + 'api/public/roles'
   
   _assUserPermissionList = server.url + 'api/public/assignUserPermission/'
-  _UserPermissionList = server.url + 'api/public/UserPermission/'
+  _UserPermissionList = server.url + 'api/public/userPermission/'
 
     _getByRoleId = server.url + 'api/public/assignUserPermission/getByRoleId?roleId='
 
   _createAssUserPermission = server.url + 'api/public/assignUserPermission/create/'//post "roleId":2,  "permissionId":26
+  
   _createUserPermission = server.url + 'api/public/userPermission/create/'//post  "httpMethod":"POST",  "httpPath":"/api/public/assignUserPermission/create/"
+  _updateUserPermission = server.url + 'api/public/userPermission/update/'//post  "httpMethod":"POST",  "httpPath":"/api/public/assignUserPermission/create/"
+
   _removeAssUserPermission = server.url + 'api/public/assignUserPermission/remove/'//post "roleId":2,  "permissionId":26
   _removeUserPermission = server.url + 'api/public/userPermission/remove/'//post    id
+  
   token: any;
   headers: HttpHeaders;
 
@@ -56,14 +60,14 @@ export class RoleService {
   //       })
   //     );
   // }
-  // UserPermissionList() {
-  //   return this._http.get(this._UserPermissionList,{headers:this.headers})
-  //     .pipe(
-  //       catchError((err) => {
-  //         return throwError(err.message || 'server issue ');
-  //       })
-  //     );
-  // }
+  UserPermissionList() {
+    return this._http.get(this._UserPermissionList,{headers:this.headers})
+      .pipe(
+        catchError((err) => {
+          return throwError(err.message || 'server issue ');
+        })
+      );
+  }
 
   createAssignPermission(data) {
     return this._http.post(this._createAssUserPermission,
@@ -76,7 +80,19 @@ export class RoleService {
       );
   }
   createUserPermission(data) {
-    return this._http.post(this._createUserPermission,{},{headers:this.headers})
+    return this._http.post(this._createUserPermission,
+      {httpMethod:data.HttpMethod,httpPath:data.HttpPath},
+      {headers:this.headers})
+      .pipe(
+        catchError((err) => {
+          return throwError(err.message || 'server issue ');
+        })
+      );
+  }
+  updateUserPermission(data) {
+    return this._http.post(this._updateUserPermission,
+      {id:data.Id,httpMethod:data.HttpMethod,httpPath:data.HttpPath},
+      {headers:this.headers})
       .pipe(
         catchError((err) => {
           return throwError(err.message || 'server issue ');

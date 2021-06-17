@@ -3,31 +3,31 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RoleService } from 'src/app/shared/service/dashboard-services/role.service';
 
 @Component({
-  selector: 'app-create-assign-role',
-  templateUrl: './create-assign-role.component.html',
-  styleUrls: ['./create-assign-role.component.scss']
+  selector: 'app-create-permission',
+  templateUrl: './create-permission.component.html',
+  styleUrls: ['./create-permission.component.scss']
 })
-export class CreateAssignRoleComponent implements OnInit {
+export class CreatePermissionComponent implements OnInit {
 
   createform:FormGroup
   constructor(private RoleSer:RoleService,private fb:FormBuilder) { }
 
   ngOnInit(): void {
     this.createform=this.fb.group({
-      RoleId : ['',[Validators.required,Validators.minLength(3)]],
-      PermissionId : ['',[Validators.required,Validators.minLength(3)]]
+      HttpMethod : ['',[Validators.minLength(3),Validators.required]],
+      HttpPath : ['',[Validators.minLength(3),Validators.required]]
     })
 
   }
-  get RoleId(){
-    return this.createform.get('RoleId')
+  get HttpMethod() {
+    return this.createform.get('HttpMethod');
   }
-  get PermissionId(){
-    return this.createform.get('PermissionId')
+  get HttpPath() {
+    return this.createform.get('HttpPath');
   }
   create(){
     console.log(this.createform.value)
-    this.RoleSer.createAssignPermission(this.createform.value).subscribe(
+    this.RoleSer.createUserPermission(this.createform.value).subscribe(
       (data: any) => {
 
         console.log(data)

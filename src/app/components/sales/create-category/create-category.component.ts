@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/shared/service/dashboard-services/category.service';
 
@@ -24,17 +24,30 @@ export class CreateCategoryComponent implements OnInit {
   ngOnInit(): void {
     
     this.createForm = this.fb.group({
-      Type :[''],
-      CategoryName:[''],
-      NameAr:[''],
-      Icon:[''],
-      Icon_select:[''],
+      Type :['',[Validators.required]],
+      CategoryName:['',[Validators.required]],
+      NameAr:['',[Validators.required]],
+      Icon:['',[Validators.required]],
+      Icon_select:['',[Validators.required]],
       External:[''],
       Active:[''],
     });
   }
-
-
+  get CategoryName(){
+    return this.createForm.get('CategoryName')
+  }
+  get NameAr(){
+    return this.createForm.get('NameAr')
+  }
+  get Icon(){
+    return this.createForm.get('Icon')
+  }
+  get Icon_select(){
+    return this.createForm.get('Icon_select')
+  }
+  get Type(){
+    return this.createForm.get('Type')
+  }
   create(){
 
     if(!this.createForm.valid){return ;}

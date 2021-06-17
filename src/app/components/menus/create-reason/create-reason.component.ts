@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ReportsAdsService } from 'src/app/shared/service/dashboard-services/reports-ads.service';
 
@@ -21,11 +21,16 @@ export class CreateReasonComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm=this.fb.group({
-      Reason:[],
-      ReasonAr:[],
+      Reason:['',[Validators.required,Validators.minLength(3)]],
+      ReasonAr:['',[Validators.required,Validators.minLength(3)]],
     })
   }
-
+  get Reason(){
+    return this.createForm.get('Reason')
+  }
+  get ReasonAr(){
+    return this.createForm.get('ReasonAr')
+  }
   create(){
     console.log(this.createForm.value)
     if(!this.createForm.valid){return ;}

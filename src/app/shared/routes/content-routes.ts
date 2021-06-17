@@ -76,6 +76,11 @@ export const content: Routes = [
   
   },
   {
+    path: 'user-permission',
+    loadChildren: () => import('../../components/user-permission/user-permission.module').then(m => m.UserPermissionModule),
+  
+  },
+  {
     path: 'settings',
     loadChildren: () => import('../../components/setting/setting.module').then(m => m.SettingModule),
     data: {
