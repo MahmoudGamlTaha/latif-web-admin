@@ -26,7 +26,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'create',
+        path: 'create-category',
         component: CreateCategoryComponent,
         data: {
           title: "create Category",

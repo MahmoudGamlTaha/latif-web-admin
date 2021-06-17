@@ -9,7 +9,7 @@ export const content: Routes = [
     path: 'products',
     loadChildren: () => import('../../components/products/products.module').then(m => m.ProductsModule),
     data: {
-      breadcrumb: "BLOG"
+      breadcrumb: "blog"
     }
   },
   {

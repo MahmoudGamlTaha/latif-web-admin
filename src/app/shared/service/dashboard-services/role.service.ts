@@ -22,7 +22,8 @@ export class RoleService {
 
   _removeAssUserPermission = server.url + 'api/public/assignUserPermission/remove/'//post "roleId":2,  "permissionId":26
   _removeUserPermission = server.url + 'api/public/userPermission/remove/'//post    id
-  
+  _endpoints = server.url + 'api/public/endpoints'
+
   token: any;
   headers: HttpHeaders;
 
@@ -34,7 +35,14 @@ export class RoleService {
       "Authorization": `${this.token}`
     })
   }
-
+  getEndpoints(){
+return this._http.get(this._endpoints)
+      .pipe(
+        catchError((err) => {
+          return throwError(err.message || 'server issue ');
+        })
+      );
+  }
   
   getRoleList() {
     return this._http.get(this._getRoleList)

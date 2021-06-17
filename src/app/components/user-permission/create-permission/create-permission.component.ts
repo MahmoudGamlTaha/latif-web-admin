@@ -10,6 +10,10 @@ import { RoleService } from 'src/app/shared/service/dashboard-services/role.serv
 export class CreatePermissionComponent implements OnInit {
 
   createform:FormGroup
+  endPointsList: any;
+  endPointsListSplit: any;
+  endPointsListMethod: [];
+  endPointsListPath: [];
   constructor(private RoleSer:RoleService,private fb:FormBuilder) { }
 
   ngOnInit(): void {
@@ -18,6 +22,19 @@ export class CreatePermissionComponent implements OnInit {
       HttpPath : ['',[Validators.minLength(3),Validators.required]]
     })
 
+    this.RoleSer.getEndpoints().subscribe((data)=>{
+
+      this.endPointsList=data;
+      this.endPointsList.filter((item)=>{
+        this.endPointsListSplit=item.split(" ")
+        // this.endPointsListMethod
+        // this.endPointsListPath
+        console.log("method",this.endPointsListSplit[0])
+        console.log("path",this.endPointsListSplit[1])
+
+      })
+      console.log(data)
+    })
   }
   get HttpMethod() {
     return this.createform.get('HttpMethod');

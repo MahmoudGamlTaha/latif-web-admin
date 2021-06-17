@@ -10,9 +10,14 @@
 
                             <div class="col-md-6">
                                 <div class="formgroup">
-                                    <label >role Id</label>
-                                    <input type="text" [class.is-invalid]="RoleId.touched && RoleId.invalid" formControlName="RoleId" class="form-control"
-                                        placeholder="role Id">
+                                    <label >role</label>
+                                    <select [class.is-invalid]="RoleId.touched && RoleId.invalid" formControlName="RoleId" class="form-control" placeholder="role Id">
+                                        <option selected>select role</option>
+                                        <option [value]="option.id" *ngFor =" let option of roleList" >
+                                            {{option.name}}
+                                        </option>
+                                    </select>
+                                        
                                         <div class="text-danger" *ngIf="!RoleId.valid ">
                                             <small *ngIf="RoleId.errors.required && RoleId.touched"
                                                 [class.is-invalid]="RoleId.invalid || RoleId.touched"

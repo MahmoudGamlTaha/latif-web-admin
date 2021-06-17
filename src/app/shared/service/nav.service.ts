@@ -42,9 +42,9 @@ export class NavService {
 		},
 		{
 			title: 'blogs', icon: 'box', type: 'sub', active: false, children: [
-				{ path: '/products/blogs/bloglist', title: 'blog list', type: 'link' },
-				{ path: '/products/blogs/blogcategory', title: 'blog Category', type: 'link' },
-				{ path: '/products/blogs/product-detail', title: 'create Blog', type: 'link' },
+				{ path: '/products/blogs/blog-list', title: 'blog list', type: 'link' },
+				{ path: '/products/blogs/blog-category', title: 'blog Category', type: 'link' },
+				{ path: '/products/blogs/create-blog', title: 'create Blog', type: 'link' },
 
 				// {
 				// 	title: 'Physical', type: 'sub', children: [
@@ -68,7 +68,7 @@ export class NavService {
 			title: 'category', icon: 'list', type: 'sub', active: false, children: [
 				{ path: '/category/category-list', title: 'Category list', type: 'link' },
 				// { path: '/category/categorytype/:id/:typeName', title: 'Category type', type: 'link' },
-				{ path: '/category/create', title: 'create Category', type: 'link' },
+				{ path: '/category/create-category', title: 'create Category', type: 'link' },
 
 			]
 		},

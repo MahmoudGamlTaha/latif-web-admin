@@ -39,6 +39,7 @@ export class CategoryComponent implements OnInit {
 
     actions: {
       position: 'right',
+      edit:false,
     },
     delete: {
       confirmDelete: true,

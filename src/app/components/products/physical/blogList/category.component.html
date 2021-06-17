@@ -7,8 +7,6 @@
                     <h5>Blog List</h5>
                 </div>
                 <div class="card-body">
-
-
                     <!-- <div class="btn-popup pull-right">
                     
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-original-title="test"
@@ -44,7 +42,11 @@
 
                     </div> -->
 
-
+                            <!-- <div *ngIf="categories == undefined || categories == null ">
+                                <div class="spinner-border" style="width: 40px; height: 40px;">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div> -->
                     <div id="batchDelete" class="category-table custom-datatable">
                         <div class="table-responsive">
                             <ng2-smart-table [settings]="settings" [source]="categories" 

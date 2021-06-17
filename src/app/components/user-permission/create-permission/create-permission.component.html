@@ -5,53 +5,58 @@
                 <div class="card-header">
                 </div>
                 <div class="card-body">
-                    <form [formGroup]="createform" >
+                    <form [formGroup]="createform">
                         <div class="row">
 
                             <div class="col-md-6">
                                 <div class="formgroup">
-                                    <label >httpMethod</label>
-                                    <input [class.is-invalid]="HttpMethod.invalid && HttpMethod.touched" type="text" formControlName="HttpMethod" class="form-control"
-                                        placeholder="Http Method">
-                                        <div class="text-danger" *ngIf="!HttpMethod.valid ">
-                                             <small *ngIf="HttpMethod.errors.required && HttpMethod.touched"
-                        [class.is-invalid]="HttpMethod.invalid || HttpMethod.touched" class="text-danger">
-                        field is required
-                    </small>
-                    <small *ngIf="HttpMethod.errors.minlength" class="text-danger">
-                        field must be at least 3 characters
-                    </small> 
-                                        </div>
+                                    <label>httpMethod</label>
+                                    <select>
+                                        <option *ngFor ="let option of endPointsListSplit" ></option>
+                                    </select>
+                                    <input [class.is-invalid]="HttpMethod.invalid && HttpMethod.touched" type="text"
+                                        formControlName="HttpMethod" class="form-control" placeholder="Http Method">
+                                    <div class="text-danger" *ngIf="!HttpMethod.valid ">
+                                        <small *ngIf="HttpMethod.errors.required && HttpMethod.touched"
+                                            [class.is-invalid]="HttpMethod.invalid || HttpMethod.touched"
+                                            class="text-danger">
+                                            field is required
+                                        </small>
+                                        <small *ngIf="HttpMethod.errors.minlength" class="text-danger">
+                                            field must be at least 3 characters
+                                        </small>
+                                    </div>
                                 </div>
 
                             </div>
                             <div class="col-md-6">
                                 <div class="formgroup">
-                                    <label >httpPath</label>
-                                    <input type="text" [class.is-invalid]="HttpPath.invalid && HttpPath.touched" formControlName="HttpPath" class="form-control"
-                                        placeholder="Http Path">
-                                        <div class="text-danger" *ngIf="!HttpPath.valid ">
-                                             <small *ngIf="HttpPath.errors.required && HttpPath.touched"
-                        [class.is-invalid]="HttpPath.invalid || HttpPath.touched" class="text-danger">
-                        field is required
-                    </small>
-                    <small *ngIf="HttpPath.errors.minlength" class="text-danger">
-                        field must be at least 3 characters
-                    </small> 
-                                        </div>
+                                    <label>httpPath</label>
+                                    <input type="text" [class.is-invalid]="HttpPath.invalid && HttpPath.touched"
+                                        formControlName="HttpPath" class="form-control" placeholder="Http Path">
+                                    <div class="text-danger" *ngIf="!HttpPath.valid ">
+                                        <small *ngIf="HttpPath.errors.required && HttpPath.touched"
+                                            [class.is-invalid]="HttpPath.invalid || HttpPath.touched"
+                                            class="text-danger">
+                                            field is required
+                                        </small>
+                                        <small *ngIf="HttpPath.errors.minlength" class="text-danger">
+                                            field must be at least 3 characters
+                                        </small>
+                                    </div>
                                 </div>
 
                             </div>
-                            
+
                         </div>
                         <div class="pull-right" style="margin-top:15px ;">
-                                <button type="submit" (click)="create()" class="btn btn-primary">create</button>
-                            </div>
-                        
+                            <button type="submit" (click)="create()" class="btn btn-primary">create</button>
+                        </div>
+
                     </form>
-                    
-                            
-                        
+
+
+
                 </div>
             </div>
         </div>

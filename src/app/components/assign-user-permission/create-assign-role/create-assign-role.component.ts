@@ -10,12 +10,18 @@ import { RoleService } from 'src/app/shared/service/dashboard-services/role.serv
 export class CreateAssignRoleComponent implements OnInit {
 
   createform:FormGroup
+  roleList: any;
   constructor(private RoleSer:RoleService,private fb:FormBuilder) { }
 
   ngOnInit(): void {
+    this.RoleSer.getRoleList().subscribe((data:any)=>{
+      this.roleList =data
+      console.log(this.roleList)
+    })
+    
     this.createform=this.fb.group({
-      RoleId : ['',[Validators.required,Validators.minLength(3)]],
-      PermissionId : ['',[Validators.required,Validators.minLength(3)]]
+      RoleId : ['',[Validators.required]],
+      PermissionId : ['',[Validators.required]]
     })
 
   }
