@@ -13,6 +13,7 @@ export class ListMenuComponent implements OnInit {
   public ReportedXDList:any ;
   public selected = [];
   pageSize: any=10;
+  isLoading: boolean = true;
 
   constructor(private ReportsAdsSer:ReportsAdsService) {
     this.AllReportsAds();
@@ -108,8 +109,10 @@ export class ListMenuComponent implements OnInit {
   AllReportsAds(){
 
   this.ReportsAdsSer.getAllReportedAds().subscribe((res:any)=>{
-
+    this.isLoading = false ;
     this.ReportedXDList=res.response.data
+    },(err)=>{
+      this.isLoading = false ;
     })
   }
 

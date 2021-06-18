@@ -6,6 +6,10 @@
                     <h5>Role {{roleName}} List</h5>
                 </div>
                 <div class="card-body">
+                    <div class="pull-right">
+                        <a type="button" style="margin-bottom: 15px ;" href="#/assignpermission/create-role" class="btn btn-primary" data-toggle="modal"
+                        data-original-title="test">create role permission  </a>
+                    </div>
                     <div id="batchDelete" class="category-table custom-datatable">
                         <div class="table-responsive">
                             <ng2-smart-table [settings]="settings" [source]="roleIdList" >

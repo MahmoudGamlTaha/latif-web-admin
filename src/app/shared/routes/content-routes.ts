@@ -9,7 +9,7 @@ export const content: Routes = [
     path: 'products',
     loadChildren: () => import('../../components/products/products.module').then(m => m.ProductsModule),
     data: {
-      breadcrumb: "BLOG"
+      breadcrumb: "blog"
     }
   },
   {
@@ -73,6 +73,11 @@ export const content: Routes = [
   {
     path: 'assignpermission',
     loadChildren: () => import('../../components/assign-user-permission/assign-user-permission.module').then(m => m.AssignUserPermissionModule),
+  
+  },
+  {
+    path: 'user-permission',
+    loadChildren: () => import('../../components/user-permission/user-permission.module').then(m => m.UserPermissionModule),
   
   },
   {

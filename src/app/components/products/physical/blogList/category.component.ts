@@ -11,6 +11,7 @@ import { BlogsService } from 'src/app/shared/service/dashboard-services/Blogs.se
 export class CategoryComponent implements OnInit {
   public closeResult: string;
   public categories = []
+  isLoading: boolean = true;
 
   constructor(private modalService: NgbModal,private BlogsSer: BlogsService) {
     // this.categories = categoryDB.category;
@@ -39,6 +40,8 @@ export class CategoryComponent implements OnInit {
 
     actions: {
       position: 'right',
+      edit:false,
+      add:false,
     },
     delete: {
       confirmDelete: true,
@@ -71,15 +74,16 @@ export class CategoryComponent implements OnInit {
       },
       description: {
         title: 'description',
+        filter:false,
         valuePrepareFunction: (cell, row) => { return row.description.slice(0, 30); },
         type: 'string'
         
       },
       createdDate: {
-        title: 'createdDate'
+        title: 'createdDate',filter:false,
       },
       image: {
-        title: 'Image',
+        title: 'Image',filter:false,
         type: 'html',
         valuePrepareFunction:(cell,row)=>{
           if (row.image != null && row.image != undefined && row.image != '') {
@@ -95,9 +99,11 @@ export class CategoryComponent implements OnInit {
   
     this.BlogsSer.getblogList().subscribe(
       (data: any) => {
+        this.isLoading = false
         this.categories = data.response.data
       },
       (error) => {
+        this.isLoading = false
         console.log('error', error);
       } );
   }

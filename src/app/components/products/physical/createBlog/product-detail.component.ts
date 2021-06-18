@@ -9,6 +9,8 @@ import { AdsService } from 'src/app/shared/service/dashboard-services/ads.servic
 import { BlogsService } from 'src/app/shared/service/dashboard-services/Blogs.service';
 import { CategoryService } from 'src/app/shared/service/dashboard-services/category.service';
 import { CitesService } from 'src/app/shared/service/dashboard-services/cites.service';
+import { RoleService } from 'src/app/shared/service/dashboard-services/role.service';
+import { UsersService } from 'src/app/shared/service/dashboard-services/users.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -17,52 +19,32 @@ import { CitesService } from 'src/app/shared/service/dashboard-services/cites.se
   providers: [NgbRatingConfig]
 })
 export class ProductDetailComponent implements OnInit {
- 
+
   public blogForm: FormGroup;
   public blogCategoryList;
+  roleList: any;
 
-  external: boolean;
-  typeId: number=0;
-  type: string;
-  description: string;
-  image:[];
-  userId : number =1;
-  categoryId: number;
-  category: string;
-  categoryList;
-  images : [];
-  path : number;
-
-  createdDateL : string ;
-
-  constructor(private blogSer: BlogsService, private categorySer: CategoryService,private citiesSer: CitesService,
-    private formBuilder: FormBuilder,private router: ActivatedRoute){
-      this.getblogCategory()
-
-      }
-
-
-
-  ngOnInit() {
-
-    this.blogForm = this.formBuilder.group({
-      Type : [],
-      BlogId : [],
-      Description : [],
-      Image : [[]],
-      Images : [[]],
-      Path : [],
-      UserId : [Number],
-      createdDateL : [],
-      externalLink : [Boolean],
-    });
-
-    
-
-
+  constructor(private blogSer: BlogsService, private roleSer: RoleService, private categorySer: CategoryService, private citiesSer: CitesService,
+    private formBuilder: FormBuilder, private router: ActivatedRoute) {
+    this.roleSer.getRoleList().subscribe(
+      (data: any) => {
+        this.roleList = data
+        console.log(this.roleList)
+      }, (err) => console.log("err", err)
+    )
+    this.getblogCategory()
   }
 
-  
+  ngOnInit() {
+    this.blogForm = this.formBuilder.group({
+      Category:['',[Validators.required]],
+      Title: ['',[Validators.required]],
+      ExtrnImage: [''],
+      UserId: ['',[Validators.required]],
+      Description: ['',[Validators.required]],
+      External: [''],
+    });
+  }
   getblogCategory() {
     this.blogSer.getblogCategory().subscribe(
       (data: any) => {
@@ -72,45 +54,43 @@ export class ProductDetailComponent implements OnInit {
         console.log('error', error);
       }
     );
-    
   }
-  typeDropDown(event){
-
+  typeDropDown(event) {
+    console.log(event.target.value)
   }
-
-
-onClickToggle(event){
-console.log(event.target.checked)
-
-}
-  get BlogId() {
-    return this.blogForm.get('BlogId');
-  }
-  get Title() {
-    return this.blogForm.get('Title');
+  onClickToggle(event) {
+    console.log(event.target.checked)
   }
   get Category() {
     return this.blogForm.get('Category');
   }
+  get Title() {
+    return this.blogForm.get('Title');
+  }
+  get ExtrnImage() {
+    return this.blogForm.get('ExtrnImage');
+  }
   get Description() {
     return this.blogForm.get('Description');
   }
-  get Image() {
-    return this.blogForm.get('Image');
+  get UserId() {
+    return this.blogForm.get('UserId');
   }
-  get Images() {
-    return this.blogForm.get('Images');
+  get External() {
+    return this.blogForm.get('External');
   }
-  get Path() {
-    return this.blogForm.get('Path');
+
+  create(){
+
+    if(!this.blogForm.valid){return ;}
+    console.log(this.blogForm.value)
+    this.blogSer.createBlogList(this.blogForm.value).subscribe(
+      (data)=>{
+
+        console.log("success")
+      },(err)=>{console.log("err",err)}
+    )
   }
-  get User() {
-    return this.blogForm.get('User');
-  }
-  get CreatedDateL() {
-    return this.blogForm.get('createdDateL');
-  }
-  // get Items() {
-  //   return this.blogForm.get('Items') as FormArray;
-  // }
+
+
 }

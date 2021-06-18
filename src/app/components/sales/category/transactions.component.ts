@@ -57,6 +57,7 @@ export class TransactionsComponent implements OnInit {
       'category.icon': {
         title: 'icon',
         type: 'html',
+        filter: false,
         valuePrepareFunction: (cell, row) => {
           if (row.category.icon != '' && row.category.icon != null && row.category.icon != undefined) {
             return "<img src='" + row.category.icon + "' width='50' height='50' />";
@@ -66,6 +67,7 @@ export class TransactionsComponent implements OnInit {
       'category.iconSelect': {
         title: 'iconSelect',
         type: 'html',
+        filter: false,
         valuePrepareFunction: (cell, row) => { 
           if (row.category.iconSelect != '' && row.category.iconSelect != null && row.category.iconSelect != undefined) {
             return "<img src='" + row.category.iconSelect + "' width='50' height='50' />"; 

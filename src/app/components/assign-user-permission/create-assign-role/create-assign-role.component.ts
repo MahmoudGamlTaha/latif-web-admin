@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RoleService } from 'src/app/shared/service/dashboard-services/role.service';
 
 @Component({
@@ -10,16 +10,27 @@ import { RoleService } from 'src/app/shared/service/dashboard-services/role.serv
 export class CreateAssignRoleComponent implements OnInit {
 
   createform:FormGroup
+  roleList: any;
   constructor(private RoleSer:RoleService,private fb:FormBuilder) { }
 
   ngOnInit(): void {
+    this.RoleSer.getRoleList().subscribe((data:any)=>{
+      this.roleList =data
+      console.log(this.roleList)
+    })
+    
     this.createform=this.fb.group({
-      RoleId : [],
-      PermissionId : []
+      RoleId : ['',[Validators.required]],
+      PermissionId : ['',[Validators.required]]
     })
 
   }
-
+  get RoleId(){
+    return this.createform.get('RoleId')
+  }
+  get PermissionId(){
+    return this.createform.get('PermissionId')
+  }
   create(){
     console.log(this.createform.value)
     this.RoleSer.createAssignPermission(this.createform.value).subscribe(

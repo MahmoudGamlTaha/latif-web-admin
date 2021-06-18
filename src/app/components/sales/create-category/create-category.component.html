@@ -11,38 +11,67 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="validationCustom01">type</label>
-                                        <select class="form-control"
+                                        <select class="form-control" [class.is-invalid]="Type.invalid && Type.touched"
                                             formControlName='Type'>
                                             <option id="{{option.name}}"  value="{{option.id}}" *ngFor="let option of typeList">
                                                 {{option.name}}
                                             </option>
                                         </select>
+                                        <div class="text-danger" *ngIf="!Type.valid ">
+                                            <small *ngIf="Type.errors.required && Type.touched"
+                                                [class.is-invalid]="Type.invalid || Type.touched" class="text-danger">
+                                        field is required
+                                            </small>
+                                            </div>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="validationCustom01">name</label>
-                                        <input type="text" formControlName='CategoryName' class="form-control">
-                                        
+                                        <input type="text" [class.is-invalid]="CategoryName.invalid && CategoryName.touched" formControlName='CategoryName' class="form-control">
+                                        <div class="text-danger" *ngIf="!CategoryName.valid ">
+                                            <small *ngIf="CategoryName.errors.required && CategoryName.touched"
+                                                [class.is-invalid]="CategoryName.invalid || CategoryName.touched" class="text-danger">
+                                        field is required
+                                            </small>
+                                            </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="validationCustom01">Name Ar</label>
-                                        <input type="text" class="form-control" formControlName='NameAr'>
+                                        <input type="text" [class.is-invalid]="NameAr.invalid && NameAr.touched" class="form-control" formControlName='NameAr'>
+                                        <div class="text-danger" *ngIf="!NameAr.valid ">
+                                            <small *ngIf="NameAr.errors.required && NameAr.touched"
+                                                [class.is-invalid]="NameAr.invalid || NameAr.touched" class="text-danger">
+                                        field is required
+                                            </small>
+                                            </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="validationCustom01">icon</label>
-                                        <input type="text" class="form-control" formControlName='Icon' >
+                                        <input type="text" [class.is-invalid]="Icon.invalid && Icon.touched" class="form-control" formControlName='Icon' >
+                                        <div class="text-danger" *ngIf="!Icon.valid ">
+                                            <small *ngIf="Icon.errors.required && Icon.touched"
+                                                [class.is-invalid]="Icon.invalid || Icon.touched" class="text-danger">
+                                        field is required
+                                            </small>
+                                            </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="validationCustom01">Icon_select</label>
-                                        <input type="text" class="form-control" formControlName='Icon_select' >
+                                        <input type="text" [class.is-invalid]="Icon_select.invalid && Icon_select.touched" class="form-control" formControlName='Icon_select' >
+                                        <div class="text-danger" *ngIf="!Icon_select.valid ">
+                                            <small *ngIf="Icon_select.errors.required && Icon_select.touched"
+                                                [class.is-invalid]="Icon_select.invalid || Icon_select.touched" class="text-danger">
+                                        field is required
+                                            </small>
+                                            </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">

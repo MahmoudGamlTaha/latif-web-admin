@@ -7,8 +7,9 @@
                     <h5>Blog List</h5>
                 </div>
                 <div class="card-body">
-
-
+                    <div class="pull-right">
+                        <a type="button" href="#/products/blogs/create-blog" class="btn btn-primary">create blog</a>
+                    </div>
                     <!-- <div class="btn-popup pull-right">
                     
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-original-title="test"
@@ -44,14 +45,25 @@
 
                     </div> -->
 
-
+                            <!-- <div *ngIf="categories == undefined || categories == null ">
+                                <div class="spinner-border" style="width: 40px; height: 40px;">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div> -->
                     <div id="batchDelete" class="category-table custom-datatable">
                         <div class="table-responsive">
+                            <div *ngIf="isLoading; else table" class="text-center">
+                                <div class="spinner-border" style="width: 40px; height: 40px;">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+                            <ng-template #table>
                             <ng2-smart-table [settings]="settings" [source]="categories" 
                             (deleteConfirm)="onDeleteConfirm($event)"
                             (editConfirm)="onEditConfirm($event)"
                             (createConfirm)="onCreateConfirm($event)">
                             </ng2-smart-table>
+                            </ng-template>
                         </div>
                     </div>
                 </div>

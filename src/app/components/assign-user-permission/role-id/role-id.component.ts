@@ -35,10 +35,12 @@ export class RoleIdComponent implements OnInit {
   },
 
       created_at: {
-        title: 'created_at'
+        title: 'created_at',
+        filter: false,
       },
       updated_at: {
-        title: 'created_at'
+        title: 'created_at',
+        filter: false,
       },
 
     },

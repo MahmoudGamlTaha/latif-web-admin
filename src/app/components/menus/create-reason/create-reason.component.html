@@ -8,22 +8,43 @@
                 <div class="card-body">
                     <form [formGroup]="createForm" (ngSubmit)="create()" class="needs-validation" novalidate="">
                         <div class="row">
-                            
+
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="validationCustom01">reason</label>
-                                    <input formControlName="Reason" type="text" class="form-control"
-                                        placeholder="reason"/>
+                                    <input formControlName="Reason"
+                                        [class.is-invalid]="Reason.touched && Reason.invalid" type="text"
+                                        class="form-control" placeholder="reason" />
+                                    <div class="text-danger" *ngIf="!Reason.valid ">
+                                        <small *ngIf="Reason.errors.required && Reason.touched"
+                                            [class.is-invalid]="Reason.invalid || Reason.touched" class="text-danger">
+                                            field is required
+                                        </small>
+                                        <small *ngIf="Reason.errors.minlength" class="text-danger">
+                                            field must be at least 3 characters
+                                        </small>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="validationCustom01">reason Ar</label>
-                                    <input formControlName="ReasonAr" type="text" class="form-control"
-                                        placeholder="reason"/>
+                                    <input formControlName="ReasonAr"
+                                        [class.is-invalid]="ReasonAr.touched && ReasonAr.invalid" type="text"
+                                        class="form-control" placeholder="reason" />
+                                    <div class="text-danger" *ngIf="!ReasonAr.valid ">
+                                        <small *ngIf="ReasonAr.errors.required && ReasonAr.touched"
+                                            [class.is-invalid]="ReasonAr.invalid || ReasonAr.touched"
+                                            class="text-danger">
+                                            field is required
+                                        </small>
+                                        <small *ngIf="ReasonAr.errors.minlength" class="text-danger">
+                                            field must be at least 3 characters
+                                        </small>
+                                    </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                         <div class="pull-right">
                             <button type="submit" class="btn btn-primary">create</button>

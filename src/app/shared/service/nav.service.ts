@@ -42,9 +42,9 @@ export class NavService {
 		},
 		{
 			title: 'blogs', icon: 'box', type: 'sub', active: false, children: [
-				{ path: '/products/blogs/bloglist', title: 'blog list', type: 'link' },
-				{ path: '/products/blogs/blogcategory', title: 'blog Category', type: 'link' },
-				{ path: '/products/blogs/product-detail', title: 'create Blog', type: 'link' },
+				{ path: '/products/blogs/blog-list', title: 'blog list', type: 'link' },
+				{ path: '/products/blogs/blog-category', title: 'blog Category', type: 'link' },
+				{ path: '/products/blogs/create-blog', title: 'create Blog', type: 'link' },
 
 				// {
 				// 	title: 'Physical', type: 'sub', children: [
@@ -67,8 +67,8 @@ export class NavService {
 		{
 			title: 'category', icon: 'list', type: 'sub', active: false, children: [
 				{ path: '/category/category-list', title: 'Category list', type: 'link' },
-				// { path: '/category/categorytype/:id/:typeName', title: 'Category type', type: 'link' },
-				{ path: '/category/create', title: 'create Category', type: 'link' },
+				// { path: '/category/category-type/:id/:typeName', title: 'Category type', type: 'link' },
+				{ path: '/category/create-category', title: 'create Category', type: 'link' },
 
 			]
 		},
@@ -87,11 +87,18 @@ export class NavService {
 		{
 			title: 'assignpermission', icon: 'clipboard', type: 'sub', active: false, children: [
 				
-				{ path: '/assignpermission/role-id/:id', title: 'role id', type: 'link' },
+				// { path: '/assignpermission/role-id/:id', title: 'role id', type: 'link' },
 				{ path: '/assignpermission/create-role', title: 'create role', type: 'link' },
-				
 		]
 	},
+	{
+		title: 'user-permission', icon: 'clipboard', type: 'sub', active: false, children: [
+			{ path: '/user-permission/permission-list', title: 'permission list', type: 'link' },
+			{ path: '/user-permission/create-permission', title: 'create permission', type: 'link' },
+			// { path: '/user-permission/update-permission/:id', title: 'update permission', type: 'link' },
+
+		]
+},
 
 
 
@@ -107,7 +114,7 @@ export class NavService {
 				{ path: '/reports/list-menu', title: 'All Reports', type: 'link' },
 				{ path: '/reports/reports-reasons', title: 'reports Reasons', type: 'link' },
 				{ path: '/reports/create-reasons', title: 'create Reasons', type: 'link' },
-				{ path: '/reports/update-reasons/:id/:reason/:reasonAr', title: 'update Reasons', type: 'link' },
+				// { path: '/reports/update-reasons/:id/:reason/:reasonAr', title: 'update Reasons', type: 'link' },
 
 			]
 		},
