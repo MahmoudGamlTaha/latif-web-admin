@@ -11,6 +11,7 @@ import { BlogsService } from 'src/app/shared/service/dashboard-services/Blogs.se
 export class CategoryComponent implements OnInit {
   public closeResult: string;
   public categories = []
+  isLoading: boolean = true;
 
   constructor(private modalService: NgbModal,private BlogsSer: BlogsService) {
     // this.categories = categoryDB.category;
@@ -96,9 +97,11 @@ export class CategoryComponent implements OnInit {
   
     this.BlogsSer.getblogList().subscribe(
       (data: any) => {
+        this.isLoading = false
         this.categories = data.response.data
       },
       (error) => {
+        this.isLoading = false
         console.log('error', error);
       } );
   }

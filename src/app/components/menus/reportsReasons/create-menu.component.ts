@@ -12,13 +12,17 @@ export class CreateMenuComponent implements OnInit {
   reportsReasonsList;
   id
   closeResult: string;
+  isLoading: boolean = true ;
   constructor(private modalService: NgbModal,private reportsSer: ReportsAdsService) {
 
     this.reportsSer.getReasonOfReportedAds().subscribe(
       (data: any)=>{
+        this.isLoading = false ;
         this.reportsReasonsList = data.response.data
         console.log(data)
-      }, (err) => { console.log("err", err) }
+      }, (err) => { 
+        this.isLoading = false ;
+        console.log("err", err) }
     )
   }
   public settings = {

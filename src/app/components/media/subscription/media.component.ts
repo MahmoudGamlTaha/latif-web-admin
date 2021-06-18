@@ -12,6 +12,7 @@ import { mediaDB } from 'src/app/shared/tables/media';
 export class MediaComponent implements OnInit {
   public closeResult: string; 
   public subscriptionData = []
+  isLoading: boolean = true ;
 
   constructor(private subscriptionSer:SubscriptionService,private modalService: NgbModal) {
     // this.media = mediaDB.data;
@@ -90,9 +91,12 @@ export class MediaComponent implements OnInit {
 
     this.subscriptionSer.getsubscriptionList().subscribe(
       (data: any) => {
+        this.isLoading = false
         this.subscriptionData = data.response.data;
       },
-      (error) => {  console.log('error', error); });
+      (error) => { 
+        this.isLoading = false
+         console.log('error', error); });
   }
 
 }

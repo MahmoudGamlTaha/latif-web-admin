@@ -8,6 +8,7 @@ import { RoleService } from 'src/app/shared/service/dashboard-services/role.serv
 })
 export class PermissionListComponent implements OnInit {
   public permissionList = [];
+  isLoading: boolean = true;
 
   constructor(private RoleSer:RoleService) {
   }
@@ -44,11 +45,13 @@ export class PermissionListComponent implements OnInit {
   ngOnInit() {
     this.RoleSer.UserPermissionList().subscribe(
       (data: any) => {
+        this.isLoading=false;
         this.permissionList = data.response.data.content;
         console.log("data",data)
 
       },
       (error) => {
+        this.isLoading=false
         console.log('error', error);
       }
     );

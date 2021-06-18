@@ -10,6 +10,7 @@ import { RoleService } from 'src/app/shared/service/dashboard-services/role.serv
 })
 export class ReportsComponent implements OnInit {
   public roleList = [];
+  isLoading: boolean = true ;
 
   constructor(private RoleSer:RoleService) {
     // this.report = reportDB.report;
@@ -41,10 +42,12 @@ export class ReportsComponent implements OnInit {
   ngOnInit() {
     this.RoleSer.getRoleList().subscribe(
       (data: any) => {
+        this.isLoading = false;
         this.roleList = data;
         console.log(data)
       },
       (error) => {
+      this.isLoading = false
         console.log('error', error);
       }
     );

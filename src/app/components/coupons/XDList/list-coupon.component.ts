@@ -25,6 +25,7 @@ export class ListCouponComponent implements OnInit {
   pageSize = 10;
   source: LocalDataSource = new LocalDataSource();
   numOfPages: number;
+  isLoading: boolean = true;
   constructor(
     private categorySer: CategoryService,
     private router: Router,
@@ -163,11 +164,13 @@ export class ListCouponComponent implements OnInit {
   getAdsList() {
     this.adsSer.getAdsList().subscribe(
       (data: any) => {
+        this.isLoading = false;
         this.adsList = data.response.data;
         this.rolList = this.adsList;
         localStorage.setItem('adsList', JSON.stringify(this.rolList));
       },
       (error) => {
+        this.isLoading = false;
         console.log('error', error);
       }
     );

@@ -13,8 +13,18 @@
                     </div>
                     <div id="batchDelete" class="category-table custom-datatable">
                         <div class="table-responsive">
-                            <ng2-smart-table [settings]="settings" [source]="roleList" >
+                            <div *ngIf="isLoading; else table" class="text-center">
+                                <div class="spinner-border" style="width: 40px; height: 40px;">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+                            <ng-template #table>
+                                <ng2-smart-table [settings]="settings" [source]="roleList" >
                                 </ng2-smart-table>
+                            </ng-template>
+                            
+                            
+
                         </div>
                     </div>
                 </div>
