@@ -42,7 +42,7 @@ export class OrdersComponent implements OnInit {
 if(event.type == 'click') {
   this.categoryId=event.row.id;
   this.typeName=event.row.name;
-  this.router.navigate(['sales/categorytype/',this.categoryId,this.typeName])
+  this.router.navigate(['category/category-type/',this.categoryId,this.typeName])
 }
   }
   ngOnInit() {

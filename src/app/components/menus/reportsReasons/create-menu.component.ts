@@ -60,36 +60,15 @@ export class CreateMenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  onDeleteConfirm(event,content){
+  onDeleteConfirm(event){
 
-    // 
-    this.modalService.open(content, event.data.id ).result.then((result) => {
-      
-      this.reportsSer.deleteReasonOfReportedAds(event.data.id).subscribe((data: any) => {
+    this.reportsSer.deleteReasonOfReportedAds(event.data.id).subscribe((data: any) => {
         console.log(data)
       }, (err) => {
         console.log("err", err)
       })
-      this.closeResult = `Closed with: ${result}`;
-      
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-    // 
+
     console.log("id",event.data.id)
   
-
   }
-
-  // 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
-  // 
 }

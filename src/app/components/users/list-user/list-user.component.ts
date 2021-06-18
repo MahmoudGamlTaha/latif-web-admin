@@ -25,10 +25,10 @@ export class ListUserComponent implements OnInit {
   }
 
   public settings = {
-    subHeaders:false,
     actions:{
       position:"right",
-      edit:false
+      edit:false,
+      add:false,
   },
     columns: {
       id: {
@@ -66,7 +66,8 @@ export class ListUserComponent implements OnInit {
           width:"15px"
       },
       registrationDate: {
-        title: 'registrationDate'
+        title: 'registrationDate', 
+        filter : false,
       },
     },
   };

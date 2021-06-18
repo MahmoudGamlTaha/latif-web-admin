@@ -11,11 +11,8 @@
                             <div class="col-md-6">
                                 <div class="formgroup">
                                     <label>httpMethod</label>
-                                    <select>
-                                        <option *ngFor ="let option of endPointsListSplit" ></option>
-                                    </select>
                                     <input [class.is-invalid]="HttpMethod.invalid && HttpMethod.touched" type="text"
-                                        formControlName="HttpMethod" class="form-control" placeholder="Http Method">
+                                        formControlName="HttpMethod" class="form-control" placeholder="Http Method" [(value)]="pathMethod" disabled>
                                     <div class="text-danger" *ngIf="!HttpMethod.valid ">
                                         <small *ngIf="HttpMethod.errors.required && HttpMethod.touched"
                                             [class.is-invalid]="HttpMethod.invalid || HttpMethod.touched"
@@ -32,8 +29,10 @@
                             <div class="col-md-6">
                                 <div class="formgroup">
                                     <label>httpPath</label>
-                                    <input type="text" [class.is-invalid]="HttpPath.invalid && HttpPath.touched"
-                                        formControlName="HttpPath" class="form-control" placeholder="Http Path">
+                                    <select (change)="pathSelected($event)" type="text" [class.is-invalid]="HttpPath.invalid && HttpPath.touched"
+                                    formControlName="HttpPath" class="form-control" >
+                                        <option [value]="option.http_Method" class="form-control" *ngFor ="let option of endPointsListPath" >{{option.http_Path}}</option>
+                                    </select>
                                     <div class="text-danger" *ngIf="!HttpPath.valid ">
                                         <small *ngIf="HttpPath.errors.required && HttpPath.touched"
                                             [class.is-invalid]="HttpPath.invalid || HttpPath.touched"

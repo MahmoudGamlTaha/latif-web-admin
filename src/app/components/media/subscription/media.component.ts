@@ -54,7 +54,9 @@ export class MediaComponent implements OnInit {
       //   title: 'numberUser'
       // },
       description: {
+
         title: 'description',
+        filter: false,
       }, 
       price: {
         title: 'price',

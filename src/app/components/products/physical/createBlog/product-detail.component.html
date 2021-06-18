@@ -7,7 +7,7 @@
                     <h5>Create blog</h5>
                 </div>
                 <div class="card-body">
-                    <form [formGroup]="blogForm"  class="needs-validation" novalidate="">
+                    <form [formGroup]="blogForm" (ngSubmit)="create()"  class="needs-validation" novalidate="">
 
                         <div class="row">
                             <div class="col-sm-12">
@@ -17,12 +17,19 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="validationCustom01">userId</label>
-                                    <select class="form-control" (change)="typeDropDown($event)" value="category Name">
-                                        <option class="dropdown-item" *ngFor="let option of " data-list="option"
-                                            id={{option.id}}>
+                                    <select class="form-control" 
+                                    formControlName="UserId" >
+                                        <option class="dropdown-item" *ngFor="let option of roleList" data-list="option"
+                                            [value]="option.id" >
                                             {{ option.name }}
                                         </option>
                                     </select>
+                                    <div class="text-danger" *ngIf="!UserId.valid ">
+                                        <small *ngIf="UserId.errors.required && UserId.touched"
+                                            [class.is-invalid]="UserId.invalid || UserId.touched" class="text-danger">
+                                    field is required
+                                        </small>
+                                        </div>
                                 </div>
                             </div>
 
@@ -30,12 +37,18 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="validationCustom01">Category List</label>
-                                    <select class="form-control" (change)="typeDropDown($event)" value="category Name">
+                                    <select class="form-control" formControlName="Category" value="category Name">
                                         <option class="dropdown-item" *ngFor="let option of blogCategoryList" data-list="option"
-                                            id={{option.id}}>
+                                            [value]="option.id" >
                                             {{ option.name }}
                                         </option>
                                     </select>
+                                    <div class="text-danger" *ngIf="!Category.valid ">
+                                        <small *ngIf="Category.errors.required && Category.touched"
+                                            [class.is-invalid]="Category.invalid || Category.touched" class="text-danger">
+                                    field is required
+                                        </small>
+                                        </div>
                                 </div>
                                     
                             </div>
@@ -43,13 +56,19 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="validationCustom01">Title</label>
-                                    <input type="text" class="form-control" formControlName="Type"/>
+                                    <input type="text" class="form-control" formControlName="Title"/>
+                                    <div class="text-danger" *ngIf="!Title.valid ">
+                                        <small *ngIf="Title.errors.required && Title.touched"
+                                            [class.is-invalid]="Title.invalid || Title.touched" class="text-danger">
+                                    field is required
+                                        </small>
+                                        </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="validationCustom01">image</label>
-                                    <input type="file" height="30px" class="form-control-file" id="exampleFormControlFile1" formControlName="Images">
+                                    <input type="file" height="30px" class="form-control-file" id="exampleFormControlFile1" formControlName="ExtrnImage">
                                     
                                 </div>
                             </div>
@@ -57,8 +76,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="validationCustom01">external</label><br>
-                                    <label class="switch" ><input type="checkbox" formControlName="externalLink"
-                                    (change)="onClickToggle($event)" value="" >
+                                    <label class="switch" ><input type="checkbox" formControlName="External">
                                     <span class="slider round"></span></label>
                                 </div>
                             </div>
@@ -68,6 +86,12 @@
                                     <label for="validationCustom01">description</label>
                                     <textarea  class="form-control" formControlName="Description" placeholder="description">
                                     </textarea>
+                                    <div class="text-danger" *ngIf="!Description.valid ">
+                                        <small *ngIf="Description.errors.required && Description.touched"
+                                            [class.is-invalid]="Description.invalid || Description.touched" class="text-danger">
+                                    field is required
+                                        </small>
+                                        </div>
                                 </div>
                             </div>
                             

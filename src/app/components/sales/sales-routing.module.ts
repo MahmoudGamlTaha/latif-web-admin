@@ -18,7 +18,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'categorytype/:id/:typeName',
+        path: 'category-type/:id/:typeName',
         component: TransactionsComponent,
         data: {
           title: "Category Type",

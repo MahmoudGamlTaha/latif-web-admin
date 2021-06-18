@@ -20,7 +20,9 @@ export class SubCategoryComponent implements OnInit {
 
   public settings = {
     actions: {
-      position: 'right'
+      position: 'right',
+      edit:false,
+      add:false
     },
     delete: {
       confirmDelete: true,
@@ -41,11 +43,13 @@ export class SubCategoryComponent implements OnInit {
         type: 'html',
       },
       description: {
-        title: 'description'
+        title: 'description',
+        filter: false,
       },
       icon: {
         title: 'icon',
         type: 'html',
+        filter: false,
         valuePrepareFunction:(cell,row)=>{
           if (row.icon != null && row.icon != undefined && row.icon != '') {
           return "<img src='"+row.icon+"' width='50' height='50' />";

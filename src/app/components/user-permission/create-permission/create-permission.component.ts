@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RoleService } from 'src/app/shared/service/dashboard-services/role.service';
+import { UrlDesc } from './UrlDesc';
 
 @Component({
   selector: 'app-create-permission',
@@ -10,10 +11,11 @@ import { RoleService } from 'src/app/shared/service/dashboard-services/role.serv
 export class CreatePermissionComponent implements OnInit {
 
   createform:FormGroup
-  endPointsList: any;
-  endPointsListSplit: any;
-  endPointsListMethod: [];
-  endPointsListPath: [];
+  endPoints: UrlDesc;
+  endPointsList: any
+  public endPointsListPath: UrlDesc[]= [];
+  pathMethod: any;
+  
   constructor(private RoleSer:RoleService,private fb:FormBuilder) { }
 
   ngOnInit(): void {
@@ -21,21 +23,31 @@ export class CreatePermissionComponent implements OnInit {
       HttpMethod : ['',[Validators.minLength(3),Validators.required]],
       HttpPath : ['',[Validators.minLength(3),Validators.required]]
     })
-
+  
     this.RoleSer.getEndpoints().subscribe((data)=>{
 
-      this.endPointsList=data;
-      this.endPointsList.filter((item)=>{
-        this.endPointsListSplit=item.split(" ")
-        // this.endPointsListMethod
-        // this.endPointsListPath
-        console.log("method",this.endPointsListSplit[0])
-        console.log("path",this.endPointsListSplit[1])
+      this.endPointsList = data;
+      this.endPointsList.forEach(item => {
+        
+        let urlDesc:UrlDesc;
+        let splitItem = item.split(" ")
+        
+          urlDesc= {
+            http_Method:splitItem[0],
+            http_Path:splitItem[1]
+          } ;   
 
-      })
-      console.log(data)
+        this.endPointsListPath.push(urlDesc);
+
+      }); 
     })
+    console.log(this.endPointsListPath)
   }
+  pathSelected(event){
+    console.log(event.target.value)
+    this.pathMethod=event.target.value;
+  }
+
   get HttpMethod() {
     return this.createform.get('HttpMethod');
   }

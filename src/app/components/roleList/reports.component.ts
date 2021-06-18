@@ -34,7 +34,8 @@ export class ReportsComponent implements OnInit {
 
       },
       created_at: {
-        title: 'created_at'
+        title: 'created_at',
+        filter: false,
       }
     },
   };

@@ -67,7 +67,7 @@ export class NavService {
 		{
 			title: 'category', icon: 'list', type: 'sub', active: false, children: [
 				{ path: '/category/category-list', title: 'Category list', type: 'link' },
-				// { path: '/category/categorytype/:id/:typeName', title: 'Category type', type: 'link' },
+				// { path: '/category/category-type/:id/:typeName', title: 'Category type', type: 'link' },
 				{ path: '/category/create-category', title: 'create Category', type: 'link' },
 
 			]

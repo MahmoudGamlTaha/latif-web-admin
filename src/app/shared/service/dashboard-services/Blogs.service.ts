@@ -53,8 +53,9 @@ export class BlogsService {
 
   createBlogList(blog) {
     console.log(blog);
-    return this._http.post<IblogList>(this._createblog,
-      { blog },
+    return this._http.post(this._createblog,
+      { category:blog.Category,title:blog.Title,extrnImage:blog.ExtrnImage,
+        userId:blog.UserId,description:blog.Description,_external:blog.External },
       { headers: this.headers });
   }
 

@@ -41,6 +41,7 @@ export class CategoryComponent implements OnInit {
     actions: {
       position: 'right',
       edit:false,
+      add:false,
     },
     delete: {
       confirmDelete: true,
@@ -73,15 +74,16 @@ export class CategoryComponent implements OnInit {
       },
       description: {
         title: 'description',
+        filter:false,
         valuePrepareFunction: (cell, row) => { return row.description.slice(0, 30); },
         type: 'string'
         
       },
       createdDate: {
-        title: 'createdDate'
+        title: 'createdDate',filter:false,
       },
       image: {
-        title: 'Image',
+        title: 'Image',filter:false,
         type: 'html',
         valuePrepareFunction:(cell,row)=>{
           if (row.image != null && row.image != undefined && row.image != '') {

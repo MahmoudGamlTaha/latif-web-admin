@@ -37,6 +37,10 @@ export class ListCouponComponent implements OnInit {
   public settings = {
 
     hideSubHeader: true,
+    actions:{
+      edit:false,
+      position: 'right',
+    },
     add: {
       // addButtonContent: '<button class="btn btn-primary"></button>',
       createButtonContent: '<button class="btn btn-primary"></button>',
@@ -49,20 +53,14 @@ export class ListCouponComponent implements OnInit {
       saveButtonContent: 'save',
       cancelButtonContent: 'cancel',
     },
-    edit: {
-      editButtonContent:'<button class="btn btn-primary">',
-      editButtonTitle:"ddd",
-      confirmSave: false,
-    },
+    // edit: {
+    //   editButtonContent:'<button class="btn btn-primary">',
+    //   editButtonTitle:"ddd",
+    //   confirmSave: false,
+    // },
     pager: {
       display: true,
       perPage: this.pageSize,
-    },
-    actions: {
-      // edit:false,
-      // delete:false,
-      position: 'right',
-      
     },
       // custom: [{ name: 'View', title: `<i class="fa fa-eye" ></i>` }]
       // mode:"external"
@@ -125,6 +123,7 @@ export class ListCouponComponent implements OnInit {
       // }, 
       short_description: {
         title: 'description',
+        filter: false,
         valuePrepareFunction: (cell, row) => {
           return row.short_description.slice(0, 30);
         },
@@ -152,6 +151,7 @@ export class ListCouponComponent implements OnInit {
       },
       image: {
         title: 'image',
+        filter: false,
         type: 'html',
         valuePrepareFunction: (cell, row) => {
           if (row.image != null && row.image != undefined && row.image != '') {
