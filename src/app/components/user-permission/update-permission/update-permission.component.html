@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="updateform">
+                        <div class="row">
+                            
+                            <div class="col-md-4">
+                                <div class="formgroup">
+                                    <label >id</label>
+                                    <input type="text" [value]="data.id" formControlName="Id" class="form-control"
+                                        placeholder="Id">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="formgroup">
+                                    <label >httpMethod</label>
+                                    <input type="text" formControlName="HttpMethod" [value]="data.httpMethod" class="form-control"
+                                        placeholder="Http Method">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="formgroup">
+                                    <label >httpPath</label>
+                                    <input type="text" [value]="data.httpPath" formControlName="HttpPath" class="form-control"
+                                        placeholder="Http Path">
+                                </div>
+
+                            </div>
+                            
+                        </div>
+                    
+                        <div  class=" pull-right" style="margin-top:15px ;">
+                                <button type="submit" (click)="update" class="btn btn-primary">update</button>
+                            </div>
+                    </form> 
+                            
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

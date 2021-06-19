@@ -13,7 +13,6 @@ export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
   public registerForm: FormGroup;
-  auth_token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMTAyMDE4NzA2OCIsImV4cCI6MTYyMzI3NjgxOH0.zGr46_3iRuNNBCAvwAlPFuyGchtk717sWpS7vqmfSeD2PpehxxF1ZdO3TBLprJlRRoSHwpAyBL59WCWSIZylQw";
   constructor(private formBuilder: FormBuilder ,private route:Router,
     private router:ActivatedRoute,private authServ:AuthService) {
     this.createLoginForm();

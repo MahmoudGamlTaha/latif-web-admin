@@ -1,15 +1,14 @@
-<!-- Container-fluid starts-->
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Role List</h5>
+                    <h5> permission List</h5>
                 </div>
                 <div class="card-body">
                     <div class="pull-right">
-                        <a type="button" style="margin-bottom: 15px ;" href="#/assignpermission/create-role"
-                            class="btn btn-primary" data-toggle="modal" data-original-title="test">create role permittion</a>
+                        <a type="button" style="margin-bottom: 15px ;" href="#/user-permission/create-permission" class="btn btn-primary" data-toggle="modal"
+                        data-original-title="test">create permission  </a>
                     </div>
                     <div id="batchDelete" class="category-table custom-datatable">
                         <div class="table-responsive">
@@ -19,12 +18,9 @@
                                 </div>
                             </div>
                             <ng-template #table>
-                                <ng2-smart-table [settings]="settings" [source]="roleList" >
-                                </ng2-smart-table>
-                            </ng-template>
-                            
-                            
-
+                            <ng2-smart-table [settings]="settings" [source]="permissionList" >
+                            </ng2-smart-table>
+                        </ng-template>
                         </div>
                     </div>
                 </div>
@@ -32,4 +28,3 @@
         </div>
     </div>
 </div>
-<!-- Container-fluid Ends-->

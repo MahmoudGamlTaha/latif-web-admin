@@ -11,11 +11,13 @@ import { orderDB } from "../../../shared/tables/order-list";
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-  public categoryList;
+
+  @ViewChild(DatatableComponent, { static: false }) table: DatatableComponent;
+    public categoryList;
   public temp = [];
   categoryId;
   typeName;
-  @ViewChild(DatatableComponent, { static: false }) table: DatatableComponent;
+  isLoading: boolean = true ;
   constructor( private categorySer:CategoryService,private router:Router) {
     // this.order = orderDB.list_order;
   }
@@ -40,16 +42,17 @@ export class OrdersComponent implements OnInit {
 if(event.type == 'click') {
   this.categoryId=event.row.id;
   this.typeName=event.row.name;
-  this.router.navigate(['sales/categorytype/',this.categoryId,this.typeName])
+  this.router.navigate(['category/category-type/',this.categoryId,this.typeName])
 }
   }
   ngOnInit() {
 
     this.categorySer.getCategoryList().subscribe((data:any)=>{
+      this.isLoading = false;
       console.log(data)
       this.categoryList=data.response.data;
 
-    })
+    },(err)=>{this.isLoading = false ;})
   }
 
 }

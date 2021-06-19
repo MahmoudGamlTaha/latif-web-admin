@@ -8,26 +8,33 @@
                 </div>
                 <div class="card-body">
 
-                    <div class="btn-popup pull-right">
+                    <!-- <div class="btn-popup pull-right">
+
                         <ng-template #content let-modal>
                             <div class="modal-header">
                                 <h5 class="modal-title f-w-600" id="exampleModalLabel">Deleted Record </h5>
-                                
                             </div>
                             <div class="modal-body">
                                 <h3> * Are you Sure</h3>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
+                                <button type="button" class="btn btn-primary" (click)="onDeleteConfirm(event,content)" data-dismiss="modal">Delete</button>
                                 <button class="btn btn-secondary" type="button" data-dismiss="modal"
                                     (click)="modal.dismiss('Cross click')">Cancle</button>
                             </div>
                         </ng-template>
 
+                    </div> -->
+                    <div *ngIf="isLoading; else table" class="text-center">
+                        <div class="spinner-border" style="width: 40px; height: 40px;">
+                            <span class="sr-only">Loading...</span>
+                        </div>
                     </div>
-                    <ng2-smart-table [settings]="settings"  (deleteConfirm)="onDeleteConfirm($event,content)"                               [source]="reportsReasonsList" >
-
+                    <ng-template #table>
+                    <ng2-smart-table [settings]="settings"  (deleteConfirm)="onDeleteConfirm($event)" 
+                    [source]="reportsReasonsList" >
                     </ng2-smart-table>
+                    </ng-template>
                 </div>
             </div>
         </div>

@@ -10,21 +10,25 @@ import { StatusComponent } from '../status/status.component';
 })
 export class ListUserComponent implements OnInit {
   public user_list = []
+  isLoading: boolean = true ;
 
   constructor(private userSer:UsersService) {
     this.userSer.userList().subscribe(
       (data:any)=>{
+        this.isLoading = false ;
         this.user_list =data.response.data
         console.log(this.user_list)
-      },(err)=>{console.log("err",err)}
+      },(err)=>{
+        this.isLoading = false ;
+        console.log("err",err)}
     );
   }
 
   public settings = {
-    subHeaders:false,
     actions:{
       position:"right",
-      edit:false
+      edit:false,
+      add:false,
   },
     columns: {
       id: {
@@ -62,7 +66,8 @@ export class ListUserComponent implements OnInit {
           width:"15px"
       },
       registrationDate: {
-        title: 'registrationDate'
+        title: 'registrationDate', 
+        filter : false,
       },
     },
   };

@@ -15,7 +15,7 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'blogs/bloglist',
+        path: 'blogs/blog-list',
         component: CategoryComponent,
         data: {
           title: "blog List",
@@ -23,7 +23,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'blogs/blogcategory',
+        path: 'blogs/blog-category',
         component: SubCategoryComponent,
         data: {
           title: "blog Category",
@@ -39,11 +39,11 @@ const routes: Routes = [
       //   }
       // },
       {
-        path: 'blogs/product-detail',
+        path: 'blogs/create-blog',
         component: ProductDetailComponent,
         data: {
-          title: "Product Detail",
-          breadcrumb: "Product Detail"
+          title: "create blog",
+          breadcrumb: "create blog"
         }
       },
       // {
