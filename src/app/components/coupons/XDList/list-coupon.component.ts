@@ -5,6 +5,7 @@ import { CategoryService } from 'src/app/shared/service/dashboard-services/categ
 import { adsFilter } from 'src/app/shared/models/adsFilter';
 import { StatusComponent } from '../status/status.component';
 import { LocalDataSource } from 'ng2-smart-table';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-list-coupon',
@@ -26,8 +27,9 @@ export class ListCouponComponent implements OnInit {
   source: LocalDataSource = new LocalDataSource();
   numOfPages: number;
   isLoading: boolean = true;
+deletedItemId;
   constructor(
-    private categorySer: CategoryService,
+    private modalService: NgbModal,private categorySer: CategoryService,
     private router: Router,
     private adsSer: AdsService
   ) {
@@ -41,17 +43,12 @@ export class ListCouponComponent implements OnInit {
       edit:false,
       position: 'right',
     },
-    add: {
-      // addButtonContent: '<button class="btn btn-primary"></button>',
-      createButtonContent: '<button class="btn btn-primary"></button>',
-      // cancelButtonContent: '<i class="nb-close"></i>',
-      confirmCreate: true
-    },
-    delete: {
+
+  delete: {
       confirmDelete: true,
       deleteButtonContent: 'Delete data',
       saveButtonContent: 'save',
-      cancelButtonContent: 'cancel',
+      cancelButtonContent: 'cancel'
     },
     // edit: {
     //   editButtonContent:'<button class="btn btn-primary">',
@@ -194,32 +191,42 @@ export class ListCouponComponent implements OnInit {
     this.getAdsList();
     this.getAdsType();
   }
+
+
+  delete(id) {
+        console.log(id)
+
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+onDeleteConfirm(event,content){
+console.log("asd",event.data.id,content)
+this.deletedItemId=event.data.id
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+}
+
+
+
+
   pageChange(pageIndex) {
     const loadedRecordCount = this.source.count();
     const lastRequestedRecordIndex = pageIndex * this.pageSize;
     console.log(loadedRecordCount,lastRequestedRecordIndex)
   }
 
-  onDeleteConfirm(event) {
-    // alert(event.data.id)
-    // if (window.confirm('Are you sure you want to save?')) {
-    //   this.adsSer.deleteblogList(parseInt(event.data.id))
-    //   event.confirm.resolve(event.newData);
-    // } else {
-    //   event.confirm.reject();
-    // }
-  }
-  onEditConfirm(event) {
-    // this.adsSer.updateblogList(event.data).subscribe(res => {
-    //   console.log('Success : ', res)
-    // }, err => {
-    //   console.log('EError : ', err)
-    // })
-    // event.confirm.resolve(event.newData);
-  }
-  onCreateConfirm(event) {
 
-  }
   onUserRowSelect(event) {
     console.log(event)
     if (
@@ -282,16 +289,6 @@ export class ListCouponComponent implements OnInit {
     filterAds = { category: event.target.value, type: this.selected };
     this.customFilter(filterAds);
     console.log(this.settings.pager,this.settings.pager )
-  }
-
-  onCustom(event){
-    switch ( event.action) {
-      case 'viewrecord':
-        // this.viewRecord(event.data);
-        break;
-    case 'editrecord':
-        // this.editRecord(event.data);
-    }
   }
 
 }

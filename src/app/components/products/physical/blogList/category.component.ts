@@ -12,28 +12,12 @@ export class CategoryComponent implements OnInit {
   public closeResult: string;
   public categories = []
   isLoading: boolean = true;
-
+deletedItemId;
   constructor(private modalService: NgbModal,private BlogsSer: BlogsService) {
     // this.categories = categoryDB.category;
     
   }
 
-  open(content) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
 
 
   public settings = {
@@ -43,9 +27,8 @@ export class CategoryComponent implements OnInit {
       edit:false,
       add:false,
     },
-    delete: {
+  delete: {
       confirmDelete: true,
-
       deleteButtonContent: 'Delete data',
       saveButtonContent: 'save',
       cancelButtonContent: 'cancel'
@@ -108,36 +91,30 @@ export class CategoryComponent implements OnInit {
       } );
   }
 
-
-  onDeleteConfirm(event){ 
-
-    alert(event.data.id)
-
-    
-    
-      this.BlogsSer.deleteblogList(parseInt(event.data.id)).subscribe(
+    delete(id) {
+          this.BlogsSer.deleteblogList(id).subscribe(
         res=> console.log(res)
       )
-      event.confirm.resolve(event.newData);
-    
 
   }
-
-  onEditConfirm(event){
-    console.log(event.data)
-    this.BlogsSer.updateblogList(event.data).subscribe(res => {
-      console.log('Success : ', res)
-    }, err => {
-      console.log('EError : ', err)
-    })
-    event.confirm.resolve(event.newData);
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
-      
-  onCreateConfirm(event) {
-    console.log(event)
-    this.BlogsSer.createBlogList(event.data)
-    event.confirm.resolve(event.newData);
 
-  }
+onDeleteConfirm(event,content){
+console.log("asd",event.data.id,content)
+this.deletedItemId=event.data.id
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+}
 
 }

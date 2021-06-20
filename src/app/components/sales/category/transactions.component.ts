@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CategoryService } from 'src/app/shared/service/dashboard-services/category.service';
 import { transactionsDB } from 'src/app/shared/tables/transactions';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-transactions',
@@ -14,7 +15,10 @@ export class TransactionsComponent implements OnInit {
   categoryList;
   typeId;
   typeName;
-  constructor(private route: ActivatedRoute, private router: Router, private categorySer: CategoryService) {
+  isLoading= true;
+  closeResult;
+deletedItemId;
+  constructor(private modalService: NgbModal,private route: ActivatedRoute, private router: Router, private categorySer: CategoryService) {
 
   }
 
@@ -24,9 +28,8 @@ export class TransactionsComponent implements OnInit {
       add:false,
       edit:false,
     },
-    delete: {
+  delete: {
       confirmDelete: true,
-
       deleteButtonContent: 'Delete data',
       saveButtonContent: 'save',
       cancelButtonContent: 'cancel'
@@ -101,19 +104,37 @@ export class TransactionsComponent implements OnInit {
     this.typeName = this.route.snapshot.paramMap.get('typeName');
 
     this.categorySer.getCategoryType(this.typeId).subscribe((data: any) => {
+      this.isLoading= false;
       this.categoryList = data.response.data;
     },
       (error) => {
+        this.isLoading= false;
         console.log('error Category Type', error);
       })
 
+  }
+    delete(id) {
+        console.log(id)
 
   }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
 
-  // ngAfterViewInit() {
-  //   }
-  onDeleteConfirm(event) { }
-  onEditConfirm(event) { }
-  onCreateConfirm(event) { }
+onDeleteConfirm(event,content){
+console.log("asd",event.data.category.id,content)
+this.deletedItemId=event.data.category.id
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+}
 
 }

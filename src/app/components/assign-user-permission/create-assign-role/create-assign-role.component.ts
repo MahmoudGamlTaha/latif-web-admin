@@ -11,12 +11,27 @@ export class CreateAssignRoleComponent implements OnInit {
 
   createform:FormGroup
   roleList: any;
+  permissionList
   constructor(private RoleSer:RoleService,private fb:FormBuilder) { }
 
   ngOnInit(): void {
     this.RoleSer.getRoleList().subscribe((data:any)=>{
       this.roleList =data
+
       console.log(this.roleList)
+
+      this.RoleSer.UserPermissionList().subscribe(
+      (data: any) => {
+        this.permissionList = data.response.data.content;
+        console.log("data",data)
+
+      },
+      (error) => {
+        
+        console.log('error', error);
+      }
+    );
+    
     })
     
     this.createform=this.fb.group({
@@ -33,6 +48,7 @@ export class CreateAssignRoleComponent implements OnInit {
   }
   create(){
     console.log(this.createform.value)
+
     this.RoleSer.createAssignPermission(this.createform.value).subscribe(
       (data: any) => {
 

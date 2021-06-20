@@ -7,6 +7,7 @@ import { PermissionListComponent } from './permission-list/permission-list.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { UpdatePermissionComponent } from './update-permission/update-permission.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [CreatePermissionComponent, PermissionListComponent,UpdatePermissionComponent],
@@ -15,7 +16,7 @@ import { UpdatePermissionComponent } from './update-permission/update-permission
     UserPermissionRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    Ng2SmartTableModule,
+    Ng2SmartTableModule,NgbModule,
   ]
 })
 export class UserPermissionModule { }

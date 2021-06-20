@@ -4,10 +4,13 @@ import { ListMenuComponent } from './reportsXD/list-menu.component';
 import { CreateMenuComponent } from './reportsReasons/create-menu.component';
 import { CreateReasonComponent } from './create-reason/create-reason.component';
 import { UpdateReasonComponent } from './update-reason/update-reason.component';
+import { AuthorizeGuard } from 'src/app/shared/service/dashboard-services/AuthorizeGuard';
 
 const routes: Routes = [
   {
     path: '',
+    canActivate:[AuthorizeGuard],
+
     children: [
       {
         path: 'list-menu',

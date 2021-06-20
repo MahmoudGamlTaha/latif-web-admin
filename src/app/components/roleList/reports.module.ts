@@ -9,6 +9,7 @@ import { ChartsModule } from 'ng2-charts';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ChartistModule } from 'ng-chartist'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [ReportsComponent],
@@ -19,7 +20,7 @@ import { ChartistModule } from 'ng-chartist'
     NgxChartsModule,
     ChartistModule,
     ReportsRoutingModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,NgbModule,
   ]
 })
 export class ReportsModule { }

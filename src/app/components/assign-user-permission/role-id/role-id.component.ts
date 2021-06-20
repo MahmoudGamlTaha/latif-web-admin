@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RoleService } from 'src/app/shared/service/dashboard-services/role.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-role-id',
@@ -11,13 +12,21 @@ export class RoleIdComponent implements OnInit {
   public roleIdList = [];
   roleId ;
   roleName;
-  constructor(private RoleSer:RoleService,private router:ActivatedRoute) {
+  closeResult;
+deletedItemId;
+  constructor(private modalService: NgbModal,private RoleSer:RoleService,private router:ActivatedRoute) {
   this.roleId=router.snapshot.paramMap.get('id')
   }
 
 
   public settings = {
     actions: false,
+      delete: {
+      confirmDelete: true,
+      deleteButtonContent: 'Delete data',
+      saveButtonContent: 'save',
+      cancelButtonContent: 'cancel'
+    },
     columns: {
       id: {
         title: 'id',
@@ -60,5 +69,29 @@ export class RoleIdComponent implements OnInit {
       }
     );
   }
+
+    delete(id) {
+        console.log(id)
+
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+onDeleteConfirm(event,content){
+console.log("asd",event.data.id,content)
+this.deletedItemId=event.data.id
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+}
 
 }

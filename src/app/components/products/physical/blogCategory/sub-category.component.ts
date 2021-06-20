@@ -12,7 +12,7 @@ export class SubCategoryComponent implements OnInit {
   public closeResult: string;
   public blogCategoryList  = []
   isLoading: boolean = true;
-
+deletedItemId;
   constructor(private modalService: NgbModal,private BlogsSer:BlogsService) {
   
   }
@@ -24,9 +24,8 @@ export class SubCategoryComponent implements OnInit {
       edit:false,
       add:false
     },
-    delete: {
+  delete: {
       confirmDelete: true,
-
       deleteButtonContent: 'Delete data',
       saveButtonContent: 'save',
       cancelButtonContent: 'cancel'
@@ -78,27 +77,29 @@ export class SubCategoryComponent implements OnInit {
 
   }
 
-  onDeleteConfirm(event){ 
 
-    alert(event.data.id)
-    if (window.confirm('Are you sure you want to save?')) {
-      this.BlogsSer.deleteblogCategory(parseInt(event.data.id))
-      event.confirm.resolve(event.newData);
+    delete(id) {
+        this.BlogsSer.deleteblogCategory(id)
+
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
     } else {
-      event.confirm.reject();
+      return `with: ${reason}`;
     }
-
   }
 
-  onEditConfirm(event){
-    this.BlogsSer.updateblogCategory(event.data)
-    event.confirm.resolve(event.newData);
-  }
+onDeleteConfirm(event,content){
+console.log("asd",event.data.id,content)
+this.deletedItemId=event.data.id
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+}
 
-
-  onCreateConfirm(event) {
-    console.log("Create Event In Console")
-    console.log(event);
-
-  }
 }

@@ -2,10 +2,13 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListPageComponent } from './list-page/list-page.component';
 import { CreatePageComponent } from './create-page/create-page.component';
+import { AuthorizeGuard } from 'src/app/shared/service/dashboard-services/AuthorizeGuard';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '',    
+    canActivate:[AuthorizeGuard],
+
     children: [
       {
         path: 'list-page',

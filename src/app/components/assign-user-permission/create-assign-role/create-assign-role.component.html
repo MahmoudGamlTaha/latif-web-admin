@@ -34,8 +34,13 @@
                             <div class="col-md-6">
                                 <div class="formgroup">
                                     <label >permission Id</label>
-                                    <input type="text" [class.is-invalid]="PermissionId.touched && PermissionId.invalid" formControlName="PermissionId" class="form-control"
-                                        placeholder="permission Id">
+                                    <select [class.is-invalid]="PermissionId.touched && PermissionId.invalid" 
+                                    formControlName="PermissionId" class="form-control"  placeholder="permission Id">
+                                        <option selected>select permission</option>
+                                        <option [value]="option.id" *ngFor =" let option of permissionList" >
+                                            {{option.httpPath}}
+                                        </option>
+                                    </select>
                                         <div class="text-danger" *ngIf="!PermissionId.valid ">
                                             <small *ngIf="PermissionId.errors.required && PermissionId.touched"
                                                 [class.is-invalid]="PermissionId.invalid || PermissionId.touched"

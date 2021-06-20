@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Token } from '../../data/Token';
 import { AuthService } from './auth.service';
 
- 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,10 +19,8 @@ canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
     const currentUser =Token.bearer + Token.myToken
     if (currentUser) {
-        // authorised so return true
         return true;
     }
-
        // not logged in 
     this.router.navigate(['/auth/login']);
     return false;
