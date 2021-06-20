@@ -1,20 +1,10 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { LoginComponent } from 'src/app/components/auth/login/login.component';
 
 // import { Http, Headers, Response } from '@angular/http';
 // import { HttpHeaders, HttpParams } from '@angular/common/http';
-
-
-export interface authResponseData {
-
-  idToken: String;
-  email: string;
-  refreshToken: string;
-  expireesIn: string;
-  localId: string
-
-}
 
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -32,7 +22,7 @@ export class AuthService {
    * test login {
       "mobile":"01020187068",
       "password":"1234@"
-  }
+  } 
   * */
   _authLogin = server.url + "login"
   _authregister = server.url + "api/public/account/registration"
@@ -72,18 +62,22 @@ export class AuthService {
       this.route.navigate(['dashboard/default'])
 
 
-    }
+    },(err)=>{
+      Token.error = true ;
+      console.log("myerr",err.error.error)
 
-    );
+      }
+
+    ) 
   }
-  signUpUser(data: any): Observable<any> {
-    // const headers = new Headers({
-    //   'Content-Type': 'application/json',
-    //   // 'Authorization': `Bearer ${auth_token}`
-    // })
-    return this._http.post<authResponseData>(this._authregister, { email: data.email, confirmPassword: data.confirmPassword, mobile: data.mobile, password: data.password, name: data.name })
-    // { headers: headers }
-  }
+  // signUpUser(data: any): Observable<any> {
+  //   // const headers = new Headers({
+  //   //   'Content-Type': 'application/json',
+  //   //   // 'Authorization': `Bearer ${auth_token}`
+  //   // })
+  //   return this._http.post<any>(this._authregister, { email: data.email, confirmPassword: data.confirmPassword, mobile: data.mobile, password: data.password, name: data.name })
+  //   // { headers: headers }
+  // }
 
   logout() {
     // remove user from local storage to log user out

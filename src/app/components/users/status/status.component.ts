@@ -24,17 +24,17 @@ export class StatusComponent implements ViewCell, OnInit {
     this.renderValue = this.value
 
     this.idValue = this.rowData.id
-    console.log(this.renderValue)
+    // console.log(this.renderValue)
 
-    console.log("child2", this.idValue)
+    // console.log("child2", this.idValue)
   }
   onClick(event) {
 
-    console.log(event.target.checked)
+    // console.log(event.target.checked)
     this.userSer.activate(event.target.id, event.target.checked).subscribe(
       res=> console.log("success")
       )
     this.save.emit(this.rowData);
-    console.log(event.target.id)
+    // console.log(event.target.id)
   }
 }

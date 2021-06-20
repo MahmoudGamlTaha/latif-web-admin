@@ -9,10 +9,13 @@ import { DigitalAddComponent } from './digital/digital-add/digital-add.component
 import { CategoryComponent } from './physical/blogList/category.component';
 import { SubCategoryComponent } from './physical/blogCategory/sub-category.component';
 import { ProductDetailComponent } from './physical/createBlog/product-detail.component';
+import { AuthorizeGuard } from 'src/app/shared/service/dashboard-services/AuthorizeGuard';
 
 const routes: Routes = [
   {
     path: '',
+    canActivate:[AuthorizeGuard],
+
     children: [
       {
         path: 'blogs/blog-list',

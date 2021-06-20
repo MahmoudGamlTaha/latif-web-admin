@@ -144,6 +144,9 @@
                                             aria-labelledby="account-tab">
                                             <form [formGroup]="loginForm"  (ngSubmit)="logInApi()"
                                                 class="form-horizontal auth-form" novalidate="">
+                                                <div *ngIf="isError" class="alert alert-danger" role="alert">
+                                                    {{ErrorMessageText}}
+                                                 </div>
                                                 <div class="form-group">
                                                     <input required="" formControlName="mobile" name="login[username]" type="email"
                                                         class="form-control" placeholder="Mobile"

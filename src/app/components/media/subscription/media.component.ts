@@ -13,7 +13,7 @@ export class MediaComponent implements OnInit {
   public closeResult: string; 
   public subscriptionData = []
   isLoading: boolean = true ;
-
+deletedItemId;
   constructor(private subscriptionSer:SubscriptionService,private modalService: NgbModal) {
     // this.media = mediaDB.data;
   }
@@ -21,20 +21,16 @@ export class MediaComponent implements OnInit {
   public settings = {
     actions: {
       position: 'right',
+      edit:false,
+      add:false
     },
-    delete: {
+  delete: {
       confirmDelete: true,
-
       deleteButtonContent: 'Delete data',
       saveButtonContent: 'save',
       cancelButtonContent: 'cancel'
     },
-    add: {
-      confirmCreate: true,
-    },
-    edit: {
-      confirmSave: true,
-    },
+
     columns: {
       id: {
         title: 'id',
@@ -65,29 +61,6 @@ export class MediaComponent implements OnInit {
 
   };
 
-  open(content) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
-  // public config1: DropzoneConfigInterface = {
-  //   clickable: true,
-  //   maxFiles: 1,
-  //   autoReset: null,
-  //   errorReset: null,
-  //   cancelReset: null
-  // };
 
   ngOnInit() {
 
@@ -98,7 +71,31 @@ export class MediaComponent implements OnInit {
       },
       (error) => { 
         this.isLoading = false
-         console.log('error', error); });
+        console.log('error', error); });
   }
+
+    delete(id) {
+        console.log(id)
+
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+onDeleteConfirm(event,content){
+console.log("asd",event.data.id,content)
+this.deletedItemId=event.data.id
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+}
 
 }
