@@ -16,12 +16,12 @@
                             <!-- userId -->
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="validationCustom01">userId</label>
+                                    <label for="validationCustom01">user</label>
                                     <select class="form-control" 
                                     formControlName="UserId" >
-                                        <option class="dropdown-item" *ngFor="let option of roleList" data-list="option"
-                                            [value]="option.id" >
-                                            {{ option.name }}
+                                        <option class="dropdown-item" *ngFor="let user of userList" data-list="user"
+                                            [value]="user.id" >
+                                            {{ user.firstName+'-'+user.phone }}
                                         </option>
                                     </select>
                                     <div class="text-danger" *ngIf="!UserId.valid ">

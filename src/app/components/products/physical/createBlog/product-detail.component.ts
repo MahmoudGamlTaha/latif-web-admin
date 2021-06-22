@@ -22,14 +22,14 @@ export class ProductDetailComponent implements OnInit {
 
   public blogForm: FormGroup;
   public blogCategoryList;
-  roleList: any;
+  userList: any;
 
-  constructor(private blogSer: BlogsService, private roleSer: RoleService, private categorySer: CategoryService, private citiesSer: CitesService,
+  constructor(private blogSer: BlogsService, private userService: UsersService, private categorySer: CategoryService, private citiesSer: CitesService,
     private formBuilder: FormBuilder, private router: ActivatedRoute) {
-    this.roleSer.getRoleList().subscribe(
+    this.userService.userList().subscribe(
       (data: any) => {
-        this.roleList = data
-        console.log(this.roleList)
+        this.userList = data
+        console.log(this.userList)
       }, (err) => console.log("err", err)
     )
     this.getblogCategory()
