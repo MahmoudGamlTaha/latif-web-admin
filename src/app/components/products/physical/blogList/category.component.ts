@@ -12,33 +12,29 @@ export class CategoryComponent implements OnInit {
   public closeResult: string;
   public categories = []
   isLoading: boolean = true;
-deletedItemId;
-  constructor(private modalService: NgbModal,private BlogsSer: BlogsService) {
-    // this.categories = categoryDB.category;
-    
+  deletedItemId;
+  constructor(private modalService: NgbModal, private BlogsSer: BlogsService) {
+
   }
 
-
-
   public settings = {
-
     actions: {
       position: 'right',
-      edit:false,
-      add:false,
+      edit: false,
+      add: false,
     },
-  delete: {
+    delete: {
       confirmDelete: true,
       deleteButtonContent: 'Delete data',
       saveButtonContent: 'save',
       cancelButtonContent: 'cancel'
     },
-    add: {
-      confirmCreate: false,
-    },
-    edit: {
-      confirmSave: true,
-    },
+    // add: {
+    //   confirmCreate: false,
+    // },
+    // edit: {
+    //   confirmSave: true,
+    // },
     columns: {
       // 'user.firstName': {
       //   title: 'Name',
@@ -46,75 +42,78 @@ deletedItemId;
       // },
       id: {
         title: 'id',
-        type: 'integer'
-      } ,
+        type: 'html',
+        valuePrepareFunction: (cell, row) => {
+          return "<a href='#/products/blogs/update-blog/"+row.id+"' >" + row.id + "</a>"
+        }
+      },
       category: {
         title: 'Category',
         type: 'integer'
-      } ,
+      },
       title: {
         title: 'title',
       },
       description: {
         title: 'description',
-        filter:false,
+        filter: false,
+        type: 'string',
         valuePrepareFunction: (cell, row) => { return row.description.slice(0, 30); },
-        type: 'string'
-        
+
+
       },
       createdDate: {
-        title: 'createdDate',filter:false,
+        title: 'createdDate', filter: false,
       },
       image: {
-        title: 'Image',filter:false,
+        title: 'Image', filter: false,
         type: 'html',
-        valuePrepareFunction:(cell,row)=>{
+        valuePrepareFunction: (cell, row) => {
           if (row.image != null && row.image != undefined && row.image != '') {
-          return "<img src='"+row.image+"' width='50' height='50' />";
-        }
+            return "<img src='" + row.image + "' width='50' height='50' />"
           }
+        }
       }
-
     }
-  };
-
-  ngOnInit() {
-  
-    this.BlogsSer.getblogList().subscribe(
-      (data: any) => {
-        this.isLoading = false
-        this.categories = data.response.data
-      },
-      (error) => {
-        this.isLoading = false
-        console.log('error', error);
-      } );
   }
+  ngOnInit() {
 
-    delete(id) {
-          this.BlogsSer.deleteblogList(id).subscribe(
-        res=> console.log(res)
+      this.BlogsSer.getblogList().subscribe(
+        (data: any) => {
+          this.isLoading = false
+          this.categories = data.response.data
+        },
+        (error) => {
+          this.isLoading = false
+          console.log('error', error);
+        });
+    }
+
+  delete(id) {
+      this.BlogsSer.deleteblogList(id).subscribe(
+        res => console.log(res)
       )
 
-  }
+    }
   private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
+      if (reason === ModalDismissReasons.ESC) {
+        return 'by pressing ESC';
+      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+        return 'by clicking on a backdrop';
+      } else {
+        return `with: ${reason}`;
+      }
+    }
+
+  onDeleteConfirm(event, content) {
+      console.log("asd", event.data.id, content)
+      this.deletedItemId = event.data.id
+      this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
     }
   }
 
-onDeleteConfirm(event,content){
-console.log("asd",event.data.id,content)
-this.deletedItemId=event.data.id
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-}
 
-}

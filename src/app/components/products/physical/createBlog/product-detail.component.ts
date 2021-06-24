@@ -28,7 +28,7 @@ export class ProductDetailComponent implements OnInit {
     private formBuilder: FormBuilder, private router: ActivatedRoute) {
     this.userService.userList().subscribe(
       (data: any) => {
-        this.userList = data
+        this.userList = data.response.data
         console.log(this.userList)
       }, (err) => console.log("err", err)
     )
