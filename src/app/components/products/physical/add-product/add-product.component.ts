@@ -10,12 +10,13 @@ import { BlogsService } from 'src/app/shared/service/dashboard-services/Blogs.se
 export class AddProductComponent implements OnInit {
   updateForm: FormGroup
   blogId
-  data
+  blogData
   Id
   Title
   Category
   Description
   Username
+  ExternalLink
   constructor(private fb: FormBuilder, private blogServ:BlogsService
     ,private router:ActivatedRoute,private route:Router) {
     this.blogId=this.router.snapshot.paramMap.get("id")
@@ -25,15 +26,15 @@ export class AddProductComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.blogServ.getblog(this.blogId)
+    this.blogServ.getblogById(this.blogId)
     .subscribe((data: any) => {
-      // this.data = data.response.data    
-      //   console.log(this.data)
+      this.blogData = data.response.data    
+        console.log(this.blogData)
       this.Id = data.response.data.id
       this.Title = data.response.data.title
       this.Category = data.response.data.category
       this.Description = data.response.data.description
-      this.Username = data.response.data.user.username
+      this.ExternalLink = data.response.data.externalLink
     }, (err) => {
       console.log("err", err)
     })
@@ -42,22 +43,22 @@ export class AddProductComponent implements OnInit {
       title: [this.Title],
       category: [this.Category],
       description: [this.Description],
-      username: [this.Username],
+      externalLink: [this.ExternalLink],
     })
   }
   update() {
 
     console.log(this.updateForm.value)
 
-    // if (!this.updateForm.valid) { return; }
-    // this.blogServ.updateblogList(this.updateForm.value)
-    //   .subscribe((data: any) => {
-    //     console.log(data)
-    //     this.route.navigate(['products/blogs/blog-list'])
+    if (!this.updateForm.valid) { return; }
+    this.blogServ.updateblogById(this.updateForm.value)
+      .subscribe((data: any) => {
+        console.log(data)
+        this.route.navigate(['products/blogs/blog-list'])
 
-    //   }, (err) => {
-    //     console.log("err", err)
-    //   })
+      }, (err) => {
+        console.log("err", err)
+      })
   }
 
 }
