@@ -14,6 +14,9 @@ export class BlogsService {
   // Blogs URL
   _blogList = server.url + 'api/public/blogs';
   _updateblogList = server.url + "api/public/blogs/update"
+
+  _getblog = server.url + "api/public/blogs/id="
+
   _deleteblog = server.url + "api/public/blogs/delete?id=";
   _createblog = server.url + "api/public/blogs/create";
   token;
@@ -35,7 +38,12 @@ export class BlogsService {
         })
       );
   }
+  getblog(blogId: any) {
 
+    console.log(this.token)
+
+    return this._http.get(this._getblog +blogId,{ headers: this.headers });
+  }
   updateblogList(blogList: any) {
 
     console.log(this.token)
@@ -54,8 +62,10 @@ export class BlogsService {
   createBlogList(blog) {
     console.log(blog);
     return this._http.post(this._createblog,
-      { category:blog.Category,title:blog.Title,extrnImage:blog.ExtrnImage,
-        userId:blog.UserId,description:blog.Description,_external:blog.External },
+      {
+        category: blog.Category, title: blog.Title, extrnImage: blog.ExtrnImage,
+        userId: blog.UserId, description: blog.Description, _external: blog.External
+      },
       { headers: this.headers });
   }
 

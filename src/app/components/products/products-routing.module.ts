@@ -49,14 +49,14 @@ const routes: Routes = [
           breadcrumb: "create blog"
         }
       },
-      // {
-      //   path: 'physical/add-product',
-      //   component: AddProductComponent,
-      //   data: {
-      //     title: "Add Products",
-      //     breadcrumb: "Add Product"
-      //   }
-      // },
+      {
+        path: 'blogs/update-blog/:id',
+        component: AddProductComponent,
+        data: {
+          title: "update blog",
+          breadcrumb: "update blog"
+        }
+      },
       // {
       //   path: 'digital/digital-category',
       //   component: DigitalCategoryComponent,

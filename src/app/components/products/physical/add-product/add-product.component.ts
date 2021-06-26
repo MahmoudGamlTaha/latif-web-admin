@@ -1,66 +1,63 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BlogsService } from 'src/app/shared/service/dashboard-services/Blogs.service';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
-  public productForm: FormGroup;
-  public counter: number = 1;
-  public url = [{
-    img: "assets/images/user.png",
-  },
-  {
-    img: "assets/images/user.png",
-  },
-  {
-    img: "assets/images/user.png",
-  },
-  {
-    img: "assets/images/user.png",
-  },
-  {
-    img: "assets/images/user.png",
+  updateForm: FormGroup
+  blogId
+  data
+  Id
+  Title
+  Category
+  Description
+  Username
+  constructor(private fb: FormBuilder, private blogServ:BlogsService
+    ,private router:ActivatedRoute,private route:Router) {
+    this.blogId=this.router.snapshot.paramMap.get("id")
+    console.log(this.blogId)
+
   }
-  ]
 
+  ngOnInit(): void {
 
-  constructor(private fb: FormBuilder) {
-    this.productForm = this.fb.group({
-      name: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
-      price: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
-      code: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
-      size: ['', Validators.required],
+    this.blogServ.getblog(this.blogId)
+    .subscribe((data: any) => {
+      // this.data = data.response.data    
+      //   console.log(this.data)
+      this.Id = data.response.data.id
+      this.Title = data.response.data.title
+      this.Category = data.response.data.category
+      this.Description = data.response.data.description
+      this.Username = data.response.data.user.username
+    }, (err) => {
+      console.log("err", err)
+    })
+    this.updateForm = this.fb.group({
+      id: [this.blogId],
+      title: [this.Title],
+      category: [this.Category],
+      description: [this.Description],
+      username: [this.Username],
     })
   }
+  update() {
 
-  increment() {
-    this.counter += 1;
-  }
+    console.log(this.updateForm.value)
 
-  decrement() {
-    this.counter -= 1;
-  }
+    // if (!this.updateForm.valid) { return; }
+    // this.blogServ.updateblogList(this.updateForm.value)
+    //   .subscribe((data: any) => {
+    //     console.log(data)
+    //     this.route.navigate(['products/blogs/blog-list'])
 
-  //FileUpload
-  readUrl(event: any, i) {
-    if (event.target.files.length === 0)
-      return;
-    //Image upload validation
-    var mimeType = event.target.files[0].type;
-    if (mimeType.match(/image\/*/) == null) {
-      return;
-    }
-    // Image upload
-    var reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]);
-    reader.onload = (_event) => {
-      this.url[i].img = reader.result.toString();
-    }
-  }
-
-  ngOnInit() {
+    //   }, (err) => {
+    //     console.log("err", err)
+    //   })
   }
 
 }
