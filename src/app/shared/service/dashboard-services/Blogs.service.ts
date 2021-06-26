@@ -59,12 +59,16 @@ export class BlogsService {
       { headers: this.headers });
   }
 
-  createBlogList(blog) {
+  createBlog(blog) {
     console.log(blog);
     return this._http.post(this._createblog,
       {
-        category: blog.Category, title: blog.Title, extrnImage: blog.ExtrnImage,
-        userId: blog.UserId, description: blog.Description, _external: blog.External
+         category: blog.category,
+         title: blog.title, 
+         extrnImage: blog.extrnImage,
+         userId: blog.UserId,
+         description: blog.description,
+          _external: blog.external
       },
       { headers: this.headers });
   }

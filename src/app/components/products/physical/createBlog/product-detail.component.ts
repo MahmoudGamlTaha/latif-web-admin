@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { Description } from '@ks89/angular-modal-gallery';
-
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
-import { adsFilter } from 'src/app/shared/models/adsFilter';
-import { AdsService } from 'src/app/shared/service/dashboard-services/ads.service';
+import { Blog } from 'src/app/shared/models/blog.model';
 import { BlogsService } from 'src/app/shared/service/dashboard-services/Blogs.service';
 import { CategoryService } from 'src/app/shared/service/dashboard-services/category.service';
 import { CitesService } from 'src/app/shared/service/dashboard-services/cites.service';
-import { RoleService } from 'src/app/shared/service/dashboard-services/role.service';
 import { UsersService } from 'src/app/shared/service/dashboard-services/users.service';
 
 @Component({
@@ -23,9 +19,10 @@ export class ProductDetailComponent implements OnInit {
   public blogForm: FormGroup;
   public blogCategoryList;
   userList: any;
+  public imgList:String[] = [];
 
   constructor(private blogSer: BlogsService, private userService: UsersService, private categorySer: CategoryService, private citiesSer: CitesService,
-    private formBuilder: FormBuilder, private router: ActivatedRoute) {
+    private formBuilder: FormBuilder, private activateRouter: ActivatedRoute,  private router: Router) {
     this.userService.userList().subscribe(
       (data: any) => {
         this.userList = data.response.data
@@ -39,7 +36,7 @@ export class ProductDetailComponent implements OnInit {
     this.blogForm = this.formBuilder.group({
       Category:['',[Validators.required]],
       Title: ['',[Validators.required]],
-      ExtrnImage: [''],
+      ExtrnImage: [],
       UserId: ['',[Validators.required]],
       Description: ['',[Validators.required]],
       External: [''],
@@ -81,13 +78,27 @@ export class ProductDetailComponent implements OnInit {
   }
 
   create(){
-
-    if(!this.blogForm.valid){return ;}
+    if(!this.blogForm.valid){
+      return ;
+    }
     console.log(this.blogForm.value)
-    this.blogSer.createBlogList(this.blogForm.value).subscribe(
-      (data)=>{
-
-        console.log("success")
+    let formValue = this.blogForm.value;
+    let blog:Blog = new Blog();
+    blog.external = formValue.External;
+    blog.description = formValue.Description;
+    blog.title = formValue.Title;
+    blog.category = formValue.Category;
+    blog.userId = formValue.userId;
+   if(formValue.ExtrnImage){
+     formValue.ExtrnImage.array.forEach(element => {
+       this.imgList.push(element);
+     });
+    }
+    blog.extrnImage = this.imgList; 
+    console.log(blog)
+    this.blogSer.createBlog(blog).subscribe(
+      (data:any)=>{
+        this.router.navigate(['/products/blogs/update-blog/', data.response.data.id]);
       },(err)=>{console.log("err",err)}
     )
   }

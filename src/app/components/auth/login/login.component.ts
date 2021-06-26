@@ -74,8 +74,7 @@ export class LoginComponent implements OnInit {
   logInApi() {
     // console.log("login success",this.loginForm.value)
     this.authServ.LogInUser(this.loginForm.value)
-    console.log(Token.error)
-    this.isError= Token.error
+    this.isError= Token.error === undefined? '': Token.error;
     this.loginForm.reset()
   }
 
