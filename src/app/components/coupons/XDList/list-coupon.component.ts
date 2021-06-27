@@ -183,11 +183,11 @@ deletedItemId;
     );
   }
   ngOnInit() {
-    this.source.onChanged().subscribe((change) => {
-      if (change.action === 'page') {
-        this.pageChange(change.paging.page);
-      }
-    });
+    // this.source.onChanged().subscribe((change) => {
+    //   if (change.action === 'page') {
+    //     this.pageChange(change.paging.page);
+    //   }
+    // });
     this.getAdsList();
     this.getAdsType();
   }
@@ -218,13 +218,11 @@ this.deletedItemId=event.data.id
 }
 
 
-
-
-  pageChange(pageIndex) {
-    const loadedRecordCount = this.source.count();
-    const lastRequestedRecordIndex = pageIndex * this.pageSize;
-    console.log(loadedRecordCount,lastRequestedRecordIndex)
-  }
+  // pageChange(pageIndex) {
+  //   const loadedRecordCount = this.source.count();
+  //   const lastRequestedRecordIndex = pageIndex * this.pageSize;
+  //   console.log(loadedRecordCount,lastRequestedRecordIndex)
+  // }
 
 
   onUserRowSelect(event) {

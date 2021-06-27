@@ -46,12 +46,12 @@ export class NavService {
 				{ path: '/products/blogs/blog-category', title: 'blog Category', type: 'link' },
 				// { path: '/products/blogs/create-blog', title: 'create Blog', type: 'link' },
 				// { path: '/products/blogs/update-blog', title: 'update blog', type: 'link' },
+				// { path: '/products/blogs/create-category', title: 'create category', type: 'link' },
 
 				// {
 				// 	title: 'Physical', type: 'sub', children: [
 				// 		{ path: '/products/physical/category', title: 'Category', type: 'link' },
 				// 		{ path: '/products/physical/sub-category', title: 'Sub Category', type: 'link' },
-				// 		{ path: '/products/physical/product-list', title: 'Product List', type: 'link' },
 				// 	]
 				// },
 				// {

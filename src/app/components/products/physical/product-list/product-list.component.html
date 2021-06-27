@@ -1,44 +1,143 @@
+<!-- Container-fluid starts-->
 <div class="container-fluid">
-    <div class="row products-admin ratio_asos">
-        <div class="col-xl-3 col-sm-6" *ngFor="let product of product_list">
+    <div class="row">
+        <div class="col-sm-12">
             <div class="card">
-                <div class="card-body product-box">
-                    <div class="img-wrapper">
-                        <div class="lable-block"><span class="lable3" *ngIf="product.tag == 'new'">new</span> <span
-                                class="lable4" *ngIf="product.sale == 'on sale'">on sale</span></div>
-                        <div class="front">
-                            <a href="javascript:void(0)"><img [src]="[product.img]"
-                                    class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                            <div class="product-hover">
-                                <ul>
-                                    <li>
-                                        <button class="btn" type="button" data-original-title="" title=""><i
-                                                class="icon-pencil-alt"></i></button>
-                                    </li>
-                                    <li>
-                                        <button class="btn" type="button" data-toggle="modal"
-                                            data-target="#exampleModalCenter" data-original-title="" title=""><i
-                                                class="icon-trash"></i></button>
-                                    </li>
-                                </ul>
+                <div class="card-header">
+                    <h5>Create category</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="categoryForm" (ngSubmit)="create()"  class="needs-validation" novalidate="">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h3>create category</h3>
                             </div>
+                            
+    
+                            <!-- <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="validationCustom01">name</label>
+                                    <select class="form-control" formControlName="name" value="category Name">
+                                        <option class="dropdown-item" *ngFor="let option of blogCategoryList" data-list="option"
+                                            [value]="option.id" >
+                                            {{ option.name }}
+                                        </option>
+                                    </select>
+                                    <div class="text-danger" *ngIf="!name.valid ">
+                                        <small *ngIf="name.errors.required && name.touched"
+                                            [class.is-invalid]="name.invalid || name.touched" class="text-danger">
+                                    field is required
+                                        </small>
+                                        </div>
+                                </div>
+                                    
+                            </div> -->
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="validationCustom01">name</label>
+                                    <input type="text" class="form-control" formControlName="name"/>
+                                    <div class="text-danger" *ngIf="!name.valid ">
+                                        <small *ngIf="name.errors.required && name.touched"
+                                            [class.is-invalid]="name.invalid || name.touched" class="text-danger">
+                                    field is required
+                                        </small>
+                                        </div>
+                                </div>
+                            </div>
+                            
+                            
+                            
+                                <!-- nameAr -->
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="validationCustom01">nameAr</label>
+                                    <input  class="form-control" formControlName="nameAr" placeholder="nameAr"/>
+                                        <div class="text-danger" *ngIf="!nameAr.valid ">
+                                        <small *ngIf="nameAr.errors.required && nameAr.touched"
+                                            [class.is-invalid]="nameAr.invalid || nameAr.touched" class="text-danger">
+                                                field is required
+                                        </small>
+                                        </div>
+                                </div>
+                            </div>
+
+                            <!-- <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="validationCustom01">type</label>
+                                    <input  class="form-control" formControlName="type" placeholder="type"/>
+                                        <div class="text-danger" *ngIf="!type.valid ">
+                                        <small *ngIf="type.errors.required && type.touched"
+                                            [class.is-invalid]="type.invalid || type.touched" class="text-danger">
+                                                field is required
+                                        </small>
+                                        </div>
+                                </div>
+                            </div> -->
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="validationCustom01">type</label>
+                                    <select class="form-control" 
+                                    formControlName="type" >
+                                        <option class="dropdown-item" *ngFor="let option of categoryList" data-list="categoryList"
+                                            [value]="option.id" >
+                                            {{ option.Name }}
+                                        </option>
+                                    </select>
+                                    <div class="text-danger" *ngIf="!type.valid ">
+                                        <small *ngIf="type.errors.required && type.touched"
+                                            [class.is-invalid]="type.invalid || type.touched" class="text-danger">
+                                    field is required
+                                        </small>
+                                        </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="validationCustom01">icon_select</label>
+                                    <input  class="form-control" formControlName="icon_select" placeholder="icon_select"/>
+                                        <div class="text-danger" *ngIf="!icon_select.valid ">
+                                        <small *ngIf="icon_select.errors.required && icon_select.touched"
+                                            [class.is-invalid]="icon_select.invalid || icon_select.touched" class="text-danger">
+                                                field is required
+                                        </small>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="validationCustom01">external</label><br>
+                                    <label class="switch" ><input type="checkbox" formControlName="externalLink" value="true" checked>
+                                    <span class="slider round"></span></label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="validationCustom01">active</label><br>
+                                    <label class="switch" ><input type="checkbox" formControlName="active" value="true"  checked>
+                                    <span class="slider round"></span></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="validationCustom01">icon</label>
+                                    <input type="file" height="30px" class="form-control-file" id="exampleFormControlFile1"  formControlName="icon" >
+                                    
+                                </div>
+                            </div>
+
                         </div>
+                        <div class="pull-right">
+                        <button type="submit"  class="btn btn-primary">Create</button>
                     </div>
-                    <div class="product-detail">
-                        <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
-                        <a href="javascript:void(0)">
-                            <h6>{{product.product_title}}</h6>
-                        </a>
-                        <h4>{{product.discount}} <del>{{product.price}}</del></h4>
-                        <ul class="color-variant">
-                            <li class="bg-light0"></li>
-                            <li class="bg-light1"></li>
-                            <li class="bg-light2"></li>
-                        </ul>
-                    </div>
+                    </form>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- Container-fluid Ends-->

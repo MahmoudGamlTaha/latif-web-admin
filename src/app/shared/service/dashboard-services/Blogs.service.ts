@@ -42,7 +42,7 @@ export class BlogsService {
 
     console.log(this.token)
 
-    return this._http.get(this._getblog +blogId,{ headers: this.headers });
+    return this._http.get(this._getblog + blogId, { headers: this.headers });
   }
   updateblogList(blogList: any) {
 
@@ -63,12 +63,12 @@ export class BlogsService {
     console.log(blog);
     return this._http.post(this._createblog,
       {
-         category: blog.category,
-         title: blog.title, 
-         extrnImage: blog.extrnImage,
-         userId: blog.UserId,
-         description: blog.description,
-          _external: blog.external
+        category: blog.category,
+        title: blog.title,
+        extrnImage: blog.extrnImage,
+        userId: blog.UserId,
+        description: blog.description,
+        _external: blog.external
       },
       { headers: this.headers });
   }

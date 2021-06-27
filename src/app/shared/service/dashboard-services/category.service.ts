@@ -46,19 +46,8 @@ export class CategoryService {
 
   createCategory(data){
 
-    const body={
-      name:data.CategoryName,
-      nameAr:data.NameAr,
-      type:data.Type,
-      active:data.Active,
-      icon:data.Icon,
-      icon_select:data.Icon_select,
-      isExternalLink:data.External,
-      catParent:0,
-    }
-    const JSONbody=JSON.stringify(body)
-    console.log(body)
-    return this._http.post(this._createCategory,JSONbody,{
+
+    return this._http.post(this._createCategory,data,{
       headers:this.headers
     })
     // .subscribe(
