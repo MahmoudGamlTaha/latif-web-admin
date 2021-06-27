@@ -33,14 +33,14 @@ const routes: Routes = [
           breadcrumb: "blog Category"
         }
       },
-      // {
-      //   path: 'physical/product-list',
-      //   component: ProductListComponent,
-      //   data: {
-      //     title: "Product List",
-      //     breadcrumb: "Product List"
-      //   }
-      // },
+      {
+        path: 'blogs/create-category',
+        component: ProductListComponent,
+        data: {
+          title: "create category",
+          breadcrumb: "create category"
+        }
+      },
       {
         path: 'blogs/create-blog',
         component: ProductDetailComponent,
