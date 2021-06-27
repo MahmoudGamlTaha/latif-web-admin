@@ -3,11 +3,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogsService } from 'src/app/shared/service/dashboard-services/Blogs.service';
 @Component({
-  selector: 'app-add-product',
-  templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.scss']
+  selector: 'app-update-blog',
+  templateUrl: './update-blog.component.html',
+  styleUrls: ['./update-blog.component.scss']
 })
-export class AddProductComponent implements OnInit {
+export class UpdateBlogComponent implements OnInit {
   updateForm: FormGroup
   blogId
   data
@@ -27,8 +27,6 @@ export class AddProductComponent implements OnInit {
 
     this.blogServ.getblog(this.blogId)
     .subscribe((data: any) => {
-      // this.data = data.response.data    
-      //   console.log(this.data)
       this.Id = data.response.data.id
       this.Title = data.response.data.title
       this.Category = data.response.data.category
