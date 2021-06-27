@@ -9,12 +9,12 @@ import { CitesService } from 'src/app/shared/service/dashboard-services/cites.se
 import { UsersService } from 'src/app/shared/service/dashboard-services/users.service';
 
 @Component({
-  selector: 'app-product-detail',
-  templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.scss'],
+  selector: 'app-create-blog',
+  templateUrl: './create-blog.component.html',
+  styleUrls: ['./create-blog.component.scss'],
   providers: [NgbRatingConfig]
 })
-export class ProductDetailComponent implements OnInit {
+export class CreateBlogComponent implements OnInit {
 
   public blogForm: FormGroup;
   public blogCategoryList;

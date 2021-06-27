@@ -1,14 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductListComponent } from './physical/createBlogCategory/product-list.component';
-import { AddProductComponent } from './physical/add-product/add-product.component';
-import { DigitalCategoryComponent } from './digital/digital-category/digital-category.component';
-import { DigitalSubCategoryComponent } from './digital/digital-sub-category/digital-sub-category.component';
-import { DigitalListComponent } from './digital/digital-list/digital-list.component';
-import { DigitalAddComponent } from './digital/digital-add/digital-add.component';
+import { UpdateBlogComponent } from './physical/blog/update-blog.component';
 import { CategoryComponent } from './physical/blogList/category.component';
 import { SubCategoryComponent } from './physical/blogCategory/sub-category.component';
-import { ProductDetailComponent } from './physical/createBlog/product-detail.component';
+import { CreateBlogComponent } from './physical/createBlog/create-blog.component';
 import { AuthorizeGuard } from 'src/app/shared/service/dashboard-services/AuthorizeGuard';
 
 const routes: Routes = [
@@ -43,7 +39,7 @@ const routes: Routes = [
       },
       {
         path: 'blogs/create-blog',
-        component: ProductDetailComponent,
+        component: CreateBlogComponent,
         data: {
           title: "create blog",
           breadcrumb: "create blog"
@@ -51,7 +47,7 @@ const routes: Routes = [
       },
       {
         path: 'blogs/update-blog/:id',
-        component: AddProductComponent,
+        component: UpdateBlogComponent,
         data: {
           title: "update blog",
           breadcrumb: "update blog"
