@@ -4,17 +4,13 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Create category</h5>
+                    <h5>Create Blog Category</h5>
                 </div>
                 <div class="card-body">
                     <form [formGroup]="categoryForm" (ngSubmit)="create()"  class="needs-validation" novalidate="">
 
                         <div class="row">
-                            <div class="col-sm-12">
-                                <h3>create category</h3>
-                            </div>
                             
-    
                             <!-- <div class="col-sm-3">
                                 <div class="form-group">
                                     <label for="validationCustom01">name</label>
@@ -33,10 +29,10 @@
                                 </div>
                                     
                             </div> -->
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="validationCustom01">name</label>
-                                    <input type="text" class="form-control" formControlName="name"/>
+                                    <input type="text" class="form-control" formControlName="name" placeholder="name"/>
                                     <div class="text-danger" *ngIf="!name.valid ">
                                         <small *ngIf="name.errors.required && name.touched"
                                             [class.is-invalid]="name.invalid || name.touched" class="text-danger">
@@ -46,10 +42,7 @@
                                 </div>
                             </div>
                             
-                            
-                            
-                                <!-- nameAr -->
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="validationCustom01">nameAr</label>
                                     <input  class="form-control" formControlName="nameAr" placeholder="nameAr"/>
@@ -75,7 +68,7 @@
                                 </div>
                             </div> -->
 
-                            <div class="col-sm-3">
+                            <!-- <div class="col-sm-3">
                                 <div class="form-group">
                                     <label for="validationCustom01">type</label>
                                     <select class="form-control" 
@@ -92,9 +85,9 @@
                                         </small>
                                         </div>
                                 </div>
-                            </div>
+                            </div> -->
 
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="validationCustom01">icon_select</label>
                                     <input  class="form-control" formControlName="icon_select" placeholder="icon_select"/>
@@ -106,26 +99,39 @@
                                         </div>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label for="validationCustom01">external</label><br>
-                                    <label class="switch" ><input type="checkbox" formControlName="externalLink" value="true" checked>
+                                    <label for="validationCustom01">external_link</label><br>
+                                    <label class="switch" ><input type="checkbox" formControlName="external_link" value="true" checked>
                                     <span class="slider round"></span></label>
                                 </div>
                             </div>
 
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="validationCustom01">active</label><br>
                                     <label class="switch" ><input type="checkbox" formControlName="active" value="true"  checked>
                                     <span class="slider round"></span></label>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="validationCustom01">icon</label>
                                     <input type="file" height="30px" class="form-control-file" id="exampleFormControlFile1"  formControlName="icon" >
                                     
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="validationCustom01">description</label>
+                                    <textarea  class="form-control" formControlName="description" placeholder="icon_select"></textarea>
+                                        <div class="text-danger" *ngIf="!icon_select.valid ">
+                                        <small *ngIf="description.errors.required && description.touched"
+                                            [class.is-invalid]="description.invalid || description.touched" class="text-danger">
+                                                field is required
+                                        </small>
+                                        </div>
                                 </div>
                             </div>
 

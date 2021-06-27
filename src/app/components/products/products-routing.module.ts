@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProductListComponent } from './physical/product-list/product-list.component';
+import { ProductListComponent } from './physical/createBlogCategory/product-list.component';
 import { AddProductComponent } from './physical/add-product/add-product.component';
 import { DigitalCategoryComponent } from './digital/digital-category/digital-category.component';
 import { DigitalSubCategoryComponent } from './digital/digital-sub-category/digital-sub-category.component';
@@ -34,7 +34,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'blogs/create-category',
+        path: 'blogs/create-blogCategory',
         component: ProductListComponent,
         data: {
           title: "create category",

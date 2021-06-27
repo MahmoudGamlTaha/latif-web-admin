@@ -90,6 +90,11 @@ export class BlogsService {
       );
   }
 
+  createBlogCategory(data) {
+    return this._http.post(this._createblogCategory, data,
+      { headers: this.headers })
+  }
+
   updateblogCategory(blogCategory: Icategory) {
     return this._http.post(this._updateblogCategory,
       { blogCategory },
