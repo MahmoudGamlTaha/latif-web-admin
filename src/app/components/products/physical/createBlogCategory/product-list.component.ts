@@ -16,45 +16,35 @@ export class ProductListComponent implements OnInit {
   public categoryForm: FormGroup;
   categoryList: any;
 
-  constructor(private categorySer: CategoryService,private BlogsSer: BlogsService,private router : Router ,
+  constructor(private BlogsSer: BlogsService,private router : Router ,
     private formBuilder: FormBuilder) {
     
   }
 
   ngOnInit() {
 
-    this.categorySer.getCategoryList().subscribe((data:any)=>{
-      console.log(data)
-      this.categoryList=data.response.data;
-
-    })
-
     this.categoryForm = this.formBuilder.group({
-      active: [Boolean, [Validators.required]],
-      catParent: [0],
-      externalLink: [Boolean],
+      active: [true, [Validators.required]],
+      parentCategory: [0],
+      external_link: [true],
       icon: [''],
       icon_select: [''],
       name: ['', [Validators.required]],
       nameAr: ['', [Validators.required]],
-      type: ['', [Validators.required]],
+      // type: ['', [Validators.required]],
+      description: ['', [Validators.required]],
     });
   }
   
-  typeDropDown(event) {
-    console.log(event.target.value)
-  }
-  onClickToggle(event) {
-    console.log(event.target.checked)
-  }
+
   get active() {
     return this.categoryForm.get('active');
   }
   // get catParent() {
   //   return this.categoryForm.get('catParent');
   // }
-  get externalLink() {
-    return this.categoryForm.get('externalLink');
+  get external_link() {
+    return this.categoryForm.get('external_link');
   }
   get icon() {
     return this.categoryForm.get('icon');
@@ -68,10 +58,12 @@ export class ProductListComponent implements OnInit {
   get nameAr() {
     return this.categoryForm.get('nameAr');
   }
-  get type() {
-    return this.categoryForm.get('type');
+  // get type() {
+  //   return this.categoryForm.get('type');
+  // }
+    get description() {
+    return this.categoryForm.get('description');
   }
-  
   create() {
     if (!this.categoryForm.valid) {
       return;
@@ -80,16 +72,16 @@ export class ProductListComponent implements OnInit {
     let formValue = this.categoryForm.value;
     let Category: category = new category();
     Category.active = formValue.active;
-    // Category.catParent = formValue.catParent;
-    Category.externalLink = formValue.externalLink;
+    // Category.parentCategory = formValue.parentCategory;
+    Category.external_link = formValue.external_link;
     Category.icon = formValue.icon;
     Category.icon_select = formValue.icon_select;
     Category.name = formValue.name;
     Category.nameAr = formValue.nameAr;
-    Category.type = formValue.type;
-
+    // Category.type = formValue.type;
+    Category.description = formValue.description;
     console.log(Category)
-    this.categorySer.createCategory(Category).subscribe(
+    this.BlogsSer.createBlogCategory(Category).subscribe(
       (data: any) => {
         this.router.navigate(['/products/blogs/blog-category/']);
       }, (err) => { console.log("err", err) }

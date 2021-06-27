@@ -14,7 +14,6 @@ export class CategoryService {
   _getcategoryList = server.url + 'api/public/ads-type/list'
   _getCategoryType = server.url + 'api/public/cat-by-adType/type='
   _createCategory = server.url + 'api/public/category/create'
-
   token
   headers
   constructor(private _http: HttpClient) { 
@@ -45,8 +44,6 @@ export class CategoryService {
   }
 
   createCategory(data){
-
-
     return this._http.post(this._createCategory,data,{
       headers:this.headers
     })
@@ -54,5 +51,6 @@ export class CategoryService {
     //   (data)=>{console.log(data)},(err)=>{console.log("err",err)}
     // )
   }
+
 
 }
