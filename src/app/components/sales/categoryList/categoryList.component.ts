@@ -6,11 +6,11 @@ import { CategoryService } from 'src/app/shared/service/dashboard-services/categ
 import { Icategory } from 'src/app/shared/service/dashboard-services/Icategory';
 import { orderDB } from "../../../shared/tables/order-list";
 @Component({
-  selector: 'app-orders',
-  templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.scss']
+  selector: 'app-categoryList',
+  templateUrl: './categoryList.component.html',
+  styleUrls: ['./categoryList.component.scss']
 })
-export class OrdersComponent implements OnInit {
+export class categoryListComponent implements OnInit {
 
   @ViewChild(DatatableComponent, { static: false }) table: DatatableComponent;
     public categoryList;

@@ -5,11 +5,11 @@ import { RoleService } from 'src/app/shared/service/dashboard-services/role.serv
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-reports',
-  templateUrl: './reports.component.html',
-  styleUrls: ['./reports.component.scss']
+  selector: 'app-roleList',
+  templateUrl: './roleList.component.html',
+  styleUrls: ['./roleList.component.scss']
 })
-export class ReportsComponent implements OnInit {
+export class roleListComponent implements OnInit {
   public roleList = [];
   isLoading: boolean = true ;
 closeResult;

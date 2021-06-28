@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthorizeGuard } from 'src/app/shared/service/dashboard-services/AuthorizeGuard';
-import { CreateCouponComponent } from './updateXD/create-coupon.component';
+import { updateXDComponent } from './updateXD/updateXD.component';
 import { ListCouponComponent } from './XDList/list-coupon.component';
 
 const routes: Routes = [
@@ -19,7 +19,7 @@ const routes: Routes = [
       },
       {
         path: 'updateads/:id',
-        component: CreateCouponComponent,
+        component: updateXDComponent,
         data: {
           title: "update Ads",
           breadcrumb: "update Ads"

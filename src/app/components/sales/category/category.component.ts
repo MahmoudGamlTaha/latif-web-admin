@@ -6,11 +6,11 @@ import { transactionsDB } from 'src/app/shared/tables/transactions';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-transactions',
-  templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.scss']
+  selector: 'app-category',
+  templateUrl: './category.component.html',
+  styleUrls: ['./category.component.scss']
 })
-export class TransactionsComponent implements OnInit {
+export class categoryComponent implements OnInit {
 
   categoryList;
   typeId;

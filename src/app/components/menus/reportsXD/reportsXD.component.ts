@@ -4,11 +4,11 @@ import { ReportsAdsService } from 'src/app/shared/service/dashboard-services/rep
 import { menuDB } from 'src/app/shared/tables/menu';
 
 @Component({
-  selector: 'app-list-menu',
-  templateUrl: './list-menu.component.html',
-  styleUrls: ['./list-menu.component.scss']
+  selector: 'app-reportsXD',
+  templateUrl: './reportsXD.component.html',
+  styleUrls: ['./reportsXD.component.scss']
 })
-export class ListMenuComponent implements OnInit {
+export class reportsXDComponent implements OnInit {
 
   public ReportedXDList:any ;
   public selected = [];

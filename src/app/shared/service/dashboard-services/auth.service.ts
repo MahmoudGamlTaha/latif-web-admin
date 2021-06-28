@@ -18,6 +18,7 @@ import { Token } from '../../data/Token';
 export class AuthService {
   public headers: HttpHeaders;
   public auth_token: any
+
   /**
    * test login {
       "mobile":"01020187068",
@@ -35,6 +36,7 @@ export class AuthService {
 
   LogInUser(data: any) {
     let body = { mobile: data.mobile, password: data.password };
+    let exdays = 1;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.auth_token}`
@@ -59,17 +61,25 @@ export class AuthService {
 
       headers.append('Authorization', JSON.stringify(this.auth_token))
       localStorage.setItem('currentUser', JSON.stringify(Token.bearer + Token.myToken));
+      // this.setCookie('currentUser', JSON.stringify(Token.bearer + Token.myToken), exdays)
       this.route.navigate(['dashboard/default'])
 
 
-    },(err)=>{
-      Token.error = true ;
-      console.log("myerr",err.error.error)
+    }, (err) => {
+      Token.error = true;
+      console.log("myerr", err.error.error)
 
-      }
+    }
 
-    ) 
+    )
   }
+  // setCookie(cname, cvalue, exdays) {
+  //   let d = new Date();
+  //   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  //   let expires = "expires=" + d.toUTCString();
+  //   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  // }
+
   // signUpUser(data: any): Observable<any> {
   //   // const headers = new Headers({
   //   //   'Content-Type': 'application/json',

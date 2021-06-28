@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProductListComponent } from './physical/createBlogCategory/product-list.component';
+import { createBlogCategoryComponent } from './physical/createBlogCategory/createBlogCategory.component';
 import { UpdateBlogComponent } from './physical/blog/update-blog.component';
-import { CategoryComponent } from './physical/blogList/category.component';
+import { blogListComponent } from './physical/blogList/blog-list.component';
 import { SubCategoryComponent } from './physical/blogCategory/sub-category.component';
 import { CreateBlogComponent } from './physical/createBlog/create-blog.component';
 import { AuthorizeGuard } from 'src/app/shared/service/dashboard-services/AuthorizeGuard';
-
+ 
 const routes: Routes = [
   {
     path: '',
@@ -15,7 +15,7 @@ const routes: Routes = [
     children: [
       {
         path: 'blogs/blog-list',
-        component: CategoryComponent,
+        component: blogListComponent,
         data: {
           title: "blog List",
           breadcrumb: "blog List"
@@ -31,7 +31,7 @@ const routes: Routes = [
       },
       {
         path: 'blogs/create-blogCategory',
-        component: ProductListComponent,
+        component: createBlogCategoryComponent,
         data: {
           title: "create category",
           breadcrumb: "create category"

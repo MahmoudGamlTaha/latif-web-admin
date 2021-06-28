@@ -4,11 +4,11 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { BlogsService } from 'src/app/shared/service/dashboard-services/Blogs.service';
 
 @Component({
-  selector: 'app-category',
-  templateUrl: './category.component.html',
-  styleUrls: ['./category.component.scss']
+  selector: 'app-blog-list',
+  templateUrl: './blog-list.component.html',
+  styleUrls: ['./blog-list.component.scss']
 })
-export class CategoryComponent implements OnInit {
+export class blogListComponent implements OnInit {
   public closeResult: string;
   public categories = []
   isLoading: boolean = true;

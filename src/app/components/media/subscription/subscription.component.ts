@@ -5,11 +5,11 @@ import { SubscriptionService } from 'src/app/shared/service/dashboard-services/s
 import { mediaDB } from 'src/app/shared/tables/media';
 
 @Component({
-  selector: 'app-media',
-  templateUrl: './media.component.html',
-  styleUrls: ['./media.component.scss']
+  selector: 'app-subscription',
+  templateUrl: './subscription.component.html',
+  styleUrls: ['./subscription.component.scss']
 })
-export class MediaComponent implements OnInit {
+export class subscriptionComponent implements OnInit {
   public closeResult: string; 
   public subscriptionData = []
   isLoading: boolean = true ;
