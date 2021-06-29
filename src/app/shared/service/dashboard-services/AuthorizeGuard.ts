@@ -18,6 +18,7 @@ export class AuthorizeGuard implements CanActivate {
 canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
     const currentUser =Token.bearer + Token.myToken
+    
     if (currentUser) {
         return true;
     }

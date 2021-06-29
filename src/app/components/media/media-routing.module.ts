@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthorizeGuard } from 'src/app/shared/service/dashboard-services/AuthorizeGuard';
-import { MediaComponent } from './subscription/media.component';
+import { subscriptionComponent } from './subscription/subscription.component';
 
 const routes: Routes = [
   {
@@ -11,7 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: MediaComponent,
+        component: subscriptionComponent,
         data: {
           title: "subscription",
           breadcrumb: "subscription"

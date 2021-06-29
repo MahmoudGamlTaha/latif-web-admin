@@ -12,11 +12,11 @@ import { CitesService } from 'src/app/shared/service/dashboard-services/cites.se
 import { Icategory } from 'src/app/shared/service/dashboard-services/Icategory';
 
 @Component({
-  selector: 'app-create-coupon',
-  templateUrl: './create-coupon.component.html',
-  styleUrls: ['./create-coupon.component.scss'],
+  selector: 'app-updateXD',
+  templateUrl: './updateXD.component.html',
+  styleUrls: ['./updateXD.component.scss'],
 })
-export class CreateCouponComponent implements OnInit {
+export class updateXDComponent implements OnInit {
   
   public generalForm: FormGroup;
 

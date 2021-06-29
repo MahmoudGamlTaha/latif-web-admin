@@ -9,10 +9,10 @@ import { CouponsRoutingModule } from './coupons-routing.module';
 import { ListCouponComponent } from './XDList/list-coupon.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { StatusComponent } from './status/status.component';
-import { CreateCouponComponent } from './updateXD/create-coupon.component';
+import { updateXDComponent } from './updateXD/updateXD.component';
 
 @NgModule({
-  declarations: [ListCouponComponent, CreateCouponComponent, StatusComponent],
+  declarations: [ListCouponComponent, updateXDComponent, StatusComponent],
   imports: [
     CommonModule,
     CouponsRoutingModule,

@@ -3,11 +3,11 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ReportsAdsService } from 'src/app/shared/service/dashboard-services/reports-ads.service';
 
 @Component({
-  selector: 'app-create-menu',
-  templateUrl: './create-menu.component.html',
-  styleUrls: ['./create-menu.component.scss']
+  selector: 'app-reportsReasons',
+  templateUrl: './reportsReasons.component.html',
+  styleUrls: ['./reportsReasons.component.scss']
 })
-export class CreateMenuComponent implements OnInit {
+export class reportsReasonsComponent implements OnInit {
 
   reportsReasonsList;
   id

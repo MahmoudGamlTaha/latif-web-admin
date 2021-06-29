@@ -7,12 +7,12 @@ import { CategoryService } from 'src/app/shared/service/dashboard-services/categ
 import { productDB } from 'src/app/shared/tables/product-list';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  selector: 'app-createBlogCategory',
+  templateUrl: './createBlogCategory.component.html',
+  styleUrls: ['./createBlogCategory.component.scss']
 })
-export class ProductListComponent implements OnInit {
-
+export class createBlogCategoryComponent implements OnInit {
+  
   public categoryForm: FormGroup;
   categoryList: any;
 
