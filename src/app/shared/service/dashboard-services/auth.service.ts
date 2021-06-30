@@ -36,48 +36,21 @@ export class AuthService {
 
   LogInUser(data: any) {
     let body = { mobile: data.mobile, password: data.password };
-    let exdays = 1;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.auth_token}`
     })
-
     const JSONbody = JSON.stringify(body);
-
-
-
     console.log("service", data)
 
     return this._http.post<any>(this._authLogin, JSONbody, {
-      headers: headers,
-    }).subscribe((res) => {
-
-
-      console.log(res)
-      this.auth_token = res.Authorization;
-      Token.myToken = this.auth_token;
-      Token.bearer = 'Bearer ';
-      console.log("this.auth_token", this.auth_token)
-
-      headers.append('Authorization', JSON.stringify(this.auth_token))
-      localStorage.setItem('currentUser', JSON.stringify(Token.bearer + Token.myToken));
-      // this.setCookie('currentUser', JSON.stringify(Token.bearer + Token.myToken), exdays)
-      this.route.navigate(['dashboard/default'])
-
-
-    }, (err) => {
-      Token.error = true;
-      console.log("myerr", err.error.error)
-
-    }
-
-    )
+      headers: headers
+    })
   }
-  // setCookie(cname, cvalue, exdays) {
-  //   let d = new Date();
-  //   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-  //   let expires = "expires=" + d.toUTCString();
-  //   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+
+  
+  // setCookie(cname, cvalue) {
+  //   document.cookie = cname + "=" + cvalue ;
   // }
 
   // signUpUser(data: any): Observable<any> {

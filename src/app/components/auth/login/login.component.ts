@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   ErrorMessageText = "invalid username or password"
   public loginForm: FormGroup;
   public registerForm: FormGroup;
+  auth_token: any;
   constructor(private formBuilder: FormBuilder ,private route:Router,
     private router:ActivatedRoute,private authServ:AuthService) {
     this.createLoginForm();
@@ -73,7 +74,32 @@ export class LoginComponent implements OnInit {
 
   logInApi() {
     // console.log("login success",this.loginForm.value)
-    this.authServ.LogInUser(this.loginForm.value)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth_token}`
+    })
+    this.authServ.LogInUser(this.loginForm.value).subscribe((res) => {
+
+
+      console.log(res)
+      this.auth_token = res.Authorization;
+     Token.myToken = this.auth_token;
+      Token.bearer = 'Bearer ';
+     console.log("this.auth_token", this.auth_token)
+
+     headers.append('Authorization', JSON.stringify(this.auth_token))
+      localStorage.setItem('currentUser', JSON.stringify(Token.bearer + Token.myToken));
+      // this.setCookie('currentUser', JSON.stringify(Token.bearer + Token.myToken))
+      this.route.navigate(['dashboard/default'])
+
+
+    }, (err) => {
+      this.isError = true;
+      console.log("myerr", err.error.error)
+
+    }
+
+    )
     this.isError= Token.error === undefined? '': Token.error;
     this.loginForm.reset()
   }
