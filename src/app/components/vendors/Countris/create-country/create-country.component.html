@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>create reason</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="createForm" (ngSubmit)="create()" class="needs-validation" novalidate="">
+                        <div class="row">
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">country</label>
+                                    <input formControlName="country"
+                                        [class.is-invalid]="country.touched && country.invalid" type="text"
+                                        class="form-control" placeholder="country" />
+                                    <div class="text-danger" *ngIf="!country.valid ">
+                                        <small *ngIf="country.errors.required && country.touched"
+                                            [class.is-invalid]="country.invalid || country.touched" class="text-danger">
+                                            field is required
+                                        </small>
+                                        <small *ngIf="country.errors.minlength" class="text-danger">
+                                            field must be at least 3 characters
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">countryAr</label>
+                                    <input formControlName="countryAr"
+                                        [class.is-invalid]="countryAr.touched && countryAr.invalid" type="text"
+                                        class="form-control" placeholder="countryAr" />
+                                    <div class="text-danger" *ngIf="!countryAr.valid ">
+                                        <small *ngIf="countryAr.errors.required && countryAr.touched"
+                                            [class.is-invalid]="countryAr.invalid || countryAr.touched"
+                                            class="text-danger">
+                                            field is required
+                                        </small>
+                                        <small *ngIf="countryAr.errors.minlength" class="text-danger">
+                                            field must be at least 3 characters
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">language</label>
+                                    <input class="form-control" type="text" formControlName='language' placeholder="language" >
+                                    <div class="text-danger" *ngIf="!language.valid ">
+                                        <small *ngIf="language.errors.required && language.touched"
+                                            [class.is-invalid]="language.invalid || language.touched"
+                                            class="text-danger">
+                                            field is required
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">active</label><br>
+                                    <label class="switch"><input type="checkbox" formControlName='active' checked>
+                                        <span class="slider round"></span></label>
+                                </div>
+                            </div>
+
+                            
+
+                        </div>
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary">create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

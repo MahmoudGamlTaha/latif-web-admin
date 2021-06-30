@@ -5,7 +5,7 @@ import { server } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ConfigurationService {
+export class PoliciesService {
 
   _getPolicy=server.url + 'api/public/policies'
   constructor(private _http:HttpClient) { }

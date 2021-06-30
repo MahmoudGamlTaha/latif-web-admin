@@ -126,6 +126,15 @@ export class NavService {
 		},
 		{
 			title: 'configuration', icon: 'users', type: 'sub', active: false, children: [
+				{
+					title: 'Countries', icon: 'list', type: 'sub', active: false, children: [
+						{ path: '/configuration/city-list', title: 'city list', type: 'link' },
+						{ path: '/configuration/country-list', title: 'country list', type: 'link' },
+						// { path: '/configuration/create-city', title: 'create city', type: 'link' },
+						// { path: '/configuration/create-country', title: 'create country', type: 'link' },
+
+					]
+				},
 				// { path: '/configuration/list-vendors', title: 'Vendor List', type: 'link' },
 				{ path: '/configuration/policy', title: 'policy', type: 'link' },
 			]
