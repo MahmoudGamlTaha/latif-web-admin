@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ConfigurationService } from 'src/app/shared/service/dashboard-services/configuration.service';
+import { PoliciesService } from 'src/app/shared/service/dashboard-services/policies.service';
 
 @Component({
   selector: 'app-create-vendors',
@@ -10,9 +10,9 @@ import { ConfigurationService } from 'src/app/shared/service/dashboard-services/
 export class CreateVendorsComponent implements OnInit {
 
   policyData;
-  constructor(private configSer:ConfigurationService) {
+  constructor(private policiesServ:PoliciesService) {
     
-    this.configSer.getPolicy().subscribe(
+    this.policiesServ.getPolicy().subscribe(
       (data:any)=>{
         this.policyData=data.response.data
         console.log(data)

@@ -8,7 +8,7 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { AdsService } from 'src/app/shared/service/dashboard-services/ads.service';
 import { CategoryService } from 'src/app/shared/service/dashboard-services/category.service';
-import { CitesService } from 'src/app/shared/service/dashboard-services/cites.service';
+import { CountriesService } from 'src/app/shared/service/dashboard-services/countries.service';
 import { Icategory } from 'src/app/shared/service/dashboard-services/Icategory';
 
 @Component({
@@ -151,7 +151,7 @@ export class updateXDComponent implements OnInit {
     private adsSer: AdsService,
     private AdsSer: AdsService,
     private categorySer: CategoryService,
-    private citiesSer: CitesService,
+    private citiesSer: CountriesService,
     private formBuilder: FormBuilder,
     private router: ActivatedRoute,
   ) {

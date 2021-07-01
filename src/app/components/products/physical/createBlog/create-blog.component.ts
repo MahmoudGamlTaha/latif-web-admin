@@ -5,7 +5,7 @@ import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Blog } from 'src/app/shared/models/blog.model';
 import { BlogsService } from 'src/app/shared/service/dashboard-services/Blogs.service';
 import { CategoryService } from 'src/app/shared/service/dashboard-services/category.service';
-import { CitesService } from 'src/app/shared/service/dashboard-services/cites.service';
+import { CountriesService } from 'src/app/shared/service/dashboard-services/countries.service';
 import { UsersService } from 'src/app/shared/service/dashboard-services/users.service';
 
 @Component({
@@ -21,7 +21,8 @@ export class CreateBlogComponent implements OnInit {
   userList: any;
   public imgList:String[] = [];
 
-  constructor(private blogSer: BlogsService, private userService: UsersService, private categorySer: CategoryService, private citiesSer: CitesService,
+  constructor(private blogSer: BlogsService, private userService: UsersService,
+    private categorySer: CategoryService, private citiesSer: CountriesService,
     private formBuilder: FormBuilder, private activateRouter: ActivatedRoute,  private router: Router) {
     this.userService.userList().subscribe(
       (data: any) => {

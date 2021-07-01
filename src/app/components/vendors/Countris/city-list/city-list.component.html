@@ -1,0 +1,58 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>city List</h5>
+                </div>
+                <div class="card-body">
+                    <div class="pull-right">
+                        <a type="button" style="margin-bottom: 15px ;" href="#/configuration/create-city"
+                            class="btn btn-primary" data-toggle="modal" data-original-title="test">create city</a>
+                    </div>
+                    <div id="batchDelete" class="category-table custom-datatable">
+                        <div class="table-responsive">
+                            <div *ngIf="isLoading; else table" class="text-center">
+                                <div class="spinner-border" style="width: 40px; height: 40px;">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+                            <ng-template #table>
+                                <div class="btn-popup pull-right">
+                                    <ng-template #content let-modal>
+                                        <div class="modal-header">
+                                            <h5 class="modal-title f-w-600" id="exampleModalLabel">confirm message</h5>
+                                            <button type="button" class="close" aria-label="Close"
+                                                (click)="modal.dismiss('Cross click')">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h3>Are you sure?</h3>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" (click)="delete(deletedItemId)" (click)="modal.dismiss('Cross click')" class="btn btn-primary" >Delete</button>
+                                            <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                                                (click)="modal.dismiss('Cross click')">Close</button>
+                                        </div>
+                                    </ng-template>
+                                </div>
+                                <select class="form-control" (change)="OnDropDownChange($event)">
+                                    <option value="ALL">ALL</option>
+                                    <option value="{{option.id}}" *ngFor="let option of countryList" >
+                                        {{option.nameEn}}
+                                    </option>
+                                </select>
+                                <ng2-smart-table (deleteConfirm)="onDeleteConfirm($event,content)" [settings]="settings" [(source)]="cityList" >
+                                </ng2-smart-table>
+                            </ng-template>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
