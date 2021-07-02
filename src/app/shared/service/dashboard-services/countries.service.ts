@@ -17,6 +17,10 @@ export class CountriesService {
   _createcity = server.url + 'api/public/cites/create'
   _createCountry = server.url + 'api/public/country/create'
   _findByCountryId = server.url + 'api/public/city/find-by-country-id?'
+  _deleteCountry = server.url + 'api/public/country/delete?id='
+  _updateStateCountry = server.url + 'api/public/country/disable?country='
+
+
   headers
   token
 
@@ -67,6 +71,22 @@ export class CountriesService {
       );
   }
 
+  deleteCountry(CountryId) {
+    return this._http.post(this._deleteCountry+CountryId,{}, { headers: this.headers })
+      .pipe(
+        catchError((err) => {
+          return throwError(err.message || 'server issue ');
+        })
+      );
+  } 
+  updateStateCountry(CountryId,state) {
+    return this._http.post(this._updateStateCountry+CountryId+'&active='+state,{}, { headers: this.headers })
+      .pipe(
+        catchError((err) => {
+          return throwError(err.message || 'server issue ');
+        })
+      );
+  }
   findByCountryId(data: countries) {
 
     console.log(data)

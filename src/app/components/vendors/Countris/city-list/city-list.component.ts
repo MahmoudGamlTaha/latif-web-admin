@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { countries } from 'src/app/shared/models/cityFiltterByCountry';
 import { CountriesService } from 'src/app/shared/service/dashboard-services/countries.service';
+import { statuscityComponent } from '../statusCity/statusCity.component';
 
 
 @Component({
@@ -46,9 +47,22 @@ export class CityListComponent implements OnInit {
       cityEn: {
         title: 'cityEn',
       },
-      // country: {
-      //   title: 'country',
-      // },
+      active: {
+        title: 'Active',
+        type: 'custom',
+        filter: false,
+        renderComponent: statuscityComponent,
+        onComponentInitFunction(instance) {
+          instance.save.subscribe(row => {
+            // alert(`${row.active} saved!`)
+          });
+        },
+        valuePrepareFunction: (cell, row) => {
+          console.log(row.active)
+          if(row.active){return row.active }else{
+          }
+          },
+      },
     },
   };
   ngOnInit() {
@@ -79,6 +93,7 @@ export class CityListComponent implements OnInit {
 
       delete(id) {
         console.log(id)
+
 
   }
   private getDismissReason(reason: any): string {
