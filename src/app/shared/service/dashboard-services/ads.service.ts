@@ -18,8 +18,6 @@ export class AdsService {
   token;
   headers;
   constructor(private _http: HttpClient, private cookie:CookiesData) {
-
-    this.token = JSON.parse(localStorage.getItem('currentUser'))
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `${this.cookie.getToken()}`
@@ -31,8 +29,6 @@ export class AdsService {
       id: adsId,
       activate: status,
     }
-
-    console.log(this.token, " $$ ", body)
     return this._http.post(this._changeStateOfAds + 'activate=' + status + '&' + 'id=' + adsId,
       {},
       { headers: this.headers })

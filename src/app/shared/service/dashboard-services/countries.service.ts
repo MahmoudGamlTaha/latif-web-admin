@@ -6,6 +6,7 @@ import { server } from 'src/environments/environment';
 import { city } from '../../models/city';
 import { countries } from '../../models/cityFiltterByCountry';
 import { country } from '../../models/country';
+import { CookiesData } from '../cookies/CookiesData.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,13 +21,11 @@ export class CountriesService {
   headers
   token
 
-  constructor(private _http: HttpClient) {
-
-    this.token = JSON.parse(localStorage.getItem('currentUser'));
+  constructor(private _http: HttpClient,  private cookies: CookiesData) {
 
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.token}`
+      'Authorization': `${this.cookies.getToken()}`
     })
   }
 

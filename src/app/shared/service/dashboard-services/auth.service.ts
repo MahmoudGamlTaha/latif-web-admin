@@ -40,7 +40,7 @@ export class AuthService {
     let exdays = 1;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.cookie.getToken()}`
+      'Authorization': `${this.cookie.getToken()}`
     })
 
     const JSONbody = JSON.stringify(body);

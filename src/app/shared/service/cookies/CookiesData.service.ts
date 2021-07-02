@@ -19,7 +19,7 @@ export class CookiesData{
    public getToken(): string{
       let token:string = null;
       if(this.checkToken()){
-         token = this.cookiesService.get(this.tokenKey);
+         token = 'Bearer ' + this.cookiesService.get(this.tokenKey);
       }   
       return token; 
    }

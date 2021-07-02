@@ -5,6 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { server } from 'src/environments/environment';
 import { Icategory } from './Icategory';
+import { CookiesData } from '../cookies/CookiesData.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +17,10 @@ export class CategoryService {
   _createCategory = server.url + 'api/public/category/create'
   token
   headers
-  constructor(private _http: HttpClient) { 
-
-    this.token = JSON.parse(localStorage.getItem('currentUser')) ;
-
+  constructor(private _http: HttpClient, private cookies: CookiesData) { 
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.token}`
+      'Authorization': `${this.cookies.getToken()}`
     })
 
   }
