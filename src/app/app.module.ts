@@ -23,6 +23,7 @@ import { AuthModule } from './components/auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { environment } from 'src/environments/environment';
+import {CookieService} from 'ngx-cookie-service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,7 @@ import { environment } from 'src/environments/environment';
     UsersModule,
     
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

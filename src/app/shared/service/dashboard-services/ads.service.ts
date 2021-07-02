@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { server } from 'src/environments/environment';
-import { Token } from '../../data/Token';
 import { adsFilter } from '../../models/adsFilter';
+import { CookiesData } from '../cookies/CookiesData.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,12 +17,12 @@ export class AdsService {
   _changeStateOfAds = server.url + 'api/public/ads/adActivation?';
   token;
   headers;
-  constructor(private _http: HttpClient) {
+  constructor(private _http: HttpClient, private cookie:CookiesData) {
 
     this.token = JSON.parse(localStorage.getItem('currentUser'))
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `${this.token}`
+      'Authorization': `${this.cookie.getToken()}`
     })
   }
 
