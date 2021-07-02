@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { server } from 'src/environments/environment';
 import { catchError } from 'rxjs/operators';
 import { Token } from '../../data/Token';
+import { CookiesData } from '../cookies/CookiesData.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -29,7 +30,7 @@ export class AuthService {
   _authregister = server.url + "api/public/account/registration"
 
   constructor(private _http: HttpClient, private router: ActivatedRoute,
-    private route: Router) {
+    private route: Router, private cookie:CookiesData) {
 
   }
 
@@ -39,7 +40,7 @@ export class AuthService {
     let exdays = 1;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.auth_token}`
+      'Authorization': `${this.cookie.getToken()}`
     })
 
     const JSONbody = JSON.stringify(body);
@@ -49,18 +50,17 @@ export class AuthService {
     console.log("service", data)
 
     return this._http.post<any>(this._authLogin, JSONbody, {
-      headers: headers,
     }).subscribe((res) => {
 
 
-      console.log(res)
       this.auth_token = res.Authorization;
+      this.cookie.setToken(this.auth_token);
       Token.myToken = this.auth_token;
       Token.bearer = 'Bearer ';
-      console.log("this.auth_token", this.auth_token)
+      console.log("this.auth_token", this.cookie.getToken());
 
-      headers.append('Authorization', JSON.stringify(this.auth_token))
-      localStorage.setItem('currentUser', JSON.stringify(Token.bearer + Token.myToken));
+      headers.append('Authorization', JSON.stringify(this.cookie.getToken()))
+      //localStorage.setItem('currentUser', JSON.stringify(Token.bearer + Token.myToken)); not secure
       // this.setCookie('currentUser', JSON.stringify(Token.bearer + Token.myToken), exdays)
       this.route.navigate(['dashboard/default'])
 
