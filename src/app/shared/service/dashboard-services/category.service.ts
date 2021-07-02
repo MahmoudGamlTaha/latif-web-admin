@@ -15,6 +15,8 @@ export class CategoryService {
   _getcategoryList = server.url + 'api/public/ads-type/list'
   _getCategoryType = server.url + 'api/public/cat-by-adType/type='
   _createCategory = server.url + 'api/public/category/create'
+  _deleteCategory = server.url + 'api/public/category/delete?id='
+
   token
   headers
   constructor(private _http: HttpClient, private cookies: CookiesData) { 
@@ -48,6 +50,15 @@ export class CategoryService {
     // .subscribe(
     //   (data)=>{console.log(data)},(err)=>{console.log("err",err)}
     // )
+  }
+
+  deleteCategory(CategoryId) {
+    return this._http.post(this._deleteCategory+CategoryId,{}, { headers: this.headers })
+      .pipe(
+        catchError((err) => {
+          return throwError(err.message || 'server issue ');
+        })
+      );
   }
 
 

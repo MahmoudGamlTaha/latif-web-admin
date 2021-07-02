@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CountriesService } from 'src/app/shared/service/dashboard-services/countries.service';
+import { statuscountryComponent } from '../statuscountry/status-country.component';
 
 @Component({
   selector: 'app-country-list',
@@ -40,11 +41,23 @@ export class CountryListComponent implements OnInit {
       nameEn: {
         title: 'nameEn',
       },
-      // country: {
-      //   title: 'country',
-      // },
+    active: {
+      title: 'Active',
+      type: 'custom',
+      filter: false,
+      renderComponent: statuscountryComponent,
+      onComponentInitFunction(instance) {
+        instance.save.subscribe(row => {
+          // alert(`${row.active} saved!`)
+        });},
+      valuePrepareFunction: (cell, row) => {
+        console.log(row.active)
+        if(row.active){return row.active }else{
+        }
+        },
     },
-  };
+  }}
+  ;
 
   ngOnInit() {
     this.countriesSer.getCountriesList().subscribe(
@@ -62,7 +75,10 @@ export class CountryListComponent implements OnInit {
 
       delete(id) {
         console.log(id)
-
+        this.countriesSer.deleteCountry(id).subscribe(
+          (data)=>{
+            console.log(data)
+          },err=>{console.log(err.message)})
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {

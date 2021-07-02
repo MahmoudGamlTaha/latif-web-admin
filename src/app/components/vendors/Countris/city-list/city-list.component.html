@@ -6,6 +6,7 @@
                 <div class="card-header">
                     <h5>city List</h5>
                 </div>
+                <div class="row">
                 <div class="card-body">
                     <div class="pull-right">
                         <a type="button" style="margin-bottom: 15px ;" href="#/configuration/create-city"
@@ -38,19 +39,21 @@
                                         </div>
                                     </ng-template>
                                 </div>
-                                <select class="form-control" (change)="OnDropDownChange($event)">
-                                    <option value="ALL">ALL</option>
-                                    <option value="{{option.id}}" *ngFor="let option of countryList" >
-                                        {{option.nameEn}}
-                                    </option>
-                                </select>
+                                <div class="col-sm-3 pull-right">
+                                    <select class="form-control" (change)="OnDropDownChange($event)">
+                                        <option value="ALL">ALL</option>
+                                        <option value="{{option.id}}" *ngFor="let option of countryList" >
+                                            {{option.nameEn}}
+                                        </option>
+                                    </select>
+                                </div>
                                 <ng2-smart-table (deleteConfirm)="onDeleteConfirm($event,content)" [settings]="settings" [(source)]="cityList" >
                                 </ng2-smart-table>
                             </ng-template>
 
                         </div>
                     </div>
-                </div>
+                </div></div>
             </div>
         </div>
     </div>
