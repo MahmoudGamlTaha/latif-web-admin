@@ -5,6 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { server } from 'src/environments/environment';
 import { Icategory } from './Icategory';
+import { CookiesData } from '../cookies/CookiesData.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +15,14 @@ export class CategoryService {
   _getcategoryList = server.url + 'api/public/ads-type/list'
   _getCategoryType = server.url + 'api/public/cat-by-adType/type='
   _createCategory = server.url + 'api/public/category/create'
+  _deleteCategory = server.url + 'api/public/category/delete?id='
 
   token
   headers
-  constructor(private _http: HttpClient) { 
-
-    this.token = JSON.parse(localStorage.getItem('currentUser')) ;
-
+  constructor(private _http: HttpClient, private cookies: CookiesData) { 
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.token}`
+      'Authorization': `${this.cookies.getToken()}`
     })
 
   }
@@ -45,25 +44,22 @@ export class CategoryService {
   }
 
   createCategory(data){
-
-    const body={
-      name:data.CategoryName,
-      nameAr:data.NameAr,
-      type:data.Type,
-      active:data.Active,
-      icon:data.Icon,
-      icon_select:data.Icon_select,
-      isExternalLink:data.External,
-      catParent:0,
-    }
-    const JSONbody=JSON.stringify(body)
-    console.log(body)
-    return this._http.post(this._createCategory,JSONbody,{
+    return this._http.post(this._createCategory,data,{
       headers:this.headers
     })
     // .subscribe(
     //   (data)=>{console.log(data)},(err)=>{console.log("err",err)}
     // )
   }
+
+  deleteCategory(CategoryId) {
+    return this._http.post(this._deleteCategory+CategoryId,{}, { headers: this.headers })
+      .pipe(
+        catchError((err) => {
+          return throwError(err.message || 'server issue ');
+        })
+      );
+  }
+
 
 }

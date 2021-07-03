@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ListMenuComponent } from './reportsXD/list-menu.component';
-import { CreateMenuComponent } from './reportsReasons/create-menu.component';
+import { reportsXDComponent } from './reportsXD/reportsXD.component';
+import { reportsReasonsComponent } from './reportsReasons/reportsReasons.component';
 import { CreateReasonComponent } from './create-reason/create-reason.component';
 import { UpdateReasonComponent } from './update-reason/update-reason.component';
+import { AuthorizeGuard } from 'src/app/shared/service/dashboard-services/AuthorizeGuard';
 
 const routes: Routes = [
   {
     path: '',
+    canActivate:[AuthorizeGuard],
+
     children: [
       {
         path: 'list-menu',
-        component: ListMenuComponent,
+        component: reportsXDComponent,
         data: {
           title: "Menu Lists",
           breadcrumb: "Menu Lists"
@@ -19,7 +22,7 @@ const routes: Routes = [
       },
       {
         path: 'reports-reasons',
-        component: CreateMenuComponent,
+        component: reportsReasonsComponent,
         data: {
           title: "reports Reasons",
           breadcrumb: "reports Reasons"

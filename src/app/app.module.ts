@@ -18,11 +18,12 @@ import { UsersModule } from './components/users/users.module';
 import { LocalizationModule } from './components/localization/localization.module';
 import { InvoiceModule } from './components/invoice/invoice.module';
 import { SettingModule } from './components/setting/setting.module';;
-import { ReportsModule } from './components/roleList/reports.module';
+import { roleListModule } from './components/roleList/roleList.module';
 import { AuthModule } from './components/auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { environment } from 'src/environments/environment';
+import {CookieService} from 'ngx-cookie-service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,7 @@ import { environment } from 'src/environments/environment';
     DashboardModule,
     InvoiceModule,
     SettingModule,
-    ReportsModule,
+    roleListModule,
     AuthModule,
     SharedModule,
     LocalizationModule,
@@ -49,7 +50,7 @@ import { environment } from 'src/environments/environment';
     UsersModule,
     
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

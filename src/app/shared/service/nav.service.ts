@@ -44,14 +44,14 @@ export class NavService {
 			title: 'blogs', icon: 'box', type: 'sub', active: false, children: [
 				{ path: '/products/blogs/blog-list', title: 'blog list', type: 'link' },
 				{ path: '/products/blogs/blog-category', title: 'blog Category', type: 'link' },
-				{ path: '/products/blogs/create-blog', title: 'create Blog', type: 'link' },
+				// { path: '/products/blogs/create-blog', title: 'create Blog', type: 'link' },
+				// { path: '/products/blogs/update-blog', title: 'update blog', type: 'link' },
+				// { path: '/products/blogs/create-category', title: 'create category', type: 'link' },
 
 				// {
 				// 	title: 'Physical', type: 'sub', children: [
 				// 		{ path: '/products/physical/category', title: 'Category', type: 'link' },
 				// 		{ path: '/products/physical/sub-category', title: 'Sub Category', type: 'link' },
-				// 		{ path: '/products/physical/product-list', title: 'Product List', type: 'link' },
-				// 		{ path: '/products/physical/add-product', title: 'Add Product', type: 'link' },
 				// 	]
 				// },
 				// {
@@ -68,7 +68,7 @@ export class NavService {
 			title: 'category', icon: 'list', type: 'sub', active: false, children: [
 				{ path: '/category/category-list', title: 'Category list', type: 'link' },
 				// { path: '/category/category-type/:id/:typeName', title: 'Category type', type: 'link' },
-				{ path: '/category/create-category', title: 'create Category', type: 'link' },
+				// { path: '/category/create-category', title: 'create Category', type: 'link' },
 
 			]
 		},
@@ -94,7 +94,7 @@ export class NavService {
 	{
 		title: 'user-permission', icon: 'clipboard', type: 'sub', active: false, children: [
 			{ path: '/user-permission/permission-list', title: 'permission list', type: 'link' },
-			{ path: '/user-permission/create-permission', title: 'create permission', type: 'link' },
+			// { path: '/user-permission/create-permission', title: 'create permission', type: 'link' },
 			// { path: '/user-permission/update-permission/:id', title: 'update permission', type: 'link' },
 
 		]
@@ -113,7 +113,7 @@ export class NavService {
 			title: 'Reports Ad', icon: 'align-left', type: 'sub', active: false, children: [
 				{ path: '/reports/list-menu', title: 'All Reports', type: 'link' },
 				{ path: '/reports/reports-reasons', title: 'reports Reasons', type: 'link' },
-				{ path: '/reports/create-reasons', title: 'create Reasons', type: 'link' },
+				// { path: '/reports/create-reasons', title: 'create Reasons', type: 'link' },
 				// { path: '/reports/update-reasons/:id/:reason/:reasonAr', title: 'update Reasons', type: 'link' },
 
 			]
@@ -126,6 +126,15 @@ export class NavService {
 		},
 		{
 			title: 'configuration', icon: 'users', type: 'sub', active: false, children: [
+				{
+					title: 'Countries', icon: 'list', type: 'sub', active: false, children: [
+						{ path: '/configuration/city-list', title: 'city list', type: 'link' },
+						{ path: '/configuration/country-list', title: 'country list', type: 'link' },
+						// { path: '/configuration/create-city', title: 'create city', type: 'link' },
+						// { path: '/configuration/create-country', title: 'create country', type: 'link' },
+
+					]
+				},
 				// { path: '/configuration/list-vendors', title: 'Vendor List', type: 'link' },
 				{ path: '/configuration/policy', title: 'policy', type: 'link' },
 			]

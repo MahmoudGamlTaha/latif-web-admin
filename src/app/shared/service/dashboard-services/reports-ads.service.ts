@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { server } from 'src/environments/environment';
 import { Token } from '../../data/Token';
+import { CookiesData } from '../cookies/CookiesData.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,17 +19,14 @@ export class ReportsAdsService {
   _updateReasonOfReportedAds = server.url + "api/public/reasons/update?"//id  reason 
   _deleteReasonOfReportedAds = server.url + "api/public/reasons/remove?id="//id 
 
-  constructor(private _http: HttpClient) {
-    this.token = Token.bearer + Token.myToken;
+  constructor(private _http: HttpClient,  private cookies: CookiesData) {
+    this.token = this.cookies.getToken();
     // var headers = new HttpHeaders().set("Authorization", token);
-    this.headers = new HttpHeaders().set("Authorization", JSON.parse(localStorage.getItem("currentUser")));
+    this.headers = new HttpHeaders().set("Authorization", this.cookies.getToken());
   }
 
   getAllReportedAds() {
-
     return this._http.get<any[]>(this._getAllReportedAds, { headers: this.headers });
-
-    console.log("URL", this._getAllReportedAds + this.token)
   }
 
   getReasonOfReportedAds() {
@@ -37,8 +35,7 @@ export class ReportsAdsService {
   }
 
   createReasonOfReportedAds(data) {
-    console.log(data)
-    return this._http.post<any[]>(this._createReasonOfReportedAds + data.Reason+'&reasonAr='+data.ReasonAr, {}, { headers: this.headers });
+     return this._http.post<any[]>(this._createReasonOfReportedAds + data.Reason+'&reasonAr='+data.ReasonAr, {}, { headers: this.headers });
   }
   updateReasonOfReportedAds(data) {
     console.log(data)

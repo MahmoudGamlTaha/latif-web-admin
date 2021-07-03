@@ -35,14 +35,31 @@
                                 </div>
                             </div>
                             <ng-template #table>
-                            <ng2-smart-table  (custom)="onCustom($event)" [settings]="settings"
-                                [source]="rolList" (deleteConfirm)="onDeleteConfirm($event)" 
-                                (editConfirm)="onEditConfirm($event)" (createConfirm)="onCreateConfirm($event)">
+                                <div class="btn-popup pull-right">
+                                    <ng-template #content let-modal>
+                                        <div class="modal-header">
+                                            <h5 class="modal-title f-w-600" id="exampleModalLabel">confirm message</h5>
+                                            <button type="button" class="close" aria-label="Close"
+                                                (click)="modal.dismiss('Cross click')">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h3>Are you sure?</h3>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" (click)="delete(deletedItemId)" (click)="modal.dismiss('Cross click')" class="btn btn-primary" >Delete</button>
+                                            <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                                                (click)="modal.dismiss('Cross click')">Close</button>
+                                        </div>
+                                    </ng-template>
+                                </div>
+                            <ng2-smart-table [settings]="settings"
+                                [source]="rolList"  (deleteConfirm)="onDeleteConfirm($event,content)" >
                             </ng2-smart-table>
                             </ng-template>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>

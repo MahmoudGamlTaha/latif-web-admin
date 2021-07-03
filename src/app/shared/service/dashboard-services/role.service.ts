@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { server } from 'src/environments/environment';
+import { CookiesData } from '../cookies/CookiesData.service';
 
 @Injectable({
   providedIn: 'root'
@@ -24,15 +25,12 @@ export class RoleService {
   _removeUserPermission = server.url + 'api/public/userPermission/remove/'//post    id
   _endpoints = server.url + 'api/public/endpoints'
 
-  token: any;
-  headers: HttpHeaders;
+   headers: HttpHeaders;
 
-  constructor(private _http: HttpClient) { 
-
-    this.token=JSON.parse(localStorage.getItem('currentUser'))
+  constructor(private _http: HttpClient, private cookies : CookiesData) { 
     this.headers=new HttpHeaders({
       "Content-Type":"application/json",
-      "Authorization": `${this.token}`
+      "Authorization": `${this.cookies.getToken()}`
     })
   }
   getEndpoints(){

@@ -67,7 +67,7 @@ export const content: Routes = [
   },
   {
     path: 'role',
-    loadChildren: () => import('../../components/roleList/reports.module').then(m => m.ReportsModule),
+    loadChildren: () => import('../../components/roleList/roleList.module').then(m => m.roleListModule),
   
   },
   {

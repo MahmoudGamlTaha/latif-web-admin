@@ -18,7 +18,8 @@ import { StatusComponent } from './status/status.component';
     NgbModule,
     Ng2SmartTableModule,
     ReactiveFormsModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+
   ]
 })
 export class UsersModule { }

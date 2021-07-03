@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { server } from 'src/environments/environment';
+import { CookiesData } from '../cookies/CookiesData.service';
 import { IblogCategory, IblogList } from './Iblog';
 import { Icategory } from './Icategory';
 
@@ -14,16 +15,17 @@ export class BlogsService {
   // Blogs URL
   _blogList = server.url + 'api/public/blogs';
   _updateblogList = server.url + "api/public/blogs/update"
+
+  _getblog = server.url + "api/public/blogs/id="
+
   _deleteblog = server.url + "api/public/blogs/delete?id=";
   _createblog = server.url + "api/public/blogs/create";
   token;
   headers;
-  constructor(public _http: HttpClient) {
-
-    this.token = JSON.parse(localStorage.getItem('currentUser'));
+  constructor(public _http: HttpClient, public cookie:CookiesData) {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `${this.token}`
+      'Authorization': `${this.cookie.getToken()}`
     })
   }
 
@@ -35,11 +37,10 @@ export class BlogsService {
         })
       );
   }
-
+  getblog(blogId: any) {
+    return this._http.get(this._getblog +blogId,{ headers: this.headers });
+  }
   updateblogList(blogList: any) {
-
-    console.log(this.token)
-
     return this._http.post(this._updateblogList + '?id=' + blogList.id + '&title=' + blogList.title + '&category=' + blogList.category + '&description=' + blogList.description + '&images=' + blogList.images + '&external=' + blogList.externalLink,
       {},
       { headers: this.headers });
@@ -51,11 +52,17 @@ export class BlogsService {
       { headers: this.headers });
   }
 
-  createBlogList(blog) {
+  createBlog(blog) {
     console.log(blog);
     return this._http.post(this._createblog,
-      { category:blog.Category,title:blog.Title,extrnImage:blog.ExtrnImage,
-        userId:blog.UserId,description:blog.Description,_external:blog.External },
+      {
+         category: blog.category,
+         title: blog.title, 
+         extrnImage: blog.extrnImage,
+         userId: blog.userId,
+         description: blog.description,
+          _external: blog.external
+      },
       { headers: this.headers });
   }
 
@@ -91,6 +98,10 @@ export class BlogsService {
     ).subscribe(
       res => { console.log(res); },
     )
+  }
+  createBlogCategory(data) {
+    return this._http.post(this._createblogCategory, data,
+      { headers: this.headers })
   }
 
 }

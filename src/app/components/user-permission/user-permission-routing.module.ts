@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthorizeGuard } from 'src/app/shared/service/dashboard-services/AuthorizeGuard';
 import { CreatePermissionComponent } from './create-permission/create-permission.component';
 import { PermissionListComponent } from './permission-list/permission-list.component';
 import { UpdatePermissionComponent } from './update-permission/update-permission.component';
@@ -7,6 +8,8 @@ import { UpdatePermissionComponent } from './update-permission/update-permission
 const routes: Routes = [
   {
     path: '',
+    canActivate:[AuthorizeGuard],
+
     children: [
       {
         path: "create-permission",

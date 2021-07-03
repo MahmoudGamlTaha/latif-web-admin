@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TransactionsComponent } from './category/transactions.component';
-import { OrdersComponent } from './categoryList/orders.component';
+import { AuthorizeGuard } from 'src/app/shared/service/dashboard-services/AuthorizeGuard';
+import { categoryComponent } from './category/category.component';
+import { categoryListComponent } from './categoryList/categoryList.component';
 import { CreateCategoryComponent } from './create-category/create-category.component';
 
 
 const routes: Routes = [
   {
     path: '',
+    canActivate:[AuthorizeGuard],
+
     children: [
       {
         path: 'category-list',
-        component: OrdersComponent,
+        component: categoryListComponent,
         data: {
           title: "Category List",
           breadcrumb: "Category List"
@@ -19,7 +22,7 @@ const routes: Routes = [
       },
       {
         path: 'category-type/:id/:typeName',
-        component: TransactionsComponent,
+        component: categoryComponent,
         data: {
           title: "Category Type",
           breadcrumb: "Category Type"

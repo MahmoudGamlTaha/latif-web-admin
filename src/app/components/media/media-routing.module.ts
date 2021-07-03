@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MediaComponent } from './subscription/media.component';
+import { AuthorizeGuard } from 'src/app/shared/service/dashboard-services/AuthorizeGuard';
+import { subscriptionComponent } from './subscription/subscription.component';
 
 const routes: Routes = [
   {
     path: '',
+    canActivate:[AuthorizeGuard],
+
     children: [
       {
         path: '',
-        component: MediaComponent,
+        component: subscriptionComponent,
         data: {
           title: "subscription",
           breadcrumb: "subscription"

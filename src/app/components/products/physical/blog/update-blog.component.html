@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>update blog</h5>
+                </div>
+                <div class="card-body"> 
+                    <form [formGroup]="updateForm" (ngSubmit)="update()" class="needs-validation" novalidate="">
+                        <div class="row">
+                            <div class="col-sm-12">
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">id</label>
+                                    <input formControlName="id" type="text" class="form-control" disabled
+                                        placeholder="id" [value]="blogId" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">title</label>
+                                    <input formControlName="title" type="text" class="form-control"
+                                        placeholder="title" [value]="Title" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">category</label>
+                                    <input formControlName="category" type="text" class="form-control"
+                                        placeholder="category" [value]="Category" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">description</label>
+                                    <input formControlName="description" type="text" class="form-control"
+                                        placeholder="description" [value]="Description" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="validationCustom01">username</label>
+                                    <input formControlName="username" type="text" class="form-control"
+                                        placeholder="username" [value]="Username" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary">update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

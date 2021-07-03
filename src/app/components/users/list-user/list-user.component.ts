@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/shared/service/dashboard-services/users.service';
 import { userListDB } from 'src/app/shared/tables/list-users';
 import { StatusComponent } from '../status/status.component';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-list-user',
@@ -11,8 +12,9 @@ import { StatusComponent } from '../status/status.component';
 export class ListUserComponent implements OnInit {
   public user_list = []
   isLoading: boolean = true ;
-
-  constructor(private userSer:UsersService) {
+closeResult;
+deletedItemId;
+  constructor(private modalService: NgbModal,private userSer:UsersService) {
     this.userSer.userList().subscribe(
       (data:any)=>{
         this.isLoading = false ;
@@ -30,6 +32,12 @@ export class ListUserComponent implements OnInit {
       edit:false,
       add:false,
   },
+  delete: {
+      confirmDelete: true,
+      deleteButtonContent: 'Delete data',
+      saveButtonContent: 'save',
+      cancelButtonContent: 'cancel'
+    },
     columns: {
       id: {
         title: 'id',
@@ -71,9 +79,32 @@ export class ListUserComponent implements OnInit {
       },
     },
   };
-
   ngOnInit() {
   }
+
+
+  delete(id) {
+        console.log(id)
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+onDeleteConfirm(event,content){
+console.log("asd",event.data.id,content)
+this.deletedItemId=event.data.id
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+}
 
 }
 

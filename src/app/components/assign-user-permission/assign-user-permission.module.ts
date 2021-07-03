@@ -6,6 +6,7 @@ import { RoleIdComponent } from './role-id/role-id.component';
 import { CreateAssignRoleComponent } from './create-assign-role/create-assign-role.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AssignUserPermissionRoutingModule,
     Ng2SmartTableModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,NgbModule,
   ]
 })
 export class AssignUserPermissionModule { }

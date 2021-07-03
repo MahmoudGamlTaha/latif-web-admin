@@ -1,0 +1,109 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Create blog</h5>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="blogForm" (ngSubmit)="create()"  class="needs-validation" novalidate="">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h3>create Blog</h3>
+                            </div>
+                            <!-- userId -->
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="validationCustom01">user</label>
+                                    <select class="form-control" 
+                                    formControlName="UserId" >
+                                        <option class="dropdown-item" *ngFor="let user of userList" data-list="user"
+                                            [value]="user.id" >
+                                            {{ user.firstName }}
+                                        </option>
+                                    </select>
+                                    <div class="text-danger" *ngIf="!UserId.valid ">
+                                        <small *ngIf="UserId.errors.required && UserId.touched"
+                                            [class.is-invalid]="UserId.invalid || UserId.touched" class="text-danger">
+                                    field is required
+                                        </small>
+                                        </div>
+                                </div>
+                            </div>
+
+                            <!-- category Name -->
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="validationCustom01">Category List</label>
+                                    <select class="form-control" formControlName="Category" value="category Name">
+                                        <option class="dropdown-item" *ngFor="let option of blogCategoryList" data-list="option"
+                                            [value]="option.id" >
+                                            {{ option.name }}
+                                        </option>
+                                    </select>
+                                    <div class="text-danger" *ngIf="!Category.valid ">
+                                        <small *ngIf="Category.errors.required && Category.touched"
+                                            [class.is-invalid]="Category.invalid || Category.touched" class="text-danger">
+                                    field is required
+                                        </small>
+                                        </div>
+                                </div>
+                                    
+                            </div>
+                            <!-- Title -->
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="validationCustom01">Title</label>
+                                    <input type="text" class="form-control" formControlName="Title"/>
+                                    <div class="text-danger" *ngIf="!Title.valid ">
+                                        <small *ngIf="Title.errors.required && Title.touched"
+                                            [class.is-invalid]="Title.invalid || Title.touched" class="text-danger">
+                                    field is required
+                                        </small>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="validationCustom01">image</label>
+                                    <input type="file" height="30px" class="form-control-file" id="exampleFormControlFile1"  formControlName="ExtrnImage" multiple>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="validationCustom01">external</label><br>
+                                    <label class="switch" ><input type="checkbox" formControlName="External" value="true">
+                                    <span class="slider round"></span></label>
+                                </div>
+                            </div>
+                                <!-- description -->
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="validationCustom01">description</label>
+                                    <textarea  class="form-control" formControlName="Description" placeholder="description">
+                                    </textarea>
+                                    <div class="text-danger" *ngIf="!Description.valid ">
+                                        <small *ngIf="Description.errors.required && Description.touched"
+                                            [class.is-invalid]="Description.invalid || Description.touched" class="text-danger">
+                                    field is required
+                                        </small>
+                                        </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="pull-right">
+                        <button type="submit"  class="btn btn-primary">Create</button>
+                    </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->
