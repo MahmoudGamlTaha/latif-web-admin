@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CountriesService } from 'src/app/shared/service/dashboard-services/countries.service';
-import { statuscountryComponent } from '../statuscountry/status-country.component';
+import { StatusCountryComponent } from '../statuscountry/status-country.component';
 
 @Component({
   selector: 'app-country-list',
@@ -45,7 +45,7 @@ export class CountryListComponent implements OnInit {
       title: 'Active',
       type: 'custom',
       filter: false,
-      renderComponent: statuscountryComponent,
+      renderComponent: StatusCountryComponent,
       onComponentInitFunction(instance) {
         instance.save.subscribe(row => {
           // alert(`${row.active} saved!`)
