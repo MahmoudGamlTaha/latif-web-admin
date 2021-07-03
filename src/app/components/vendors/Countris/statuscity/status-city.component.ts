@@ -3,10 +3,10 @@ import { ViewCell } from 'ng2-smart-table';
 import { AdsService } from 'src/app/shared/service/dashboard-services/ads.service';
 @Component({
   selector: 'app-statuscity',
-  templateUrl: './statuscity.component.html',
-  styleUrls: ['./statuscity.component.scss']
+  templateUrl: './status-city.component.html',
+  styleUrls: ['./status-city.component.scss']
 })
-export class statuscityComponent implements ViewCell, OnInit {
+export class StatusCityComponent implements ViewCell, OnInit {
 
   renderValue: boolean;
   idValue: number;

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { countries } from 'src/app/shared/models/cityFiltterByCountry';
 import { CountriesService } from 'src/app/shared/service/dashboard-services/countries.service';
-import { statuscityComponent } from '../statusCity/statusCity.component';
+import { StatusCityComponent } from '../statuscity/status-city.component';
 
 
 @Component({
@@ -51,7 +51,7 @@ export class CityListComponent implements OnInit {
         title: 'Active',
         type: 'custom',
         filter: false,
-        renderComponent: statuscityComponent,
+        renderComponent: StatusCityComponent,
         onComponentInitFunction(instance) {
           instance.save.subscribe(row => {
             // alert(`${row.active} saved!`)

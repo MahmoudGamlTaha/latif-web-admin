@@ -6,7 +6,7 @@ import { CountriesService } from 'src/app/shared/service/dashboard-services/coun
   templateUrl: './status-country.component.html',
   styleUrls: ['./status-country.component.scss']
 })
-export class statuscountryComponent implements ViewCell, OnInit {
+export class StatusCountryComponent implements ViewCell, OnInit {
 
   renderValue: boolean;
   idValue: number;
