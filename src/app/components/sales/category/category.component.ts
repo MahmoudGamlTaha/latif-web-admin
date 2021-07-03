@@ -115,7 +115,13 @@ deletedItemId;
   }
     delete(id) {
         console.log(id)
-
+      this.categorySer.deleteCategory(id).subscribe((data: any) => {
+        console.log(data);
+      },
+        (error) => {
+          console.log(error.message);
+        })
+  
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
