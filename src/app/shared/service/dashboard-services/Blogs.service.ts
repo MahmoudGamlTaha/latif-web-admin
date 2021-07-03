@@ -99,5 +99,9 @@ export class BlogsService {
       res => { console.log(res); },
     )
   }
+  createBlogCategory(data) {
+    return this._http.post(this._createblogCategory, data,
+      { headers: this.headers })
+  }
 
 }
