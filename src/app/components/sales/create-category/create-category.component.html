@@ -77,7 +77,12 @@
 
                                 <div class="col-sm-4">
                                     <div class="form-group">
+
                                         <label for="validationCustom01">catParent</label>
+                                        <!-- <input type="text" class="form-class"  
+                                        [class.is-invalid]="catParent.invalid && catParent.touched"
+                                        formControlName='catParent'> -->
+                                        
                                         <select class="form-control" [class.is-invalid]="catParent.invalid && catParent.touched"
                                             formControlName='catParent'>
                                             <option id="{{option.name}}"  value="{{option.id}}" *ngFor="let option of catParentList">

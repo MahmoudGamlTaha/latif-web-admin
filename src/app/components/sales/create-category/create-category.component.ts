@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { category } from 'src/app/shared/models/category';
 import { CategoryService } from 'src/app/shared/service/dashboard-services/category.service';
 import { UsersService } from 'src/app/shared/service/dashboard-services/users.service';
 
@@ -45,7 +46,7 @@ export class CreateCategoryComponent implements OnInit {
       Icon_select:['',[Validators.required]],
       External:[''],
       Active:[''],
-      catParent:[''],
+      catParent:['you'],
     });
     
   }
@@ -71,11 +72,22 @@ export class CreateCategoryComponent implements OnInit {
     return this.createForm.get('catParent')
   }
   create(){
+    let formData : category
 
+    formData = {
+      active : this.createForm.value.Active ,
+      catParent : this.createForm.value.catParent ,
+      externalLink : this.createForm.value.External ,
+      icon : this.createForm.value.Icon ,
+      icon_select : this.createForm.value.Icon_select ,
+      name : this.createForm.value.External ,
+      nameAr : this.createForm.value.NameAr ,
+      type : this.createForm.value.CategoryName ,
+    }
     if(!this.createForm.valid){return ;}
     console.log(this.createForm.value)
 
-    this.categorySer.createCategory(this.createForm.value).subscribe(
+    this.categorySer.createCategory(formData).subscribe(
       (data)=>{
         
         console.log(data)
