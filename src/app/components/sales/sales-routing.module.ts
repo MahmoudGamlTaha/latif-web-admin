@@ -29,7 +29,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'create-category',
+        path: 'create-category/:type',
         component: CreateCategoryComponent,
         data: {
           title: "create Category",

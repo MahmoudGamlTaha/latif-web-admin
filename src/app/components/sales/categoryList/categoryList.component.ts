@@ -21,29 +21,52 @@ export class categoryListComponent implements OnInit {
   constructor( private categorySer:CategoryService,private router:Router) {
     // this.order = orderDB.list_order;
   }
+  public settings = {
+    hideSubHeader:true,
+    actions: false,
+  delete: {
+      confirmDelete: true,
+      deleteButtonContent: 'Delete data',
+      saveButtonContent: 'save',
+      cancelButtonContent: 'cancel'
+    },
 
-  // updateFilter(event) {
-  //   const val = event.target.value.toLowerCase();
+    columns: {
+      'id': {
+        title: 'id',
+        type:'html',
+        valuePrepareFunction: (cell, row) => {
+            return "<a href='#/category/category-type/"+row.id +"/"+row.name+ "' >"+row.id+"</a>";
+        }
+      },
+      'code': {
+        title: 'code',
+      },
+      'name': {
+        title: 'name',
+      },
+      'nameAr': {
+        title: 'nameAr',
+        filter: false,
 
-  //   // filter our data
-  //   const temp = this.order.filter(function (d) {
-  //     return d.name.toLowerCase().indexOf(val) !== -1 || !val;
-  //   });
-
-  //   // update the rows
-  //   this.order = temp;
-  //   // Whenever the filter changes, always go back to the first page
-  //   this.table.offset = 0;
-  // }
+      },
+      'active': {
+        title: 'active',
+        filter: false,
+      },
+      'createdDate': {
+        title: 'createdDate',
+      },
+    },
+  };
 
   onRowSelect(event){
-// alert(event)
 
-if(event.type == 'click') {
-  this.categoryId=event.row.id;
-  this.typeName=event.row.name;
-  this.router.navigate(['category/category-type/',this.categoryId,this.typeName])
-}
+// if(event.type == 'click') {
+//   this.categoryId=event.row.id;
+//   this.typeName=event.row.name;
+//   this.router.navigate(['category/category-type/',this.categoryId,this.typeName])
+// }
   }
   ngOnInit() {
 

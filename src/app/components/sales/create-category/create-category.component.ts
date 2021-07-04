@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'src/app/shared/service/dashboard-services/category.service';
 import { UsersService } from 'src/app/shared/service/dashboard-services/users.service';
 
@@ -12,29 +12,45 @@ import { UsersService } from 'src/app/shared/service/dashboard-services/users.se
 export class CreateCategoryComponent implements OnInit {
 
   public createForm: FormGroup;
-  typeList
-  userList: any;
-  constructor(private fb: FormBuilder,private categorySer:CategoryService,private route:Router) { 
-
-      
-    this.categorySer.getCategoryList().subscribe(
+  typeList = [] ;
+  catParentList = [] ;
+  selectedTypeId : String ;
+  constructor(private fb: FormBuilder,
+    private categorySer:CategoryService,
+    private router : ActivatedRoute,private route:Router) { 
+      this.selectedTypeId = this.router.snapshot.paramMap.get('type')
+      console.log(this.selectedTypeId)
+    
+      this.categorySer.getCategoryList().subscribe(
+        (data:any)=>{
+          this.typeList=data.response.data
+          console.log(data.response.data)
+        },(err)=>console.log("err",err)
+      )
+    this.categorySer.getCategoriesByParent(this.selectedTypeId).subscribe(
       (data:any)=>{
-        this.typeList=data.response.data
+        this.catParentList=data.response.data
       },(err)=>console.log("err",err)
     )
-
   }
+
+
+
   ngOnInit(): void {
-    
     this.createForm = this.fb.group({
-      Type :['',[Validators.required]],
+      Type :[this.selectedTypeId,[Validators.required]],
       CategoryName:['',[Validators.required]],
       NameAr:['',[Validators.required]],
       Icon:['',[Validators.required]],
       Icon_select:['',[Validators.required]],
       External:[''],
       Active:[''],
+      catParent:[''],
     });
+    
+  }
+  ngAfterViewInit(): void {
+    
   }
   get CategoryName(){
     return this.createForm.get('CategoryName')
@@ -50,6 +66,9 @@ export class CreateCategoryComponent implements OnInit {
   }
   get Type(){
     return this.createForm.get('Type')
+  }  
+  get catParent(){
+    return this.createForm.get('catParent')
   }
   create(){
 
