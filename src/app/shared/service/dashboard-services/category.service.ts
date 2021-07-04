@@ -64,7 +64,7 @@ export class CategoryService {
   }
   
   getCategoriesByParent(CategoryId) {
-    return this._http.post(this._getCategoriesByParent+CategoryId,{}, { headers: this.headers })
+    return this._http.get(this._getCategoryType+CategoryId)
       .pipe(
         catchError((err) => {
           return throwError(err.message || 'server issue ');

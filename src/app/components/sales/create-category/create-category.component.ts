@@ -30,6 +30,8 @@ export class CreateCategoryComponent implements OnInit {
       )
     this.categorySer.getCategoriesByParent(this.selectedTypeId).subscribe(
       (data:any)=>{
+        console.log(data)
+
         this.catParentList=data.response.data
       },(err)=>console.log("err",err)
     )
@@ -49,7 +51,7 @@ export class CreateCategoryComponent implements OnInit {
       catParent:['you'],
     });
     
-  }
+  }  
   ngAfterViewInit(): void {
     
   }

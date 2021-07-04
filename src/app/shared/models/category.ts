@@ -7,4 +7,5 @@ export class category{
     public name? : string ;
     public nameAr? : string ;
     public type? : number ;
+    public description? :string ; 
 }

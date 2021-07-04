@@ -11,7 +11,7 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="validationCustom01">type</label>
-                                        <select class="form-control" value="{{selectedType}}" [class.is-invalid]="Type.invalid && Type.touched"
+                                        <select class="form-control" value="{{selectedTypeId}}" [class.is-invalid]="Type.invalid && Type.touched"
                                         formControlName='Type' >
                                             <option id="{{option.id}}"  value="{{option.id}}" *ngFor="let option of typeList" >
                                                 {{option.name}}
@@ -86,7 +86,7 @@
                                         <select class="form-control" [class.is-invalid]="catParent.invalid && catParent.touched"
                                             formControlName='catParent'>
                                             <option id="{{option.name}}"  value="{{option.id}}" *ngFor="let option of catParentList">
-                                                {{option.name}}
+                                                {{option.category.name}}
                                             </option>
                                         </select>
                                         <div class="text-danger" *ngIf="!catParent.valid ">
