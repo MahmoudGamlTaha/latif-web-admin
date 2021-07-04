@@ -73,7 +73,7 @@ export class createBlogCategoryComponent implements OnInit {
     let Category: category = new category();
     Category.active = formValue.active;
     // Category.parentCategory = formValue.parentCategory;
-    Category.external_link = formValue.external_link;
+    Category.externalLink = formValue.external_link;
     Category.icon = formValue.icon;
     Category.icon_select = formValue.icon_select;
     Category.name = formValue.name;
