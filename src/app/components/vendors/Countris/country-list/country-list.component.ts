@@ -73,11 +73,11 @@ export class CountryListComponent implements OnInit {
     );
   }
 
-      delete(id) {
+   public delete(id) {
         console.log(id)
         this.countriesSer.deleteCountry(id).subscribe(
           (data)=>{
-            console.log(data)
+            window.location.reload();
           },err=>{console.log(err.message)})
   }
   private getDismissReason(reason: any): string {
