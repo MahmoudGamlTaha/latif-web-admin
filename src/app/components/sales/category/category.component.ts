@@ -143,4 +143,8 @@ this.deletedItemId=event.data.category.id
     });
 }
 
+createRoute(){
+
+  this.router.navigate(['category/create-category',this.typeId])
+}
 }

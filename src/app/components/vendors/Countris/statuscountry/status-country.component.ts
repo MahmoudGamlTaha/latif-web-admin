@@ -20,7 +20,11 @@ export class StatusCountryComponent implements ViewCell, OnInit {
   onClick(event) {
 
     console.log(event.target.checked)
-    this.countriesSer.updateStateCountry(event.target.id, event.target.checked).subscribe(res=> console.log("success"))
+    this.countriesSer
+    .updateStateCountry(event.target.id, event.target.checked)
+    .subscribe(res =>
+        console.log("success")
+       );
     this.save.emit(this.rowData);
     console.log(event.target.id)
   }

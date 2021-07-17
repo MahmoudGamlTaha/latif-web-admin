@@ -19,7 +19,18 @@ import { Icategory } from 'src/app/shared/service/dashboard-services/Icategory';
 export class updateXDComponent implements OnInit {
   
   public generalForm: FormGroup;
-
+  constructor(
+    private adsSer: AdsService,
+    private AdsSer: AdsService,
+    private categorySer: CategoryService,
+    private citiesSer: CountriesService,
+    private formBuilder: FormBuilder,
+    private router: ActivatedRoute,
+  ) {
+    this.XDId = parseInt(this.router.snapshot.paramMap.get('id'));
+    this.getcites();
+    this.getAdsByIdType();
+  }
   active: boolean;
   typeOfAds: string;
   categoryList ;
@@ -29,7 +40,7 @@ export class updateXDComponent implements OnInit {
   categoryId : number;
   city : string ;
   description : string ;
-  extra: any[] = [];
+  extra: [];
   name : string ;
   price : number ;
   image : string ;
@@ -39,9 +50,9 @@ export class updateXDComponent implements OnInit {
   address : string ;
   ads;
   adsCount : number;
-  email : string ;
+  email : string = "";
   firstName : string ;
-  lastName : string ;
+  lastName : string = "";
   phone : number;
   //////////////// extra => subscriptions
   code : string ;
@@ -50,27 +61,37 @@ export class updateXDComponent implements OnInit {
   
   getAdsByIdType() {
     this.AdsSer.getAdsByIdType(this.XDId).subscribe((data: any) => {
+      this.id = data.response.data.id;
       this.active = data.response.data.active;
       this.typeOfAds = data.response.data.type;
       this.categoryName = data.response.data.categoryName;
       this.address = data.response.data.createdBy.address;
       this.ads = data.response.data.createdBy.ads;
       this.adsCount = data.response.data.createdBy.address;
-      this.email = data.response.data.createdBy.Email;
-      this.firstName = data.response.data.createdBy.firstName;
-      this.lastName = data.response.data.createdBy.lastName;
-      this.phone = data.response.data.createdBy.phone;
+      if(data.response.data.createdBy != null){
+          this.email = data.response.data.createdBy.email;
+          this.firstName = data.response.data.createdBy.firstName;
+          this.lastName = data.response.data.createdBy.lastName;
+          this.phone = data.response.data.createdBy.phone;
+      }
       this.city = data.response.data.city;
       this.description = data.response.data.description;
       this.name = data.response.data.name; //
       this.price = data.response.data.price;
       this.extra = data.response.data.extra; //
       this.images = data.response.data.images;
-      /**
-       * this.categoryList.filter()
-       * this filter get SubCatList using id of typeOfAds
-       *
-       **/
+      this.getCategories();
+    });
+  }
+
+  getcites() {
+    this.citiesSer.getcitesList().subscribe((data: any) => {
+      this.cities = data.response.data;
+    });
+  }
+  getCategories(){
+    this.categorySer.getCategoryList().subscribe(( data :any) => {
+      this.categoryList = data.response.data;
       this.categoryList.filter((data:Icategory) => {
         if ( this.typeOfAds == data.code ) {
           this.categoryId = data.id;
@@ -82,15 +103,6 @@ export class updateXDComponent implements OnInit {
           this.typeOfAds = data.name;
         }
       });
-    });
-  }
-
-  getDataFormApi() {
-    this.citiesSer.getcitesList().subscribe((data: any) => {
-      this.cities = data.response.data;
-    });
-    this.categorySer.getCategoryList().subscribe(( data :any) => {
-      this.categoryList = data.response.data;
     });
   }
 
@@ -141,24 +153,17 @@ export class updateXDComponent implements OnInit {
     return this.generalForm.get('Lastname');
   }
   get Email() {
-    return this.generalForm.get('Email');
+    let check = this.generalForm.get('Email') == undefined;
+    if(check){
+      return "";
+    }
+    return this.generalForm.get('Email') ;
   }
   get Items() {
     return this.generalForm.get('Items') as FormArray;
   }
 
-  constructor(
-    private adsSer: AdsService,
-    private AdsSer: AdsService,
-    private categorySer: CategoryService,
-    private citiesSer: CountriesService,
-    private formBuilder: FormBuilder,
-    private router: ActivatedRoute,
-  ) {
-    this.XDId = parseInt(this.router.snapshot.paramMap.get('id'));
-    this.getDataFormApi();
-    this.getAdsByIdType();
-  }
+ 
 
   ngOnInit() {
     //const itemsCtrls = this.createItemsCtrls(this.extra);

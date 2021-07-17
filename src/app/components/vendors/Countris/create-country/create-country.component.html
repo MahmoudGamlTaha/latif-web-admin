@@ -48,7 +48,10 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="validationCustom01">language</label>
-                                    <input class="form-control" type="text" formControlName='language' placeholder="language" >
+                                    <select class="custom-select"  formControlName='language' placeholder="language" >
+                                    <option value="en">en</option>
+                                    <option value="ar" selected>ar</option>
+                                    </select>
                                     <div class="text-danger" *ngIf="!language.valid ">
                                         <small *ngIf="language.errors.required && language.touched"
                                             [class.is-invalid]="language.invalid || language.touched"

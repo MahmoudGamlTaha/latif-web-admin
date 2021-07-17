@@ -7,6 +7,15 @@
                     <h5> {{typeName}} category</h5>
                 </div>
                 <div class="card-body">
+                    <div class="row ">
+                        <div class="col-sm-12">
+                            <div class="pull-right">
+                        <a type="button" style="margin-bottom: 15px ;" (click)="createRoute()"
+                            class="btn btn-primary"  >create category </a>
+                    </div>
+                        </div>
+                        
+                </div>
                     <div id="batchDelete" class="category-table custom-datatable transcation-datatable">
                         <div class="table-responsive">
                             <div *ngIf="isLoading; else table" class="text-center">

@@ -11,9 +11,9 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="validationCustom01">type</label>
-                                        <select class="form-control" [class.is-invalid]="Type.invalid && Type.touched"
-                                            formControlName='Type'>
-                                            <option id="{{option.name}}"  value="{{option.id}}" *ngFor="let option of typeList">
+                                        <select class="form-control" value="{{selectedTypeId}}" [class.is-invalid]="Type.invalid && Type.touched"
+                                        formControlName='Type' >
+                                            <option id="{{option.id}}"  value="{{option.id}}" *ngFor="let option of typeList" >
                                                 {{option.name}}
                                             </option>
                                         </select>
@@ -74,6 +74,31 @@
                                             </div>
                                     </div>
                                 </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+
+                                        <label for="validationCustom01">catParent</label>
+                                        <!-- <input type="text" class="form-class"  
+                                        [class.is-invalid]="catParent.invalid && catParent.touched"
+                                        formControlName='catParent'> -->
+                                        
+                                        <select class="form-control" [class.is-invalid]="catParent.invalid && catParent.touched"
+                                            formControlName='catParent'>
+                                            <option id="{{option.name}}"  value="{{option.id}}" *ngFor="let option of catParentList">
+                                                {{option.category.name}}
+                                            </option>
+                                        </select>
+                                        <div class="text-danger" *ngIf="!catParent.valid ">
+                                            <small *ngIf="catParent.errors.required && catParent.touched"
+                                                [class.is-invalid]="catParent.invalid || catParent.touched" class="text-danger">
+                                        field is required
+                                            </small>
+                                            </div>
+                                    </div>
+                                </div>
+
+
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="validationCustom01">external</label><br>
@@ -88,6 +113,7 @@
                                             <span class="slider round"></span></label>
                                     </div>
                                 </div>
+                                
                             </div>
                         </div>
                         <div class="pull-right">

@@ -34,12 +34,12 @@ export class RoleService {
     })
   }
   getEndpoints(){
-return this._http.get(this._endpoints)
-      .pipe(
-        catchError((err) => {
-          return throwError(err.message || 'server issue ');
-        })
-      );
+    return this._http.get(this._endpoints)
+        .pipe(
+            catchError((err) => {
+            return throwError(err.message || 'server issue ');
+         })
+       );
   }
   
   getRoleList() {

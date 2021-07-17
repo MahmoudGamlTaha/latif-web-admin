@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ViewCell } from 'ng2-smart-table';
 import { AdsService } from 'src/app/shared/service/dashboard-services/ads.service';
+import { CountriesService } from 'src/app/shared/service/dashboard-services/countries.service';
 @Component({
   selector: 'app-statuscity',
   templateUrl: './status-city.component.html',
@@ -15,17 +16,18 @@ export class StatusCityComponent implements ViewCell, OnInit {
 
   @Output() save: EventEmitter<any> = new EventEmitter();
 
-  constructor(private adsSer: AdsService) { }
+  constructor(private countryService: CountriesService) { }
 
   onClick(event) {
 
-    console.log(event.target.checked)
+    let check:boolean = event.target.checked;
     this.save.emit(this.rowData);
-    console.log(event.target.id)
+     let country:number = event.target.id;
+  
+    
   }
   ngOnInit(): void {
     this.renderValue = this.value
-
     this.idValue = this.rowData.id
     console.log(this.renderValue)
 

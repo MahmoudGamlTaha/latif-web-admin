@@ -23,7 +23,7 @@ export class ListCouponComponent implements OnInit {
   selected;
   AdsType;
   CatId: number;
-  pageSize = 10;
+  pageSize = 19;
   source: LocalDataSource = new LocalDataSource();
   numOfPages: number;
   isLoading: boolean = true;
@@ -77,13 +77,19 @@ deletedItemId;
       'createdBy.firstName': {
         title: 'Name',
         valuePrepareFunction: (cell, row) => {
-          return row.createdBy.firstName + ' ' + row.createdBy.lastName;
+          if(row.createdBy){
+            let lastName:string = row.createdBy.lastName == null ? "" : row.createdBy.lastName;
+          return row.createdBy.firstName + ' ' + lastName;
+          }
         },
       },
       'createdBy.phone': {
         title: 'phone',
         valuePrepareFunction: (cell, row) => {
+          if(row.createdBy){
           return row.createdBy.phone;
+          }
+          return "";
         },
       },
       // 'createdBy.subscriptions': {
@@ -164,7 +170,7 @@ deletedItemId;
         this.isLoading = false;
         this.adsList = data.response.data;
         this.rolList = this.adsList;
-        localStorage.setItem('adsList', JSON.stringify(this.rolList));
+      //  localStorage.setItem('adsList', JSON.stringify(this.rolList));
       },
       (error) => {
         this.isLoading = false;
