@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { category } from 'src/app/shared/models/category';
 import { CategoryService } from 'src/app/shared/service/dashboard-services/category.service';
 import { UsersService } from 'src/app/shared/service/dashboard-services/users.service';
+import { UploadFileComponent } from '../../upload-file/upload-file.component';
 
 @Component({
   selector: 'app-create-category',

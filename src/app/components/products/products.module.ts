@@ -25,6 +25,7 @@ import { blogListComponent } from './physical/blogList/blog-list.component';
 import { createBlogCategoryComponent } from './physical/createBlogCategory/createBlogCategory.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { UploadFileComponent } from '../upload-file/upload-file.component';
+
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   maxFilesize: 50,
   url: 'https://highcoder.com',

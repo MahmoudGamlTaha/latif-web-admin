@@ -10,6 +10,10 @@ import { categoryListComponent } from './categoryList/categoryList.component';
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UploadFileComponent } from '../upload-file/upload-file.component';
+import { FileUploadModule } from 'ng2-file-upload';
+import { updateXDComponent } from '../coupons/updateXD/updateXD.component';
+import { ProductsModule } from '../products/products.module';
 
 @NgModule({
   declarations: [categoryListComponent, categoryComponent, CreateCategoryComponent],
