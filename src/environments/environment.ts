@@ -6,7 +6,7 @@ export const environment = {
   production: false
 };
 export const server = {
-  url:'http://localhost:8070/',
+  url:'https://latifapp.herokuapp.com/',
   cloudinary_url:'https://api.cloudinary.com/v1_1/highcoder/image/upload',
   upload_presist: 'jedduvcu',
   cloud_name:'highcoder'
