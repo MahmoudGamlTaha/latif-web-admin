@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthorizeGuard } from 'src/app/shared/service/dashboard-services/AuthorizeGuard';
-import { CityListComponent } from './Countris/city-list/city-list.component';
-import { CountryListComponent } from './Countris/country-list/country-list.component';
-import { CreateCityComponent } from './Countris/create-city/create-city.component';
-import { CreateCountryComponent } from './Countris/create-country/create-country.component';
+import { CityListComponent } from './Countries/city-list/city-list.component';
+import { CountryListComponent } from './Countries/country-list/country-list.component';
+import { CreateCityComponent } from './Countries/create-city/create-city.component';
+import { CreateCountryComponent } from './Countries/create-country/create-country.component';
 import { ListVendorsComponent } from './list-vendors/list-vendors.component';
 import { CreateVendorsComponent } from './policy/create-vendors.component';
 

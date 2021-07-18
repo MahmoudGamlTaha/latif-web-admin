@@ -23,7 +23,8 @@ import { CreateBlogComponent } from './physical/createBlog/create-blog.component
 import { SubCategoryComponent } from './physical/blogCategory/sub-category.component';
 import { blogListComponent } from './physical/blogList/blog-list.component';
 import { createBlogCategoryComponent } from './physical/createBlogCategory/createBlogCategory.component';
-
+import { FileUploadModule } from 'ng2-file-upload';
+import { UploadFileComponent } from '../upload-file/upload-file.component';
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   maxFilesize: 50,
   url: 'https://highcoder.com',
@@ -32,7 +33,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
 
 
 @NgModule({
-  declarations: [blogListComponent, SubCategoryComponent, createBlogCategoryComponent, UpdateBlogComponent, DigitalCategoryComponent, DigitalSubCategoryComponent, DigitalListComponent, DigitalAddComponent, CreateBlogComponent],
+  declarations: [blogListComponent, SubCategoryComponent, createBlogCategoryComponent, UpdateBlogComponent, DigitalCategoryComponent, DigitalSubCategoryComponent, DigitalListComponent, DigitalAddComponent, CreateBlogComponent, UploadFileComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -42,6 +43,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     Ng2SmartTableModule,
     NgbModule,
     DropzoneModule,
+    FileUploadModule,
     GalleryModule.forRoot()
   ],
   providers: [

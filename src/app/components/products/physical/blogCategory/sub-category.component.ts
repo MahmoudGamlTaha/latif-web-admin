@@ -41,9 +41,24 @@ deletedItemId;
         title: 'name',
         type: 'html',
       },
+      nameAr: {
+        title: 'nameAr',
+        type: 'html',
+      },
+      
       description: {
         title: 'description',
         filter: false,
+      },
+      icon_select: {
+        title: 'icon_select',
+        type: 'html',
+        filter: false,
+        valuePrepareFunction:(cell,row)=>{
+          if (row.icon != null && row.icon != undefined && row.icon != '') {
+          return "<img src='"+row.icon_select+"' width='50' height='50' />";
+          }else{return ;}
+          }
       },
       icon: {
         title: 'icon',

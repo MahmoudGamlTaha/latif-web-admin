@@ -16,6 +16,8 @@ export class CreateCategoryComponent implements OnInit {
   typeList = [] ;
   catParentList = [] ;
   selectedTypeId : String ;
+  iconUpload:string;
+  iconSelectUpload:string;
   constructor(private fb: FormBuilder,
     private categorySer:CategoryService,
     private router : ActivatedRoute,private route:Router) { 
@@ -55,6 +57,13 @@ export class CreateCategoryComponent implements OnInit {
   ngAfterViewInit(): void {
     
   }
+  setIcon(value){
+    this.iconUpload  = value.url;
+  }
+  setIconSelect(value){
+    this.iconSelectUpload = value.url;
+
+  }
   get CategoryName(){
     return this.createForm.get('CategoryName')
   }
@@ -79,9 +88,9 @@ export class CreateCategoryComponent implements OnInit {
     formData = {
       active : this.createForm.value.Active ,
       catParent : this.createForm.value.catParent ,
-      externalLink : this.createForm.value.External ,
-      icon : this.createForm.value.Icon ,
-      icon_select : this.createForm.value.Icon_select ,
+      external_link : this.createForm.value.External ,
+      icon : this.iconUpload,
+      icon_select : this.iconSelectUpload ,
       name : this.createForm.value.External ,
       nameAr : this.createForm.value.NameAr ,
       type : this.createForm.value.CategoryName ,

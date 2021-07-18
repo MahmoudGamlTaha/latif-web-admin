@@ -22,11 +22,14 @@ import { roleListModule } from './components/roleList/roleList.module';
 import { AuthModule } from './components/auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
-import { environment } from 'src/environments/environment';
+import { environment, server } from 'src/environments/environment';
 import {CookieService} from 'ngx-cookie-service';
+import { CloudinaryModule } from '@cloudinary/angular-5.x';
+import * as  Cloudinary from 'cloudinary-core';
+import { FileUploader, FileUploadModule } from 'ng2-file-upload';
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -48,6 +51,7 @@ import {CookieService} from 'ngx-cookie-service';
     HttpClientModule,
     MenusModule,
     UsersModule,
+    CloudinaryModule.forRoot(Cloudinary, {cloud_name: server.cloud_name})
     
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, CookieService],
