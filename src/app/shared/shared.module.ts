@@ -14,6 +14,7 @@ import { NavService } from './service/nav.service';
 import { WINDOW_PROVIDERS } from './service/windows.service';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { RightSidebarComponent } from './components/right-sidebar/right-sidebar.component';
+import { FileUploader, FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RightSidebarComponent } from './components/right-sidebar/right-sidebar.
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FileUploadModule
   ],
   providers: [NavService, WINDOW_PROVIDERS],
   exports: [FeatherIconsComponent, ToggleFullscreenDirective]

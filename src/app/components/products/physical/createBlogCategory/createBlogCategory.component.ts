@@ -4,7 +4,10 @@ import { Router } from '@angular/router';
 import { category } from 'src/app/shared/models/category';
 import { BlogsService } from 'src/app/shared/service/dashboard-services/Blogs.service';
 import { CategoryService } from 'src/app/shared/service/dashboard-services/category.service';
-import { productDB } from 'src/app/shared/tables/product-list';
+import { UploadFileComponent} from 'src/app/components/upload-file/upload-file.component';
+import { CloudinaryUploadService } from 'src/app/shared/service/upload/cloudinary.service';
+import { FileUploadModule } from 'ng2-file-upload';
+
 
 @Component({
   selector: 'app-createBlogCategory',
@@ -15,14 +18,16 @@ export class createBlogCategoryComponent implements OnInit {
   
   public categoryForm: FormGroup;
   categoryList: any;
-
+  uploader:FileUploadModule;
+   iconUpload:string = null;
+   iconSelectUpload:string = null;
   constructor(private BlogsSer: BlogsService,private router : Router ,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder, private uploadService:CloudinaryUploadService) {
     
   }
 
   ngOnInit() {
-
+    this.uploader = this.uploadService.getUploader();
     this.categoryForm = this.formBuilder.group({
       active: [true, [Validators.required]],
       parentCategory: [0],
@@ -32,11 +37,15 @@ export class createBlogCategoryComponent implements OnInit {
       name: ['', [Validators.required]],
       nameAr: ['', [Validators.required]],
       // type: ['', [Validators.required]],
-      description: ['', [Validators.required]],
+      description: [''],
     });
   }
-  
-
+  public setIconSelect(value){
+   this.iconSelectUpload = value.url;
+  }
+public setIcon(value){
+    this.iconUpload  = value.url;
+  }
   get active() {
     return this.categoryForm.get('active');
   }
@@ -64,6 +73,9 @@ export class createBlogCategoryComponent implements OnInit {
     get description() {
     return this.categoryForm.get('description');
   }
+  hasUnsavedData():boolean{
+    return this.iconSelectUpload != null || this.iconUpload != null;
+  }
   create() {
     if (!this.categoryForm.valid) {
       return;
@@ -73,9 +85,9 @@ export class createBlogCategoryComponent implements OnInit {
     let Category: category = new category();
     Category.active = formValue.active;
     // Category.parentCategory = formValue.parentCategory;
-    Category.externalLink = formValue.external_link;
-    Category.icon = formValue.icon;
-    Category.icon_select = formValue.icon_select;
+    Category.external_link = formValue.external_link;
+    Category.icon = this.iconUpload;
+    Category.icon_select = this.iconSelectUpload;
     Category.name = formValue.name;
     Category.nameAr = formValue.nameAr;
     // Category.type = formValue.type;

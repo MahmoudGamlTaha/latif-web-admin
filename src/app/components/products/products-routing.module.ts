@@ -36,6 +36,7 @@ const routes: Routes = [
           title: "create category",
           breadcrumb: "create category"
         }
+        
       },
       {
         path: 'blogs/create-blog',

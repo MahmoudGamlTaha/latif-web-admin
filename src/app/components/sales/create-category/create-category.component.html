@@ -53,25 +53,19 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label for="validationCustom01">icon</label>
-                                        <input type="text" [class.is-invalid]="Icon.invalid && Icon.touched" class="form-control" formControlName='Icon' >
-                                        <div class="text-danger" *ngIf="!Icon.valid ">
-                                            <small *ngIf="Icon.errors.required && Icon.touched"
-                                                [class.is-invalid]="Icon.invalid || Icon.touched" class="text-danger">
-                                        field is required
-                                            </small>
-                                            </div>
+                                        <app-upload-file (uploadResponseEvent)="setIcon($event)"></app-upload-file>
+                                    </div>
+                                    <div class="form-group" *ngIf="iconSelectUpload != null">
+                                        <img src="{{iconSelectUpload}}" style="width: 60px;height: 60px;"/>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label for="validationCustom01">Icon_select</label>
-                                        <input type="text" [class.is-invalid]="Icon_select.invalid && Icon_select.touched" class="form-control" formControlName='Icon_select' >
-                                        <div class="text-danger" *ngIf="!Icon_select.valid ">
-                                            <small *ngIf="Icon_select.errors.required && Icon_select.touched"
-                                                [class.is-invalid]="Icon_select.invalid || Icon_select.touched" class="text-danger">
-                                        field is required
-                                            </small>
-                                            </div>
+                                        <label for="validationCustom01">icon</label>
+                                        <app-upload-file (uploadResponseEvent)="setIconSelect($event)"></app-upload-file>
+                                    </div>
+                                    <div class="form-group" *ngIf="iconSelectUpload != null">
+                                        <img src="{{iconSelectUpload}}" style="width: 60px;height: 60px;"/>
                                     </div>
                                 </div>
 

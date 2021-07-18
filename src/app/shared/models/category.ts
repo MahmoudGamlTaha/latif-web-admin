@@ -1,7 +1,7 @@
 export class category{
     public active? : string ;
     public catParent? : number ;
-    public externalLink? : boolean ;
+    public external_link? : boolean ;
     public icon? : string ;
     public icon_select? : string ;
     public name? : string ;
