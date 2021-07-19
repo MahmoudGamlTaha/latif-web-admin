@@ -5,6 +5,7 @@ import {
   NgbDateStruct,
   NgbCalendar,
   NgbModal,
+  ModalDismissReasons,
 } from '@ng-bootstrap/ng-bootstrap';
 import { AdsService } from 'src/app/shared/service/dashboard-services/ads.service';
 import { CategoryService } from 'src/app/shared/service/dashboard-services/category.service';
@@ -26,6 +27,7 @@ export class updateXDComponent implements OnInit {
     private citiesSer: CountriesService,
     private formBuilder: FormBuilder,
     private router: ActivatedRoute,
+    private modalService: NgbModal
   ) {
     this.XDId = parseInt(this.router.snapshot.paramMap.get('id'));
     this.getcites();
@@ -45,6 +47,7 @@ export class updateXDComponent implements OnInit {
   price : number ;
   image : string ;
   images : [] ;
+  closeResult: string;
   ///////////createdBy => personal
   id : number ;
   address : string ;
@@ -83,7 +86,22 @@ export class updateXDComponent implements OnInit {
       this.getCategories();
     });
   }
-
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
   getcites() {
     this.citiesSer.getcitesList().subscribe((data: any) => {
       this.cities = data.response.data;

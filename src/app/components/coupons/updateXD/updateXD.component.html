@@ -40,14 +40,48 @@
                                         <div class="row">
                                             <div class="col-sm-4" *ngFor="let img of images">
                                                 <div class="card">
+                                                    <a (click)="open(imgModal)">
                                                     <img width="50px" height="100px" [src]="img.image"
                                                         class="card-img-top" />
+                                                    </a>
+
                                                 </div>
+                                                
+                                                <ng-template #imgModal let-modal>
+                                                    <div class="modal-header">
+                                                      <h4 class="modal-title" id="modal-basic-title">image</h4>
+                                                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                                        <span aria-hidden="true">×</span>
+                                                      </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img width="200px" height="200px" [src]="img.image"
+                                                        class="card-img-top" />
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+                                                    </div>
+                                                </ng-template>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <ng-template #imgModal let-modal>
+                                <div class="modal-header">
+                                  <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+                                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                    <span aria-hidden="true">×</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  This is example from ItSolutionStuff.com
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+                                </div>
+                            </ng-template>
                             <!-- Inner -->
                         </div>
                         <!-- Carousel wrapper -->

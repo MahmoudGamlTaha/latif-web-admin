@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "multikart-backend": {
+    "latif-backend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -79,18 +79,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "multikart-backend:build"
+            "browserTarget": "latif-backend:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "multikart-backend:build:production"
+              "browserTarget": "latif-backend:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "multikart-backend:build"
+            "browserTarget": "latif-backend:build"
           }
         },
         "test": {
