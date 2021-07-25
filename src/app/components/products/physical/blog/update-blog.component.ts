@@ -8,7 +8,7 @@ import { BlogsService } from 'src/app/shared/service/dashboard-services/Blogs.se
   styleUrls: ['./update-blog.component.scss']
 })
 export class UpdateBlogComponent implements OnInit {
-  updateForm: FormGroup
+  updateForm: FormGroup;
   blogId
   data
   Id
@@ -16,6 +16,9 @@ export class UpdateBlogComponent implements OnInit {
   Category
   Description
   Username
+  userId:bigint;
+  mobile:string;
+
   constructor(private fb: FormBuilder, private blogServ:BlogsService
     ,private router:ActivatedRoute,private route:Router) {
     this.blogId=this.router.snapshot.paramMap.get("id")
@@ -32,6 +35,8 @@ export class UpdateBlogComponent implements OnInit {
       this.Category = data.response.data.category
       this.Description = data.response.data.description
       this.Username = data.response.data.user.username
+      this.userId = data.response.data.user.id;
+      this.mobile = data.response.data.user.phone;
     }, (err) => {
       console.log("err", err)
     })

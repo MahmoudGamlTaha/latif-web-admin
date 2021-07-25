@@ -1,0 +1,99 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card tab2-card">
+                <div class="card-header">
+                    <h5>User details</h5>
+                </div>
+                <div *ngIf="!isLoading; else userInfo" class="text-center">
+                    <div class="spinner-border" style="width: 40px; height: 40px;">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+                <div class="card-body tab2-card">
+                    <ngb-tabset class="tab-coupon"  #userInfo>
+ 
+                        <ngb-tab title="Account">
+                        
+                            <ng-template ngbTabContent>   
+                                                                                                                                                                     <div class="tab-pane fade active show" id="account" role="tabpanel"
+                                        aria-labelledby="account-tab">
+                                    <form  class="needs-validation user-add" novalida>
+                                        <h4>Account Details</h4>
+                                        <div class="form-group row">
+                                            <label for="validationCustom0" class="col-xl-3 col-md-4"><span>*</span>
+                                                First Name</label>
+                                            <input class="form-control col-xl-8 col-md-7" id="validationCustom0"
+                                                type="text" value="{{user.firstName}}" required>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="validationCustom1" class="col-xl-3 col-md-4"><span>*</span> Last
+                                                Name</label>
+                                            <input class="form-control col-xl-8 col-md-7" id="validationCustom1"
+                                                type="text" value="{{user.lastName}}" >
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>
+                                                phone</label>
+                                            <input class="form-control col-xl-8 col-md-7" id="validationCustom6"
+                                                type="text" value="{{user.phone}}" required="">
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>
+                                                Email</label>
+                                            <input class="form-control col-xl-8 col-md-7" id="validationCustom2"
+                                                type="text" value="{{user.email}}" required="">
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>
+                                                address</label>
+                                            <input class="form-control col-xl-8 col-md-7" id="validationCustom4"
+                                                type="text" value="{{user.address}}" required="">
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>
+                                                ads count</label>
+                                            <input class="form-control col-xl-8 col-md-7" id="validationCustom5"
+                                                type="text" value="{{user.prodCount}}" required="">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="validationCustom01">active</label><br>
+                                                <label class="switch"><input type="checkbox" [checked]="user.active" id={{user.id}}
+                                                    (change)="onClick($event)"/><span class="slider round"></span></label>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="validationCustom01">ads poser</label><br>
+                                                <label class="switch"><input type="checkbox" [checked]="user.adsPoser" 
+                                                    (change)="onClick($event)"/><span class="slider round"></span></label>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="validationCustom3" class="col-xl-3 col-md-4"><span>*</span>
+                                                Password</label>
+                                            <input class="form-control col-xl-8 col-md-7" id="validationCustom3"
+                                                type="password" required="">
+                                        </div>
+                                       
+                                    </form>
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+                        <ngb-tab>
+                           
+                        </ngb-tab>
+                    </ngb-tabset>
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->

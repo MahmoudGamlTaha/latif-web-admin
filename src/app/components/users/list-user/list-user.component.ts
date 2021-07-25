@@ -41,6 +41,11 @@ deletedItemId;
     columns: {
       id: {
         title: 'id',
+        type:'html',
+        valuePrepareFunction:(cell,row)=>{
+          return '<a href="#/user-details/'+row.id+'" style=""cursor": "pointer"" id="'+row.id+'">'+row.id+'</a>';
+
+        } 
       },
       
       firstName: {
