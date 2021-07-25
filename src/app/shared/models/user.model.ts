@@ -1,0 +1,20 @@
+export class User{
+    id:number;
+    email:string;
+    firstName:string;
+    lastName?:string;
+    address:string;
+    city?:any;
+    country?:any;
+    state:string;
+    zip?:string;
+    phone?:string;
+    userName?:string;
+    emailVerified?:boolean;
+    active:boolean;
+    role?:string;
+    roles?:string;
+    prodCount?:BigInteger;
+    registrationDate:string;
+    adsPoser:boolean;
+}
