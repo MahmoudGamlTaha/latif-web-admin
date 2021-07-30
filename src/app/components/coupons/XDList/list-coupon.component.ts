@@ -6,6 +6,7 @@ import { adsFilter } from 'src/app/shared/models/adsFilter';
 import { StatusComponent } from '../status/status.component';
 import { LocalDataSource } from 'ng2-smart-table';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { server } from 'src/environments/environment';
 
 @Component({
   selector: 'app-list-coupon',
@@ -76,10 +77,11 @@ deletedItemId;
       // } ,
       'createdBy.firstName': {
         title: 'Name',
+        type: 'html',
         valuePrepareFunction: (cell, row) => {
           if(row.createdBy){
             let lastName:string = row.createdBy.lastName == null ? "" : row.createdBy.lastName;
-          return row.createdBy.firstName + ' ' + lastName;
+          return '<a style=""cursor": "pointer" href="#/user-details/'+ row.createdBy.id+'"/>'+ row.createdBy.firstName + ' ' + lastName;
           }
         },
       },
@@ -141,15 +143,10 @@ deletedItemId;
         renderComponent: StatusComponent,
         onComponentInitFunction(instance) {
           instance.save.subscribe(row => {
+           // this.adsSer.changeStateOfAds(row.id, row.active).subscribe(res=> console.log("success"));
             // alert(`${row.active} saved!`)
           });},
-        // valuePrepareFunction: (cell, row) => {
-          
-        //   console.log(row.active)
-        //   if(row.active){return row.active }else{
-
-        //   }
-        //   },
+      
           width:"15px"
       },
       image: {

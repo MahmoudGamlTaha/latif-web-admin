@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { categoryDB } from '../../../../shared/tables/category';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { BlogsService } from 'src/app/shared/service/dashboard-services/Blogs.service';
+import { StatusComponent } from 'src/app/components/coupons/status/status.component';
 
 @Component({
   selector: 'app-blog-list',
@@ -10,7 +11,7 @@ import { BlogsService } from 'src/app/shared/service/dashboard-services/Blogs.se
 })
 export class blogListComponent implements OnInit {
   public closeResult: string;
-  public categories = []
+  public blogsList = []
   isLoading: boolean = true;
   deletedItemId;
   constructor(private modalService: NgbModal, private BlogsSer: BlogsService) {
@@ -53,6 +54,7 @@ export class blogListComponent implements OnInit {
       },
       title: {
         title: 'title',
+        type:'string'
       },
       description: {
         title: 'description',
@@ -62,17 +64,29 @@ export class blogListComponent implements OnInit {
 
 
       },
+      
       createdDate: {
         title: 'createdDate', filter: false,
       },
       image: {
-        title: 'Image', filter: false,
+        title: 'Image', 
+        filter: false,
         type: 'html',
         valuePrepareFunction: (cell, row) => {
           if (row.image != null && row.image != undefined && row.image != '') {
             return "<img src='" + row.image + "' width='50' height='50' />"
           }
         }
+      },
+      active:{
+        title: 'Active',
+        type: 'custom',
+        filter: false,
+        renderComponent: StatusComponent,
+        onComponentInitFunction(instance) {
+          instance.save.subscribe(row => {
+            // alert(`${row.active} saved!`)
+          });},
       }
     }
   }
@@ -81,7 +95,7 @@ export class blogListComponent implements OnInit {
       this.BlogsSer.getblogList().subscribe(
         (data: any) => {
           this.isLoading = false
-          this.categories = data.response.data
+          this.blogsList = data.response.data;
         },
         (error) => {
           this.isLoading = false

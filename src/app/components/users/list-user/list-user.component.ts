@@ -69,13 +69,24 @@ deletedItemId;
           instance.save.subscribe(row => {
             // alert(`${row.active} saved!`)
           });},
-        // valuePrepareFunction: (cell, row) => {
-          
-        //   console.log(row.active)
-        //   if(row.active){return row.active }else{
-
-        //   }
-        //   },
+         valuePrepareFunction: (cell, row) => {
+          return "activate";
+          },
+          width:"15px"
+      },
+      adsposerstatus: {
+        title: 'adsPoser',
+        type: 'custom',
+        filter: false,
+        renderComponent: StatusComponent,
+        onComponentInitFunction(instance) {
+          instance.save.subscribe(row => {
+            // alert(`${row.active} saved!`)
+          });
+        },
+         valuePrepareFunction: (cell, row) => {
+          return "suspend";
+          },
           width:"15px"
       },
       registrationDate: {

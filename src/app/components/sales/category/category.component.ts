@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { CategoryService } from 'src/app/shared/service/dashboard-services/category.service';
 import { transactionsDB } from 'src/app/shared/tables/transactions';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { StatusComponent } from '../../coupons/status/status.component';
 
 @Component({
   selector: 'app-category',
@@ -67,6 +68,7 @@ deletedItemId;
           }
         }
       },
+      
       'category.iconSelect': {
         title: 'iconSelect',
         type: 'html',
@@ -85,6 +87,18 @@ deletedItemId;
         valuePrepareFunction: (cell, row) => { return row.category.type }
 
       },
+      'category.showInterest':{
+        title: 'user interest',
+        type:'custom',
+        filter: false,
+        renderComponent: StatusComponent,
+        onComponentInitFunction(instance) {
+          instance.save.subscribe(row => {
+          
+          });},
+      
+          width:"15px"
+     },
       // 'category.isExternalLink': {
       //   title: 'isExternalLink',
       //   valuePrepareFunction:(cell,row)=>{return row.category.isExternalLink}

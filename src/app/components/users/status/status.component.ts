@@ -13,7 +13,6 @@ export class StatusComponent implements ViewCell, OnInit {
   idValue: number;
   @Input() value: string | number | any;
   @Input() rowData: any;
-
   @Output() save: EventEmitter<any> = new EventEmitter();
 
 
@@ -21,19 +20,31 @@ export class StatusComponent implements ViewCell, OnInit {
   constructor(private userSer:UsersService) { }
 
   ngOnInit(): void {
-    this.renderValue = this.value
-
+    if(this.value == 'suspend'){
+    this.renderValue = this.rowData.adsPoserStatus;
+    }
+    else if(this.value == 'activate'){
+      this.renderValue= this.rowData.active;
+    }
     this.idValue = this.rowData.id
     // console.log(this.renderValue)
 
     // console.log("child2", this.idValue)
   }
   onClick(event) {
-
     // console.log(event.target.checked)
+    if(this.value == 'activate'){
     this.userSer.activate(event.target.id, event.target.checked).subscribe(
       res=> console.log("success")
       )
+    }
+    if(this.value == 'suspend'){
+      console.log(event.target.checked);
+      console.log(event.target.id);
+      this.userSer.suspendUser(event.target.checked, event.target.id).subscribe(
+        res=>console.log("sucess")
+      )
+    }
     this.save.emit(this.rowData);
     // console.log(event.target.id)
   }
