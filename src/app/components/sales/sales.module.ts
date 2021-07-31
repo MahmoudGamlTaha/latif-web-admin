@@ -14,17 +14,20 @@ import { UploadFileComponent } from '../upload-file/upload-file.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { updateXDComponent } from '../coupons/updateXD/updateXD.component';
 import { ProductsModule } from '../products/products.module';
+import { FileUploaderComponent } from 'src/app/shared/components/upload-file/file-uploader.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [categoryListComponent, categoryComponent, CreateCategoryComponent],
+  declarations: [categoryListComponent, categoryComponent, CreateCategoryComponent, FileUploaderComponent],
   imports: [
     CommonModule,
     SalesRoutingModule,
     Ng2SmartTableModule,
     NgxDatatableModule,
     ReactiveFormsModule,
+    FileUploadModule,
     // FormGroup,
     NgbModule,
-  ]
+  ],
 }) 
 export class SalesModule { }

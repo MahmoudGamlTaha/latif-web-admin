@@ -51,24 +51,25 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
-                                   <!-- <div class="form-group">
+                                    <div class="form-group">
                                         <label for="validationCustom01">icon</label>
-                                        <app-upload-file (uploadResponseEvent)="setIcon($event)"></app-upload-file>
+                                        <file-uploader (uploadResponseEvent)="setIcon($event)"></file-uploader>
                                     </div>
-                                    <div class="form-group" *ngIf="iconSelectUpload != null">
-                                        <img src="{{iconSelectUpload}}" style="width: 60px;height: 60px;"/>
+                                    <div class="form-group" *ngIf="iconUpload != null">
+                                        <img src="{{iconUpload}}" style="width: 60px;height: 60px;"/>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
-                                    <!--<div class="form-group">
-                                        <label for="validationCustom01">icon</label>
-                                        <app-upload-file (uploadResponseEvent)="setIconSelect($event)"></app-upload-file>
+                                    <div class="form-group">
+                                        <label for="validationCustom01">icon Select</label>
+                                        <file-uploader (uploadResponseEvent)="setIconSelect($event)"></file-uploader>
                                     </div>
                                     <div class="form-group" *ngIf="iconSelectUpload != null">
                                         <img src="{{iconSelectUpload}}" style="width: 60px;height: 60px;"/>
                                     </div>
-                                -->
+                                
                                 </div>
+
 
                                 <div class="col-sm-4">
                                     <div class="form-group">
@@ -78,18 +79,13 @@
                                         [class.is-invalid]="catParent.invalid && catParent.touched"
                                         formControlName='catParent'> -->
                                         
-                                        <select class="form-control" [class.is-invalid]="catParent.invalid && catParent.touched"
-                                            formControlName='catParent'>
-                                            <option id="{{option.name}}"  value="{{option.id}}" *ngFor="let option of catParentList">
+                                        <select class="form-control" formControlName='catParent'>
+                                           
+                                            <option id="{{option.category.id}}"  value="{{option.category.id}}" *ngFor="let option of catParentList">
+                                                 
                                                 {{option.category.name}}
                                             </option>
                                         </select>
-                                        <div class="text-danger" *ngIf="!catParent.valid ">
-                                            <small *ngIf="catParent.errors.required && catParent.touched"
-                                                [class.is-invalid]="catParent.invalid || catParent.touched" class="text-danger">
-                                        field is required
-                                            </small>
-                                            </div>
                                     </div>
                                 </div>
 

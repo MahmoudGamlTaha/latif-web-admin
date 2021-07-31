@@ -26,10 +26,7 @@ export class StatusComponent implements ViewCell, OnInit {
   ngOnInit(): void {
     this.renderValue = this.value
 
-    this.idValue = this.rowData.id
-    console.log(this.renderValue)
-
-    console.log("child2", this.idValue)
+    this.idValue = this.rowData.id;
   }
 
 }

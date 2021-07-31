@@ -16,15 +16,14 @@ export class CreateCategoryComponent implements OnInit {
   public createForm: FormGroup;
   typeList = [] ;
   catParentList = [] ;
+  selectedParent:any;
   selectedTypeId : String ;
-  iconUpload:string;
-  iconSelectUpload:string;
+  iconUpload:string = 'https://res.cloudinary.com/highcoder/image/upload/v1627770020/1_xkvipn.jpg';
+  iconSelectUpload:string = 'https://res.cloudinary.com/highcoder/image/upload/v1627770020/1_xkvipn.jpg';
   constructor(private fb: FormBuilder,
     private categorySer:CategoryService,
     private router : ActivatedRoute,private route:Router) { 
       this.selectedTypeId = this.router.snapshot.paramMap.get('type')
-      console.log(this.selectedTypeId)
-    
       this.categorySer.getCategoryList().subscribe(
         (data:any)=>{
           this.typeList=data.response.data
@@ -47,11 +46,9 @@ export class CreateCategoryComponent implements OnInit {
       Type :[this.selectedTypeId,[Validators.required]],
       CategoryName:['',[Validators.required]],
       NameAr:['',[Validators.required]],
-      Icon:['',[Validators.required]],
-      Icon_select:['',[Validators.required]],
-      External:[''],
+      External:true,
       Active:[''],
-      catParent:['you'],
+      catParent:[''],
     });
     
   }  
@@ -65,6 +62,7 @@ export class CreateCategoryComponent implements OnInit {
     this.iconSelectUpload = value.url;
 
   }
+
   get CategoryName(){
     return this.createForm.get('CategoryName')
   }
@@ -81,31 +79,33 @@ export class CreateCategoryComponent implements OnInit {
     return this.createForm.get('Type')
   }  
   get catParent(){
-    return this.createForm.get('catParent')
+    return this.createForm.get('catParent').value;
   }
   create(){
-    let formData : category
-
+    let formData : category;
+    console.log(this.selectedParent);
     formData = {
       active : this.createForm.value.Active ,
-      catParent : this.createForm.value.catParent ,
+      catParent : this.createForm.value.catParent,
       external_link : this.createForm.value.External ,
       icon : this.iconUpload,
       icon_select : this.iconSelectUpload ,
-      name : this.createForm.value.External ,
-      nameAr : this.createForm.value.NameAr ,
-      type : this.createForm.value.CategoryName ,
+      name : (this.createForm.value.CategoryName).trim() ,
+      nameAr : this.createForm.value.NameAr.trim() ,
+      type : this.createForm.value.Type ,
     }
-    if(!this.createForm.valid){return ;}
-    console.log(this.createForm.value)
+    
+    if(!this.createForm.valid){
+       alert("there is missing data");
+      return ;
+    }
+   
 
     this.categorySer.createCategory(formData).subscribe(
       (data)=>{
-        
-        console.log(data)
         this.typeList.filter((item)=>{
           if(item.id==this.createForm.value.Type){
-            this.route.navigate(['sales/categorytype/',item.id,item.name])
+            this.route.navigate(['/category/category-type/',item.id,item.name])
           }
         })
         

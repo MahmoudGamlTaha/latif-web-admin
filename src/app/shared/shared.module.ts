@@ -15,6 +15,7 @@ import { WINDOW_PROVIDERS } from './service/windows.service';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { RightSidebarComponent } from './components/right-sidebar/right-sidebar.component';
 import { FileUploader, FileUploadModule } from 'ng2-file-upload';
+import { FileUploaderComponent } from './components/upload-file/file-uploader.component';
 
 @NgModule({
   declarations: [
