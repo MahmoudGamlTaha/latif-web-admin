@@ -21,9 +21,10 @@
                                     formControlName="UserId" >
                                         <option class="dropdown-item" *ngFor="let user of userList" data-list="user"
                                             [value]="user.id" >
-                                            {{ user.firstName }}
+                                            {{ user.firstName }}-{{user.phone}}
                                         </option>
                                     </select>
+                                    <img style="height: 60px;width: 60px;" *ngFor = "let url of imgList" src="{{url}}"/>
                                     <div class="text-danger" *ngIf="!UserId.valid ">
                                         <small *ngIf="UserId.errors.required && UserId.touched"
                                             [class.is-invalid]="UserId.invalid || UserId.touched" class="text-danger">
@@ -65,12 +66,13 @@
                                         </div>
                                 </div>
                             </div>
+                            
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="validationCustom01">image</label>
-                                    <input type="file" height="30px" class="form-control-file" id="exampleFormControlFile1"  formControlName="ExtrnImage" multiple>
-                                    
+                                    <app-upload-file (uploadResponseEvent)="setBlogImages($event)"></app-upload-file>        
                                 </div>
+
                             </div>
                             
                             <div class="col-sm-6">

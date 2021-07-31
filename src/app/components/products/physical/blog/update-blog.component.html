@@ -1,11 +1,17 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            <div class="card">
+            <div class="card tab2-card">
                 <div class="card-header">
                     <h5>update blog</h5>
                 </div>
+                <div *ngIf="!isLoading; else blogDetails" class="text-center">
+                    <div class="spinner-border" style="width: 40px; height: 40px;">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
                 <div class="card-body"> 
+                    <ng-template #blogDetails>
                     <form [formGroup]="updateForm" (ngSubmit)="update()" class="needs-validation" novalidate="">
                         <div class="row">
                             <div class="col-sm-12">
@@ -33,6 +39,13 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
+                                    <label for="validationCustom01">categoryAr</label>
+                                    <input formControlName="category" type="text" class="form-control"
+                                        placeholder="category" [value]="CategoryAr" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
                                     <label for="validationCustom01">description</label>
                                     <input formControlName="description" type="text" class="form-control"
                                         placeholder="description" [value]="Description" />
@@ -40,9 +53,9 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label for="validationCustom01">username</label>
-                                    <input disabled formControlName="username" type="text" class="form-control"
-                                        placeholder="username" [value]="Username" />
+                                    <label for="validationCustom01">name</label>
+                                    <input disabled formControlName="fullname" type="text" class="form-control"
+                                        placeholder="name" [value]="fullname" />
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -53,10 +66,39 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-sm-4" *ngFor="let img of images">
+                                <div class="card">
+                                    <a (click)="open(imgModal)">
+                                    <img width="50px" height="100px" [src]="img"
+                                        class="card-img-top" />
+                                    </a>
+
+                                </div>
+                                
+                                <ng-template #imgModal let-modal>
+                                    <div class="modal-header">
+                                      <h4 class="modal-title" id="modal-basic-title">image</h4>
+                                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                        <span aria-hidden="true">×</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img  [src]="img"
+                                        class="card-img-top" />
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+                                    </div>
+                                </ng-template>
+
+                            </div>
+                        </div>
                         <div class="pull-right">
                             <button type="submit" class="btn btn-primary">update</button>
                         </div>
                     </form>
+                </ng-template>
                 </div>
             </div>
         </div>

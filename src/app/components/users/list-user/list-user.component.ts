@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/shared/service/dashboard-services/users.service';
-import { userListDB } from 'src/app/shared/tables/list-users';
 import { StatusComponent } from '../status/status.component';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
@@ -43,7 +42,7 @@ deletedItemId;
         title: 'id',
         type:'html',
         valuePrepareFunction:(cell,row)=>{
-          return '<a href="#/user-details/'+row.id+'" style=""cursor": "pointer"" id="'+row.id+'">'+row.id+'</a>';
+          return '<a href="#/users/user-details/'+row.id+'" style=""cursor": "pointer"" id="'+row.id+'">'+row.id+'</a>';
 
         } 
       },
@@ -69,13 +68,24 @@ deletedItemId;
           instance.save.subscribe(row => {
             // alert(`${row.active} saved!`)
           });},
-        // valuePrepareFunction: (cell, row) => {
-          
-        //   console.log(row.active)
-        //   if(row.active){return row.active }else{
-
-        //   }
-        //   },
+         valuePrepareFunction: (cell, row) => {
+          return "activate";
+          },
+          width:"15px"
+      },
+      adsposerstatus: {
+        title: 'adsPoser',
+        type: 'custom',
+        filter: false,
+        renderComponent: StatusComponent,
+        onComponentInitFunction(instance) {
+          instance.save.subscribe(row => {
+            // alert(`${row.active} saved!`)
+          });
+        },
+         valuePrepareFunction: (cell, row) => {
+          return "suspend";
+          },
           width:"15px"
       },
       registrationDate: {

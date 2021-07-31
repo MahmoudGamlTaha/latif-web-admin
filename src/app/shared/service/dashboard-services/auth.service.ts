@@ -57,8 +57,6 @@ export class AuthService {
       this.cookie.setToken(this.auth_token);
       Token.myToken = this.auth_token;
       Token.bearer = 'Bearer ';
-      console.log("this.auth_token", this.cookie.getToken());
-
       headers.append('Authorization', JSON.stringify(this.cookie.getToken()))
       //localStorage.setItem('currentUser', JSON.stringify(Token.bearer + Token.myToken)); not secure
       // this.setCookie('currentUser', JSON.stringify(Token.bearer + Token.myToken), exdays)

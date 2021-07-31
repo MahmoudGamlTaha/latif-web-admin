@@ -39,7 +39,7 @@ export class UserDetailsComponent implements OnInit {
     });
     console.log(this.user);
    }
-  ngOnInit(): void {
+  ngOnInit(){
   }
   public onClick(event){
 

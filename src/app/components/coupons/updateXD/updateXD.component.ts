@@ -140,9 +140,7 @@ export class updateXDComponent implements OnInit {
   }
   onClick(event) {
 
-    this.adsSer.changeStateOfAds(event.target.id, event.target.checked).subscribe(res=> console.log("success"))
-
-    console.log(event.target.id)
+    this.adsSer.changeStateOfAds(event.target.id, event.target.checked).subscribe(res=> console.log("success"));
 
   }
 

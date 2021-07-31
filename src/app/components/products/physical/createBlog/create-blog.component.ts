@@ -53,6 +53,12 @@ export class CreateBlogComponent implements OnInit {
       }
     );
   }
+ public setBlogImages(images){
+   console.log(images);
+    images.array.forEach(element => {
+        this.imgList.push(element.url);
+    });
+  }
   typeDropDown(event) {
     console.log(event.target.value)
   }
