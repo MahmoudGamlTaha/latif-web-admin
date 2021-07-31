@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/shared/service/dashboard-services/users.service';
-import { userListDB } from 'src/app/shared/tables/list-users';
 import { StatusComponent } from '../status/status.component';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
@@ -43,7 +42,7 @@ deletedItemId;
         title: 'id',
         type:'html',
         valuePrepareFunction:(cell,row)=>{
-          return '<a href="#/user-details/'+row.id+'" style=""cursor": "pointer"" id="'+row.id+'">'+row.id+'</a>';
+          return '<a href="#/users/user-details/'+row.id+'" style=""cursor": "pointer"" id="'+row.id+'">'+row.id+'</a>';
 
         } 
       },

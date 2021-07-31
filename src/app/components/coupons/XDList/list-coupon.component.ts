@@ -81,7 +81,7 @@ deletedItemId;
         valuePrepareFunction: (cell, row) => {
           if(row.createdBy){
             let lastName:string = row.createdBy.lastName == null ? "" : row.createdBy.lastName;
-          return '<a style=""cursor": "pointer" href="#/user-details/'+ row.createdBy.id+'"/>'+ row.createdBy.firstName + ' ' + lastName;
+          return '<a style=""cursor": "pointer" href="#/users/user-details/'+ row.createdBy.id+'"/>'+ row.createdBy.firstName + ' ' + lastName;
           }
         },
       },
