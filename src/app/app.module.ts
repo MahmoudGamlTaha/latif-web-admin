@@ -8,10 +8,10 @@ import { AppComponent } from './app.component';
 import { DashboardModule } from './components/dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
 import { ProductsModule } from './components/products/products.module';
-import { SalesModule } from './components/sales/sales.module';
+import { SalesModule } from './components/categories/sales.module';
 import { CouponsModule } from './components/coupons/coupons.module';
 import { PagesModule } from './components/pages/pages.module';
-import { MediaModule } from './components/media/media.module';
+import { MediaModule } from './components/subscriptions/media.module';
 import { MenusModule } from './components/menus/menus.module';
 import { VendorsModule } from './components/vendors/vendors.module';
 import { UsersModule } from './components/users/users.module';
@@ -27,9 +27,11 @@ import {CookieService} from 'ngx-cookie-service';
 import { CloudinaryModule } from '@cloudinary/angular-5.x';
 import * as  Cloudinary from 'cloudinary-core';
 import { FileUploader, FileUploadModule } from 'ng2-file-upload';
+import { ColorsComponent } from './vendor/colors/colors.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ColorsComponent
   ],
   imports: [
     BrowserAnimationsModule,
