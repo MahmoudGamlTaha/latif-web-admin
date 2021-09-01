@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthorizeGuard } from 'src/app/shared/service/dashboard-services/AuthorizeGuard';
-import { subscriptionComponent } from './subscription/subscription.component';
+import { subscriptionComponent } from './subscription-list/subscription.component';
 
 const routes: Routes = [
   {

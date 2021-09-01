@@ -14,7 +14,7 @@ export const content: Routes = [
   },
   {
     path: 'category',
-    loadChildren: () => import('../../components/sales/sales.module').then(m => m.SalesModule),
+    loadChildren: () => import('../../components/categories/sales.module').then(m => m.SalesModule),
     data: {
       breadcrumb: "category"
     }
@@ -35,7 +35,7 @@ export const content: Routes = [
   },
   {
     path: 'subscription',
-    loadChildren: () => import('../../components/media/media.module').then(m => m.MediaModule),
+    loadChildren: () => import('../../components/subscriptions/media.module').then(m => m.MediaModule),
   },
   {
     path: 'reports',
