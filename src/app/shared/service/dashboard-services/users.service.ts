@@ -23,6 +23,7 @@ export class UsersService {
   }
 
   userList() {
+    console.log(this.headers);
     return this._http.get<any[]>(this._userList, { headers: this.headers });
   }
 

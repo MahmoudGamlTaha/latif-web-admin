@@ -44,7 +44,7 @@ UploadFileComponent implements OnInit {
               tags = `myphotoalbum,${this.title}`;
           }
           
-          form.append('tags', tags);
+    //      form.append('tags', tags);
           form.append('file', fileItem);
          
           fileItem.withCredentials = false;
@@ -69,6 +69,8 @@ UploadFileComponent implements OnInit {
               } else {
                   // Create new response
                   this.responses.push(fileItem);
+                  console.log(555);
+                  console.log(this.responses.push(fileItem));
               }
           });
       };

@@ -27,7 +27,7 @@ import {CookieService} from 'ngx-cookie-service';
 import { CloudinaryModule } from '@cloudinary/angular-5.x';
 import * as  Cloudinary from 'cloudinary-core';
 import { FileUploader, FileUploadModule } from 'ng2-file-upload';
-import { ColorsComponent } from './vendor/colors/colors.component';
+import { ColorsComponent } from './components/vendors/colors/colors.component';
 @NgModule({
   declarations: [
     AppComponent,

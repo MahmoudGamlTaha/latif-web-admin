@@ -13,7 +13,7 @@ export class RoleIdComponent implements OnInit {
   roleId ;
   roleName;
   closeResult;
-deletedItemId;
+  deletedItemId;
   constructor(private modalService: NgbModal,private RoleSer:RoleService,private router:ActivatedRoute) {
   this.roleId=router.snapshot.paramMap.get('id')
   }
