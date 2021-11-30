@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
   userSubscriptionsCount=0;
   ServiceAdsCount=0;
   AccessoriesAdsCount=0;
-  PetCareAdsCount=0;
+  othersAdsCount=0;
   AllAdsCount=0;
   PetAdsCount=0;
 
@@ -96,7 +96,7 @@ export class DashboardComponent implements OnInit {
         this.userSubscriptionsCount =  parseInt(data.response.data.userSubscriptionsCount);
       this.ServiceAdsCount =  parseInt(data.response.data.ServiceAdsCount);
       this.AccessoriesAdsCount =  parseInt(data.response.data.AccessoriesAdsCount);
-      this.PetCareAdsCount =  parseInt(data.response.data.PetCareAdsCount);
+      this.othersAdsCount =  parseInt(data.response.data.PetCareAdsCount);
       this.AllAdsCount =  parseInt(data.response.data.AllAdsCount);
       this.PetAdsCount =  parseInt(data.response.data.PetAdsCount);
       },
