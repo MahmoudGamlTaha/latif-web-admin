@@ -16,9 +16,10 @@ import { updateXDComponent } from '../coupons/updateXD/updateXD.component';
 import { ProductsModule } from '../products/products.module';
 import { FileUploaderComponent } from 'src/app/shared/components/upload-file/file-uploader.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { EditCategoryComponent } from './edit-category/edit-category/edit-category.component';
 
 @NgModule({
-  declarations: [categoryListComponent, categoryComponent, CreateCategoryComponent, FileUploaderComponent],
+  declarations: [categoryListComponent, categoryComponent, CreateCategoryComponent, FileUploaderComponent, EditCategoryComponent],
   imports: [
     CommonModule,
     SalesRoutingModule,

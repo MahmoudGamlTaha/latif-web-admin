@@ -28,10 +28,12 @@ import { CloudinaryModule } from '@cloudinary/angular-5.x';
 import * as  Cloudinary from 'cloudinary-core';
 import { FileUploader, FileUploadModule } from 'ng2-file-upload';
 import { ColorsComponent } from './components/vendors/colors/colors.component';
+import { EditCategoryComponent } from './app/components/categories/edit-category/edit-category/edit-category.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ColorsComponent
+    ColorsComponent,
+    EditCategoryComponent
   ],
   imports: [
     BrowserAnimationsModule,

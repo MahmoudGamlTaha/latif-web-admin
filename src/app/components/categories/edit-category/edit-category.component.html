@@ -1,0 +1,119 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>edit category</h5>
+                    <form  [formGroup]="createForm" (ngSubmit)="update()" class="needs-validation" novalidate="">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">type</label>
+                                        <select class="form-control" value="{{selectedTypeId}}" [class.is-invalid]="Type.invalid && Type.touched"
+                                        formControlName='Type' >
+                                            <option id="{{option.id}}"  value="{{option.id}}" *ngFor="let option of typeList" >
+                                                {{option.name}}
+                                            </option>
+                                        </select>
+                                        <div class="text-danger" *ngIf="!Type.valid ">
+                                            <small *ngIf="Type.errors.required && Type.touched"
+                                                [class.is-invalid]="Type.invalid || Type.touched" class="text-danger">
+                                        field is required
+                                            </small>
+                                            </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">name</label>
+                                        <input type="text" [class.is-invalid]="CategoryName.invalid && CategoryName.touched" formControlName='CategoryName' class="form-control">
+                                        <div class="text-danger" *ngIf="!CategoryName.valid ">
+                                            <small *ngIf="CategoryName.errors.required && CategoryName.touched"
+                                                [class.is-invalid]="CategoryName.invalid || CategoryName.touched" class="text-danger">
+                                        field is required
+                                            </small>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">Name Ar</label>
+                                        <input type="text" [class.is-invalid]="NameAr.invalid && NameAr.touched" class="form-control" formControlName='NameAr'>
+                                        <div class="text-danger" *ngIf="!NameAr.valid ">
+                                            <small *ngIf="NameAr.errors.required && NameAr.touched"
+                                                [class.is-invalid]="NameAr.invalid || NameAr.touched" class="text-danger">
+                                        field is required
+                                            </small>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">icon</label>
+                                        <file-uploader (uploadResponseEvent)="setIcon($event)"></file-uploader>
+                                    </div>
+                                    <div class="form-group" *ngIf="iconUpload != null">
+                                        <img src="{{iconUpload}}" style="width: 60px;height: 60px;"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">icon Select</label>
+                                        <file-uploader (uploadResponseEvent)="setIconSelect($event)"></file-uploader>
+                                    </div>
+                                    <div class="form-group" *ngIf="iconSelectUpload != null">
+                                        <img src="{{iconSelectUpload}}" style="width: 60px;height: 60px;"/>
+                                    </div>
+                                
+                                </div>
+
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+
+                                        <label for="validationCustom01">catParent</label>
+                                        <!-- <input type="text" class="form-class"  
+                                        [class.is-invalid]="catParent.invalid && catParent.touched"
+                                        formControlName='catParent'> -->
+                                        
+                                        <select class="form-control" formControlName='catParent'>
+                                           
+                                            <option id="{{option.category.id}}"  value="{{option.category.id}}" *ngFor="let option of catParentList">
+                                                 
+                                                {{option.category.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">external</label><br>
+                                        <label class="switch"><input type="checkbox" formControlName='External'>
+                                            <span class="slider round"></span></label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="validationCustom01">active</label><br>
+                                        <label class="switch"><input type="checkbox" formControlName='Active'>
+                                            <span class="slider round"></span></label>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container-fluid Ends-->

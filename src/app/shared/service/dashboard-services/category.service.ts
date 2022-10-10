@@ -14,10 +14,11 @@ export class CategoryService {
 
   _getcategoryList = server.url + 'api/public/ads-type/list'
   _getCategoryType = server.url + 'api/public/cat-by-adType/type='
-    _getCategoriesByParent = server.url + 'api/public/category/get-categories-by-parent?id='
+  _getCategoriesByParent = server.url + 'api/public/category/get-categories-by-parent?id='
 
   _createCategory = server.url + 'api/public/category/create'
   _deleteCategory = server.url + 'api/public/category/delete?id='
+  _categoryDetail = server.url + '/api/public/category/find-by-id/id='
 
   token
   headers
@@ -63,13 +64,22 @@ export class CategoryService {
       );
   }
   
-  getCategoriesByParent(CategoryId) {
-    return this._http.get(this._getCategoryType+CategoryId)
+  getCategoriesByParent(categoryId) {
+    return this._http.get(this._getCategoryType + categoryId)
       .pipe(
         catchError((err) => {
           return throwError(err.message || 'server issue ');
         })
       );
+  }
+
+  getCategoryById(categoryId){
+    return this._http.get(this._categoryDetail + categoryId)
+     .pipe(
+       catchError((err) => {
+          return throwError(err.message || 'server error');
+       })
+     );
   }
 
 }
